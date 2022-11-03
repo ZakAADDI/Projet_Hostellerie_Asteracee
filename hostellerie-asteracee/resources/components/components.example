@@ -1,0 +1,43 @@
+<template>
+    <div class="div">
+        <Component />
+    </div>
+</template>
+
+<script>
+import Component from '../'
+export default {
+    name: 'componentsName',
+    components: {
+        Component
+    },
+    methods: {
+
+    },
+    computed: {
+
+    }
+}
+</script>
+
+<style scoped>
+
+@media screen and (min-width: 576px) {
+
+}
+@media screen and (min-width: 768px) {
+
+}
+@media screen and (min-width: 992px) {
+
+
+}
+@media screen and (min-width: 1200px) {
+
+}
+@media screen and (min-width: 1400px) {
+
+}
+</style>
+
+</style>

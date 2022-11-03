@@ -1,14 +1,18 @@
 <template>
+
     <div class="home">
-        <h1 class="text-3xl font-bold underline">
-             Hello world!
-        </h1>
+        <Hero />
     </div>
 </template>
-  
+
 <script>
+import Hero from '../../components/Hero.vue';
+
 export default {
     name: 'Home',
+    components: {
+        Hero
+    }
 }
 </script>
 
