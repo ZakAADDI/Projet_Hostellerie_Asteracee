@@ -3,13 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Media;
-use App\Models\Room;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class MediaSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -17,9 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         Media::factory()
             ->count(50)
-            ->create();
-        Room::factory()
-            ->count(3)
             ->create();
     }
 }
