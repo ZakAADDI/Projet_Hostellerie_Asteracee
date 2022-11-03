@@ -1,15 +1,15 @@
 <template>
     <Header/>
     <div class="hero">
-        <img class="logo" src="../js/assets/images/Design/LogoHeader.svg" alt="Logo Hostellerie Asteracée">
+        <img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée">
         <div class="media">
-            <img class="leftImg" src="../js/assets/images/Design/leftImg.png" alt="Image du lac">
+            <img class="leftImg" src="../assets/images/leftImg.png" alt="Image du lac">
             <div class="video">
                 <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
                 <p>Un espace reposant entre lac et montagne</p>
             </div>
 
-            <img class="rightImg" src="../js/assets/images/Design/rightImg.png" alt="Image de la prison">
+            <img class="rightImg" src="../assets/images/rightImg.png" alt="Image de la prison">
         </div>
     </div>
 </template>
@@ -18,9 +18,21 @@
 import Header from '../subComponents/Header.vue'
 export default {
     name: 'Hero',
+    data(){
+        return{
+            
+        }
+    },
     components: {
         Header
+    },
+    methods:{
+        created(){
+
+        }
     }
+
+
 }
 </script>
 
