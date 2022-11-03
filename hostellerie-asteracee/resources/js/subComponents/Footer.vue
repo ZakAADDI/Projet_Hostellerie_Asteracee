@@ -45,7 +45,11 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
+
 .footer {
+    font-family: 'Radley', serif;
+
     width: 100vw;
     height: auto;
     background-color: black;

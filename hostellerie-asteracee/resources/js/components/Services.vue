@@ -5,15 +5,18 @@
         <div class="cards">
             <Card /><Card /><Card />
         </div>
+        <Separator />
     </div>
 </template>
 
 <script>
-import Card from '../components/Card.vue'
+import Card from '../components/Card.vue';
+import Separator from '../subComponents/Separator.vue'
 export default {
     name: 'Services',
     components: {
-        Card
+        Card,
+        Separator
     },
     methods: {
 
@@ -25,7 +28,10 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
+
 .services{
+    font-family: 'Radley', serif;
     display: flex;
     justify-content: center;
     flex-direction: column;

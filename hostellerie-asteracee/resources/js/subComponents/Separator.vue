@@ -1,15 +1,13 @@
 <template>
-    <div class="div">
-        <Component />
+    <div class="separator">
     </div>
 </template>
 
 <script>
-import Component from '../'
 export default {
-    name: 'componentsName',
+    name: 'Separator',
     components: {
-        Component
+
     },
     methods: {
 
@@ -21,7 +19,9 @@ export default {
 </script>
 
 <style scoped>
-
+.separator{
+    border-bottom: 3px solid #D2BD4D;
+}
 @media screen and (min-width: 576px) {
 
 }

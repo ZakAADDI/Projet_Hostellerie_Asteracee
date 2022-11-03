@@ -20,7 +20,10 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
+
 .reviews{
+    font-family: 'Radley', serif;
     display: flex;
     justify-content: center;
     flex-direction: column;

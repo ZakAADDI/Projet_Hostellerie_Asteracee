@@ -5,16 +5,19 @@
         <div class="cards">
             <Card /><Card /><Card />
         </div>
+        <Separator />
     </div>
 </template>
 
 <script>
 import Card from '../components/Card.vue';
+import Separator from '../subComponents/Separator.vue'
 
 export default {
     name: 'Rooms',
     components: {
-        Card
+        Card,
+        Separator
     },
     methods: {
 
