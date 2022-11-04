@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
+
+    public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Media::class);
+    }
 }

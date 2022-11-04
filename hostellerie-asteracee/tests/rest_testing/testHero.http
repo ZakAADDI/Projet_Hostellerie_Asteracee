@@ -1,0 +1,3 @@
+### GET hero
+GET http://127.0.0.1:8000/api/heroes
+Accept: application/json
