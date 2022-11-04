@@ -51,7 +51,7 @@ export default {
     font-family: 'Radley', serif;
 
     width: 100vw;
-    height: auto;
+    height: 20vh;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@ p{
     color: white;
 }
 .section1, .section2{
-    border-right: 3px solid #D2BD4D;
+    border-right: 2px solid #D2BD4D;
 }
 .section1{
     display: flex;
@@ -85,12 +85,14 @@ p{
     justify-content: space-between;
     align-items: center;
     width: calc(100vw /3);
+    padding-top: 2rem;
 }
 .section3{
     display: flex;
     flex-direction: column;
     width: calc(100vw/3);
     align-items: center;
+    padding-top: 2rem;
 }
 .siteMapp{
     display: flex;

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Separator from '../subComponents/Separator.vue'
+import Separator from '../subComponents/Separator.vue';
 export default {
     name: 'News',
     components: {

@@ -1,14 +1,16 @@
 <template>
     <div class="reviews">
         <h1>On parle de nous</h1>
+        <componentsTest />
     </div>
 </template>
 
 <script>
+import componentsTest from './componentsTest.vue';
 export default {
     name: 'Reviews',
     components: {
-
+        componentsTest
     },
     methods: {
 
@@ -20,9 +22,10 @@ export default {
 </script>
 
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
-.reviews{
+/* .reviews{
     font-family: 'Radley', serif;
     display: flex;
     justify-content: center;
@@ -33,6 +36,9 @@ export default {
     margin-left: 20vw;
     margin-right: 20vw;
     margin-bottom: 50px;
+} */
+.reviews{
+    background-color: black;
 }
 @media screen and (min-width: 576px) {
 
