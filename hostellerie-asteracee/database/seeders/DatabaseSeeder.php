@@ -20,22 +20,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Media::factory()
-            ->count(50)
+            ->count(20)
             ->create();
         Room::factory()
-            ->count(21)
+            ->count(3)
             ->create();
         Hero::factory()
             ->count(1)
             ->create();
         Info::factory()
-            ->count(12)
+            ->count(3)
             ->create();
         Review::factory()
-            ->count(33)
+            ->count(7)
             ->create();
         Service::factory()
-            ->count(7)
+            ->count(2)
             ->create();
     }
 }
