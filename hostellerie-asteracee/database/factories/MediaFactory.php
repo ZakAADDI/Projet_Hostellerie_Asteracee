@@ -15,7 +15,7 @@ class MediaFactory extends Factory
     public function definition()
     {
         return [
-            'url' => Str::random(20),
+            'url' => $this->faker->imageUrl(640, 480, 'animals', true),
             'alt' => $this->faker->name(),
         ];
     }

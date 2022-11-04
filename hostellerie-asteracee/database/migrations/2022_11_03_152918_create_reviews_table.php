@@ -18,8 +18,8 @@ class CreateReviewsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->enum('score',[0,1,2,3,4,5]);
-            $table->string('userFirstname');
-            $table->string('userLastname');
+            $table->string('user_firstname');
+            $table->string('user_lastname');
             $table->enum('gender',['Female', 'Male']);
             $table->timestamps();
         });
