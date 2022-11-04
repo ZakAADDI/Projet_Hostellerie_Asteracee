@@ -113,6 +113,7 @@ p{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1rem;
 }
 .socialNetwork img{
     width: 40px;

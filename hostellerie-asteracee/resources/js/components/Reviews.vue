@@ -37,9 +37,10 @@ export default {
     margin-right: 20vw;
     margin-bottom: 50px;
 } */
-.reviews{
-    background-color: black;
-}
+/* .reviews{ */
+    /* background-color: #D2BD4D; */
+/* } */
+
 @media screen and (min-width: 576px) {
 
 }
