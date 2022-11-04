@@ -7,7 +7,7 @@
         <input type="radio" name="position" />
         <main id="carousel">
             <div class="item">
-                <p>Nom Prénom</p>
+                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
                 <p>Date</p>
                 <p>Score</p>
                 <p>Content</p>
@@ -39,6 +39,17 @@ export default {
 
 <style scoped>
 
+
+.user{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.user img{
+    margin-right: 1rem;
+}
 div {
   height: 600px;
   margin: 0;

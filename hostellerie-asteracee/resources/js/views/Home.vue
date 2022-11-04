@@ -3,7 +3,7 @@
         <Hero />
         <Rooms />
         <Services />
-        <News />
+        <!-- <News /> -->
         <Reviews />
         <Footer />
     </div>
@@ -13,7 +13,7 @@
 import Hero from '../components/Hero.vue';
 import Rooms from '../components/Rooms.vue';
 import Services from '../components/Services.vue';
-import News from '../components/News.vue';
+// import News from '../components/News.vue';
 import Reviews from '../components/Reviews.vue';
 import Footer from '../subComponents/Footer.vue';
 export default {
@@ -22,7 +22,7 @@ export default {
         Hero,
         Rooms,
         Services,
-        News,
+        // News,
         Reviews,
         Footer
     }
