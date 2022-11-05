@@ -19834,9 +19834,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+// import axios from "axios";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'News',
-  components: {}
+  components: {},
+  data: function data() {
+    return {
+      news: []
+    };
+  },
+  created: function created() {
+    var baseUri = 'hostellerie_asteracee/api/';
+    this.news = axios.get(baseUri + '/news');
+  }
 });
 
 /***/ }),
@@ -19873,9 +19883,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+// import axios from "axios";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Rooms',
-  components: {}
+  components: {},
+  data: function data() {
+    return {
+      rooms: []
+    };
+  },
+  created: function created() {
+    var baseUri = 'hostellerie_asteracee/api';
+    this.rooms = axios.get(baseUri + '/rooms');
+  }
 });
 
 /***/ }),
@@ -19999,6 +20019,24 @@ if (localStorage.getItem('color-theme') === 'light' || !('color-theme' in localS
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Test.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Test.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'Test',
+  components: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=template&id=f348271a":
 /*!**************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=template&id=f348271a ***!
@@ -20098,7 +20136,7 @@ __webpack_require__.r(__webpack_exports__);
 var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-12793f84"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h2 class=\"mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white\" data-v-12793f84>Nouveautés</h2><div class=\"bg-black\" data-v-12793f84><section class=\"flex flex-col items-center bg-white border shadow-md md:flex-row md:max-w-xl backgroundNews\" data-v-12793f84><img class=\"object-cover w-full h-96 md:h-auto md:w-48\" src=\"https://media-cdn.tripadvisor.com/media/photo-m/1280/17/fa/4c/57/grand-deluxe-pool-villa.jpg\" alt=\"\" data-v-12793f84><div class=\"flex flex-col justify-between p-4 leading-normal\" data-v-12793f84><h5 class=\"mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white\" data-v-12793f84>Ouverture de la Piscine d&#39;hiver</h5><h2 class=\"mb-2 text-2x1 font-bold dark:text-white\" data-v-12793f84>le 22/10/2022</h2><p class=\"mb-3 font-normal text-black\" data-v-12793f84>Ouverture de la piscine d&#39;hiver, pour toute inscription, veuillez-vous renseigner à l&#39;accueil de l&#39;hostellerie</p></div></section><section class=\"flex flex-col items-center bg-white border shadow-md md:flex-row md:max-w-xl backgroundNews\" data-v-12793f84><div class=\"flex flex-col justify-between p-4 leading-normal\" data-v-12793f84><h5 class=\"mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white\" data-v-12793f84>Travaux sur le Parking</h5><h2 class=\"mb-2 text-2x1 font-bold dark:text-white\" data-v-12793f84>le 28/09/2022</h2><p class=\"mb-3 font-normal text-black\" data-v-12793f84>Du 1/10/2022 au 15/11/2022, le parking sera en travaux pour améliorer votre sécurité au sein de notre établissement. Veuillez nous excuser pour la gène occasionnée</p></div><img class=\"object-cover w-full h-96 md:h-auto md:w-48\" src=\"https://www.ville-rieumes.fr/wp-content/uploads/sites/1427/2021/03/travaux-voirie.png\" alt=\"\" data-v-12793f84></section></div>", 2);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h2 class=\"mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white\" data-v-12793f84>Nouveautés</h2><div class=\"bg-black\" data-v-12793f84><!--\n    &lt;section class=&quot;flex flex-col items-center bg-white border shadow-md md:flex-row md:max-w-xl  backgroundNews&quot;\n    v-for=&quot;new in news&quot; :key=&quot;new.id&quot;&gt;\n        &lt;img class=&quot;object-cover w-full h-96 md:h-auto md:w-48&quot; src=&quot;{{new.media[&#39;url&#39;]}}&quot; alt=&quot;{{new.media[&#39;alt&#39;]}}&quot;&gt;\n        &lt;div class=&quot;flex flex-col justify-between p-4 leading-normal&quot;&gt;\n            &lt;h5 class=&quot;mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white&quot;&gt;{{new.title}}&lt;/h5&gt;\n            &lt;h2 class=&quot;mb-2 text-2x1 font-bold dark:text-white&quot;&gt;le {{new.date}}&lt;/h2&gt;\n            &lt;p class=&quot;mb-3 font-normal text-black&quot;&gt;{{new.contentFr}}&lt;/p&gt;\n        &lt;/div&gt;\n&lt;/section&gt; --><section class=\"flex flex-col items-center bg-white border shadow-md md:flex-row md:max-w-xl backgroundNews\" data-v-12793f84><img class=\"object-cover w-full h-96 md:h-auto md:w-48\" src=\"https://media-cdn.tripadvisor.com/media/photo-m/1280/17/fa/4c/57/grand-deluxe-pool-villa.jpg\" alt=\"\" data-v-12793f84><div class=\"flex flex-col justify-between p-4 leading-normal\" data-v-12793f84><h5 class=\"mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white\" data-v-12793f84>Ouverture de la Piscine d&#39;hiver</h5><h2 class=\"mb-2 text-2x1 font-bold dark:text-white\" data-v-12793f84>le 22/10/2022</h2><p class=\"mb-3 font-normal text-black\" data-v-12793f84>Ouverture de la piscine d&#39;hiver, pour toute inscription, veuillez-vous renseigner à l&#39;accueil de l&#39;hostellerie</p></div></section><section class=\"flex flex-col items-center bg-white border shadow-md md:flex-row md:max-w-xl backgroundNews\" data-v-12793f84><div class=\"flex flex-col justify-between p-4 leading-normal\" data-v-12793f84><h5 class=\"mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white\" data-v-12793f84>Travaux sur le Parking</h5><h2 class=\"mb-2 text-2x1 font-bold dark:text-white\" data-v-12793f84>le 28/09/2022</h2><p class=\"mb-3 font-normal text-black\" data-v-12793f84>Du 1/10/2022 au 15/11/2022, le parking sera en travaux pour améliorer votre sécurité au sein de notre établissement. Veuillez nous excuser pour la gène occasionnée</p></div><img class=\"object-cover w-full h-96 md:h-auto md:w-48\" src=\"https://www.ville-rieumes.fr/wp-content/uploads/sites/1427/2021/03/travaux-voirie.png\" alt=\"\" data-v-12793f84></section></div>", 2);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _hoisted_1;
 }
@@ -20153,7 +20191,7 @@ var _withScopeId = function _withScopeId(n) {
 var _hoisted_1 = {
   "class": "bg-white light:bg-gray-900"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv\" data-v-d87a50c6><div class=\"mx-auto max-w-screen-md text-center mb-8 lg:mb-12\" data-v-d87a50c6><h2 class=\"mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white\" data-v-d87a50c6>Our Rooms</h2></div><div class=\"space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black\" data-v-d87a50c6><div class=\"flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card\" data-v-d87a50c6><div class=\"flip-card-inner\" data-v-d87a50c6><div class=\"flip-card-front\" data-v-d87a50c6><img src=\"https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg\" alt=\"le lac\" data-v-d87a50c6><div class=\"spanType\" data-v-d87a50c6><span data-v-d87a50c6>Deluxe</span></div><img class=\"logo\" src=\"" + _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"logo de l&#39;hostellerie\" data-v-d87a50c6></div><div class=\"flip-card-back\" data-v-d87a50c6><div class=\"type\" data-v-d87a50c6>Deluxe</div><div class=\"content\" data-v-d87a50c6>Bla bla bla</div><div class=\"price\" data-v-d87a50c6>140 € - </div></div></div></div><div class=\"flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card\" data-v-d87a50c6><div class=\"flip-card-inner\" data-v-d87a50c6><div class=\"flip-card-front\" data-v-d87a50c6><img src=\"https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg\" alt=\"le lac\" data-v-d87a50c6><div class=\"spanType\" data-v-d87a50c6><span data-v-d87a50c6>Deluxe</span></div><img class=\"logo\" src=\"" + _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"logo de l&#39;hostellerie\" data-v-d87a50c6></div><div class=\"flip-card-back\" data-v-d87a50c6><div class=\"type\" data-v-d87a50c6>Deluxe</div><div class=\"content\" data-v-d87a50c6>Bla bla bla</div><div class=\"price\" data-v-d87a50c6>140 € - </div></div></div></div><div class=\"flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card\" data-v-d87a50c6><div class=\"flip-card-inner\" data-v-d87a50c6><div class=\"flip-card-front\" data-v-d87a50c6><img src=\"https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg\" alt=\"le lac\" data-v-d87a50c6><div class=\"spanType\" data-v-d87a50c6><span data-v-d87a50c6>Deluxe</span></div><img class=\"logo\" src=\"" + _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"logo de l&#39;hostellerie\" data-v-d87a50c6></div><div class=\"flip-card-back\" data-v-d87a50c6><div class=\"type\" data-v-d87a50c6>Deluxe</div><div class=\"content\" data-v-d87a50c6>Bla bla bla</div><div class=\"price\" data-v-d87a50c6>140 € - </div></div></div></div></div></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv\" data-v-d87a50c6><div class=\"mx-auto max-w-screen-md text-center mb-8 lg:mb-12\" data-v-d87a50c6><h2 class=\"mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white\" data-v-d87a50c6>Nos Chambres</h2></div><div class=\"space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black\" data-v-d87a50c6><!-- &lt;div\n                    class=&quot;flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card&quot; v-for=&quot;room in rooms&quot; :key=&quot;room.id&quot;&gt;\n\n                    &lt;div class=&quot;flip-card-inner&quot;&gt;\n                        &lt;div class=&quot;flip-card-front&quot;&gt;\n                            &lt;img src=&quot;{{room.media[&#39;url&#39;]}}&quot;\n                                alt=&quot;{{room.media[&#39;alt&#39;]}}&quot;&gt;\n                            &lt;div class=&quot;spanType&quot;&gt;\n                                &lt;span&gt;{{room.titleFr}}&lt;/span&gt;\n                            &lt;/div&gt;\n\n                            &lt;img class=&quot;logo&quot; src=&quot;../assets/images/LogoSVG.svg&quot; alt=&quot;logo de l&#39;hostellerie&quot;&gt;\n                        &lt;/div&gt;\n                        &lt;div class=&quot;flip-card-back&quot;&gt;\n                            &lt;div class=&quot;type&quot;&gt;{{room.titleFr}}&lt;/div&gt;\n                            &lt;div class=&quot;content&quot;&gt;{{room.contentFr}}&lt;/div&gt;\n                            &lt;div class=&quot;price&quot;&gt;{{room.price}} € - &lt;/div&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                &lt;/div&gt; --><div class=\"flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card\" data-v-d87a50c6><div class=\"flip-card-inner\" data-v-d87a50c6><div class=\"flip-card-front\" data-v-d87a50c6><img src=\"https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg\" alt=\"le lac\" data-v-d87a50c6><div class=\"spanType\" data-v-d87a50c6><span data-v-d87a50c6>Deluxe</span></div><img class=\"logo\" src=\"" + _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"logo de l&#39;hostellerie\" data-v-d87a50c6></div><div class=\"flip-card-back\" data-v-d87a50c6><div class=\"type\" data-v-d87a50c6>Deluxe</div><div class=\"content\" data-v-d87a50c6>Bla bla bla</div><div class=\"price\" data-v-d87a50c6>140 € - </div></div></div></div><div class=\"flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card\" data-v-d87a50c6><div class=\"flip-card-inner\" data-v-d87a50c6><div class=\"flip-card-front\" data-v-d87a50c6><img src=\"https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg\" alt=\"le lac\" data-v-d87a50c6><div class=\"spanType\" data-v-d87a50c6><span data-v-d87a50c6>Deluxe</span></div><img class=\"logo\" src=\"" + _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"logo de l&#39;hostellerie\" data-v-d87a50c6></div><div class=\"flip-card-back\" data-v-d87a50c6><div class=\"type\" data-v-d87a50c6>Deluxe</div><div class=\"content\" data-v-d87a50c6>Bla bla bla</div><div class=\"price\" data-v-d87a50c6>140 € - </div></div></div></div><div class=\"flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card\" data-v-d87a50c6><div class=\"flip-card-inner\" data-v-d87a50c6><div class=\"flip-card-front\" data-v-d87a50c6><img src=\"https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg\" alt=\"le lac\" data-v-d87a50c6><div class=\"spanType\" data-v-d87a50c6><span data-v-d87a50c6>Deluxe</span></div><img class=\"logo\" src=\"" + _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"logo de l&#39;hostellerie\" data-v-d87a50c6></div><div class=\"flip-card-back\" data-v-d87a50c6><div class=\"type\" data-v-d87a50c6>Deluxe</div><div class=\"content\" data-v-d87a50c6>Bla bla bla</div><div class=\"price\" data-v-d87a50c6>140 € - </div></div></div></div></div></div>", 1);
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, _hoisted_3);
@@ -20253,19 +20291,24 @@ var _hoisted_1 = {
 var _hoisted_2 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "*"
-  }, "Default", -1 /* HOISTED */);
-});
-var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "*"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Flag_of_France_official.svg/1200px-Flag_of_France_official.svg.png",
     alt: "French Flag"
   })], -1 /* HOISTED */);
 });
-var _hoisted_4 = [_hoisted_2, _hoisted_3];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4);
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'Test'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Test")];
+    }),
+    _: 1 /* STABLE */
+  }), _hoisted_2]);
 }
 
 /***/ }),
@@ -20333,6 +20376,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Test.vue?vue&type=template&id=b28ce99e":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Test.vue?vue&type=template&id=b28ce99e ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "test"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "test route", -1 /* HOISTED */);
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -20343,8 +20410,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _router_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router/index.js */ "./resources/js/router/index.js");
+/* harmony import */ var _store_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/index.js */ "./resources/js/store/index.js");
 /* harmony import */ var _css_reset_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../css/reset.css */ "./resources/css/reset.css");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -20354,7 +20421,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store__WEBPACK_IMPORTED_MODULE_3__["default"]).use(_router__WEBPACK_IMPORTED_MODULE_2__["default"]).mount('#app');
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_index_js__WEBPACK_IMPORTED_MODULE_3__["default"]).use(_router_index_js__WEBPACK_IMPORTED_MODULE_2__["default"]).mount('#app');
 
 /***/ }),
 
@@ -20405,18 +20472,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
 /* harmony import */ var _views_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/Home.vue */ "./resources/js/views/Home.vue");
+/* harmony import */ var _views_Test_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/Test.vue */ "./resources/js/views/Test.vue");
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
+
 
 
 var routes = [{
   path: '/',
   name: 'Home',
   component: _views_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  path: '/test',
+  name: 'Test',
+  component: _views_Test_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createWebHistory)(process.env.BASE_URL),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createWebHistory)(process.env.BASE_URL),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -39272,6 +39345,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/views/Test.vue":
+/*!*************************************!*\
+  !*** ./resources/js/views/Test.vue ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Test_vue_vue_type_template_id_b28ce99e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Test.vue?vue&type=template&id=b28ce99e */ "./resources/js/views/Test.vue?vue&type=template&id=b28ce99e");
+/* harmony import */ var _Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Test.vue?vue&type=script&lang=js */ "./resources/js/views/Test.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_html_Projet_Hostellerie_Asteracee_hostellerie_asteracee_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_html_Projet_Hostellerie_Asteracee_hostellerie_asteracee_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Test_vue_vue_type_template_id_b28ce99e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/Test.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/App.vue?vue&type=script&lang=js":
 /*!******************************************************!*\
   !*** ./resources/js/App.vue?vue&type=script&lang=js ***!
@@ -39432,6 +39533,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/views/Test.vue?vue&type=script&lang=js":
+/*!*************************************************************!*\
+  !*** ./resources/js/views/Test.vue?vue&type=script&lang=js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Test.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Test.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/App.vue?vue&type=template&id=f348271a":
 /*!************************************************************!*\
   !*** ./resources/js/App.vue?vue&type=template&id=f348271a ***!
@@ -39588,6 +39705,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_template_id_63cd6604__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_template_id_63cd6604__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Home.vue?vue&type=template&id=63cd6604 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Home.vue?vue&type=template&id=63cd6604");
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Test.vue?vue&type=template&id=b28ce99e":
+/*!*******************************************************************!*\
+  !*** ./resources/js/views/Test.vue?vue&type=template&id=b28ce99e ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_template_id_b28ce99e__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_template_id_b28ce99e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Test.vue?vue&type=template&id=b28ce99e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/Test.vue?vue&type=template&id=b28ce99e");
 
 
 /***/ }),

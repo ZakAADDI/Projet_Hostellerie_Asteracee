@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <a href="*">Default</a>
+        <router-link :to="{ name: 'Test' }">Test</router-link>
         <a href="*"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Flag_of_France_official.svg/1200px-Flag_of_France_official.svg.png" alt="French Flag"></a>
     </div>
 </template>

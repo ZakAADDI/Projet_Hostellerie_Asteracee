@@ -2,10 +2,31 @@
     <section class="bg-white light:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv" >
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Rooms</h2>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Chambres</h2>
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black">
 
+                <!-- <div
+                    class="flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card" v-for="room in rooms" :key="room.id">
+
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="{{room.media['url']}}"
+                                alt="{{room.media['alt']}}">
+                            <div class="spanType">
+                                <span>{{room.titleFr}}</span>
+                            </div>
+
+                            <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="type">{{room.titleFr}}</div>
+                            <div class="content">{{room.contentFr}}</div>
+                            <div class="price">{{room.price}} € - </div>
+                        </div>
+                    </div>
+
+                </div> -->
                 <div
                     class="flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
 
@@ -77,9 +98,19 @@
 </template>
 
 <script>
+// import axios from "axios";
 export default {
     name: 'Rooms',
     components: {
+    },
+    data(){
+        return{
+            rooms : []
+        }
+    },
+    created(){
+        const baseUri = 'hostellerie_asteracee/api';
+        this.rooms = axios.get(baseUri + '/rooms');
     }
 }
 </script>

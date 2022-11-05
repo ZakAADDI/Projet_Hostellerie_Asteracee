@@ -2,7 +2,7 @@
     <div class="news">
         <img class="svg" src="../assets/images/Frame226.svg" alt="">
 
-        <h1>News</h1>
+        <h1>{{news}}</h1>
     </div>
     <div class="backNews">
 
@@ -13,16 +13,25 @@
 <script>
 import Separator from '../subComponents/Separator.vue';
 export default {
-    name: 'News',
-    components: {
-        Separator
-    },
-    methods: {
+        name: 'News',
+        components: {
+            Separator
+        },
+        data(){
+            return{
+            news : []
+            }
+        },
+        methods: {
 
-    },
-    computed: {
+        },
+        computed: {
 
-    }
+        },
+        created(){
+            const baseUri = 'hostellerie_asteracee/api/';
+            this.news = axios.get(baseUri + '/news');
+        },
 }
 </script>
 
