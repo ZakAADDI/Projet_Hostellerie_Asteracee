@@ -1,5 +1,6 @@
 <template>
     <div class="separator">
+        <img src="../assets/images/Frame226.svg" alt="">
     </div>
 </template>
 
@@ -20,7 +21,17 @@ export default {
 
 <style scoped>
 .separator{
-    border-bottom: 3px solid #D2BD4D;
+    border-top: 3px solid #D2BD4D;
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    background-color: black;
+}
+img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
 }
 @media screen and (min-width: 576px) {
 

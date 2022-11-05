@@ -49,8 +49,7 @@ export default {
 
 .footer {
     font-family: 'Radley', serif;
-
-    width: 100vw;
+    width: 100%;
     height: 20vh;
     background-color: black;
     display: flex;

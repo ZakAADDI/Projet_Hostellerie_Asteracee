@@ -16,12 +16,8 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
 .header {
-    font-family: 'Radley', serif;
-
-    width: 100vw;
     height: 6rem;
     background-color: black;
     display: flex;
