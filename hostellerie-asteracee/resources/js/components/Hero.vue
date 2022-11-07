@@ -72,10 +72,6 @@ export default {
     margin-top: 2rem;
 }
 
-/* img{
-    width: 200px;
-
-} */
 .rightImg, .leftImg{
     height: 400px;
     margin-top: 10rem;
@@ -84,11 +80,10 @@ export default {
 }
 iframe{
     box-shadow: 3px 3px 2px lightslategray;
-
 }
 .video{
     background-color: black;
-    height: 50vh;
+    height: 60vh;
     width: 50vw;
     display: flex;
     justify-content: center;
@@ -118,7 +113,6 @@ p{
 @media screen and (min-width: 576px) {
     .rightImg{
         display: none;
-
     }
     .leftImg{
         display: none;
@@ -138,12 +132,9 @@ p{
     .leftImg{
         display: none;
     }
-    .video{
-        height: 50vh;
-    }
+
     .logo{
         top: 0;
-
         margin-left: auto;
         margin-right: auto;
     }
@@ -156,11 +147,11 @@ p{
         display: none;
     }
     .logo {
-    width: 40%;
-    position: absolute;
-    margin-left: 2vw;
-    top : 0;
-}
+        width: 40%;
+        position: absolute;
+        margin-left: 2vw;
+        top : 0;
+    }
 }
 @media screen and (min-width: 1200px) {
     .rightImg{
@@ -170,28 +161,28 @@ p{
         display: none;
     }
     .logo {
-    width: 30%;
-    position: absolute;
-    margin-left: 7vw;
-    top : 0;
-}
+        width: 30%;
+        position: absolute;
+        margin-left: 7vw;
+        top : 0;
+    }
 }
 @media screen and (min-width: 1400px) {
     .leftImg{
-    left: 10vw;
-    top: 40px;
-    display: block;
-}
-.rightImg{
-    right: 10vw;
-    top: 40px;
-    display: block;
-}
-.logo {
-    width: 30%;
-    position: absolute;
-    margin-left: 6vw;
-    top : 0;
-}
+        left: 10vw;
+        top: 40px;
+        display: block;
+    }
+    .rightImg{
+        right: 10vw;
+        top: 40px;
+        display: block;
+    }
+    .logo {
+        width: 30%;
+        position: absolute;
+        margin-left: 6vw;
+        top : 0;
+    }
 }
 </style>
