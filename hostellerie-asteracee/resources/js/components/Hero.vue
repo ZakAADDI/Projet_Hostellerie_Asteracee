@@ -6,7 +6,8 @@
             <img class="leftImg" src="../assets/images/leftImg.png" alt="Image du lac">
             <div class="video">
                 <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
-                <p>Un espace reposant entre lac et montagne</p>
+                <p v-if="language">Un espace reposant entre lac et montagne</p>
+                <p v-if="!language">A quite place between lake and mountain</p>
             </div>
 
             <img class="rightImg" src="../assets/images/rightImg.png" alt="Image de la prison">
@@ -16,6 +17,7 @@
 
 <script>
 import Header from '../subComponents/Header.vue'
+import storage from '../store/index';
 export default {
     name: 'Hero',
     data(){
@@ -29,6 +31,17 @@ export default {
     methods:{
         created(){
 
+        }
+    },
+    computed:{
+        language(){
+            const language = storage.get("language");
+            console.log(language);
+            if(language === "fr"){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
@@ -59,10 +72,10 @@ export default {
     margin-top: 2rem;
 }
 
-img{
+/* img{
     width: 200px;
 
-}
+} */
 .rightImg, .leftImg{
     height: 400px;
     margin-top: 10rem;
@@ -75,8 +88,8 @@ iframe{
 }
 .video{
     background-color: black;
-    height: 60vh;
-    width: 500px;
+    height: 50vh;
+    width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +100,21 @@ iframe{
 p{
     margin-top: 28rem;
 }
+.logo{
+    position: absolute;
+}
+.rightImg{
+        display: none;
+
+    }
+.leftImg{
+        display: none;
+    }
+.logo{
+    top: 0;
+    left: 24vw;
+    width: 50%;
+}
 @media screen and (min-width: 576px) {
     .rightImg{
         display: none;
@@ -95,6 +123,13 @@ p{
     .leftImg{
         display: none;
     }
+    .logo{
+        top: 0;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 30vw;
+    }
 }
 @media screen and (min-width: 768px) {
     .rightImg{
@@ -102,6 +137,15 @@ p{
     }
     .leftImg{
         display: none;
+    }
+    .video{
+        height: 50vh;
+    }
+    .logo{
+        top: 0;
+
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 @media screen and (min-width: 992px) {
@@ -114,7 +158,7 @@ p{
     .logo {
     width: 40%;
     position: absolute;
-    margin-left: 15vw;
+    margin-left: 2vw;
     top : 0;
 }
 }
@@ -128,7 +172,7 @@ p{
     .logo {
     width: 30%;
     position: absolute;
-    margin-left: 15vw;
+    margin-left: 7vw;
     top : 0;
 }
 }
@@ -146,7 +190,7 @@ p{
 .logo {
     width: 30%;
     position: absolute;
-    margin-left: 15vw;
+    margin-left: 6vw;
     top : 0;
 }
 }

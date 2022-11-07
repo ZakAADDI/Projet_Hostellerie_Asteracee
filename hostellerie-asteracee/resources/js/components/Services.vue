@@ -7,68 +7,22 @@
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black">
 
                 <div
-                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
+                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 xl:p-8 light:bg-gray-800 light:text-white flip-card">
 
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg"
-                                alt="le lac">
-                            <div class="spanType">
-                                <span>Deluxe</span>
-                            </div>
-
-                            <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="type">Deluxe</div>
-                            <div class="content">Bla bla bla</div>
-                            <div class="price">140 € - </div>
-                        </div>
-                    </div>
+                    <Card />
 
                 </div>
 
                 <div
-                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
+                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 xl:p-8 light:bg-gray-800 light:text-white flip-card">
 
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg"
-                                alt="le lac">
-                            <div class="spanType">
-                                <span>Deluxe</span>
-                            </div>
-
-                            <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="type">Deluxe</div>
-                            <div class="content">Bla bla bla</div>
-                            <div class="price">140 € - </div>
-                        </div>
-                    </div>
+                    <Card />
 
                 </div>
-
                 <div
-                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
+                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 xl:p-8 light:bg-gray-800 light:text-white flip-card">
 
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg"
-                                alt="le lac">
-                            <div class="spanType">
-                                <span>Deluxe</span>
-                            </div>
-
-                            <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="type">Deluxe</div>
-                            <div class="content">Bla bla bla</div>
-                            <div class="price">140 € - </div>
-                        </div>
-                    </div>
+                    <Card />
 
                 </div>
             </div>
@@ -77,9 +31,11 @@
 </template>
 
 <script>
+import Card from '../components/Card.vue'
 export default {
     name: 'Services',
     components: {
+        Card
     }
 }
 </script>
