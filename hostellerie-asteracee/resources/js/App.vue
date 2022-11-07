@@ -6,8 +6,12 @@
 </template>
 
 <script>
+import storage from './store/index';
 export default {
     name: "App.vue",
+    created(){
+        this.language = storage.set("language", "fr");
+    }
 }
 </script>
 
