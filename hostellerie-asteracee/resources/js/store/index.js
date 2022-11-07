@@ -1,5 +1,3 @@
-import { createStore } from 'vuex'
-
 const storage = {
     // stocker des informations en localstorage
     set: function(key, value) {
