@@ -6,8 +6,8 @@
             <img class="leftImg" src="../assets/images/leftImg.png" alt="Image du lac">
             <div class="video">
                 <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
-                <p v-if="language">Un espace reposant entre lac et montagne</p>
-                <p v-if="!language">A quite place between lake and mountain</p>
+                <p v-if="language">Bonjour</p>
+                <p v-if="!language">Hello</p>
             </div>
 
             <img class="rightImg" src="../assets/images/rightImg.png" alt="Image de la prison">
@@ -20,18 +20,11 @@ import Header from '../subComponents/Header.vue'
 import storage from '../store/index';
 export default {
     name: 'Hero',
-    data(){
-        return{
 
-        }
-    },
     components: {
         Header
     },
     methods:{
-        created(){
-
-        }
     },
     computed:{
         language(){

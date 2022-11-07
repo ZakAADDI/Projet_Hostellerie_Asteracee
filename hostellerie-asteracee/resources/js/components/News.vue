@@ -47,10 +47,10 @@ export default {
             news : []
         }
     },
-    created(){
-            const baseUri = 'hostellerie_asteracee/api/';
-            this.news = axios.get(baseUri + '/news');
-    }
+    // created(){
+    //         const baseUri = 'hostellerie_asteracee/api';
+    //         this.news = axios.get(baseUri + '/news');
+    // }
 }
 </script>
 

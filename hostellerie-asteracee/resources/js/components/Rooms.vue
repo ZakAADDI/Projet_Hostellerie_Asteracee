@@ -65,10 +65,10 @@ export default {
             rooms : []
         }
     },
-    created(){
-        const baseUri = 'hostellerie_asteracee/api';
-        this.rooms = axios.get(baseUri + '/rooms');
-    }
+    // created(){
+    //     const baseUri = 'hostellerie_asteracee/api';
+    //     this.rooms = axios.get(baseUri + '/rooms');
+    // }
 }
 </script>
 

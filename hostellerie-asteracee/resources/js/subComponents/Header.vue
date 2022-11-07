@@ -20,9 +20,11 @@ export default {
     methods:{
         changeToFrench : function(){
             this.currentLanguage = storage.set("language", "fr");
+            this.$router.push({name:"Test"})
         },
         changeToEnglish : function(){
             this.currentLanguage = storage.set("language", "eng");
+            this.$router.push({name:"Test"})
         }
     },
     computed:{
