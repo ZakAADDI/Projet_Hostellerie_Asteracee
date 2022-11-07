@@ -9,15 +9,14 @@
 import storage from './store/index';
 export default {
     name: "App.vue",
+    data(){
+            return {
+                currentLanguage : ''
+            }
+    },
     created() {
         if(this.currentLanguage = storage.get("language") == ''){
             this.currentLanguage = storage.set("language", "fr");
-        }
-
-    },
-    data(){
-        return {
-            currentLanguage : ''
         }
     }
 }
