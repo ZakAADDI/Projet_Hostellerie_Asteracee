@@ -20118,6 +20118,11 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
     }
+  },
+  methods: {
+    noChange: function noChange() {
+      console.log('coucou');
+    }
   }
 });
 
@@ -20598,11 +20603,15 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   key: 1
 };
+var _hoisted_6 = {
+  "class": "buttons"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Header");
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h1", _hoisted_4, "Voulez vous continuer en Français ?")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h1", _hoisted_5, "Would you like to continue in English ?")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
-    key: 2,
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h1", _hoisted_4, "Voulez vous continuer en Français ?")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h1", _hoisted_5, "Would you like to continue in English ?")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
+    key: 0,
+    "class": "choice",
     to: {
       name: 'Home'
     }
@@ -20612,7 +20621,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1 /* STABLE */
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
-    key: 3,
+    key: 1,
+    "class": "choice",
     to: {
       name: 'Home'
     }
@@ -20621,7 +20631,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Yes")];
     }),
     _: 1 /* STABLE */
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 64 /* STABLE_FRAGMENT */);
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 2,
+    "class": "choice",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.noChange && $options.noChange.apply($options, arguments);
+    })
+  }, "Non")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$options.language ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 3,
+    "class": "choice",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.noChange && $options.noChange.apply($options, arguments);
+    })
+  }, "No")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -21043,7 +21065,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.logo{\n    position: absolute;\n}\n.content{\n    text-align: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    margin-top: 30vh;\n    background-color: black;\n    color: #D2BD4D;\n    width: 400px;\n    padding: 2rem;\n    margin-left: auto;\n    margin-right: auto;\n    border: 40px solid #D2BD4D;\n}\n@media screen and (min-width: 576px) {\n.logo{\n        top: 0;\n        width: 40%;\n        margin-left: auto;\n        margin-right: auto;\n        left: 30vw;\n}\n}\n@media screen and (min-width: 768px) {\n.logo{\n        top: 0;\n        margin-left: auto;\n        margin-right: auto;\n}\n}\n@media screen and (min-width: 992px) {\n.logo {\n        width: 40%;\n        position: absolute;\n        margin-left: 2vw;\n        top : 0;\n}\n}\n@media screen and (min-width: 1200px) {\n.logo {\n        width: 30%;\n        position: absolute;\n        margin-left: 7vw;\n        top : 0;\n}\n}\n@media screen and (min-width: 1400px) {\n.logo {\n        width: 30%;\n        position: absolute;\n        margin-left: 6vw;\n        top : 0;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.choice{\n    margin: 1rem;\n}\n.buttons{\n    display: flex;\n    align-items: center;\n}\n.logo{\n    position: absolute;\n}\n.content{\n    text-align: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    margin-top: 30vh;\n    background-color: black;\n    color: #D2BD4D;\n    width: 400px;\n    padding: 2rem;\n    margin-left: auto;\n    margin-right: auto;\n    border: 40px solid #D2BD4D;\n}\n@media screen and (min-width: 576px) {\n.logo{\n        top: 0;\n        width: 40%;\n        margin-left: auto;\n        margin-right: auto;\n        left: 30vw;\n}\n}\n@media screen and (min-width: 768px) {\n.logo{\n        top: 0;\n        margin-left: auto;\n        margin-right: auto;\n}\n}\n@media screen and (min-width: 992px) {\n.logo {\n        width: 40%;\n        position: absolute;\n        margin-left: 2vw;\n        top : 0;\n}\n}\n@media screen and (min-width: 1200px) {\n.logo {\n        width: 30%;\n        position: absolute;\n        margin-left: 7vw;\n        top : 0;\n}\n}\n@media screen and (min-width: 1400px) {\n.logo {\n        width: 30%;\n        position: absolute;\n        margin-left: 6vw;\n        top : 0;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

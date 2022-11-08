@@ -5,9 +5,16 @@
         <div class="content">
             <h1 v-if="language">Voulez vous continuer en Français ?</h1>
             <h1 v-if="!language">Would you like to continue in English ?</h1>
-            <router-link v-if="language" :to="{ name: 'Home' }">Oui</router-link>
-            <router-link v-if="!language" :to="{ name: 'Home' }">Yes</router-link>
+            <div class="buttons">
+                <router-link class="choice" v-if="language" :to="{ name: 'Home' }">Oui</router-link>
+                <router-link class="choice" v-if="!language" :to="{ name: 'Home' }">Yes</router-link>
+                <button class="choice" v-if="language" v-on:click="noChange">Non</button>
+                <button class="choice" v-if="!language" v-on:click="noChange">No</button>
+            </div>
+
+
         </div>
+
     </div>
 </template>
 
@@ -31,6 +38,11 @@ export default {
                 return false;
             }
         }
+    },
+    methods:{
+        noChange(){
+            console.log('coucou');
+        }
     }
 
 }
@@ -38,6 +50,14 @@ export default {
 </script>
 
 <style >
+.choice{
+    margin: 1rem;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+
+}
 .logo{
     position: absolute;
 }
