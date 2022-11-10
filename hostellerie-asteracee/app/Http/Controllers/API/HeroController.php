@@ -31,16 +31,16 @@ class HeroController extends Controller
      */
     public function update(Request $request, Hero $hero)
     {
-//        $this->validate($request,[
-//            'logo_media_id' => 'required',
-//            'text_fr' => 'required',
-//            'text_en' => 'required',
-//            'left_media_id' => 'required',
-//            'center_media_id' => 'required',
-//            'right_media_id' => 'required',
-//        ]);
+        $this->validate($request,[
+            'logo_media_id' => 'required',
+            'text_fr' => 'required',
+            'text_en' => 'required',
+            'left_media_id' => 'required',
+            'center_media_id' => 'required',
+            'right_media_id' => 'required',
+        ]);
 
-        $hero = Hero::update([
+        $hero->update([
             'logo_media_id' => $request->logo_media_id,
             'text_fr' => $request->text_fr,
             'text_en' => $request->text_en,

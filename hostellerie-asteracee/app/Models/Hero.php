@@ -9,6 +9,9 @@ class Hero extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['text_fr', 'text_en', 'logo_media_id', 'left_media_id', 'center_media_id', 'right_media_id'];
+
+
     public function logoMedia(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Media::class,'id','logo_media_id');

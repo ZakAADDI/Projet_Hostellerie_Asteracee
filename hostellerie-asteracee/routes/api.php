@@ -19,3 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource("heroes",\App\Http\Controllers\API\HeroController::class);
+Route::apiResource("medias",\App\Http\Controllers\API\MediaController::class);
+Route::apiResource("infos",\App\Http\Controllers\API\InfoController::class);
+Route::apiResource("reviews",\App\Http\Controllers\API\ReviewController::class);
+Route::apiResource("rooms",\App\Http\Controllers\API\RoomController::class);
+Route::apiResource("services",\App\Http\Controllers\API\ServiceController::class);
