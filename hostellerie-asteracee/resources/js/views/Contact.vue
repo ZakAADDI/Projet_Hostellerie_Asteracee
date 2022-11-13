@@ -5,7 +5,7 @@
                 <label for="email">Email</label>
                 <input type="email">
                 <label for="message">Message</label>
-                <input type="text">
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
                 <button>Envoyer</button>
             </form>
         </div>
@@ -26,11 +26,13 @@ form{
     flex-direction: column;
     border: 3px solid #D2BD4D;
     width: 30vw;
-    color: white;
     background-color: black;
     margin: auto;
     margin-top: 20vh;
     padding: 2rem;
+}
+label{
+    color: white;
 }
 button{
 

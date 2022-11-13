@@ -20641,7 +20641,7 @@ var _withScopeId = function _withScopeId(n) {
 var _hoisted_1 = {
   "class": "div"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"contactForm\" data-v-1d91a851><form action=\"\" data-v-1d91a851><label for=\"email\" data-v-1d91a851>Email</label><input type=\"email\" data-v-1d91a851><label for=\"message\" data-v-1d91a851>Message</label><input type=\"text\" data-v-1d91a851><button data-v-1d91a851>Envoyer</button></form></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"contactForm\" data-v-1d91a851><form action=\"\" data-v-1d91a851><label for=\"email\" data-v-1d91a851>Email</label><input type=\"email\" data-v-1d91a851><label for=\"message\" data-v-1d91a851>Message</label><textarea name=\"message\" id=\"message\" cols=\"30\" rows=\"10\" data-v-1d91a851></textarea><button data-v-1d91a851>Envoyer</button></form></div>", 1);
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
@@ -21170,7 +21170,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nform[data-v-1d91a851]{\n    display: flex;\n    flex-direction: column;\n    border: 3px solid #D2BD4D;\n    width: 30vw;\n    color: white;\n    background-color: black;\n    margin: auto;\n    margin-top: 20vh;\n    padding: 2rem;\n}\nbutton[data-v-1d91a851]{\n\n    border: 3px solid #D2BD4D;\n    border-radius: 15px;\n    padding-top: 2rem;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nform[data-v-1d91a851]{\n    display: flex;\n    flex-direction: column;\n    border: 3px solid #D2BD4D;\n    width: 30vw;\n    background-color: black;\n    margin: auto;\n    margin-top: 20vh;\n    padding: 2rem;\n}\nlabel[data-v-1d91a851]{\n    color: white;\n}\nbutton[data-v-1d91a851]{\n\n    border: 3px solid #D2BD4D;\n    border-radius: 15px;\n    padding-top: 2rem;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
