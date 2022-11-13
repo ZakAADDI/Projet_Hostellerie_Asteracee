@@ -3,17 +3,11 @@
         <router-link :to="{name: 'Home'}"><img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée"></router-link>
         <router-link :to="{ name: 'Contact' }">Nous Contacter</router-link>
 
-        <a
-        v-on:click="changeTo"
-        v-if="!language" >
-            <img class="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Flag_of_France_official.svg/1200px-Flag_of_France_official.svg.png" alt="French Flag">
-        </a>
 
         <a
         v-on:click="changeTo"
-        v-if="language"
         :to="{name: Home }">
-            <img class="flag" src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" alt="English Flag" >
+            <img class="flag" src="../assets/EngFrFlag.png" alt="English Flag" >
         </a>
     </div>
 </template>
@@ -65,7 +59,7 @@ a:hover {
     transition-duration: 0.9s, 0.9s;
 }
 img{
-    width: 30px;
+    width: 40px;
 }
 .logo{
     top: 0;

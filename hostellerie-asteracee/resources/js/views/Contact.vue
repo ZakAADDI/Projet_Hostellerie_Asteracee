@@ -13,14 +13,9 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
     name: 'Contact',
     components:{
-    },
-   mounted(){
-        const response = axios.get('https://hp-api.herokuapp.com/api/characters');
-        console.log(response);
     }
 }
 </script>

@@ -8,4 +8,3 @@ import '../css/reset.css'
 import '../css/app.css'
 
 createApp(App).use(storage).use(router).mount('#app')
-

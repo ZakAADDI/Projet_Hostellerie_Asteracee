@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style scoped>
+a{
+    cursor: pointer;
+}
 .choice{
     margin: 1rem;
 }
