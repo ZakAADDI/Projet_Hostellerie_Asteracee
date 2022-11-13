@@ -43,6 +43,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
 .hero{
@@ -179,3 +181,4 @@ p{
     }
 }
 </style>
+

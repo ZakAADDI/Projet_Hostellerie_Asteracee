@@ -2,7 +2,8 @@
     <section class="bg-white light:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv">
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Services</h2>
+                <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Services</h2>
+                <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Services</h2>
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black">
 
@@ -31,11 +32,22 @@
 </template>
 
 <script>
+import storage from '../store/index.js'
 import Card from '../components/Card.vue'
 export default {
     name: 'Services',
     components: {
         Card
+    },
+    computed:{
+        language(){
+            const language = storage.get("language");
+            if(language == "fr"){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
 
-    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nouveautés</h2>
+    <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Les Nouveautés</h2>
+    <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">News</h2>
 <div class="bg-black">
 
 <!--
@@ -38,6 +39,7 @@
 
 <script>
 // import axios from "axios";
+import storage from '../store/index.js'
 export default {
     name: 'News',
     components: {
@@ -45,6 +47,16 @@ export default {
     data(){
         return {
             news : []
+        }
+    },
+    computed:{
+        language(){
+            const language = storage.get("language");
+            if(language == "fr"){
+                return true;
+            }else{
+                return false;
+            }
         }
     },
     // created(){

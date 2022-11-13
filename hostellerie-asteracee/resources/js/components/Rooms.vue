@@ -2,7 +2,8 @@
     <section class="bg-white light:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv" >
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Chambres</h2>
+                <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Chambres</h2>
+                <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Rooms</h2>
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black">
 
@@ -55,6 +56,7 @@
 <script>
 // import axios from "axios";
 import Card from '../components/Card.vue'
+import storage from '../store/index.js'
 export default {
     name: 'Rooms',
     components: {
@@ -65,6 +67,16 @@ export default {
             rooms : []
         }
     },
+    computed:{
+        language(){
+            const language = storage.get("language");
+            if(language == "fr"){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
     // created(){
     //     const baseUri = 'hostellerie_asteracee/api';
     //     this.rooms = axios.get(baseUri + '/rooms');

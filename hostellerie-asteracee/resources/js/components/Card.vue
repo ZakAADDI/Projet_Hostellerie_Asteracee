@@ -62,7 +62,6 @@ export default {
     background-color: white;
     color: black;
     height: 350px;
-    width: 200px;
     box-shadow: 4px 4px 4px gray;
 }
 
