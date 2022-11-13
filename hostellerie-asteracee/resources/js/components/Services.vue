@@ -53,6 +53,16 @@ export default {
 </script>
 
 <style scoped>
+.space-y-8>.p-6{
+    margin-bottom: 5rem;
+    padding: 0;
+}
+.lg\:grid-cols-3{
+    padding-top: 2rem;
+}
+.lg\:grid-cols-3[data-v-30b0c6c9] {
+    width: auto;
+}
 .flip-card {
     font-family: 'Radley', serif;
     width: 200px;
