@@ -8,7 +8,6 @@
         <News />
         <Separator />
         <Reviews />
-        <Footer />
     </div>
 </template>
 
@@ -19,7 +18,6 @@ import Rooms from '../components/Rooms.vue'
 import Services from '../components/Services.vue'
 import News from '../components/News.vue'
 import Reviews from '../components/Reviews.vue'
-import Footer from '../subComponents/Footer.vue'
 export default {
     name: 'Home',
     components: {
@@ -29,7 +27,6 @@ export default {
         Services,
         News,
         Reviews,
-        Footer
     }
 }
  // On page load or when changing themes, best to add inline in `head` to avoid FOUC

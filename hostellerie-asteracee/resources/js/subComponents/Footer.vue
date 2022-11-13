@@ -48,12 +48,13 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
 .footer {
-    font-family: 'Radley', serif;
     width: 100%;
     height: 20vh;
     background-color: black;
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
 }
 a {
     color: white;

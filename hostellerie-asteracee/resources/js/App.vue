@@ -1,14 +1,25 @@
 <template>
-
     <div>
+        <Header />
+
+
         <router-view/>
+
+
+        <Footer />
     </div>
 </template>
 
 <script>
 import storage from './store/index';
+import Header from './subComponents/Header.vue';
+import Footer from './subComponents/Footer.vue';
 export default {
     name: "App.vue",
+    components:{
+        Header,
+        Footer
+    },
     data(){
             return {
                 currentLanguage : ''

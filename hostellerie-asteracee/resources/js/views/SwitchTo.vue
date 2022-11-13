@@ -1,13 +1,12 @@
 <template>
-    <Header />
     <div class="test">
         <img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée">
         <div class="content">
-            <h1 v-if="language">Voulez vous continuer en Français ?</h1>
-            <h1 v-if="!language">Would you like to continue in English ?</h1>
+            <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
+            <h1 v-if="language">Would you like to continue in English ?</h1>
             <div class="buttons">
-                <router-link class="choice" v-if="language" :to="{ name: 'Home' }">Oui</router-link>
-                <router-link class="choice" v-if="!language" :to="{ name: 'Home' }">Yes</router-link>
+                <a class="choice" v-if="!language" v-on:click="changeToFrench">Oui</a>
+                <a class="choice" v-if="language" v-on:click="changeToEnglish">Yes</a>
                 <button class="choice" v-if="language" v-on:click="noChange">Non</button>
                 <button class="choice" v-if="!language" v-on:click="noChange">No</button>
             </div>
@@ -19,12 +18,12 @@
 </template>
 
 <script>
-import Header from '../subComponents/Header.vue';
+// import Header from '../subComponents/Header.vue';
 import storage from '../store';
 export default {
-    name: 'Test',
+    name: 'SwitchTo',
     components: {
-        Header
+        // Header
     },
     data(){
 
@@ -42,6 +41,15 @@ export default {
     methods:{
         noChange(){
             console.log('coucou');
+            this.$router.push({name:'Home'})
+        },
+        changeToFrench : function(){
+            storage.set("language", "fr");
+            this.$router.push({name:"Home"})
+        },
+        changeToEnglish : function(){
+            storage.set("language", "eng");
+            this.$router.push({name:"Home"})
         }
     }
 
