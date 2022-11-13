@@ -78,7 +78,7 @@ iframe{
 }
 .video{
     background-color: black;
-    height: 60vh;
+    height: 155%;
     width: 50vw;
     display: flex;
     justify-content: center;

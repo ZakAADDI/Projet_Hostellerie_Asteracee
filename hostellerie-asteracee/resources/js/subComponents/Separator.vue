@@ -31,7 +31,7 @@ export default {
 img{
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
+    width: 20%;
 }
 @media screen and (min-width: 576px) {
 
