@@ -545,24 +545,6 @@ video {
 .-mt-px {
   margin-top: -1px;
 }
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-.mb-0 {
-  margin-bottom: 0px;
-}
-.ml-3 {
-  margin-left: 0.75rem;
-}
-.ml-auto {
-  margin-left: auto;
-}
-.mr-3 {
-  margin-right: 0.75rem;
-}
-.mt-3 {
-  margin-top: 0.75rem;
-}
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -721,9 +703,6 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
-}
-.pt-0 {
-  padding-top: 0px;
 }
 .text-center {
   text-align: center;

@@ -144,7 +144,7 @@ p{
     .logo {
         width: 40%;
         position: absolute;
-        margin-left: 2vw;
+        /* margin-left: 2vw; */
         top : 0;
     }
 }
