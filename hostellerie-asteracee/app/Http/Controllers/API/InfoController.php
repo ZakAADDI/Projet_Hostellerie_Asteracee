@@ -28,6 +28,14 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title_fr' => 'required|max:100',
+            'title_en' => 'required|max:100',
+            'content_fr' => 'required|max:100',
+            'content_en' => 'required|max:100',
+            'media_id' => 'required|int'
+        ]);
+
         $info = Info::create([
             'title_fr' => $request->title_fr,
             'title_en' => $request->title_en,
@@ -59,6 +67,14 @@ class InfoController extends Controller
      */
     public function update(Request $request, Info $info)
     {
+        $this->validate($request,[
+            'title_fr' => 'required|max:100',
+            'title_en' => 'required|max:100',
+            'content_fr' => 'required|max:100',
+            'content_en' => 'required|max:100',
+            'media_id' => 'required|int'
+        ]);
+
         $info->update([
             'title_fr' => $request->title_fr,
             'title_en' => $request->title_en,

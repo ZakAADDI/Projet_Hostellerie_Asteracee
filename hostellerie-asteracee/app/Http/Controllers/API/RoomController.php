@@ -28,10 +28,20 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'price' => 'required|int',
+            'type' => 'required|max:25',
+            'description_fr' => 'required|max:256',
+            'description_en' => 'required|max:256',
+            'media_id' => 'required|int',
+            'capacity' => 'required|int'
+        ]);
+
         $room = Room::create([
             'price' => $request->price,
             'type' => $request->type,
-            'description' => $request->description,
+            'description_fr' => $request->description,
+            'description_en' => $request->description,
             'media_id' => $request->media_id,
             'capacity' => $request->capacity,
         ]);
@@ -60,10 +70,20 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
+        $this->validate($request,[
+            'price' => 'required|int',
+            'type' => 'required|max:25',
+            'description_fr' => 'required|max:256',
+            'description_en' => 'required|max:256',
+            'media_id' => 'required|int',
+            'capacity' => 'required|int'
+        ]);
+
         $room->update([
             'price' => $request->price,
             'type' => $request->type,
-            'description' => $request->description,
+            'description_fr' => $request->description,
+            'description_en' => $request->description,
             'media_id' => $request->media_id,
             'capacity' => $request->capacity,
         ]);

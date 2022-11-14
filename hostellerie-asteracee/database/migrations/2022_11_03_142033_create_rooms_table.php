@@ -15,9 +15,10 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('price');
+            $table->float('price');
             $table->enum('type', ['Luxe', 'Suite', 'Standard']);
-            $table->string('description');
+            $table->string('description_fr');
+            $table->string('description_en');
             $table->unsignedBigInteger('media_id');
             $table->string('capacity');
             $table->timestamps();
