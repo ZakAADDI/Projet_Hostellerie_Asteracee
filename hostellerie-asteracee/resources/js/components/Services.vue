@@ -5,26 +5,16 @@
                 <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Services</h2>
                 <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Services</h2>
             </div>
-            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black">
-
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
                 <div
-                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 xl:p-8 light:bg-gray-800 light:text-white flip-card">
-
-                    <Card />
-
-                </div>
-
-                <div
-                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 xl:p-8 light:bg-gray-800 light:text-white flip-card">
-
-                    <Card />
-
-                </div>
-                <div
-                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 xl:p-8 light:bg-gray-800 light:text-white flip-card">
-
-                    <Card />
-
+                    v-for="service in services" :key=service.id
+                    class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
+                    <Card :showPrice="false"
+                          :image="service.media"
+                          :titleFr="service.title_fr"
+                          :titleEn="service.title_en"
+                          :contentFr="service.content_fr"
+                          :contentEn="service.content_en"/>
                 </div>
             </div>
         </div>
@@ -32,6 +22,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import storage from '../store/index.js'
 import Card from '../components/Card.vue'
 export default {
@@ -39,15 +30,21 @@ export default {
     components: {
         Card
     },
+    data(){
+        return{
+            services : []
+        }
+    },
     computed:{
         language(){
             const language = storage.get("language");
-            if(language == "fr"){
-                return true;
-            }else{
-                return false;
-            }
+            return language === "fr";
         }
+    },
+    async created(){
+        const baseUri = 'http://127.0.0.1:8000/api';
+        let response = await axios.get(baseUri + '/services');
+        this.services = response.data
     }
 }
 </script>

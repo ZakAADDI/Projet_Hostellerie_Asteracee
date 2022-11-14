@@ -2,17 +2,20 @@
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="https://www.atoutnautic.fr/wp-content/uploads/2020/05/paddle-lac-annecy.jpg" alt="le lac">
+                <img :src=image.url :alt=image.alt>
                 <div class="spanType">
-                    <span>Deluxe</span>
+                    <span v-if="language">{{ titleFr }}</span>
+                    <span v-else>{{ titleEn }}</span>
                 </div>
 
                 <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             </div>
             <div class="flip-card-back">
-               <div class="type">Deluxe</div>
-                <div class="content">Bla bla bla</div>
-                <div class="price">140 € - </div>
+               <div v-if="language" class="type">{{ titleFr }}</div>
+               <div v-if="!language" class="type">{{ titleEn }}</div>
+                <div v-if="language" class="content">{{ contentFr }}</div>
+                <div v-if="!language" class="content">{{ contentEn }}</div>
+                <div v-if="showPrice" class="price">{{ price }} € </div>
             </div>
         </div>
     </div>
@@ -21,9 +24,25 @@
 
 <script>
 
+import storage from "../store";
+
 export default {
     name: 'Card',
-
+    props: {
+        titleFr: String,
+        titleEn: String,
+        contentFr: String,
+        contentEn: String,
+        price: String,
+        showPrice: Boolean,
+        image: Object
+    },
+    computed: {
+        language() {
+            const language = storage.get("language");
+            return language === "fr";
+        }
+    }
 }
 </script>
 
