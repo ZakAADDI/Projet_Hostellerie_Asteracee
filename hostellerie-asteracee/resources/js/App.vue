@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <Header />
 
@@ -32,6 +33,7 @@ export default {
     }
 }
 </script>
+
 
 <style >
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
