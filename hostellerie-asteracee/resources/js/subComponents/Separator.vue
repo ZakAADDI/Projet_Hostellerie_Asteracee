@@ -1,0 +1,52 @@
+<template>
+    <div class="separator">
+        <img src="../assets/images/Frame226.svg" alt="">
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Separator',
+    components: {
+
+    },
+    methods: {
+
+    },
+    computed: {
+
+    }
+}
+</script>
+
+<style scoped>
+.separator{
+    border-top: 3px solid #D2BD4D;
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    background-color: black;
+}
+img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+@media screen and (min-width: 576px) {
+
+}
+@media screen and (min-width: 768px) {
+
+}
+@media screen and (min-width: 992px) {
+
+
+}
+@media screen and (min-width: 1200px) {
+
+}
+@media screen and (min-width: 1400px) {
+
+}
+</style>
