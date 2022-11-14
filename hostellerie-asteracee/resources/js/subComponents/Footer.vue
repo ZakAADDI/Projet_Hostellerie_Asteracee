@@ -53,7 +53,7 @@ export default {
     background-color: black;
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 a {

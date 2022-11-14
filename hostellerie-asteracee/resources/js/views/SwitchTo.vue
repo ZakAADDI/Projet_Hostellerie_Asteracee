@@ -1,5 +1,5 @@
 <template>
-    <div class="test">
+    <div class="switchTo">
         <img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée">
         <div class="content">
             <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style scoped>
+.switchTo{
+    height: 40vh;
+}
 a{
     cursor: pointer;
 }

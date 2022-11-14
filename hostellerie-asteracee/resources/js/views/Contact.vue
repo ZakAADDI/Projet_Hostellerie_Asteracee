@@ -1,5 +1,5 @@
 <template>
-    <div class="div">
+    <div class="contact">
         <div class="contactForm">
             <form action="">
                 <label for="email">Email</label>
@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style scoped>
+.contact{
+    height: 50vh;
+}
 form{
     display: flex;
     flex-direction: column;
