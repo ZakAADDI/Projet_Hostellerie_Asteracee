@@ -5,56 +5,22 @@
                 <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Chambres</h2>
                 <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Rooms</h2>
             </div>
-            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black">
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
 
-                <!-- <div
-                    class="flex flex-col p-6 mx-auto max-w-lg bg-black rounded-lg xl:p-8 light:bg-gray-800 light:text-white flip-card" v-for="room in rooms" :key="room.id">
-
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="{{room.media['url']}}"
-                                alt="{{room.media['alt']}}">
-                            <div class="spanType">
-                                <span>{{room.titleFr}}</span>
-                            </div>
-
-                            <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="type">{{room.titleFr}}</div>
-                            <div class="content">{{room.contentFr}}</div>
-                            <div class="price">{{room.price}} € - </div>
-                        </div>
-                    </div>
-
-                </div> -->
-                <div
-                    class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
-
-                    <Card />
-
-                </div>
 
                 <div
+                    v-for="room in rooms" :key=room.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
-
-                    <Card />
-
+                    <Card :showPrice="true" :image="room.media" :titleFr="room.type" :titleEn="room.type" :price="room.price" :contentFr="room.description" :contentEn="room.description"/>
                 </div>
 
-                <div
-                    class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
-
-                    <Card />
-
-                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 import Card from '../components/Card.vue'
 import storage from '../store/index.js'
 export default {
@@ -70,17 +36,14 @@ export default {
     computed:{
         language(){
             const language = storage.get("language");
-            if(language == "fr"){
-                return true;
-            }else{
-                return false;
-            }
+            return language === "fr";
         }
+    },
+    async created(){
+        const baseUri = 'http://127.0.0.1:8000/api';
+        let response = await axios.get(baseUri + '/rooms');
+        this.rooms = response.data
     }
-    // created(){
-    //     const baseUri = 'hostellerie_asteracee/api';
-    //     this.rooms = axios.get(baseUri + '/rooms');
-    // }
 }
 </script>
 
