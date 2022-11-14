@@ -29,6 +29,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title_fr' => 'required|max:150',
+            'title_en' => 'required|max:150',
+            'content_fr' => 'required|max:256',
+            'content_en' => 'required|max:256',
+            'media_id' => 'required|int'
+        ]);
+
         $service = Service::create([
             'title_fr' => $request->title_fr,
             'title_en' => $request->title_en,
@@ -61,6 +69,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+        $this->validate($request,[
+            'title_fr' => 'required|max:150',
+            'title_en' => 'required|max:150',
+            'content_fr' => 'required|max:256',
+            'content_en' => 'required|max:256',
+            'media_id' => 'required|int'
+        ]);
+        
         $service->update([
             'title_fr' => $request->title_fr,
             'title_en' => $request->title_en,

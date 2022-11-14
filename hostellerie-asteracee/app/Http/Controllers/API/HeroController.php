@@ -33,11 +33,11 @@ class HeroController extends Controller
     {
         $this->validate($request,[
             'logo_media_id' => 'required',
-            'text_fr' => 'required',
-            'text_en' => 'required',
-            'left_media_id' => 'required',
-            'center_media_id' => 'required',
-            'right_media_id' => 'required',
+            'text_fr' => 'required|max:100',
+            'text_en' => 'required|max:100',
+            'left_media_id' => 'required|int',
+            'center_media_id' => 'required|int',
+            'right_media_id' => 'required|int',
         ]);
 
         $hero->update([

@@ -28,6 +28,11 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'url' => 'required|max:256',
+            'alt' => 'required|max:256'
+        ]);
+
         $media = Media::create([
             'url' => $request->url,
             'alt' => $request->alt
@@ -56,6 +61,11 @@ class MediaController extends Controller
      */
     public function update(Request $request, Media $media)
     {
+        $this->validate($request,[
+            'url' => 'required|max:256',
+            'alt' => 'required|max:256'
+        ]);
+
         $media->update([
             'url' => $request->url,
             'alt' => $request->alt

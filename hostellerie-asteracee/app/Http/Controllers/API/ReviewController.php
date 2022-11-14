@@ -28,6 +28,15 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title' => 'required|max:100',
+            'content' => 'required|max:256',
+            'score' => 'required|int|max:5',
+            'user_firstname' => 'required|max:100',
+            'user_lastname' => 'required|max:100',
+            'gender' => 'required|max:6'
+        ]);
+
         $review = Review::create([
             'title' => $request->title,
             'content' => $request->contentReview,
@@ -60,6 +69,15 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review): \Illuminate\Http\JsonResponse
     {
+        $this->validate($request,[
+            'title' => 'required|max:100',
+            'content' => 'required|max:256',
+            'score' => 'required|int|max:5',
+            'user_firstname' => 'required|max:100',
+            'user_lastname' => 'required|max:100',
+            'gender' => 'required|max:6'
+        ]);
+
         $review->update([
             'title' => $request->title,
             'content' => $request->contentReview,
@@ -68,6 +86,7 @@ class ReviewController extends Controller
             'user_lastname' => $request->user_lastname,
             'gender' => $request->gender
         ]);
+
 
         return response()->json($review, 201);
     }
