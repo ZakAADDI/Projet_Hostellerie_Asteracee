@@ -33,7 +33,7 @@ class InfoController extends Controller
             'title_en' => 'required|max:100',
             'content_fr' => 'required|max:100',
             'content_en' => 'required|max:100',
-            'media_id' => 'required|int'
+            'media_id' => 'required|exists:App\Models\Media,id|int'
         ]);
 
         $info = Info::create([
@@ -68,20 +68,14 @@ class InfoController extends Controller
     public function update(Request $request, Info $info)
     {
         $this->validate($request,[
-            'title_fr' => 'required|max:100',
-            'title_en' => 'required|max:100',
-            'content_fr' => 'required|max:100',
-            'content_en' => 'required|max:100',
-            'media_id' => 'required|int'
+            'title_fr' => 'string|max:100',
+            'title_en' => 'string|max:100',
+            'content_fr' => 'string|max:100',
+            'content_en' => 'string|max:100',
+            'media_id' => 'exists:App\Models\Media,id|int'
         ]);
 
-        $info->update([
-            'title_fr' => $request->title_fr,
-            'title_en' => $request->title_en,
-            'content_fr' => $request->content_fr,
-            'content_en' => $request->content_en,
-            'media_id' => $request->media_id,
-        ]);
+        $info->update($request->all());
 
         return response()->json($info,201);
     }
