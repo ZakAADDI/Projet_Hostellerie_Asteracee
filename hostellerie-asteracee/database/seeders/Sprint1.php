@@ -20,7 +20,8 @@ class Sprint1 extends Seeder
             Reviews::class,
             Rooms::class,
             Services::class,
-            Users::class
+            Users::class,
+            Deals::class,
         ]);
 
     }
