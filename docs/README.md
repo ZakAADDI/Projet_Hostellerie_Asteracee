@@ -83,3 +83,14 @@ stocker des images dans laravel :
 1/ faire un dossier Images dans public/storage/
 2/ faire php artisan storage:link
 et tester le chemin en dure à partir de storage/images/xxx.jpg
+php artisan storage:link
+
+faire un chargement de la base de données avec les datas initiales:
+1/php artisan migrate:fresh
+2/ php artisan db:seed --class=Sprint1
+
+faire un controller:
+php artisan storage:link
+
+faire un model:
+php artisan storage:link
