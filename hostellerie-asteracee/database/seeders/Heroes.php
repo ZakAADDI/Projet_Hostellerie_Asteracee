@@ -14,12 +14,12 @@ class Heroes extends Seeder
     public function run()
     {
         Hero::insert([
-            'logo_media_id' => '5',
-            'text_fr' => 'test textfr',
-            'text_en' => 'test texten',
-            'left_media_id' => '8',
-            'center_media_id' => '10',
-            'right_media_id' => '12',
+            'logo_media_id' => '7',
+            'text_fr' => 'Un espace reposant entre Lac et Montagne',
+            'text_en' => 'A quite place between lac and mountain',
+            'left_media_id' => '4',
+            'center_media_id' => '6',
+            'right_media_id' => '5',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
 

@@ -20,6 +20,7 @@ class CreateInfosTable extends Migration
             $table->string('content_fr');
             $table->string('content_en');
             $table->unsignedBigInteger('media_id');
+            $table->date('publication_date');
             $table->timestamps();
 
             $table->foreign('media_id')->references('id')->on('media');
