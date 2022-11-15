@@ -13,19 +13,27 @@ class Medias extends Seeder
      */
     public function run()
     {
-        Media::insert([
-            'url' => 'test url',
-            'alt' => 'test alt'
+        $datas = [
+            [
+                'url' => 'test url',
+                'alt' => 'test alt',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
 
-        ],
-        [
-            'url' => 'test url2',
-            'alt' => 'test alt2'
-        ],
-        [
-            'url' => 'test url3',
-            'alt' => 'test alt3'
-        ]
-    );
+            ],
+            [
+                'url' => 'test url2',
+                'alt' => 'test alt2',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'url' => 'test url3',
+                'alt' => 'test alt3',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]
+        ];
+        Media::insert($datas);
     }
 }
