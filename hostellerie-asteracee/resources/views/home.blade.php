@@ -7,7 +7,7 @@
         <title>Laravel</title>
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app" class="flex items-center w-screen"></div>
 
         <script src="/js/app.js"></script>
     </body>

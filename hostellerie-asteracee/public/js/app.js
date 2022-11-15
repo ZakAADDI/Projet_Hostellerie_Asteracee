@@ -20564,8 +20564,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       titleFr: room.type,
       titleEn: room.type,
       price: room.price,
-      contentFr: room.description,
-      contentEn: room.description
+      contentFr: room.description_fr,
+      contentEn: room.description_en
     }, null, 8 /* PROPS */, ["image", "titleFr", "titleEn", "price", "contentFr", "contentEn"])]);
   }), 128 /* KEYED_FRAGMENT */))])])]);
 }
@@ -20589,7 +20589,7 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-30b0c6c9"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "bg-white light:bg-gray-900"
+  "class": "bg-white light:bg-gray-900 flex items-center"
 };
 var _hoisted_2 = {
   "class": "py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv"

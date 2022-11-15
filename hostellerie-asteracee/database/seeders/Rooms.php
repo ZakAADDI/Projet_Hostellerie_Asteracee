@@ -15,7 +15,7 @@ class Rooms extends Seeder
     {
         $datas =[
             [
-                'price' => '220',
+                'price' => 220,
                 'type' => 'Suite',
                 'description_fr' => 'description FR',
                 'description_en' => 'description EN',
@@ -26,7 +26,7 @@ class Rooms extends Seeder
 
             ],
             [
-                'price' => '120',
+                'price' => 120,
                 'type' => 'Luxe',
                 'description_fr' => 'description FR',
                 'description_en' => 'description EN',
@@ -36,8 +36,8 @@ class Rooms extends Seeder
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
-                'price' => '70',
-                'type' => 'Classique',
+                'price' => 70,
+                'type' => 'Standard',
                 'description_fr' => 'description FR',
                 'description_en' => 'description EN',
                 'media_id' => '3',
