@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfosTable extends Migration
+class CreateDealsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('infos', function (Blueprint $table) {
+        Schema::create('deals', function (Blueprint $table) {
             $table->id();
             $table->string('title_fr');
             $table->string('title_en');
             $table->string('content_fr');
             $table->string('content_en');
-            $table->unsignedBigInteger('media_id');
-            $table->date('publication_date');
+            $table->boolean('is_active');
             $table->timestamps();
-
-            $table->foreign('media_id')->references('id')->on('media');
         });
     }
 
@@ -34,6 +31,6 @@ class CreateInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infos');
+        Schema::dropIfExists('deals');
     }
 }

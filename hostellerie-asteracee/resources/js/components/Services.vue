@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-white light:bg-gray-900">
+    <section class="bg-white light:bg-gray-900 flex items-center">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv">
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
                 <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Services</h2>

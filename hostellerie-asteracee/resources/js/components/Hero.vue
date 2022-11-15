@@ -44,6 +44,8 @@ export default {
         this.rightImg = this.hero.right_media.url
         this.leftAlt = this.hero.left_media.alt
         this.leftAlt = this.hero.right_media.alt
+        console.log(this.leftImg);
+        console.log(this.rightImg)
     }
 }
 </script>

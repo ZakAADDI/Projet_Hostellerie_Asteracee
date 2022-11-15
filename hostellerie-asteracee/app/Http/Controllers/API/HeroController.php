@@ -32,22 +32,15 @@ class HeroController extends Controller
     public function update(Request $request, Hero $hero)
     {
         $this->validate($request,[
-            'logo_media_id' => 'required',
-            'text_fr' => 'required|max:100',
-            'text_en' => 'required|max:100',
-            'left_media_id' => 'required|int',
-            'center_media_id' => 'required|int',
-            'right_media_id' => 'required|int',
+            'logo_media_id' => 'exists:App\Models\Media,id|int',
+            'text_fr' => 'string|max:100',
+            'text_en' => 'string|max:100',
+            'left_media_id' => 'exists:App\Models\Media,id|int',
+            'center_media_id' => 'exists:App\Models\Media,id|int',
+            'right_media_id' => 'exists:App\Models\Media,id|int',
         ]);
 
-        $hero->update([
-            'logo_media_id' => $request->logo_media_id,
-            'text_fr' => $request->text_fr,
-            'text_en' => $request->text_en,
-            'left_media_id' => $request->left_media_id,
-            'center_media_id' => $request->center_media_id,
-            'right_media_id' => $request->right_media_id,
-        ]);
+        $hero->update($request->all());
 
         return response()->json($hero,201);
     }

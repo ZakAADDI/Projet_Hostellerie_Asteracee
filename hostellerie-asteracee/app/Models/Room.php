@@ -9,7 +9,7 @@ class Room extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['price','type','description','media_id','capacity'];
+    protected $fillable = ['price','type','description_fr','description_en','media_id','capacity'];
 
     public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

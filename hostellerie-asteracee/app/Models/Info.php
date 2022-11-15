@@ -9,7 +9,7 @@ class Info extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title_fr','title_en','content_fr','content_en','media_id'];
+    protected $fillable = ['title_fr','title_en','content_fr','content_en','media_id','publication_date'];
 
     public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

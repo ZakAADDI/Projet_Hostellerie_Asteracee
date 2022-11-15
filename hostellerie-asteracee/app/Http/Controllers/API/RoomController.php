@@ -33,7 +33,7 @@ class RoomController extends Controller
             'type' => 'required|max:25',
             'description_fr' => 'required|max:256',
             'description_en' => 'required|max:256',
-            'media_id' => 'required|int',
+            'media_id' => 'required|exists:App\Models\Media,id|int',
             'capacity' => 'required|int'
         ]);
 
@@ -71,22 +71,15 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         $this->validate($request,[
-            'price' => 'required|int',
-            'type' => 'required|max:25',
-            'description_fr' => 'required|max:256',
-            'description_en' => 'required|max:256',
-            'media_id' => 'required|int',
-            'capacity' => 'required|int'
+            'price' => 'int',
+            'type' => 'string|max:25',
+            'description_fr' => 'string|max:256',
+            'description_en' => 'string|max:256',
+            'media_id' => 'exists:App\Models\Media,id|int',
+            'capacity' => 'int'
         ]);
 
-        $room->update([
-            'price' => $request->price,
-            'type' => $request->type,
-            'description_fr' => $request->description,
-            'description_en' => $request->description,
-            'media_id' => $request->media_id,
-            'capacity' => $request->capacity,
-        ]);
+        $room->update($request->all());
 
         return response()->json($room, 201);
     }

@@ -34,7 +34,7 @@ class ServiceController extends Controller
             'title_en' => 'required|max:150',
             'content_fr' => 'required|max:256',
             'content_en' => 'required|max:256',
-            'media_id' => 'required|int'
+            'media_id' => 'required|exists:App\Models\Media,id|int'
         ]);
 
         $service = Service::create([
@@ -70,13 +70,13 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $this->validate($request,[
-            'title_fr' => 'required|max:150',
-            'title_en' => 'required|max:150',
-            'content_fr' => 'required|max:256',
-            'content_en' => 'required|max:256',
-            'media_id' => 'required|int'
+            'title_fr' => 'string|max:150',
+            'title_en' => 'string|max:150',
+            'content_fr' => 'string|max:256',
+            'content_en' => 'string|max:256',
+            'media_id' => 'exists:App\Models\Media,id|int'
         ]);
-        
+
         $service->update([
             'title_fr' => $request->title_fr,
             'title_en' => $request->title_en,

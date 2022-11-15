@@ -11,7 +11,7 @@
                 <div
                     v-for="room in rooms" :key=room.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
-                    <Card :showPrice="true" :image="room.media" :titleFr="room.type" :titleEn="room.type" :price="room.price" :contentFr="room.description" :contentEn="room.description"/>
+                    <Card :showPrice="true" :image="room.media" :titleFr="room.type" :titleEn="room.type" :price="room.price" :contentFr="room.description_fr" :contentEn="room.description_en"/>
                 </div>
 
             </div>

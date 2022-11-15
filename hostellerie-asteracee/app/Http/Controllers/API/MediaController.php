@@ -62,14 +62,11 @@ class MediaController extends Controller
     public function update(Request $request, Media $media)
     {
         $this->validate($request,[
-            'url' => 'required|max:256',
-            'alt' => 'required|max:256'
+            'url' => 'string|max:256',
+            'alt' => 'string|max:256'
         ]);
 
-        $media->update([
-            'url' => $request->url,
-            'alt' => $request->alt
-        ]);
+        $media->update($request->all());
 
         return response()->json($media, 201);
     }
