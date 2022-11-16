@@ -20452,7 +20452,7 @@ var _hoisted_2 = {
   "class": "flip-card-inner"
 };
 var _hoisted_3 = {
-  "class": "flip-card-front shadow-md shadow-gray-200"
+  "class": "flip-card-front shadow-md shadow-gray-200 relative"
 };
 var _hoisted_4 = ["src", "alt"];
 var _hoisted_5 = {
@@ -20466,7 +20466,7 @@ var _hoisted_7 = {
 };
 var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    "class": "logo",
+    "class": "logo absolute ml-16 bottom-0 top-48",
     src: _assets_images_LogoSVG_svg__WEBPACK_IMPORTED_MODULE_1__["default"],
     alt: "logo de l'hostellerie"
   }, null, -1 /* HOISTED */);
@@ -21315,7 +21315,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Radley&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.flip-card[data-v-b9bc2c0a] {\n    font-family: 'Radley', serif;\n    width: 200px;\n    height: 300px;\n    perspective: 1000px;\n}\n.flip-card-inner[data-v-b9bc2c0a] {\n    position: relative;\n    text-align: center;\n    transition: transform 0.9s;\n    transform-style: preserve-3d;\n}\n.flip-card:hover .flip-card-inner[data-v-b9bc2c0a] {\n    transform: rotateY(180deg);\n}\n.flip-card-front[data-v-b9bc2c0a],\n.flip-card-back[data-v-b9bc2c0a] {\n    position: absolute;\n    width: auto;\n    height: auto;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    border: 1px solid #D2BD4D;\n}\n.flip-card-front[data-v-b9bc2c0a] {\n    background-color: white;\n    color: black;\n    height: 350px;\n}\n.flip-card-back[data-v-b9bc2c0a] {\n    background-color: black;\n    color: white;\n    transform: rotateY(180deg);\n    width: 200px;\n    height: 350px;\n    box-shadow: 4px 4px 4px gray;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n}\n.type[data-v-b9bc2c0a]{\n    width: 50%;\n    background-color: #D2BD4D;\n    color: black;\n    display: flex;\n    justify-content: flex-start;\n    padding-left: 1rem;\n}\n.content[data-v-b9bc2c0a]{\n    color: white;\n}\n.price[data-v-b9bc2c0a]{\n    width: 50%;\n    background-color: #D2BD4D;\n    color: black;\n    display: flex;\n    justify-content: flex-end;\n    padding-right: 1rem;\n    padding: 0.3rem;\n}\nimg[data-v-b9bc2c0a] {\n    width: 200px;\n    height: 180px;\n}\n.logo[data-v-b9bc2c0a]{\n    width: 80px;\n    margin-left: auto;\n    margin-right: auto;\n}\n.spanType[data-v-b9bc2c0a]{\n    padding-top: 2rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.flip-card[data-v-b9bc2c0a] {\n    font-family: 'Radley', serif;\n    width: 200px;\n    height: 300px;\n    perspective: 1000px;\n}\n.flip-card-inner[data-v-b9bc2c0a] {\n    position: relative;\n    text-align: center;\n    transition: transform 0.9s;\n    transform-style: preserve-3d;\n}\n.flip-card:hover .flip-card-inner[data-v-b9bc2c0a] {\n    transform: rotateY(180deg);\n}\n.flip-card-front[data-v-b9bc2c0a],\n.flip-card-back[data-v-b9bc2c0a] {\n    position: absolute;\n    width: auto;\n    height: auto;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    border: 1px solid #D2BD4D;\n}\n.flip-card-front[data-v-b9bc2c0a] {\n    background-color: white;\n    color: black;\n    height: 350px;\n}\n.flip-card-back[data-v-b9bc2c0a] {\n    background-color: black;\n    color: white;\n    transform: rotateY(180deg);\n    width: 200px;\n    height: 350px;\n    box-shadow: 4px 4px 4px gray;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n}\n.type[data-v-b9bc2c0a]{\n    width: 50%;\n    background-color: #D2BD4D;\n    color: black;\n    display: flex;\n    justify-content: flex-start;\n    padding-left: 1rem;\n}\n.content[data-v-b9bc2c0a]{\n    color: white;\n}\n.price[data-v-b9bc2c0a]{\n    width: 50%;\n    background-color: #D2BD4D;\n    color: black;\n    display: flex;\n    justify-content: flex-end;\n    padding-right: 1rem;\n    padding: 0.3rem;\n}\nimg[data-v-b9bc2c0a] {\n    width: 200px;\n    height: 180px;\n}\n.logo[data-v-b9bc2c0a]{\n    width: 80px;\n}\n.spanType[data-v-b9bc2c0a]{\n    padding-top: 2rem;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
