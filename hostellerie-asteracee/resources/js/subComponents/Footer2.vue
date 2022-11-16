@@ -1,7 +1,7 @@
 <template>
-    <div class="flex justify-between sm:items-center sm:flex-col md:flex-col lg:flex-row bg-black text-white">
+    <div class="flex flex-col justify-between sm:items-center sm:flex-col md:flex-row bg-black text-white">
         <div class="section1">
-            <div class="flex flex-col">
+            <div class="flex flex-col items-center">
                 <img class="w-6" src="../assets/images/icones/location.svg" alt="icone de localisation">
                 <p>25 quai du lac - 74 000 Annecy</p>
             </div>
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="section2">
+        <div class="flex flex-col items-center">
             <div class="phone">
                 <img class="w-6" src="../assets/images/icones/phone.svg" alt="icone de téléphone">
                 <p>+334 56 56 56 56</p>
@@ -24,12 +24,13 @@
             <img class="rosace" src="../assets/images/Frame231.svg" alt="décoration">
         </div>
 
-        <div class="section3">
-            <div class="email">
+        <div class="flex flex-col items-center">
+            <div class="flex
+            ">
                  <img class="w-6" src="../assets/images/icones/email.svg" alt="icone de mail">
                 <p>email@email.fr</p>
             </div>
-            <div class="socialNetwork">
+            <div class="flex">
                 <img src="../assets/images/icones/facebook.svg" alt="facebook">
                 <img src="../assets/images/icones/instagram.svg" alt="instagram">
                 <img src="../assets/images/icones/twitter.svg" alt="twitter">
