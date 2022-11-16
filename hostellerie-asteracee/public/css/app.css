@@ -484,6 +484,9 @@ video {
 .z-0 {
   z-index: 0;
 }
+.m-4 {
+  margin: 1rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -575,15 +578,11 @@ video {
 .w-auto {
   width: auto;
 }
-.w-full {
-  width: 100%;
-}
-.w-max {
-  width: -moz-max-content;
-  width: max-content;
-}
 .w-screen {
   width: 100vw;
+}
+.w-full {
+  width: 100%;
 }
 .max-w-xl {
   max-width: 36rem;

@@ -17,8 +17,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('title_fr');
             $table->string('title_en');
-            $table->string('content_fr');
-            $table->string('content_en');
+            $table->text('content_fr');
+            $table->text('content_en');
             $table->unsignedBigInteger('media_id');
             $table->timestamps();
 
