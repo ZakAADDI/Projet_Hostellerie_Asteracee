@@ -12,13 +12,11 @@
                 <h2 class=""> Offres </h2>
                 <h2 class=""> exceptionnelles </h2>
             </div>
-            <div class="flex flex-col align-middle">
-                <h2>Title</h2>
-                <p> content</p>
-            </div>
-            <div class=" flex flex-col align-middle">
-                <h2>Title</h2>
-                <p> content</p>
+            <div class=" flex flex-col align-middle" v-for="deal in deals" :key=deal.id>
+                <h2 v-if="language">{{ deal.title_fr}}</h2>
+                <p v-if="language"> {{ deal.content_fr}}</p>
+                <h2 v-if="!language">{{ deal.title_en}}</h2>
+                <p v-if="!language"> {{ deal.content_en}}</p>
             </div>
         </div>
 
@@ -27,15 +25,29 @@
 </template>
 
 <script>
+import axios from "axios";
+import storage from '../store/index.js'
 export default {
     name: 'DealsBanner',
-    components: {
-    },
-    methods: {
-
+    data(){
+        return{
+            deals: []
+        }
     },
     computed: {
-
+        language(){
+            const language = storage.get("language");
+            if(language == "fr"){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    },
+    async created(){
+        const baseUri = 'http://127.0.0.1:8000/api';
+        this.response = await axios.get(baseUri + '/deals');
+        this.deals = this.response.data;
     }
 }
 </script>
