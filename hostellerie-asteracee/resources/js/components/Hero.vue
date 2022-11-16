@@ -1,14 +1,14 @@
 <template>
-    <div class="hero">
+    <div class="hero shadow-md shadow-gray-700">
         <div class="media">
-            <img class="leftImg" :src=leftImg :alt=leftAlt>
+            <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftAlt>
             <div class="video">
                 <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
                 <p v-if="language">{{ hero.text_fr}}</p>
                 <p v-if="!language">{{ hero.text_en}}</p>
             </div>
 
-            <img class="rightImg" :src=rightImg :alt=rightAlt>
+            <img class="rightImg shadow-md shadow-gray-700" :src=rightImg :alt=rightAlt>
         </div>
     </div>
 </template>
@@ -62,7 +62,6 @@ export default {
     justify-content: center;
     flex-direction: column;
     background-color: #D2BD4D;
-    box-shadow: 3px 3px 2px #D2BD4D;
     height: 600px;
     width: 60vw;
     margin-left: 20vw;
@@ -79,10 +78,6 @@ export default {
     height: 400px;
     margin-top: 10rem;
     position: absolute;
-    box-shadow: 3px 3px 2px lightslategray;
-}
-iframe{
-    box-shadow: 3px 3px 2px lightslategray;
 }
 .video{
     background-color: black;

@@ -1,7 +1,7 @@
 <template>
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front shadow-md shadow-gray-200">
                 <img :src=image.url :alt=image.alt>
                 <div class="spanType">
                     <span v-if="language">{{ titleFr }}</span>
@@ -81,7 +81,6 @@ export default {
     background-color: white;
     color: black;
     height: 350px;
-    box-shadow: 4px 4px 4px gray;
 }
 
 .flip-card-back {
@@ -117,10 +116,10 @@ export default {
 }
 img {
     width: 200px;
+    height: 180px;
 }
 .logo{
     width: 80px;
-    margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
 }
