@@ -94,3 +94,6 @@ php artisan storage:link
 
 faire un model:
 php artisan storage:link
+
+faire tourner un seeder :
+php artisan db:seed --class=Reviews
