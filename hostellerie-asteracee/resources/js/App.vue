@@ -6,19 +6,21 @@
 
         <router-view/>
 
-        <Footer />
+
+        <Footer2 />
+        <!-- <Footer /> -->
     </div>
 </template>
 
 <script>
 import storage from './store/index';
 import Header from './subComponents/Header.vue';
-import Footer from './subComponents/Footer.vue';
+import Footer2 from './subComponents/Footer2.vue';
 export default {
     name: "App.vue",
     components:{
         Header,
-        Footer
+        Footer2
     },
     data(){
             return {
