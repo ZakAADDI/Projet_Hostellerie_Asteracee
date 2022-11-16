@@ -6,69 +6,90 @@
         <input type="radio" name="position" />
         <input type="radio" name="position" />
         <main id="carousel">
-            <div class="item">
-                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
-                <p>Date</p>
-                <p>Score</p>
-                <p>Content</p>
-                <p>Logo</p>
+            <div class="item" v-for="review in reviews" :key=review.id>
+                <span class="user">
+                <img v-if="review.gender == 'Male'" :src=maleImg alt="" style="width: 60px;">
+                <img v-if="review.gender == 'Female'" :src=femaleImg alt="" style="width: 60px;">
+
+                <p>{{ review.user_firstname}} {{review.user_lastname}}</p></span>
+                <p>{{ review.title }}</p>
+                <span >
+                    <span class="flex m-4" v-if="review.score == '1'">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                    </span>
+                    <span class="flex m-4" v-if="review.score == '2'">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                    </span>
+                    <span class="flex m-4" v-if="review.score == '3'">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                    </span>
+                    <span class="flex m-4" v-if="review.score == '4'">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starEmpty.png" alt="">
+                    </span>
+                    <span class="flex m-4" v-if="review.score == '5'">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="">
+                    </span>
+
+                </span>
+                <p>{{ review.content }}</p>
+
             </div>
-            <div class="item">
-                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
-                <p>Date</p>
-                <p>Score</p>
-                <p>Content</p>
-                <p>Logo</p>
-            </div>
-            <div class="item">
-                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
-                <p>Date</p>
-                <p>Score</p>
-                <p>Content</p>
-                <p>Logo</p>
-            </div>
-            <div class="item">
-                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
-                <p>Date</p>
-                <p>Score</p>
-                <p>Content</p>
-                <p>Logo</p>
-            </div>
-            <div class="item">
-                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
-                <p>Date</p>
-                <p>Score</p>
-                <p>Content</p>
-                <p>Logo</p>
-            </div>
-            <div class="item">
-                <span class="user"><img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt="" style="width: 60px;"><p>Nom Prénom</p></span>
-                <p>Date</p>
-                <p>Score</p>
-                <p>Content</p>
-                <p>Logo</p>
-            </div>
+
         </main>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
     name: 'Reviews',
     components: {
     },
-    created(){
-
+    data(){
+        return{
+            reviews: [],
+            maleImg: String,
+            femaleImg: String
+        }
     },
-    methods: {
+    async created(){
+        const baseUri = 'http://127.0.0.1:8000/api';
+        let response = await axios.get(baseUri + '/reviews');
+        this.reviews = response.data;
 
-    },
-    computed: {
+        let response2 = await axios.get(baseUri + '/medias');
+        this.displayImg = response2.data;
+        this.femaleImg = this.displayImg[12].url;
+        this.maleImg = this.displayImg[13].url;
+        console.log(this.maleImg);
     }
 }
 </script>
 
 <style scoped>
+img{
+    width: 25px;
+}
 
 .reviews{
     width: 80vw;
@@ -78,6 +99,7 @@ export default {
     margin-bottom: 3rem;
     height: auto;
 }
+
 .user{
     display: flex;
     width: 100%;
@@ -118,7 +140,7 @@ main#carousel {
 div.item {
   position: absolute;
   width: 400px;
-  height: 250px;
+  height: 350px;
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
   transition: all 0.25s linear;
