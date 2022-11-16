@@ -1,12 +1,13 @@
 <template>
-    <div class="flex flex-col justify-between sm:items-center sm:flex-col md:flex-row bg-black text-white">
-        <div class="section1">
-            <div class="flex flex-col items-center">
-                <img class="w-6" src="../assets/images/icones/location.svg" alt="icone de localisation">
+    <div class="grid grids-cols-3 sm:grid-cols-1 md:grid-cols-3 bg-black text-white">
+
+        <!-- LOCATION -->
+        <div class="flex-col justify-center items-center p-5 order-1">
+            <div class="flex justify-center items-center p-5">
+                <img class="w-6 mr-3" src="../assets/images/icones/location.svg" alt="icone de localisation">
                 <p>25 quai du lac - 74 000 Annecy</p>
             </div>
-
-            <div class="siteMapp">
+            <div class="hidden md:block ">
                 <h5>Plan du site</h5>
                 <a href="*">Accueil</a>
                 <a href="*">Nos chambres</a>
@@ -15,19 +16,19 @@
             </div>
         </div>
 
-        <div class="flex flex-col items-center">
-            <div class="phone">
-                <img class="w-6" src="../assets/images/icones/phone.svg" alt="icone de téléphone">
+        <!-- PHONE -->
+        <div class="flex flex-col justify-center items-center pt-5 sm:order-3 md:order-2">
+            <div class="flex justify-center items-center">
+                <img class="w-6 mr-3" src="../assets/images/icones/phone.svg" alt="icone de téléphone">
                 <p>+334 56 56 56 56</p>
             </div>
-
             <img class="rosace" src="../assets/images/Frame231.svg" alt="décoration">
         </div>
 
-        <div class="flex flex-col items-center">
-            <div class="flex
-            ">
-                 <img class="w-6" src="../assets/images/icones/email.svg" alt="icone de mail">
+        <!-- EMAIL -->
+        <div class="flex flex-col justify-center items-center p-5 sm:order-2 md:order-3">
+            <div class="flex justify-center items-center m-5">
+                 <img class="w-6 mr-3" src="../assets/images/icones/email.svg" alt="icone de mail">
                 <p>email@email.fr</p>
             </div>
             <div class="flex">
@@ -35,8 +36,8 @@
                 <img src="../assets/images/icones/instagram.svg" alt="instagram">
                 <img src="../assets/images/icones/twitter.svg" alt="twitter">
             </div>
-
         </div>
+
     </div>
 </template>
 

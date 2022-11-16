@@ -20759,12 +20759,27 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-3c662bb0"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "flex flex-col justify-between sm:items-center sm:flex-col md:flex-row bg-black text-white"
+  "class": "grid grids-cols-3 sm:grid-cols-1 md:grid-cols-3 bg-black text-white"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"section1\" data-v-3c662bb0><div class=\"flex flex-col items-center\" data-v-3c662bb0><img class=\"w-6\" src=\"" + _assets_images_icones_location_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"icone de localisation\" data-v-3c662bb0><p data-v-3c662bb0>25 quai du lac - 74 000 Annecy</p></div><div class=\"siteMapp\" data-v-3c662bb0><h5 data-v-3c662bb0>Plan du site</h5><a href=\"*\" data-v-3c662bb0>Accueil</a><a href=\"*\" data-v-3c662bb0>Nos chambres</a><a href=\"*\" data-v-3c662bb0>Nos Services</a><a href=\"*\" data-v-3c662bb0>Nos Nouveautés</a></div></div><div class=\"flex flex-col items-center\" data-v-3c662bb0><div class=\"phone\" data-v-3c662bb0><img class=\"w-6\" src=\"" + _assets_images_icones_phone_svg__WEBPACK_IMPORTED_MODULE_2__["default"] + "\" alt=\"icone de téléphone\" data-v-3c662bb0><p data-v-3c662bb0>+334 56 56 56 56</p></div><img class=\"rosace\" src=\"" + _assets_images_Frame231_svg__WEBPACK_IMPORTED_MODULE_3__["default"] + "\" alt=\"décoration\" data-v-3c662bb0></div><div class=\"flex flex-col items-center\" data-v-3c662bb0><div class=\"flex\" data-v-3c662bb0><img class=\"w-6\" src=\"" + _assets_images_icones_email_svg__WEBPACK_IMPORTED_MODULE_4__["default"] + "\" alt=\"icone de mail\" data-v-3c662bb0><p data-v-3c662bb0>email@email.fr</p></div><div class=\"flex\" data-v-3c662bb0><img src=\"" + _assets_images_icones_facebook_svg__WEBPACK_IMPORTED_MODULE_5__["default"] + "\" alt=\"facebook\" data-v-3c662bb0><img src=\"" + _assets_images_icones_instagram_svg__WEBPACK_IMPORTED_MODULE_6__["default"] + "\" alt=\"instagram\" data-v-3c662bb0><img src=\"" + _assets_images_icones_twitter_svg__WEBPACK_IMPORTED_MODULE_7__["default"] + "\" alt=\"twitter\" data-v-3c662bb0></div></div>", 3);
-var _hoisted_5 = [_hoisted_2];
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex-col justify-center items-center p-5 order-1\" data-v-3c662bb0><div class=\"flex justify-center items-center p-5\" data-v-3c662bb0><img class=\"w-6 mr-3\" src=\"" + _assets_images_icones_location_svg__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"icone de localisation\" data-v-3c662bb0><p data-v-3c662bb0>25 quai du lac - 74 000 Annecy</p></div><div class=\"hidden md:block\" data-v-3c662bb0><h5 data-v-3c662bb0>Plan du site</h5><a href=\"*\" data-v-3c662bb0>Accueil</a><a href=\"*\" data-v-3c662bb0>Nos chambres</a><a href=\"*\" data-v-3c662bb0>Nos Services</a><a href=\"*\" data-v-3c662bb0>Nos Nouveautés</a></div></div>", 1);
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "flex flex-col justify-center items-center pt-5 sm:order-3 md:order-2"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "flex justify-center items-center"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    "class": "w-6 mr-3",
+    src: _assets_images_icones_phone_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "icone de téléphone"
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "+334 56 56 56 56")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    "class": "rosace",
+    src: _assets_images_Frame231_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+    alt: "décoration"
+  })], -1 /* HOISTED */);
+});
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-col justify-center items-center p-5 sm:order-2 md:order-3\" data-v-3c662bb0><div class=\"flex justify-center items-center m-5\" data-v-3c662bb0><img class=\"w-6 mr-3\" src=\"" + _assets_images_icones_email_svg__WEBPACK_IMPORTED_MODULE_4__["default"] + "\" alt=\"icone de mail\" data-v-3c662bb0><p data-v-3c662bb0>email@email.fr</p></div><div class=\"flex\" data-v-3c662bb0><img src=\"" + _assets_images_icones_facebook_svg__WEBPACK_IMPORTED_MODULE_5__["default"] + "\" alt=\"facebook\" data-v-3c662bb0><img src=\"" + _assets_images_icones_instagram_svg__WEBPACK_IMPORTED_MODULE_6__["default"] + "\" alt=\"instagram\" data-v-3c662bb0><img src=\"" + _assets_images_icones_twitter_svg__WEBPACK_IMPORTED_MODULE_7__["default"] + "\" alt=\"twitter\" data-v-3c662bb0></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_5);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" LOCATION "), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PHONE "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" EMAIL "), _hoisted_4]);
 }
 
 /***/ }),
