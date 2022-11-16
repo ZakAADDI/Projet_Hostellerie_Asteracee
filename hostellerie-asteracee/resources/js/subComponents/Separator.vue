@@ -1,5 +1,5 @@
 <template>
-    <div class="separator">
+    <div class="separator shadow-md shadow-gray-700">
         <img src="../assets/images/Frame226.svg" alt="">
     </div>
 </template>

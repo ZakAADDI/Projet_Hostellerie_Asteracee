@@ -8,6 +8,7 @@
 
 
         <Footer2 />
+        <!-- <Footer /> -->
     </div>
 </template>
 

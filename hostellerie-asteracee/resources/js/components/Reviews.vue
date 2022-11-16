@@ -1,5 +1,5 @@
 <template>
-    <div class="reviews">
+    <div class="reviews shadow-md shadow-gray-700">
         <input type="radio" name="position" />
         <input type="radio" name="position" />
         <input type="radio" name="position" checked />
