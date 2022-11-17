@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
         <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Les
             Nouveautés</h2>
         <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">News</h2>
@@ -12,21 +11,6 @@
                       :date="n.publication_date"
                       :image="n.media"
                       :index="i"/>
-=======
-
-    <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white shadow-md shadow-gray-700">Les Nouveautés</h2>
-    <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white shadow-md shadow-gray-700">News</h2>
-<div class="bg-black shadow-md shadow-gray-700">
-
-<!--
-    <section class="flex flex-col items-center bg-white border shadow-md md:flex-row md:max-w-xl  backgroundNews"
-    v-for="new in news" :key="new.id">
-        <img class="object-cover w-full h-96 md:h-auto md:w-48" src="{{new.media['url']}}" alt="{{new.media['alt']}}">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{new.title}}</h5>
-            <h2 class="mb-2 text-2x1 font-bold dark:text-white">le {{new.date}}</h2>
-            <p class="mb-3 font-normal text-black">{{new.contentFr}}</p>
->>>>>>> Footer-GaetanBis
         </div>
 </template>
 
