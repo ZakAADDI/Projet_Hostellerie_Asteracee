@@ -1,14 +1,14 @@
 <template>
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="flip-card-front shadow-md shadow-gray-200">
+            <div class="flip-card-front shadow-md shadow-gray-200 relative">
                 <img :src=image.url :alt=image.alt>
                 <div class="spanType">
                     <span v-if="language">{{ titleFr }}</span>
                     <span v-else>{{ titleEn }}</span>
                 </div>
 
-                <img class="logo" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
+                <img class="logo absolute ml-16 bottom-0 top-48" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             </div>
             <div class="flip-card-back">
                <div v-if="language" class="type">{{ titleFr }}</div>
@@ -120,8 +120,6 @@ img {
 }
 .logo{
     width: 80px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .spanType{
     padding-top: 2rem;
