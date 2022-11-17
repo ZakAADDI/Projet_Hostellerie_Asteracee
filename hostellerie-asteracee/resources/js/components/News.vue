@@ -1,8 +1,8 @@
 <template>
-        <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Les
+        <h2 v-if="language" class="mb-4 h-32 w-4/5 bg-[#D2BD4D] flex justify-center items-center mx-auto text-4xl text-center tracking-tight font-extrabold text-gray-900 light:text-white shadow-md shadow-gray-700">Les
             Nouveautés</h2>
-        <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">News</h2>
-        <div class="bg-black">
+        <h2 v-if="!language" class="mb-4 h-32 w-4/5 bg-[#D2BD4D] flex justify-center items-center mx-auto text-4xl text-center tracking-tight font-extrabold text-gray-900 light:text-white shadow-md shadow-gray-700">News</h2>
+        <div class="bg-black shadow-md shadow-gray-700 w-2/3 mx-auto pt-8 pb-8 mb-8 mt-12">
             <CardNews v-for="(n,i) in news" :key="i"
                       :titleEn="n.title_en"
                       :titleFr="n.title_fr"
@@ -43,24 +43,4 @@ export default {
 </script>
 
 <style scoped>
-.bg-black{
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-}
-.mb-4 {
-    text-align: center;
-    background-color: #D2BD4D;
-    color: black;
-    width: 80vw;
-    height: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-}
 </style>
