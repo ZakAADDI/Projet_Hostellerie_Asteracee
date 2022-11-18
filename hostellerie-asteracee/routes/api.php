@@ -26,3 +26,4 @@ Route::apiResource("rooms",\App\Http\Controllers\API\RoomController::class);
 Route::apiResource("services",\App\Http\Controllers\API\ServiceController::class);
 Route::apiResource("contacts",\App\Http\Controllers\API\ContactController::class);
 Route::apiResource("deals",\App\Http\Controllers\API\DealController::class);
+Route::get("sortedDeals", [\App\Http\Controllers\API\DealController::class, 'showSorted']);

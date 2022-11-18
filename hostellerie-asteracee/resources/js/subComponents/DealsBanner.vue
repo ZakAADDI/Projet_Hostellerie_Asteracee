@@ -17,7 +17,7 @@
                 <h2 class="ml-3 sm:ml-24 xl:ml-14"> Offres </h2>
                 <h2 class="ml-7 sm:ml-32 xl:ml-20"> exceptionnelles </h2>
             </div>
-            <div class="text-white text-center flex flex-col mx-2 my-6 xl:justify-center" v-for="deal in deals" :key=deal.id>
+            <div class="text-white text-center flex flex-col mx-2 my-6 xl:justify-center" v-for="deal in deals" :key=deal.id >
                 <h2 class= "text-xl font-bold xl:w-64" v-if="language">{{ deal.title_fr}}</h2>
                 <p class= "text-base xl:w-64" v-if="language"> {{ deal.content_fr}}</p>
                 <h2 class= "text-xl font-bold xl:w-64" v-if="!language">{{ deal.title_en}}</h2>
@@ -51,9 +51,9 @@ export default {
     },
     async created(){
         const baseUri = 'http://127.0.0.1:8000/api';
-        this.response = await axios.get(baseUri + '/deals');
+        this.response = await axios.get(baseUri + '/sortedDeals');
         this.deals = this.response.data;
-    }
+    }, 
 }
 </script>
 
