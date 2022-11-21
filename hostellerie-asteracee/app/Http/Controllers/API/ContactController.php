@@ -13,7 +13,7 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index()
     {
         $contacts = Contact::all();
         return response()->json($contacts);
@@ -54,15 +54,16 @@ class ContactController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, int $id)
     {
         $this->validate($request,[
             'name' => 'string|max:100',
             'text' => 'string|max:100'
         ]);
+        $contact = Contact::where('id', $id)->first();
         $contact->update($request->all());
 
         return response()->json($contact, 201);
