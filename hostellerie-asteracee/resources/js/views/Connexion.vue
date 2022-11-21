@@ -5,19 +5,24 @@
                 <input type="email" name="email" v-model="email">
                  <div class="error" v-if="emailEmpty">
                     Vous devez saisir un mail
-          </div>
+                </div>
                 <label for="message">Password</label>
                 <input type="password" name="password" v-model="password">
                  <div class="error" v-if="passwordEmpty">
                 Merci de saisir votre mot de passe
-          </div>
+                </div>
                 <button>Envoyer</button>
+                <div class="error" v-if="matching">
+                Une erreure est survenue
+                </div>
         </form>
+
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import storage from '../store/index.js'
 export default {
     name: 'Connexion',
     components:{
@@ -27,7 +32,8 @@ export default {
             email : "",
             password : "",
             emailEmpty: false,
-            passwordEmpty: false
+            passwordEmpty: false,
+            matching: false
         }
     },
     methods:{
@@ -43,15 +49,14 @@ export default {
                 email: this.email,
                 password: this.password
                 };
-                this.response = await axios.post('http://127.0.0.1:8000/api/auth/login', this.datas
-                ).catch(
-                    function(){
-                        console.log('houston we\'ve got a problem');
-                        return false;
+                await axios.post('http://127.0.0.1:8000/api/login', this.datas).then((response) => {
+                    this.$router.push({ name: 'Home'});
+                })
+                .catch(
+                    (error) => {
+                        this.matching = true;
                     }
                 );
-                console.log(this.response.data);
-                this.$router.push({ name: 'Home'});
             }
     }
 }
@@ -82,5 +87,9 @@ button{
     padding: 0.5rem;
     border-radius: 15px;
     margin: 1rem;
+}
+.error{
+    color: red;
+    font-weight: bold;
 }
 </style>

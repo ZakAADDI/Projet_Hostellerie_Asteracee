@@ -40,8 +40,8 @@ class RoomController extends Controller
         $room = Room::create([
             'price' => $request->price,
             'type' => $request->type,
-            'description_fr' => $request->description,
-            'description_en' => $request->description,
+            'description_fr' => $request->description_fr,
+            'description_en' => $request->description_en,
             'media_id' => $request->media_id,
             'capacity' => $request->capacity,
         ]);
@@ -52,12 +52,12 @@ class RoomController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Room  $room
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Room $room)
+    public function show(int $id)
     {
-        $room = Room::with('media')->where('id',$room->id)->get();
+        $room = Room::with('media')->where('id',$id)->get();
         return response()->json($room, 201);
     }
 
@@ -65,10 +65,10 @@ class RoomController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Room  $room
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, int $id)
     {
         $this->validate($request,[
             'price' => 'int',
@@ -78,7 +78,7 @@ class RoomController extends Controller
             'media_id' => 'exists:App\Models\Media,id|int',
             'capacity' => 'int'
         ]);
-
+        $room = Room::where('id', $id)->first();
         $room->update($request->all());
 
         return response()->json($room, 201);
@@ -87,13 +87,14 @@ class RoomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Room  $room
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Room $room)
+    public function destroy(int $id)
     {
+        $room = Room::where('id', $id)->first();
         $room->delete();
 
-        return response()->json();
+        return response()->json('Room ' .$id. ' deleted!');
     }
 }

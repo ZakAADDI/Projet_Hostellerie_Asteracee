@@ -4,9 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hero;
-use App\Models\Media;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 class HeroController extends Controller
 {
@@ -26,10 +24,9 @@ class HeroController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Hero  $hero
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Hero $hero)
+    public function update(Request $request)
     {
         $this->validate($request,[
             'logo_media_id' => 'exists:App\Models\Media,id|int',
@@ -39,7 +36,7 @@ class HeroController extends Controller
             'center_media_id' => 'exists:App\Models\Media,id|int',
             'right_media_id' => 'exists:App\Models\Media,id|int',
         ]);
-
+        $hero = Hero::first();
         $hero->update($request->all());
 
         return response()->json($hero,201);

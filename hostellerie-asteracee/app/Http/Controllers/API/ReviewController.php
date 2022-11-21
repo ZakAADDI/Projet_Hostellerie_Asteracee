@@ -39,7 +39,7 @@ class ReviewController extends Controller
 
         $review = Review::create([
             'title' => $request->title,
-            'content' => $request->contentReview,
+            'content' => $request->content,
             'score' => $request->score,
             'user_firstname' => $request->user_firstname,
             'user_lastname' => $request->user_lastname,
@@ -52,11 +52,12 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Review  $review
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Review $review)
+    public function show(int $id)
     {
+        $review = Review::where('id',$id)->first();
         return response()->json($review);
     }
 
@@ -64,42 +65,43 @@ class ReviewController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Review  $review
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Review $review): \Illuminate\Http\JsonResponse
+    public function update(Request $request, int $id)
     {
         $this->validate($request,[
             'title' => 'required|max:100',
-            'content' => 'required|max:256',
+            'content' => 'required|max:512',
             'score' => 'required|int|max:5',
             'user_firstname' => 'required|max:100',
             'user_lastname' => 'required|max:100',
             'gender' => 'required|max:6'
         ]);
+        $review = Review::where('id', $id)->first();
 
         $review->update([
             'title' => $request->title,
-            'content' => $request->contentReview,
+            'content' => $request->content,
             'score' => $request->score,
             'user_firstname' => $request->user_firstname,
             'user_lastname' => $request->user_lastname,
             'gender' => $request->gender
         ]);
 
-
-        return response()->json($review, 201);
+        return response()->json('Reviews ' .$id. ' updated!', 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Review  $review
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(int $id)
     {
+        $review = Review::where('id', $id)->first();
         $review->delete();
-        return response()->json();
+        return response()->json('Review ' .$id. ' deleted!');
     }
 }
