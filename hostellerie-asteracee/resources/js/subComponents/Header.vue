@@ -2,6 +2,7 @@
     <div class="header">
         <router-link :to="{name: 'Home'}"><img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée"></router-link>
         <router-link :to="{ name: 'Contact' }">Nous Contacter</router-link>
+        <router-link :to="{ name: 'Connexion' }">Connexion</router-link>
 
 
         <a

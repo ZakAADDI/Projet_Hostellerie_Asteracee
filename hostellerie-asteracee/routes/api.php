@@ -30,3 +30,8 @@ Route::apiResource("users",\App\Http\Controllers\API\UserController::class);
 
 // To ignore route secured by sanctum
 // Route::apiResource('todo', 'TodoController', ['except' => ['index', 'show']]);
+Route::post('/auth/register', [App\Http\Controllers\API\AuthController::class, 'createUser']);
+Route::post('/auth/login', [App\Http\Controllers\API\AuthController::class, 'loginUser']);
+// Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
+
+
