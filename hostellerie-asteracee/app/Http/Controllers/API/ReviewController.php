@@ -17,7 +17,7 @@ class ReviewController extends Controller
     {
         $reviews = Review::all();
 
-        return response()->json($reviews);
+        return response()->json($reviews, 200);
     }
 
     /**
@@ -58,7 +58,7 @@ class ReviewController extends Controller
     public function show(int $id)
     {
         $review = Review::where('id',$id)->first();
-        return response()->json($review);
+        return response()->json($review, 200);
     }
 
     /**
@@ -89,7 +89,7 @@ class ReviewController extends Controller
             'gender' => $request->gender
         ]);
 
-        return response()->json('Reviews ' .$id. ' updated!', 201);
+        return response()->json('Reviews ' .$id. ' updated!', 200);
     }
 
     /**
@@ -102,6 +102,6 @@ class ReviewController extends Controller
     {
         $review = Review::where('id', $id)->first();
         $review->delete();
-        return response()->json('Review ' .$id. ' deleted!');
+        return response()->json('Review ' .$id. ' deleted!', 200);
     }
 }

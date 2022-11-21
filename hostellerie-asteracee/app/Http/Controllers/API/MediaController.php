@@ -17,7 +17,7 @@ class MediaController extends Controller
     {
         $media = Media::all();
 
-        return response()->json($media);
+        return response()->json($media, 200);
     }
 
     /**
@@ -44,43 +44,44 @@ class MediaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Media  $media
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Media $media)
+    public function show(int $id)
     {
-        return response()->json($media);
+        $media = Media::where('id',$id)->first();
+        return response()->json($media, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Media  $media
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Media $media)
+    public function update(Request $request, int $id)
     {
         $this->validate($request,[
             'url' => 'string|max:256',
             'alt' => 'string|max:256'
         ]);
-
+        $media = Media::where('id',$id)->first();
         $media->update($request->all());
 
-        return response()->json($media, 201);
+        return response()->json('Media ' .$id. ' updated!', 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Media  $media
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Media $media)
+    public function destroy(int $id)
     {
+        $media = Media::where('id',$id)->first();
         $media->delete();
-
-        return response()->json();
+        return response()->json('Media ' .$id. ' deleted!', 200);
     }
 }

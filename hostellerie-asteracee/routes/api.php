@@ -37,8 +37,63 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::patch('/contacts/{id}',[\App\Http\Controllers\API\ContactController::class,'update']);
 });
 
+// MEDIAS
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/medias',[\App\Http\Controllers\API\MediaController::class,'store']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::patch('/medias/{id}',[\App\Http\Controllers\API\MediaController::class,'update']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::delete('/medias/{id}',[\App\Http\Controllers\API\MediaController::class,'destroy']);
+});
 
+// INFOS
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/infos',[\App\Http\Controllers\API\InfoController::class,'store']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::patch('/infos/{id}',[\App\Http\Controllers\API\InfoController::class,'update']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::delete('/infos/{id}',[\App\Http\Controllers\API\InfoController::class,'destroy']);
+});
 
+// SERVICES
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/services',[\App\Http\Controllers\API\ServiceController::class,'store']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::patch('/services/{id}',[\App\Http\Controllers\API\ServiceController::class,'update']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::delete('/services/{id}',[\App\Http\Controllers\API\ServiceController::class,'destroy']);
+});
+
+// DEALS
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/deals',[\App\Http\Controllers\API\DealController::class,'store']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::patch('/deals/{id}',[\App\Http\Controllers\API\DealController::class,'update']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::delete('/deals/{id}',[\App\Http\Controllers\API\DealController::class,'destroy']);
+});
+
+// USERS
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/users',[\App\Http\Controllers\API\UserController::class,'index']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/users/{id}',[\App\Http\Controllers\API\UserController::class,'show']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::patch('/users/{id}',[\App\Http\Controllers\API\UserController::class,'update']);
+});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::delete('/users/{id}',[\App\Http\Controllers\API\UserController::class,'destroy']);
+});
 
 
 // -----------------------  Public Endpoints  ---------------------------- //
@@ -60,19 +115,29 @@ Route::get('/heroes', [\App\Http\Controllers\API\HeroController::class,'index'])
 // CONTACTS
 Route::get('/contacts', [\App\Http\Controllers\API\ContactController::class,'index']);
 
+// MEDIAS
+Route::get('/medias', [\App\Http\Controllers\API\MediaController::class,'index']);
+Route::get('/medias/{id}', [\App\Http\Controllers\API\MediaController::class,'show']);
 
+// INFOS
+Route::get('/infos', [\App\Http\Controllers\API\InfoController::class,'index']);
+Route::get('/infos/{id}', [\App\Http\Controllers\API\InfoController::class,'show']);
+
+// SERVICES
+Route::get('/services', [\App\Http\Controllers\API\ServiceController::class,'index']);
+Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class,'show']);
+
+// DEALS
+Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
+Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
 
 
 // Route::apiResource("contacts",\App\Http\Controllers\API\ContactController::class);
 // Route::apiResource("reviews",\App\Http\Controllers\API\ReviewController::class);
 // Route::apiResource("rooms",\App\Http\Controllers\API\RoomController::class);
 // Route::apiResource("heroes",\App\Http\Controllers\API\HeroController::class);
-Route::apiResource("medias",\App\Http\Controllers\API\MediaController::class);
-Route::apiResource("infos",\App\Http\Controllers\API\InfoController::class);
-Route::apiResource("services",\App\Http\Controllers\API\ServiceController::class);
-Route::apiResource("deals",\App\Http\Controllers\API\DealController::class);
-Route::apiResource("users",\App\Http\Controllers\API\UserController::class);
-
-
-
-
+// Route::apiResource("medias",\App\Http\Controllers\API\MediaController::class);
+// Route::apiResource("infos",\App\Http\Controllers\API\InfoController::class);
+// Route::apiResource("services",\App\Http\Controllers\API\ServiceController::class);
+// Route::apiResource("deals",\App\Http\Controllers\API\DealController::class);
+// Route::apiResource("users",\App\Http\Controllers\API\UserController::class);

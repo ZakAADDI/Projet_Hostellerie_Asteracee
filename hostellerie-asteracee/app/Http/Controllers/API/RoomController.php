@@ -17,7 +17,7 @@ class RoomController extends Controller
     {
         $rooms = Room::with('media')->get();
 
-        return response()->json($rooms);
+        return response()->json($rooms, 200);
     }
 
     /**
@@ -58,7 +58,7 @@ class RoomController extends Controller
     public function show(int $id)
     {
         $room = Room::with('media')->where('id',$id)->get();
-        return response()->json($room, 201);
+        return response()->json($room, 200);
     }
 
     /**
@@ -81,7 +81,7 @@ class RoomController extends Controller
         $room = Room::where('id', $id)->first();
         $room->update($request->all());
 
-        return response()->json($room, 201);
+        return response()->json($room, 200);
     }
 
     /**
@@ -95,6 +95,6 @@ class RoomController extends Controller
         $room = Room::where('id', $id)->first();
         $room->delete();
 
-        return response()->json('Room ' .$id. ' deleted!');
+        return response()->json('Room ' .$id. ' deleted!', 200);
     }
 }

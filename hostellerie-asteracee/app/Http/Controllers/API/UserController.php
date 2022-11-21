@@ -16,8 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = user::all();
-
-        return response()->json($users);
+        return response()->json($users, 200);
     }
 
      /**
@@ -33,7 +32,6 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|max:30'
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -45,46 +43,44 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $media
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(User $user)
+    public function show(int $id)
     {
-        return response()->json($user);
+        $user = User::where('id',$id)->first();
+        return response()->json($user, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, int $id)
     {
         $this->validate($request, [
             'name' => 'required|max:30',
             'email' => 'string|email|max:50',
             'password' => 'string|max:30'
         ]);
-
+        $user = User::where('id',$id)->first();
         $user->update($request->all());
-
-        return response()->json($user, 201);
+        return response()->json($user, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(User $user)
+    public function destroy(int $id)
     {
+        $user = User::where('id',$id)->first();
         $user->delete();
-
-        return response()->json('user deleted');
+        return response()->json('User '.$id.' deleted!', 200);
     }
-
-    
 }

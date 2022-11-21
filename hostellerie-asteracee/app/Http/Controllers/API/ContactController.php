@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::all();
-        return response()->json($contacts);
+        return response()->json($contacts, 200);
     }
 
     /**
@@ -47,7 +47,7 @@ class ContactController extends Controller
     public function show(Contact $contact)
     {
 
-        return response()->json($contact);
+        return response()->json($contact, 200);
     }
 
     /**
@@ -66,7 +66,7 @@ class ContactController extends Controller
         $contact = Contact::where('id', $id)->first();
         $contact->update($request->all());
 
-        return response()->json($contact, 201);
+        return response()->json($contact, 200);
     }
 
     /**
@@ -79,6 +79,6 @@ class ContactController extends Controller
     {
         $contact->delete();
 
-        return response()->json('deleted');
+        return response()->json('Contact deleted!', 200);
     }
 }

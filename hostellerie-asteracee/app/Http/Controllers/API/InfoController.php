@@ -13,11 +13,11 @@ class InfoController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index()
     {
         $infos = Info::with('media')->get();
 
-        return response()->json($infos);
+        return response()->json($infos, 200);
     }
 
     /**
@@ -49,23 +49,23 @@ class InfoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Info  $info
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Info $info): \Illuminate\Http\JsonResponse
+    public function show(int $id)
     {
-        $singleInfo = Info::with('media')->where('id',$info->id)->firstOrFail();
-        return response()->json($singleInfo);
+        $singleInfo = Info::with('media')->where('id',$id)->get();
+        return response()->json($singleInfo, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Info  $info
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Info $info)
+    public function update(Request $request, int $id)
     {
         $this->validate($request,[
             'title_fr' => 'string|max:100',
@@ -74,22 +74,23 @@ class InfoController extends Controller
             'content_en' => 'string|max:100',
             'media_id' => 'exists:App\Models\Media,id|int'
         ]);
-
+        $info = Info::where('id', $id)->first();
         $info->update($request->all());
 
-        return response()->json($info,201);
+        return response()->json($info, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Info  $info
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Info $info)
+    public function destroy(int $id)
     {
+        $info = Info::where('id',$id)->first();
         $info->delete();
 
-        return response()->json();
+        return response()->json('Info ' .$id. ' deleted!', 200);
     }
 }
