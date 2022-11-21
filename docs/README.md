@@ -97,3 +97,12 @@ php artisan storage:link
 
 faire tourner un seeder :
 php artisan db:seed --class=Reviews
+
+faire unn Middleware de contrainte pour Admin :
+php artisan make:middleware RestrictRegistrationToOneAdmin
+coder le if user->role === 1
+dans Kernel.php
+ajouter 
+protected $routeMiddleware = [
+    'restrictothers' => \App\Http\Middleware\RestrictRegistrationToOneAdmin::class
+];

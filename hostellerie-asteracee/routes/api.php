@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 // -------------------  Protected Endpoints  --------------------------- //
 // ROOMS
-Route::group(['middleware' => ['isAdmin']], function () {
-    Route::get('/rooms', [\App\Http\Controllers\API\RoomController::class,'index']);
-});
+// Route::group(['middleware' => ['isAdmin']], function () {
+// });
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/rooms',[\App\Http\Controllers\API\RoomController::class,'store']);
     Route::patch('/rooms/{id}',[\App\Http\Controllers\API\RoomController::class,'update']);
@@ -83,7 +82,7 @@ Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'creat
 Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'loginUser']);
 
 // ROOMS
-// Route::get('/rooms', [\App\Http\Controllers\API\RoomController::class,'index']);
+Route::get('/rooms', [\App\Http\Controllers\API\RoomController::class,'index']);
 Route::get('/rooms/{id}', [\App\Http\Controllers\API\RoomController::class,'show']);
 
 // REVIEWS
