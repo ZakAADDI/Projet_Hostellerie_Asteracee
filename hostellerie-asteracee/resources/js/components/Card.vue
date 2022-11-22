@@ -2,18 +2,17 @@
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front shadow-md shadow-gray-200 relative">
-                <img :src=image.url :alt=image.alt>
+                <img :src=image :alt=image.alt>
                 <div class="spanType">
                     <span v-if="language">{{ titleFr }}</span>
-                    <span v-else>{{ titleEn }}</span>
+                    <span v-else>{{ title }}</span>
                 </div>
 
                 <img class="logo absolute ml-16 bottom-0 top-48" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             </div>
             <div class="flip-card-back">
-               <div v-if="language" class="type">{{ titleFr }}</div>
-               <div v-if="!language" class="type">{{ titleEn }}</div>
-                <div class="content">{{ description.fr }}</div>
+               <div class="type">{{ title }}</div>
+                <div class="content">{{ description }}</div>
 
                 <div v-if="showPrice" class="price">{{ price }} € </div>
             </div>
@@ -29,19 +28,12 @@ import storage from "../store";
 export default {
     name: 'Card',
     props: {
-        titleFr: String,
-        titleEn: String,
+        title: String,
         description: Array,
         price: String,
         showPrice: Boolean,
-        image: Object
+        image: String
     },
-    computed: {
-        language() {
-            const language = storage.get("language");
-            return language === "fr";
-        }
-    }
 }
 </script>
 

@@ -20,6 +20,9 @@ class RoomResource extends JsonResource
         return [
             'id' => $this->id,
             'description'=> $this->getTranslation('description', App::getLocale()),
+            'price' => $this->price,
+            'type' => $this->type,
+            'capacity' => $this->capacity,
             'media' => new MediaResource($this->media)
         ];
     }
