@@ -15,10 +15,8 @@ class CreateInfosTable extends Migration
     {
         Schema::create('infos', function (Blueprint $table) {
             $table->id();
-            $table->text('title_fr');
-            $table->text('title_en');
-            $table->text('content_fr');
-            $table->text('content_en');
+            $table->json('title');
+            $table->json('content');
             $table->unsignedBigInteger('media_id');
             $table->string('publication_date');
             $table->timestamps();

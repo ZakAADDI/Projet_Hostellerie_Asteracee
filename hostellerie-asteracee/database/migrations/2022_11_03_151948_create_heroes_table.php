@@ -16,8 +16,7 @@ class CreateHeroesTable extends Migration
         Schema::create('heroes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('logo_media_id');
-            $table->string('text_fr');
-            $table->string('text_en');
+            $table->json('text');
             $table->unsignedBigInteger('left_media_id');
             $table->unsignedBigInteger('center_media_id');
             $table->unsignedBigInteger('right_media_id');

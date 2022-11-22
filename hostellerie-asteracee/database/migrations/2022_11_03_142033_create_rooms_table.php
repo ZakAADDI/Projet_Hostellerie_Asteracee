@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->float('price');
             $table->enum('type', ['Luxe', 'Suite', 'Standard']);
-            $table->Json('description');
+            $table->json('description');
             $table->unsignedBigInteger('media_id');
             $table->string('capacity');
             $table->timestamps();

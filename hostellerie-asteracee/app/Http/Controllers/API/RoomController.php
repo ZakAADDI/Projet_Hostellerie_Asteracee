@@ -32,8 +32,7 @@ class RoomController extends Controller
         $this->validate($request,[
             'price' => 'required|int',
             'type' => 'required|max:25',
-            'description_fr' => 'required|max:256',
-            'description_en' => 'required|max:256',
+            'description' => 'required|max:256',
             'media_id' => 'required|exists:App\Models\Media,id|int',
             'capacity' => 'required|int'
         ]);
@@ -73,8 +72,7 @@ class RoomController extends Controller
         $this->validate($request,[
             'price' => 'int',
             'type' => 'string|max:25',
-            'description_fr' => 'string|max:256',
-            'description_en' => 'string|max:256',
+            'description' => 'string|max:256',
             'media_id' => 'exists:App\Models\Media,id|int',
             'capacity' => 'int'
         ]);

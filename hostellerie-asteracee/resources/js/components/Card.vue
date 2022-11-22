@@ -13,8 +13,8 @@
             <div class="flip-card-back">
                <div v-if="language" class="type">{{ titleFr }}</div>
                <div v-if="!language" class="type">{{ titleEn }}</div>
-                <div v-if="language" class="content">{{ contentFr }}</div>
-                <div v-if="!language" class="content">{{ contentEn }}</div>
+                <div class="content">{{ description.fr }}</div>
+
                 <div v-if="showPrice" class="price">{{ price }} € </div>
             </div>
         </div>
@@ -31,8 +31,7 @@ export default {
     props: {
         titleFr: String,
         titleEn: String,
-        contentFr: String,
-        contentEn: String,
+        description: Array,
         price: String,
         showPrice: Boolean,
         image: Object
