@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 class Users extends Seeder
 {
     /**
@@ -13,6 +14,25 @@ class Users extends Seeder
      */
     public function run()
     {
-        //
+        $datas = [
+            [
+                'name' => 'gerant',
+                'email' => 'gerant@gmail.com',
+                'password' => Hash::make('gerant'),
+                'role' => 1,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'name' => 'utilisateur1',
+                'email' => 'user1@gmail.com',
+                'password' => Hash::make('user'),
+                'role' => 0,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]
+
+        ];
+        User::insert($datas);
     }
 }
