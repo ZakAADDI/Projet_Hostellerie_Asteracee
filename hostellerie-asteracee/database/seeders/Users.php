@@ -19,13 +19,17 @@ class Users extends Seeder
                 'name' => 'gerant',
                 'email' => 'gerant@gmail.com',
                 'password' => Hash::make('gerant'),
-                'role' => 1
+                'role' => 1,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ],
             [
                 'name' => 'utilisateur1',
                 'email' => 'user1@gmail.com',
                 'password' => Hash::make('user'),
-                'role' => 0
+                'role' => 0,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]
 
         ];

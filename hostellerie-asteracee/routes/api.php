@@ -16,59 +16,59 @@ use Illuminate\Support\Facades\Route;
 // ROOMS
 // Route::group(['middleware' => ['isAdmin']], function () {
 // });
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/rooms',[\App\Http\Controllers\API\RoomController::class,'store']);
     Route::patch('/rooms/{id}',[\App\Http\Controllers\API\RoomController::class,'update']);
     Route::delete('/rooms/{id}',[\App\Http\Controllers\API\RoomController::class,'destroy']);
 });
 
 // REVIEWS
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/reviews',[\App\Http\Controllers\API\ReviewController::class,'store']);
     Route::patch('/reviews/{id}',[\App\Http\Controllers\API\ReviewController::class,'update']);
     Route::delete('/reviews/{id}',[\App\Http\Controllers\API\ReviewController::class,'destroy']);
 });
 
 // HEROES
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::patch('/heroes',[\App\Http\Controllers\API\HeroController::class,'update']);
 });
 
 // CONTACTS
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::patch('/contacts/{id}',[\App\Http\Controllers\API\ContactController::class,'update']);
 });
 
 // MEDIAS
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/medias',[\App\Http\Controllers\API\MediaController::class,'store']);
     Route::patch('/medias/{id}',[\App\Http\Controllers\API\MediaController::class,'update']);
     Route::delete('/medias/{id}',[\App\Http\Controllers\API\MediaController::class,'destroy']);
 });
 
 // INFOS
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/infos',[\App\Http\Controllers\API\InfoController::class,'store']);
     Route::patch('/infos/{id}',[\App\Http\Controllers\API\InfoController::class,'update']);
     Route::delete('/infos/{id}',[\App\Http\Controllers\API\InfoController::class,'destroy']);
 });
 
 // SERVICES
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/services',[\App\Http\Controllers\API\ServiceController::class,'store']);
     Route::patch('/services/{id}',[\App\Http\Controllers\API\ServiceController::class,'update']);
     Route::delete('/services/{id}',[\App\Http\Controllers\API\ServiceController::class,'destroy']);
 });
 
 // DEALS
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/deals',[\App\Http\Controllers\API\DealController::class,'store']);
     Route::patch('/deals/{id}',[\App\Http\Controllers\API\DealController::class,'update']);
     Route::delete('/deals/{id}',[\App\Http\Controllers\API\DealController::class,'destroy']);
 });
 
 // USERS
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::get('/users',[\App\Http\Controllers\API\UserController::class,'index']);
     Route::get('/users/{id}',[\App\Http\Controllers\API\UserController::class,'show']);
     Route::patch('/users/{id}',[\App\Http\Controllers\API\UserController::class,'update']);
