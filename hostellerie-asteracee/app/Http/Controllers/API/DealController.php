@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Deal;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\DealResource;
 class DealController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class DealController extends Controller
     public function index()
     {
         $deals = Deal::all();
-        return response()->json($deals, 200);
+        return response()->json(DealResource::Collection($deals), 200);
     }
 
     /**
@@ -54,7 +54,7 @@ class DealController extends Controller
     public function show(int $id)
     {
         $deal = Deal::where('id',$id)->first();
-        return response()->json($deal);
+        return response()->json(DealResource::make($deal));
     }
 
     /**

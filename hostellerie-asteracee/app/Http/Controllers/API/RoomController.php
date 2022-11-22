@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use App\Http\Resources\RoomResource;
 
 class RoomController extends Controller
 {
@@ -17,7 +18,7 @@ class RoomController extends Controller
     {
         $rooms = Room::with('media')->get();
 
-        return response()->json($rooms, 200);
+        return response()->json(RoomResource::Collection($rooms), 200);
     }
 
     /**
@@ -39,7 +40,7 @@ class RoomController extends Controller
         $room = Room::create([
             'price' => $request->price,
             'type' => $request->type,
-            'description' => $request->description,
+            'description' => json_encode(['fr' => $request->description_fr,'en' => $request->description_en]),
             'media_id' => $request->media_id,
             'capacity' => $request->capacity,
         ]);
@@ -56,7 +57,7 @@ class RoomController extends Controller
     public function show(int $id)
     {
         $room = Room::with('media')->where('id',$id)->get();
-        return response()->json($room, 200);
+        return response()->json(RoomResource::make(Room::findOrFail($id)));
     }
 
     /**
