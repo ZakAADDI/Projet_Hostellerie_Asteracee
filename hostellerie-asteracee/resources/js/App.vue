@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class>
         <Header />
 
 
@@ -37,6 +37,7 @@ export default {
 
 
 <style >
+
 @import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
 html, body{
@@ -45,4 +46,8 @@ html, body{
 #app {
     font-family: 'Radley', sans-serif;
 }
+
+::-webkit-scrollbar { 
+  display: none; 
+} 
 </style>

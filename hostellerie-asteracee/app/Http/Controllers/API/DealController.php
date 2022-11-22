@@ -90,4 +90,18 @@ class DealController extends Controller
         $deal->delete();
         return response()->json('Deal '.$id.' deleted!');
     }
+
+    /**
+     * Sort deals and display 2.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showSorted()
+    {
+        $deals = Deal::where('is_active', '=', true)
+                    ->orderBy('updated_at', 'asc')
+                    ->limit(2)
+                    ->get();
+        return response()->json($deals);
+    }
 }

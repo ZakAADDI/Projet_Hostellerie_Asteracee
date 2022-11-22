@@ -110,7 +110,7 @@ Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class
 // DEALS
 Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
 Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
-
+Route::get('/sortedDeals', [\App\Http\Controllers\API\DealController::class, 'showSorted']);
 
 // Route::apiResource("contacts",\App\Http\Controllers\API\ContactController::class);
 // Route::apiResource("reviews",\App\Http\Controllers\API\ReviewController::class);
