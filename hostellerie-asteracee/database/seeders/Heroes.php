@@ -15,8 +15,12 @@ class Heroes extends Seeder
     {
         Hero::insert([
             'logo_media_id' => '7',
-            'text_fr' => 'Un espace reposant entre Lac et Montagne',
-            'text_en' => 'A quite place between lac and mountain',
+            'text'=> json_encode(
+                [
+                "fr"=>"Un espace reposant entre Lac et Montagne",
+                "en"=>"A quite place between lake and mountain"
+            ],
+            JSON_UNESCAPED_UNICODE),
             'left_media_id' => '4',
             'center_media_id' => '6',
             'right_media_id' => '5',

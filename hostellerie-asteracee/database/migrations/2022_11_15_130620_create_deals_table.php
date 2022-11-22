@@ -15,10 +15,8 @@ class CreateDealsTable extends Migration
     {
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
-            $table->string('title_fr');
-            $table->string('title_en');
-            $table->string('content_fr');
-            $table->string('content_en');
+            $table->json('title');
+            $table->json('content');
             $table->boolean('is_active');
             $table->timestamps();
         });
