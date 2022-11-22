@@ -1,6 +1,6 @@
 <template>
-    <section class="flex flex-row items-center bg-white border shadow-md shadow-[#D2BD4D] w-3/4 backgroundNews">
-        <img v-if="!isEven" class="object-cover w-full h-96 md:h-auto md:w-48" src="https://www.ville-rieumes.fr/wp-content/uploads/sites/1427/2021/03/travaux-voirie.png" alt="">
+    <section class="flex flex-col lg:flex-row 2xl:flex-row xl:flex-row items-center bg-white border shadow-md shadow-[#D2BD4D] w-3/4 backgroundNews">
+        <img v-if="!isEven" class="object-cover h-auto w-48" src="https://www.ville-rieumes.fr/wp-content/uploads/sites/1427/2021/03/travaux-voirie.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ titleFr }}</h5>
             <h5 v-if="!language" class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ titleEn }}</h5>
@@ -9,7 +9,7 @@
             <p v-if="language" class="mb-3 font-normal text-black">{{ contentFr }}</p>
             <p v-if="!language" class="mb-3 font-normal text-black">{{ contentEn }}</p>
         </div>
-        <img v-if="isEven" class="object-cover w-full h-96 md:h-auto md:w-48" src="https://www.hthpiscine.fr/userfiles/images/Piscine_Hiver.png" alt="">
+        <img v-if="isEven" class="object-cover h-auto w-48" src="https://www.hthpiscine.fr/userfiles/images/Piscine_Hiver.png" alt="">
 
     </section>
 </template>
