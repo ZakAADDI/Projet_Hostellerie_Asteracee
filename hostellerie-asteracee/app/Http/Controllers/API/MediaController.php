@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use Illuminate\Http\Request;
+use App\Http\Resources\MediaResource;
 
 class MediaController extends Controller
 {
@@ -17,7 +18,7 @@ class MediaController extends Controller
     {
         $media = Media::all();
 
-        return response()->json($media, 200);
+        return response()->json(MediaResource::Collection(Media::all(), 200));
     }
 
     /**
@@ -49,8 +50,8 @@ class MediaController extends Controller
      */
     public function show(int $id)
     {
-        $media = Media::where('id',$id)->first();
-        return response()->json($media, 200);
+        $media = Media::findOrFail($id);
+        return response()->json(MediaResource::make($media));
     }
 
     /**
