@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Media;
+use App\Models\User;
 use Illuminate\Http\Request;
-
-class MediaController extends Controller
+use Illuminate\Support\Facades\Hash;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,11 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $media = Media::all();
-
-        return response()->json($media, 200);
+        $users = user::all();
+        return response()->json($users, 200);
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -28,17 +27,17 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'url' => 'required|max:256',
-            'alt' => 'required|max:256'
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|max:30'
         ]);
-
-        $media = Media::create([
-            'url' => $request->url,
-            'alt' => $request->alt
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
-
-        return response()->json($media, 201);
+        return response()->json($user, 201);
     }
 
     /**
@@ -49,8 +48,8 @@ class MediaController extends Controller
      */
     public function show(int $id)
     {
-        $media = Media::where('id',$id)->first();
-        return response()->json($media, 200);
+        $user = User::where('id',$id)->first();
+        return response()->json($user, 200);
     }
 
     /**
@@ -62,14 +61,14 @@ class MediaController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $this->validate($request,[
-            'url' => 'string|max:256',
-            'alt' => 'string|max:256'
+        $this->validate($request, [
+            'name' => 'required|max:30',
+            'email' => 'string|email|max:50',
+            'password' => 'string|max:30'
         ]);
-        $media = Media::where('id',$id)->first();
-        $media->update($request->all());
-
-        return response()->json('Media ' .$id. ' updated!', 200);
+        $user = User::where('id',$id)->first();
+        $user->update($request->all());
+        return response()->json($user, 200);
     }
 
     /**
@@ -80,8 +79,8 @@ class MediaController extends Controller
      */
     public function destroy(int $id)
     {
-        $media = Media::where('id',$id)->first();
-        $media->delete();
-        return response()->json('Media ' .$id. ' deleted!', 200);
+        $user = User::where('id',$id)->first();
+        $user->delete();
+        return response()->json('User '.$id.' deleted!', 200);
     }
 }

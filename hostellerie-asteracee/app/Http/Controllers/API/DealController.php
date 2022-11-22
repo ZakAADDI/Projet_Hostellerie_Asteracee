@@ -13,10 +13,10 @@ class DealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index()
     {
         $deals = Deal::all();
-        return response()->json($deals);
+        return response()->json($deals, 200);
     }
 
     /**
@@ -48,11 +48,12 @@ class DealController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Deal  $deal
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Deal $deal)
+    public function show(int $id)
     {
+        $deal = Deal::where('id',$id)->first();
         return response()->json($deal);
     }
 
@@ -60,10 +61,10 @@ class DealController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Deal  $deal
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Deal $deal)
+    public function update(Request $request,int $id)
     {
         $this->validate($request,[
             'title_fr' => 'string|max:100',
@@ -72,8 +73,9 @@ class DealController extends Controller
             'content_en' => 'string|max:256',
             'is_active' => 'boolean'
         ]);
+        $deal = Deal::where('id',$id)->first();
         $deal->update($request->all());
-        return response()->json($deal,201);
+        return response()->json($deal, 200);
     }
 
     /**
@@ -82,11 +84,11 @@ class DealController extends Controller
      * @param  \App\Models\Deal  $deal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Deal $deal)
+    public function destroy(int $id)
     {
+        $deal = Deal::where('id',$id)->first();
         $deal->delete();
-
-        return response()->json('deleted');
+        return response()->json('Deal '.$id.' deleted!');
     }
 
     /**
