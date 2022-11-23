@@ -33,10 +33,8 @@ export default {
         }
     },
     async created(){
-
         this.services = (await axiosProvider.get('/services'))?.data;
         this.section = this.services[0].section;
-
     }
 }
 </script>

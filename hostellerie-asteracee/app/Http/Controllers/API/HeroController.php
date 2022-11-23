@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Hero;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\HeroResource;
 class HeroController extends Controller
 {
     /**
@@ -15,9 +15,9 @@ class HeroController extends Controller
      */
     public function index()
     {
-        $hero = Hero::first()->with(['logoMedia','centerMedia','leftMedia','rightMedia'])->firstOrFail();
+        $hero = Hero::with(['logoMedia','centerMedia','leftMedia','rightMedia'])->firstOrFail();
 
-        return response()->json($hero, 200);
+        return response()->json(HeroResource::make($hero), 200);
     }
 
     /**

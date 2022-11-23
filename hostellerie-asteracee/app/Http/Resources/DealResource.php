@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\DealResource;
 
 class DealResource extends JsonResource
 {
@@ -21,7 +20,7 @@ class DealResource extends JsonResource
                 'section' => $this->getTranslation('section', App::getLocale()),
                 'is_active' => $this->is_active,
                 'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at            
+                'updated_at' => $this->updated_at
         ];
     }
 }

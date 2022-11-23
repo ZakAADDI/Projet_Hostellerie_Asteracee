@@ -6,8 +6,7 @@
 
 
         <a
-        v-on:click="changeTo"
-        :to="{name: Home }">
+        v-on:click="changeTo">
             <img class="flag" src="../assets/EngFrFlag.png" alt="English Flag" >
         </a>
     </div>
