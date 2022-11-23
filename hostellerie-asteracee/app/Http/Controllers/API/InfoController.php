@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Info;
 use Illuminate\Http\Request;
+use App\Http\Resources\InfoResource;
 
 class InfoController extends Controller
 {
@@ -17,7 +18,7 @@ class InfoController extends Controller
     {
         $infos = Info::with('media')->get();
 
-        return response()->json($infos, 200);
+        return response()->json(InfoResource::Collection($infos), 200);
     }
 
     /**
