@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosProvider from "../store/axiosConfigProvider"
 import CardNews from "./CardNews";
 export default {
     name: 'News',
@@ -25,10 +25,10 @@ export default {
         }
     },
     async created(){
-            const baseUri = 'http://127.0.0.1:8000/api';
-            let response = await axios.get(baseUri + '/infos');
-            this.news = response.data
+        this.news = (await axiosProvider.get('/infos'))?.data;
+        if (this.news !== undefined) {
             this.section = this.news[0].section
+        }
     }
 }
 </script>

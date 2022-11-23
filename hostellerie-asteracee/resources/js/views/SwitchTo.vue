@@ -48,7 +48,7 @@ export default {
             this.$router.push({name:"Home"})
         },
         changeToEnglish : function(){
-            storage.set("language", "eng");
+            storage.set("language", "en");
             this.$router.push({name:"Home"})
         }
     }
