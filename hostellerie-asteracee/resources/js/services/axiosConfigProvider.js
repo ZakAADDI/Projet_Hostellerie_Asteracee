@@ -15,8 +15,8 @@ const axiosProvider = {
         }
     },
 
-    getAuthorization: () => {
-        const user = axios.get(axiosProvider.baseUrl + '/users');
+    getAuthorization: async () => {
+        const user = await axios.get(axiosProvider.baseUrl + '/users');
         /* can work because of missing token for 'get->/users' secured by isAdmin Middleware */
         return user.token;
     },

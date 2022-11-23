@@ -44,6 +44,7 @@ export default {
         this.section = this.rooms[0].section;
         this.result = "Browser Language = "+navigator.language;
         console.log(this.result);
+        console.log("Browser Language Console.Log dans Rooms.vue")
     }
 }
 </script>
