@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import axiosProvider from "../store/axiosConfigProvider"
+import axiosProvider from "../services/axiosConfigProvider"
 import Card from '../components/Card.vue'
 export default {
     name: 'Services',
@@ -29,7 +29,8 @@ export default {
     },
     data(){
         return{
-            services : []
+            services : [],
+            section: ''
         }
     },
     async created(){

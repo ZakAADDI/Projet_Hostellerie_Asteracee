@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axiosProvider from "../store/axiosConfigProvider"
+import axiosProvider from "../services/axiosConfigProvider"
 import CardNews from "./CardNews";
 export default {
     name: 'News',

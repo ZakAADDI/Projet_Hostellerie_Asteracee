@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import storage from './store/index';
+import storage from './services/localStorageProvider';
 import Header from './subComponents/Header.vue';
 import Footer2 from './subComponents/Footer2.vue';
 export default {
@@ -21,11 +21,6 @@ export default {
     components:{
         Header,
         Footer2
-    },
-    data(){
-            return {
-                currentLanguage : ''
-            }
     },
     created() {
         if(this.currentLanguage = storage.get("language") == ''){
@@ -47,7 +42,7 @@ html, body{
     font-family: 'Radley', sans-serif;
 }
 
-::-webkit-scrollbar { 
-  display: none; 
-} 
+::-webkit-scrollbar {
+  display: none;
+}
 </style>

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import storage from "../store";
+import storage from "../services/localStorageProvider";
 
 export default {
     name: "CardNews",

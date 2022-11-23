@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import axiosProvider from "../store/axiosConfigProvider"
+import axiosProvider from "../services/axiosConfigProvider"
 export default {
     name: 'Reviews',
     components: {

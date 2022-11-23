@@ -6,12 +6,12 @@
         <!-- Rectangle + border qui dépasse en bas à gauche du deals banner - à partir de l'iphone SE-->
         <div class="w-40 h-4  bg-black border-t-4 border-t-[#D2BD4D] text-white block absolute bottom-0 sm:top-24 sm:ml-2 xl:hidden"></div>
         <div class="w-20 h-10 sm:bg-[#D2BD4D] absolute bottom-0 sm:top-24 sm:ml-2 xl:hidden"></div>
-        <!-- Rectangle + border qui dépasse en bas à gauche du deals banner xl - à partir de 1280px-->   
+        <!-- Rectangle + border qui dépasse en bas à gauche du deals banner xl - à partir de 1280px-->
         <div class="xl:w-40 xl:h-10  xl:bg-black xl:border-t-4 xl:border-t-[#D2BD4D] text-white block absolute xl:bottom-0 ml-2"></div>
         <div class="xl:w-20 xl:h-10 xl:bg-[#D2BD4D] absolute xl:bottom-0 ml-2"></div>
 
-        
-        <div class="xl:flex h-full mt-7 xl:mt-0 2xl:justify-around">
+
+        <div class="xl:flex xl:justify-around h-full mt-7 xl:mt-0 2xl:justify-around">
             <!-- Content -->
             <div class="flex flex-col text-3xl text-[#D2BD4D] font-bold sm:mb-16 xl:mt-8">
                 <h2 class="ml-3 sm:ml-24 xl:ml-14">{{ this.firstLineSection }}</h2>
@@ -28,8 +28,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import storage from '../store/index.js'
+import axiosProvider from "../services/axiosConfigProvider"
 export default {
     name: 'DealsBanner',
     data(){
@@ -39,24 +38,15 @@ export default {
             secondLineSection: ''
         }
     },
-    computed: {
-        
-    },
     async created(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        let response = await axios.get(baseUri + '/sortedDeals');
-        this.deals = response.data;
 
+        this.deals = (await axiosProvider.get('/sortedDeals'))?.data;
         this.section = this.deals[0].section;
-        // console.log(this.section);
-        const words = this.section.split(" "); 
-        // console.log(words);
+        const words = this.section.split(" ");
         this.firstLineSection = words[0];
-        // console.log(this.firstLineSection);
         this.secondLineSection = words[1];
-        // console.log(this.secondLineSection);
-        
-    }, 
+
+    },
 }
 </script>
 

@@ -22,7 +22,7 @@
 
 <script>
 import axios from 'axios'
-import storage from '../store/index.js'
+import storage from '../services/localStorageProvider.js'
 export default {
     name: 'Connexion',
     components:{

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axiosProvider from "../services/axiosConfigProvider"
 export default {
     name: 'Hero',
 
@@ -28,14 +28,12 @@ export default {
             centerAlt : ''
         }
     },
-    async mounted(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        this.response = await axios.get(baseUri + '/heroes');
-        this.hero = this.response.data
-        this.leftImg = this.hero.left_media.url
-        this.rightImg = this.hero.right_media.url
-        this.leftAlt = this.hero.left_media.alt
-        this.leftAlt = this.hero.right_media.alt
+    async created(){
+        this.hero = (await axiosProvider.get('/heroes'))?.data;
+        this.leftImg = this.hero.left_media['data'].url
+        this.rightImg = this.hero.right_media['data'].url
+        this.leftAlt = this.hero.left_media['data'].alt
+        this.leftAlt = this.hero.right_media['data'].alt
     }
 }
 </script>
