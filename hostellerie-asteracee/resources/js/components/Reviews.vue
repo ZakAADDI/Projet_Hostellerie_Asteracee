@@ -74,13 +74,10 @@ export default {
     },
     async created(){
         this.reviews = (await axiosProvider.get('/reviews'))?.data;
-        this.displayImg = axiosProvider.get('/medias');
+        this.displayImg = (await axiosProvider.get('/medias'))?.data;
 
-        console.log(this.reviews);
-      
-        /*this.femaleImg = this.displayImg[12].url;
-        this.maleImg = this.displayImg[13].url;
-        console.log(this.maleImg);*/
+        this.femaleImg = this.displayImg[12].data['url'];
+        this.maleImg = this.displayImg[13].data['url'];
     }
 }
 </script>

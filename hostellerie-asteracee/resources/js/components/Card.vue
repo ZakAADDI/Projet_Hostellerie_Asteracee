@@ -28,16 +28,15 @@ export default {
     name: 'Card',
     props: {
         title: String,
-        description: Array,
-        price: String,
+        description: String,
+        price: Number,
         showPrice: Boolean,
-        image: String
+        image: Object
     },
 }
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
 .flip-card {
     font-family: 'Radley', serif;
