@@ -41,7 +41,7 @@ class RoomController extends Controller
         $room = Room::create([
             'price' => $request->price,
             'type' => $request->type,
-            'section' => json_encode(['fr' => $request->description_fr,'en' => $request->description_en]),
+            'section' => json_encode(['fr' => $request->section_fr,'en' => $request->section_en]),
             'description' => json_encode(['fr' => $request->description_fr,'en' => $request->description_en]),
             'media_id' => $request->media_id,
             'capacity' => $request->capacity,
