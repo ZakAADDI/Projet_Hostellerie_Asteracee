@@ -32,6 +32,7 @@ class RoomController extends Controller
         $this->validate($request,[
             'price' => 'required|int',
             'type' => 'required|max:25',
+            'section' => 'required|max:150',
             'description' => 'required|max:256',
             'media_id' => 'required|exists:App\Models\Media,id|int',
             'capacity' => 'required|int'
@@ -40,6 +41,7 @@ class RoomController extends Controller
         $room = Room::create([
             'price' => $request->price,
             'type' => $request->type,
+            'section' => json_encode(['fr' => $request->description_fr,'en' => $request->description_en]),
             'description' => json_encode(['fr' => $request->description_fr,'en' => $request->description_en]),
             'media_id' => $request->media_id,
             'capacity' => $request->capacity,

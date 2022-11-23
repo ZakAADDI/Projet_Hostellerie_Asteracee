@@ -15,6 +15,7 @@ class Rooms extends Seeder
             [
                 'price' => 220,
                 'type' => 'Suite',
+                'section'=> json_encode(["fr"=>"Nos Chambres","en"=>"Our Rooms"],JSON_UNESCAPED_UNICODE),
                 'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
                 'media_id' => '1',
                 'capacity' => '4',
@@ -24,6 +25,7 @@ class Rooms extends Seeder
             [
                 'price' => 120,
                 'type' => 'Luxe',
+                'section'=> json_encode(["fr"=>"Nos Chambres","en"=>"Our Rooms"],JSON_UNESCAPED_UNICODE),
                 'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
                 'media_id' => '2',
                 'capacity' => '3',
@@ -33,6 +35,7 @@ class Rooms extends Seeder
             [
                 'price' => 70,
                 'type' => 'Standard',
+                'section'=> json_encode(["fr"=>"Nos Chambres","en"=>"Our Rooms"],JSON_UNESCAPED_UNICODE),
                 'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
                 'media_id' => '3',
                 'capacity' => '2',

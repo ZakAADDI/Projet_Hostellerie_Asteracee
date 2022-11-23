@@ -2,8 +2,8 @@
     <section class="bg-white light:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv shadow-md shadow-gray-700" >
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Chambres</h2>
-                <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Rooms</h2>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">{{ this.section }}</h2>
+
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
 
@@ -28,28 +28,23 @@
 <script>
 import axios from "axios";
 import Card from '../components/Card.vue'
-import storage from '../store/index.js'
 export default {
     name: 'Rooms',
     components: {
         Card
     },
     data(){
-        return{
-            rooms : []
-        }
-    },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            return language === "fr";
+        return {
+            section: '',
+            rooms: []
         }
     },
     async created(){
         const baseUri = 'http://127.0.0.1:8000/api';
         let response = await axios.get(baseUri + '/rooms');
         this.rooms = response.data;
-        console.log(this.rooms);
+        this.section = this.rooms[0].section;
+        // console.log(this.section);
     }
 }
 </script>
