@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Service extends Model
 {
-    use HasFactory;
-
-    protected $fillable = ['title_fr','title_en','content_fr','content_en','media_id'];
+    use HasFactory, HasTranslations;
+    public $translatable = ['title','content'];
+    protected $fillable = ['title','content','media_id'];
 
     public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

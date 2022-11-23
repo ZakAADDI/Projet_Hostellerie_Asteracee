@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\ServiceResource;
 class ServiceController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::with('media')->get();
-        return response()->json($services, 200);
+        return response()->json(ServiceResource::Collection($services), 200);
     }
 
     /**

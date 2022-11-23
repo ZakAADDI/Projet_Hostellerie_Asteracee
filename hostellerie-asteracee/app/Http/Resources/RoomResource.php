@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\App;
 use App\Http\Resources\MediaResource;
 
-
 class RoomResource extends JsonResource
 {
     /**

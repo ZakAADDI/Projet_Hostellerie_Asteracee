@@ -11,7 +11,13 @@
                 <div
                     v-for="room in rooms" :key=room.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
-                    <Card :showPrice="true" :image="room.media['data']['url']" :title="room.type" :price="room.price" :description="room.description"/>
+                    <Card
+                    :showPrice="true"
+                    :image="room.media['data']"
+                    :alt="room.media['alt']"
+                    :title="room.type"
+                    :price="room.price"
+                    :description="room.description"/>
                 </div>
 
             </div>

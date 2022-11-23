@@ -10,11 +10,10 @@
                     v-for="service in services" :key=service.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
                     <Card :showPrice="false"
-                          :image="service.media"
-                          :titleFr="service.title_fr"
-                          :titleEn="service.title_en"
-                          :contentFr="service.content_fr"
-                          :contentEn="service.content_en"/>
+                          :image="service.media['data']"
+                          :title="service.title"
+                          :description="service.content"
+                          :alt="service.media['alt']"/>
                 </div>
             </div>
         </div>

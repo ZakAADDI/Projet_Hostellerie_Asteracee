@@ -2,10 +2,9 @@
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front shadow-md shadow-gray-200 relative">
-                <img :src=image :alt=image.alt>
+                <img :src=image.url :alt=image.alt>
                 <div class="spanType">
-                    <span v-if="language">{{ titleFr }}</span>
-                    <span v-else>{{ title }}</span>
+                    <span >{{ title }}</span>
                 </div>
 
                 <img class="logo absolute ml-16 bottom-0 top-48" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
