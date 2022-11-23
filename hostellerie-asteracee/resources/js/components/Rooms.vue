@@ -44,7 +44,7 @@ export default {
         let response = await axios.get(baseUri + '/rooms');
         this.rooms = response.data;
         this.section = this.rooms[0].section;
-        // console.log(this.section);
+
     }
 }
 </script>

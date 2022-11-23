@@ -14,14 +14,12 @@
         <div class="xl:flex h-full mt-7 xl:mt-0 2xl:justify-around">
             <!-- Content -->
             <div class="flex flex-col text-3xl text-[#D2BD4D] font-bold sm:mb-16 xl:mt-8">
-                <h2 class="ml-3 sm:ml-24 xl:ml-14"> Offres </h2>
-                <h2 class="ml-7 sm:ml-32 xl:ml-20"> exceptionnelles </h2>
+                <h2 class="ml-3 sm:ml-24 xl:ml-14">{{ this.firstLineSection }}</h2>
+                <h2 class="ml-7 sm:ml-32 xl:ml-20">{{ this.secondLineSection }}</h2>
             </div>
             <div class="text-white text-center flex flex-col mx-2 my-6 xl:justify-center" v-for="deal in deals" :key=deal.id >
-                <h2 class= "text-xl font-bold xl:w-64" v-if="language">{{ deal.title_fr}}</h2>
-                <p class= "text-base xl:w-64" v-if="language"> {{ deal.content_fr}}</p>
-                <h2 class= "text-xl font-bold xl:w-64" v-if="!language">{{ deal.title_en}}</h2>
-                <p class= "text-base xl:w-64" v-if="!language"> {{ deal.content_en}}</p>
+                <h2 class= "text-xl font-bold xl:w-64">{{ deal.title}}</h2>
+                <p class= "text-base xl:w-64"> {{ deal.content}}</p>
             </div>
         </div>
 
@@ -36,23 +34,28 @@ export default {
     name: 'DealsBanner',
     data(){
         return{
-            deals: []
+            deals: [],
+            firstLineSection: '',
+            secondLineSection: ''
         }
     },
     computed: {
-        language(){
-            const language = storage.get("language");
-            if(language == "fr"){
-                return true;
-            }else{
-                return false;
-            }
-        }
+        
     },
     async created(){
         const baseUri = 'http://127.0.0.1:8000/api';
-        this.response = await axios.get(baseUri + '/sortedDeals');
-        this.deals = this.response.data;
+        let response = await axios.get(baseUri + '/sortedDeals');
+        this.deals = response.data;
+
+        this.section = this.deals[0].section;
+        // console.log(this.section);
+        const words = this.section.split(" "); 
+        // console.log(words);
+        this.firstLineSection = words[0];
+        // console.log(this.firstLineSection);
+        this.secondLineSection = words[1];
+        // console.log(this.secondLineSection);
+        
     }, 
 }
 </script>

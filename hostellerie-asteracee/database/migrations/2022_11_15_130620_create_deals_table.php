@@ -17,6 +17,7 @@ class CreateDealsTable extends Migration
             $table->id();
             $table->json('title');
             $table->json('content');
+            $table->json('section');
             $table->boolean('is_active');
             $table->timestamps();
         });

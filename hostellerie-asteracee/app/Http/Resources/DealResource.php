@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\DealResource;
 
 class DealResource extends JsonResource
 {
@@ -15,15 +16,12 @@ class DealResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'data' =>[
-                'id' => $this->id,
-                'title'=> $this->getTranslation('title', App::getLocale()),
-                'content' => $this->getTranslation('content',App::getLocale()),
+                'title' => $this->getTranslation('title', App::getLocale()),
+                'content' => $this->getTranslation('content', App::getLocale()),
+                'section' => $this->getTranslation('section', App::getLocale()),
                 'is_active' => $this->is_active,
                 'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at
-            ]
-            
+                'updated_at' => $this->updated_at            
         ];
     }
 }
