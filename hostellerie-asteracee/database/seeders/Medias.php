@@ -114,6 +114,34 @@ class Medias extends Seeder
                 'alt' => 'male user',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '15',
+                'url' => '/storage/images/icon.ico',
+                'alt' => 'icon Hostellerie',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '16',
+                'url' => '/storage/images/twitter.svg',
+                'alt' => 'icon Twitter',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '17',
+                'url' => '/storage/images/facebook.svg',
+                'alt' => 'icon Facebook',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '18',
+                'url' => '/storage/images/instagram.svg',
+                'alt' => 'icon Instagram',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]
 
         ];
