@@ -42,8 +42,6 @@ export default {
     async created(){
         this.rooms = (await axiosProvider.get('/rooms'))?.data;
         this.section = this.rooms[0].section;
-        this.token = decodeURIComponent(document.cookie);
-        console.log(this.token)
     }
 }
 </script>

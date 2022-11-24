@@ -1,128 +1,70 @@
 <template>
-    <div class="footer">
-        <div class="section1">
-            <div class="location">
-                <img class="imagesIcones" src="../assets/images/icones/location.svg" alt="icone de localisation">
-                <p>25 quai du lac - 74 000 Annecy</p>
-            </div>
+    <div class="flex flex-col sm:flex-row justify-evenly bg-black text-white border-t-4 border-t-[#D2BD4D]">
 
-            <div class="siteMapp">
+        <!-- LOCATION -->
+        <div class="flex-col justify-center items-center p-5 order-1">
+            <div class="flex justify-center items-center p-5">
+                <img class="w-6 mr-3" src="../assets/images/icones/location.svg" alt="icone de localisation">
+                <p>{{ address }}</p>
+            </div>
+            <div class="hidden sm:flex md:flex lg:flex xl:flex flex-col justify-center items-center">
                 <h5>Plan du site</h5>
                 <a href="*">Accueil</a>
-                <a href="*">Nos chambres</a>
-                <a href="*">Nos Services</a>
-                <a href="*">Nos Nouveautés</a>
+                <a href="*">{{ sectionRoom }}</a>
+                <a href="*">{{ sectionService }}</a>
+                <a href="*">{{ sectionNews }}</a>
             </div>
         </div>
-        <div class="section2">
-            <div class="phone">
-                <img class="imagesIcones" src="../assets/images/icones/phone.svg" alt="icone de téléphone">
-                <p>+334 56 56 56 56</p>
-            </div>
 
+        <!-- PHONE -->
+        <div class="flex flex-col justify-between items-center sm:order-2 order-3 pt-5">
+            <div class="flex justify-center items-center m-5">
+                <img class="w-6 mr-3" src="../assets/images/icones/phone.svg" alt="icone de téléphone">
+                <p>+33 {{ phone }}</p>
+            </div>
             <img class="rosace" src="../assets/images/Frame231.svg" alt="décoration">
         </div>
-        <div class="section3">
-            <div class="email">
-                 <img class="imagesIcones" src="../assets/images/icones/email.svg" alt="icone de mail">
-                <p>email@email.fr</p>
-            </div>
-            <div class="socialNetwork">
-                <img src="../assets/images/icones/facebook.svg" alt="facebook">
-                <img src="../assets/images/icones/instagram.svg" alt="instagram">
-                <img src="../assets/images/icones/twitter.svg" alt="twitter">
-            </div>
 
+        <!-- EMAIL -->
+        <div class="flex flex-col justify-start items-center p-5 sm:order-2 md:order-3">
+            <div class="flex justify-center items-center m-5">
+                 <img class="w-6 mr-3" src="../assets/images/icones/email.svg" alt="icone de mail">
+                <p>{{ email }}</p>
+            </div>
+            <div class="flex">
+                <span>
+                    <img :src=facebookLogo alt="facebook" class="mr-4">
+                </span>
+                <span>
+                    <img :src=instagramLogo alt="instagram" class="mr-4">
+                </span>
+                <span>
+                    <img :src=twitterLogo alt="twitter">
+                </span>
+            </div>
         </div>
+
     </div>
 </template>
 
 <script>
-
 export default {
-    name: 'Footer'
+    name: 'Footer',
+    props:{
+        facebookLogo: String,
+        twitterLogo: String,
+        instagramLogo: String,
+        email: String,
+        address: String,
+        phone: String,
+        sectionRoom: String,
+        sectionService: String,
+        sectionNews: String
+   }
+
 }
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
-.footer {
-    width: 100%;
-    height: 20vh;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    bottom: 0;
-}
-a {
-    color: white;
-    transition-duration: 0.9s;
-    margin-right: 2rem;
-}
-
-a:hover {
-    color: #D2BD4D;
-    transition-duration: 0.9s, 0.9s;
-}
-p{
-    color: white;
-}
-.section1, .section2{
-    border-right: 2px solid #D2BD4D;
-}
-.section1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: calc(100vw / 3);
-}
-.section2{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(100vw /3);
-    padding-top: 2rem;
-}
-.section3{
-    display: flex;
-    flex-direction: column;
-    width: calc(100vw/3);
-    align-items: center;
-    padding-top: 2rem;
-}
-.siteMapp{
-    display: flex;
-    flex-direction: column;
-}
-
-.imagesIcones{
-    width: 20px;
-    height: 20px;
-}
-.rosace{
-    width: 200px;
-    position: relative;
-}
-.socialNetwork{
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-}
-.socialNetwork img{
-    width: 40px;
-}
-.email, .phone, .location{
-    display: flex;
-    margin: 0.5rem;
-}
-.email p, .phone p, .location p{
-    margin-left: 0.5rem;
-}
 </style>

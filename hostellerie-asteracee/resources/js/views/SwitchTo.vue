@@ -40,7 +40,6 @@ export default {
     },
     methods:{
         noChange(){
-            console.log('coucou');
             this.$router.push({name:'Home'})
         },
         changeToFrench : function(){
