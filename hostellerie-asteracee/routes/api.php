@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // -------------------  Protected Endpoints  --------------------------- //
-// ROOMS
+
+
+//Add MiddlWare to translate through the header which is full filled thanks to the localstorage into /localStorageProvider.js
 Route::group(['middleware' => ['AcceptLanguage']], function () {
-    
+
+// ROOMS
 Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/rooms',[\App\Http\Controllers\API\RoomController::class,'store']);
     Route::patch('/rooms/{id}',[\App\Http\Controllers\API\RoomController::class,'update']);
