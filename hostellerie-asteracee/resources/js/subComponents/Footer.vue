@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col sm:flex-row justify-evenly bg-black text-white">
+    <div class="flex flex-col sm:flex-row justify-evenly bg-black text-white border-t-4 border-t-[#D2BD4D]">
 
         <!-- LOCATION -->
         <div class="flex-col justify-center items-center p-5 order-1">
