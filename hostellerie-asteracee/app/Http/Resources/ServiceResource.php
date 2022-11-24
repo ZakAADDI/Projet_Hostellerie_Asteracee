@@ -19,6 +19,7 @@ class ServiceResource extends JsonResource
         return [
             'id' => $this->id,
             'title'=> $this->getTranslation('title', App::getLocale()),
+            'section'=> $this->getTranslation('section', App::getLocale()),
             'content'=> $this->getTranslation('content', App::getLocale()),
             'media' => new MediaResource($this->media)
         ];

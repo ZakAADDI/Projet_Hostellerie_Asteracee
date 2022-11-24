@@ -8,8 +8,8 @@
         <main id="carousel">
             <div class="item" v-for="review in reviews" :key=review.id>
                 <span class="user">
-                <img v-if="review.gender == 'Male'" :src=maleImg alt="" style="width: 60px;">
-                <img v-if="review.gender == 'Female'" :src=femaleImg alt="" style="width: 60px;">
+                <img v-if="isMale(review)" :src=maleImg.url alt="" style="width: 60px;">
+                <img v-if="!isMale(review)" :src=femaleImg.url alt="" style="width: 60px;">
 
                 <p>{{ review.user_firstname}} {{review.user_lastname}}</p></span>
                 <p>{{ review.title }}</p>
@@ -68,16 +68,21 @@ export default {
     data(){
         return{
             reviews: [],
-            maleImg: String,
-            femaleImg: String
+            maleImg: Object,
+            femaleImg: Object
         }
     },
     async created(){
         this.reviews = (await axiosProvider.get('/reviews'))?.data;
         this.displayImg = (await axiosProvider.get('/medias'))?.data;
 
-        this.femaleImg = this.displayImg[12].data['url'];
-        this.maleImg = this.displayImg[13].data['url'];
+        this.femaleImg = this.displayImg[12].data;
+        this.maleImg = this.displayImg[13].data;
+    },
+    methods:{
+        isMale(review){
+            return review.gender == 'Male';
+        }
     }
 }
 </script>
