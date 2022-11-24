@@ -42,9 +42,8 @@ export default {
     async created(){
         this.rooms = (await axiosProvider.get('/rooms'))?.data;
         this.section = this.rooms[0].section;
-        this.result = "Browser Language = "+navigator.language;
-        console.log(this.result);
-        console.log("Browser Language Console.Log dans Rooms.vue")
+        this.token = decodeURIComponent(document.cookie);
+        console.log(this.token)
     }
 }
 </script>
