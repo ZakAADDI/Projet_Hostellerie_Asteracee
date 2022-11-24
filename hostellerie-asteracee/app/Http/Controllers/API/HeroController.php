@@ -15,9 +15,9 @@ class HeroController extends Controller
      */
     public function index()
     {
-        $hero = Hero::first()->with(['logoMedia','centerMedia','leftMedia','rightMedia'])->firstOrFail();
+        $hero = Hero::with(['logoMedia','centerMedia','leftMedia','rightMedia'])->firstOrFail();
 
-        return response()->json($hero, 200);
+        return response()->json(HeroResource::make($hero), 200);
     }
 
     /**

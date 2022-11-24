@@ -1,22 +1,41 @@
 <template>
-    <div class="header">
-        <router-link :to="{name: 'Home'}"><img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée"></router-link>
-        <router-link :to="{ name: 'Contact' }">Nous Contacter</router-link>
-        <router-link :to="{ name: 'Connexion' }">Connexion</router-link>
 
+    <div class="w-full bg-black items-center justify-end flex h-24">
+        <div>
+            <router-link :to="{name: 'Home'}">
+                <img class="logo top-0 w-2/4" :src=logoHeader alt="Logo Hostellerie Asteracée">
+            </router-link>
+        </div>
+
+        <div class="flex flex-col lg:flex-row w-48">
+
+            <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
+                Nous Contacter
+            </router-link>
+            <router-link :to="{ name: 'Connexion' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
+                Connexion
+            </router-link>
+
+        </div>
 
         <a
-        v-on:click="changeTo"
-        :to="{name: Home }">
-            <img class="flag" src="../assets/EngFrFlag.png" alt="English Flag" >
+        v-on:click="changeTo">
+            <img class="text-white mr-16 sm:ml-14" src="../assets/EngFrFlag.png" alt="English Flag" >
         </a>
+
     </div>
+
 </template>
 
 <script>
-import storage from '../store/index';
+import axiosProvider from "../services/axiosConfigProvider";
 export default {
     name: 'Header',
+    data(){
+        return{
+            logoHeader: ''
+        }
+    },
     components: {
 
     },
@@ -25,45 +44,19 @@ export default {
             this.$router.push({name:"SwitchTo"})
         }
     },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            if(language == "fr"){
-                return true;
-            }else{
-                return false;
-            }
-        }
+     async created(){
+        this.medias = (await axiosProvider.get('/medias'))?.data;
+        this.logoHeader = this.medias[6].data.url;
     }
 }
 </script>
 
 <style scoped>
 
-.header {
-    width: 100%;
-    height: 6rem;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-a {
-    color: white;
-    transition-duration: 0.9s;
-    margin-right: 2rem;
-}
-
-a:hover {
-    color: #D2BD4D;
-    transition-duration: 0.9s, 0.9s;
-}
 img{
     width: 40px;
 }
 .logo{
-    top: 0;
     left: 24vw;
     width: 50%;
 }
@@ -141,7 +134,7 @@ img{
     .logo {
         width: 30%;
         position: absolute;
-        margin-left: 6vw;
+        margin-left: 4.5vw;
         top : 0;
     }
 }

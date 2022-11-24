@@ -2,18 +2,18 @@
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front shadow-md shadow-gray-200 relative">
-                <img :src=image.url :alt=image.alt>
-                <div class="spanType">
+                <img style="width:200px;height:180px" :src=image.url :alt=image.alt>
+                <div class="pt-8">
                     <span >{{ title }}</span>
                 </div>
 
-                <img class="logo absolute ml-16 bottom-0 top-48" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
+                <img class="absolute ml-16 bottom-0 top-60" style="width:80px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             </div>
             <div class="flip-card-back">
-               <div class="type">{{ title }}</div>
-                <div class="content">{{ description }}</div>
+               <div class="bg-[#D2BD4D] text-black flex justify-start pl-4 w-2/4">{{ title }}</div>
+                <div class="text-white ">{{ description }}</div>
 
-                <div v-if="showPrice" class="price">{{ price }} € </div>
+                <div v-if="showPrice" class="bg-[#D2BD4D] text-black flex justify-end pr-4 w-2/4">- {{ price }} € </div>
             </div>
         </div>
     </div>
@@ -22,22 +22,19 @@
 
 <script>
 
-import storage from "../store";
-
 export default {
     name: 'Card',
     props: {
         title: String,
-        description: Array,
-        price: String,
+        description: String,
+        price: Number,
         showPrice: Boolean,
-        image: String
+        image: Object
     },
 }
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
 
 .flip-card {
     font-family: 'Radley', serif;
@@ -84,34 +81,5 @@ export default {
     flex-direction: column;
     justify-content: space-around;
 }
-.type{
-    width: 50%;
-    background-color: #D2BD4D;
-    color: black;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 1rem;
-}
-.content{
-    color: white;
-}
-.price{
-    width: 50%;
-    background-color: #D2BD4D;
-    color: black;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem;
-    padding: 0.3rem;
-}
-img {
-    width: 200px;
-    height: 180px;
-}
-.logo{
-    width: 80px;
-}
-.spanType{
-    padding-top: 2rem;
-}
+
 </style>

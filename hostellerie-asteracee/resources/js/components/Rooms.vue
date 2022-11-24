@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosProvider from "../services/axiosConfigProvider"
 import Card from '../components/Card.vue'
 export default {
     name: 'Rooms',
@@ -40,11 +40,8 @@ export default {
         }
     },
     async created(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        let response = await axios.get(baseUri + '/rooms');
-        this.rooms = response.data;
+        this.rooms = (await axiosProvider.get('/rooms'))?.data;
         this.section = this.rooms[0].section;
-
     }
 }
 </script>

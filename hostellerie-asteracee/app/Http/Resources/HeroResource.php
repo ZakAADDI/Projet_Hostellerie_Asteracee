@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\MediaResource;
+
 
 class HeroResource extends JsonResource
 {
@@ -15,11 +17,11 @@ class HeroResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'logo' => new MediaResource($this->media),
             'text' => $this->getTranslation('text', App::getLocale()),
-            'left_img' => new MediaResource($this->media),
-            'right_img' => new MediaResource($this->media),
-            'center_media' => new MediaResource($this->media)
+            'logo_media' => new MediaResource($this->logoMedia),
+            'left_media' => new MediaResource($this->leftMedia),
+            'center_media' => new MediaResource($this->centerMedia),
+            'right_media' => new MediaResource($this->rightMedia)
         ];
     }
 }

@@ -4,8 +4,7 @@
             <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftAlt>
             <div class="video">
                 <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
-                <p v-if="language">{{ hero.text_fr}}</p>
-                <p v-if="!language">{{ hero.text_en}}</p>
+                <p>{{ hero.text }}</p>
             </div>
 
             <img class="rightImg shadow-md shadow-gray-700" :src=rightImg :alt=rightAlt>
@@ -14,8 +13,7 @@
 </template>
 
 <script>
-import storage from '../store/index';
-import axios from 'axios'
+import axiosProvider from "../services/axiosConfigProvider"
 export default {
     name: 'Hero',
 
@@ -30,20 +28,12 @@ export default {
             centerAlt : ''
         }
     },
-    computed: {
-        language() {
-            const language = storage.get("language");
-            return language === "fr";
-        },
-    },
-    async mounted(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        this.response = await axios.get(baseUri + '/heroes');
-        this.hero = this.response.data
-        this.leftImg = this.hero.left_media.url
-        this.rightImg = this.hero.right_media.url
-        this.leftAlt = this.hero.left_media.alt
-        this.leftAlt = this.hero.right_media.alt
+    async created(){
+        this.hero = (await axiosProvider.get('/heroes'))?.data;
+        this.leftImg = this.hero.left_media['data'].url
+        this.rightImg = this.hero.right_media['data'].url
+        this.leftAlt = this.hero.left_media['data'].alt
+        this.leftAlt = this.hero.right_media['data'].alt
     }
 }
 </script>

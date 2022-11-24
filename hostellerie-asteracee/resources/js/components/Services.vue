@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import storage from '../store/index.js'
+import axiosProvider from "../services/axiosConfigProvider"
 import Card from '../components/Card.vue'
 export default {
     name: 'Services',
@@ -30,21 +29,13 @@ export default {
     },
     data(){
         return{
-            services : []
-        }
-    },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            return language === "fr";
+            services : [],
+            section: ''
         }
     },
     async created(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        let response = await axios.get(baseUri + '/services');
-        this.services = response.data;
+        this.services = (await axiosProvider.get('/services'))?.data;
         this.section = this.services[0].section;
-
     }
 }
 </script>
