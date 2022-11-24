@@ -30,21 +30,21 @@ class InfoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title_fr' => 'required|max:100',
-            'title_en' => 'required|max:100',
-            'content_fr' => 'required|max:100',
-            'content_en' => 'required|max:100',
-            'media_id' => 'required|exists:App\Models\Media,id|int'
+            'title.fr' => 'required|string|max:100',
+            'title.en' => 'required|string|max:100',
+            'content.fr' => 'required|string|max:300',
+            'content.en' => 'required|string|max:300',
+            'media_id' => 'required|exists:App\Models\Media,id|int',
+            'publication_date' => 'required|string|max:10'
         ]);
 
-        $info = Info::create([
-            'title_fr' => $request->title_fr,
-            'title_en' => $request->title_en,
-            'content_fr' => $request->content_fr,
-            'content_en' => $request->content_en,
-            'media_id' => $request->media_id,
-        ]);
-        return response()->json($info, 201);
+        $info = new Info;
+        $info ->fill($request->post())
+        ->setTranslations('title', $request->post('title'))
+        ->setTranslations('content', $request->post('content'))
+        ->save();
+
+        return response()->json(InfoResource::make($info), 201);
     }
 
     /**
@@ -69,16 +69,15 @@ class InfoController extends Controller
     public function update(Request $request, int $id)
     {
         $this->validate($request,[
-            'title_fr' => 'string|max:100',
-            'title_en' => 'string|max:100',
-            'content_fr' => 'string|max:100',
-            'content_en' => 'string|max:100',
+            'title.fr' => 'string|max:100',
+            'title.en' => 'string|max:100',
+            'content.fr' => 'string|max:100',
+            'content.en' => 'string|max:100',
             'media_id' => 'exists:App\Models\Media,id|int'
         ]);
-        $info = Info::where('id', $id)->first();
+        $info = Info::findOrFail($id);
         $info->update($request->all());
-
-        return response()->json($info, 200);
+        return response()->json(InfoResource::make($info), 200);
     }
 
     /**

@@ -17,8 +17,9 @@ class CreateDealsTable extends Migration
             $table->id();
             $table->json('title');
             $table->json('content');
-            $table->json('section');
-            $table->boolean('is_active');
+            $table->json('section')->nullable()->default(json_encode(["fr" => "Offres Exceptionnelles",
+            "en" => "Special Offers"]));
+            $table->boolean('is_active')->nullable()->default(0);
             $table->timestamps();
         });
     }

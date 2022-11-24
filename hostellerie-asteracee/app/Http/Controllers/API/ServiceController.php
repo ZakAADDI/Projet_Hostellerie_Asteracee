@@ -15,7 +15,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::with('media')->get();
+        $services = Service::all();
         return response()->json(ServiceResource::Collection($services), 200);
     }
 
@@ -28,18 +28,19 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|max:150',
-            'section' => 'required|max:150',
-            'content' => 'required|max:256',
+            'title.fr' => 'required|string|max:100',
+            'title.en' => 'required|string|max:100',
+            'content.fr' => 'required|string|max:256',
+            'content.en' => 'required|string|max:256',
             'media_id' => 'required|exists:App\Models\Media,id|int'
         ]);
-        $service = Service::create([
-            'title' => $request->title,
-            'section' => json_encode(['fr' => $request->section_fr,'en' => $request->section_en]),
-            'content' => json_encode(['fr' => $request->content_fr,'en' => $request->content_en]),
-            'media_id' => $request->media_id,
-        ]);
-        return response()->json($service, 201);
+
+        $service = new Service;
+        $service
+            ->fill($request->post())
+            ->save();
+
+        return response()->json(ServiceResource::make($service), 201);
     }
 
     /**
@@ -50,8 +51,8 @@ class ServiceController extends Controller
      */
     public function show(int $id)
     {
-        $singleService = Service::with('media')->where('id',$id)->get();
-        return response()->json($singleService, 200);
+        $service = Service::findOrFail($id);
+        return response()->json(ServiceResource::make($service));
     }
 
     /**
@@ -64,19 +65,15 @@ class ServiceController extends Controller
     public function update(Request $request, int $id)
     {
         $this->validate($request,[
-            'title' => 'string|max:150',
-            'section' => 'required|max:150',
-            'content' => 'string|max:256',
+            'title.fr' => 'string|max:100',
+            'title.en' => 'string|max:100',
+            'content.fr' => 'string|max:256',
+            'content.en' => 'string|max:256',
             'media_id' => 'exists:App\Models\Media,id|int'
         ]);
-        $service = Service::where('id',$id)->first();
-        $service->update([
-            'title' => $request->title_fr,
-            'section' => $request->section,
-            'content' => $request->content,
-            'media_id' => $request->media_id,
-        ]);
-        return response()->json($service,200);
+        $service = Service::findOrFail($id);
+        $service->update($request->all());
+        return response()->json(ServiceResource::make($service),200);
     }
 
     /**

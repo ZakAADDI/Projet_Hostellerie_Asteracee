@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deal;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Http\Resources\RoomResource;
@@ -16,7 +17,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::with('media')->get();
+        $rooms = Room::all();
 
         return response()->json(RoomResource::Collection($rooms), 200);
     }
@@ -32,22 +33,16 @@ class RoomController extends Controller
         $this->validate($request,[
             'price' => 'required|int',
             'type' => 'required|max:25',
-            'section' => 'required|max:150',
-            'description' => 'required|max:256',
+            'description.fr' => 'required|max:256',
+            'description.en' => 'required|max:256',
             'media_id' => 'required|exists:App\Models\Media,id|int',
             'capacity' => 'required|int'
         ]);
 
-        $room = Room::create([
-            'price' => $request->price,
-            'type' => $request->type,
-            'section' => json_encode(['fr' => $request->section_fr,'en' => $request->section_en]),
-            'description' => json_encode(['fr' => $request->description_fr,'en' => $request->description_en]),
-            'media_id' => $request->media_id,
-            'capacity' => $request->capacity,
-        ]);
+        $room = new Room;
+        $room->fill($request->post())->save();
 
-        return response()->json($room, 201);
+        return response()->json(RoomResource::make($room), 201);
     }
 
     /**
@@ -58,8 +53,7 @@ class RoomController extends Controller
      */
     public function show(int $id)
     {
-        $room = Room::with('media')->where('id',$id)->get();
-        return response()->json(RoomResource::make(Room::findOrFail($id)));
+        return response()->json(Room::findOrFail($id));
     }
 
     /**
@@ -73,15 +67,16 @@ class RoomController extends Controller
     {
         $this->validate($request,[
             'price' => 'int',
-            'type' => 'string|max:25',
-            'description' => 'string|max:256',
+            'type' => 'max:25',
+            'description.fr' => 'max:256',
+            'description.en' => 'max:256',
             'media_id' => 'exists:App\Models\Media,id|int',
             'capacity' => 'int'
         ]);
-        $room = Room::where('id', $id)->first();
-        $room->update($request->all());
 
-        return response()->json($room, 200);
+        $room = Room::findOrFail($id);
+        $room->update($request->all());
+        return response()->json(RoomResource::make($room), 200);
     }
 
     /**
@@ -92,7 +87,7 @@ class RoomController extends Controller
      */
     public function destroy(int $id)
     {
-        $room = Room::where('id', $id)->first();
+        $room = Room::findOrFail($id);
         $room->delete();
 
         return response()->json('Room ' .$id. ' deleted!', 200);

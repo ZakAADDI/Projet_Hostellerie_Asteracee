@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\MediaResource;
 
+
 class HeroResource extends JsonResource
 {
     /**
