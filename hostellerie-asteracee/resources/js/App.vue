@@ -42,7 +42,4 @@ html, body{
     font-family: 'Radley', sans-serif;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
 </style>
