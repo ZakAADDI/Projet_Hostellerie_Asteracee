@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use App\Http\Resources\ReviewResource;
 
 class ReviewController extends Controller
 {
@@ -17,7 +18,7 @@ class ReviewController extends Controller
     {
         $reviews = Review::all();
 
-        return response()->json($reviews, 200);
+        return response()->json(ReviewResource::Collection($reviews), 200);
     }
 
     /**
@@ -37,16 +38,10 @@ class ReviewController extends Controller
             'gender' => 'required|max:6'
         ]);
 
-        $review = Review::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'score' => $request->score,
-            'user_firstname' => $request->user_firstname,
-            'user_lastname' => $request->user_lastname,
-            'gender' => $request->gender
-        ]);
+        $review = new Review;
+        $review->fill($request->post())->save();
 
-        return response()->json($review, 201);
+        return response()->json(ReviewResource::make($review), 201);
     }
 
     /**
@@ -57,8 +52,7 @@ class ReviewController extends Controller
      */
     public function show(int $id)
     {
-        $review = Review::where('id',$id)->first();
-        return response()->json($review, 200);
+        return response()->json(Review::findOrFail($id), 200);
     }
 
     /**
@@ -78,18 +72,10 @@ class ReviewController extends Controller
             'user_lastname' => 'required|max:100',
             'gender' => 'required|max:6'
         ]);
-        $review = Review::where('id', $id)->first();
 
-        $review->update([
-            'title' => $request->title,
-            'content' => $request->content,
-            'score' => $request->score,
-            'user_firstname' => $request->user_firstname,
-            'user_lastname' => $request->user_lastname,
-            'gender' => $request->gender
-        ]);
-
-        return response()->json('Reviews ' .$id. ' updated!', 200);
+        $review = Review::findOrFail($id);
+        $review->update($request->all());
+        return response()->json(ReviewResource::make($review),200);
     }
 
     /**
@@ -100,7 +86,7 @@ class ReviewController extends Controller
      */
     public function destroy(int $id)
     {
-        $review = Review::where('id', $id)->first();
+        $review = Review::findOrFail($id);
         $review->delete();
         return response()->json('Review ' .$id. ' deleted!', 200);
     }

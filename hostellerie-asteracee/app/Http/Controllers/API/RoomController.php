@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Deal;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Http\Resources\RoomResource;
@@ -53,7 +52,7 @@ class RoomController extends Controller
      */
     public function show(int $id)
     {
-        return response()->json(Room::findOrFail($id));
+        return response()->json(Room::findOrFail($id),200);
     }
 
     /**
@@ -89,7 +88,6 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $room->delete();
-
         return response()->json('Room ' .$id. ' deleted!', 200);
     }
 }

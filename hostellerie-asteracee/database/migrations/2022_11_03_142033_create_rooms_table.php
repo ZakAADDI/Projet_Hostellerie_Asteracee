@@ -19,7 +19,8 @@ class CreateRoomsTable extends Migration
                 [
                     "fr"=>"Nos chambres",
                     "en"=>"Our rooms"
-                ]));;
+                ]
+            ));
             $table->float('price');
             $table->enum('type', ['Luxe', 'Suite', 'Standard']);
             $table->json('description');
