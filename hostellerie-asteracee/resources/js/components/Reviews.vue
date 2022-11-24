@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosProvider from "../services/axiosConfigProvider"
 export default {
     name: 'Reviews',
     components: {
@@ -73,15 +73,11 @@ export default {
         }
     },
     async created(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        let response = await axios.get(baseUri + '/reviews');
-        this.reviews = response.data;
+        this.reviews = (await axiosProvider.get('/reviews'))?.data;
+        this.displayImg = (await axiosProvider.get('/medias'))?.data;
 
-        let response2 = await axios.get(baseUri + '/medias');
-        this.displayImg = response2.data;
-        this.femaleImg = this.displayImg[12].url;
-        this.maleImg = this.displayImg[13].url;
-        console.log(this.maleImg);
+        this.femaleImg = this.displayImg[12].data['url'];
+        this.maleImg = this.displayImg[13].data['url'];
     }
 }
 </script>

@@ -2,19 +2,17 @@
     <section class="bg-white light:bg-gray-900 flex items-center ">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv shadow-md shadow-gray-700">
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Services</h2>
-                <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Services</h2>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">{{ this.section }}</h2>
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
                 <div
                     v-for="service in services" :key=service.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
                     <Card :showPrice="false"
-                          :image="service.media"
-                          :titleFr="service.title_fr"
-                          :titleEn="service.title_en"
-                          :contentFr="service.content_fr"
-                          :contentEn="service.content_en"/>
+                          :image="service.media['data']"
+                          :title="service.title"
+                          :description="service.content"
+                          :alt="service.media['alt']"/>
                 </div>
             </div>
         </div>
@@ -22,8 +20,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import storage from '../store/index.js'
+import axiosProvider from "../services/axiosConfigProvider"
 import Card from '../components/Card.vue'
 export default {
     name: 'Services',
@@ -32,19 +29,13 @@ export default {
     },
     data(){
         return{
-            services : []
-        }
-    },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            return language === "fr";
+            services : [],
+            section: ''
         }
     },
     async created(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        let response = await axios.get(baseUri + '/services');
-        this.services = response.data
+        this.services = (await axiosProvider.get('/services'))?.data;
+        this.section = this.services[0].section;
     }
 }
 </script>

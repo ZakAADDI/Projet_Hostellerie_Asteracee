@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // -------------------  Protected Endpoints  --------------------------- //
+
+
+//Add MiddlWare to translate through the header which is full filled thanks to the localstorage into /localStorageProvider.js
+Route::group(['middleware' => ['AcceptLanguage']], function () {
+
 // ROOMS
-// Route::group(['middleware' => ['isAdmin']], function () {
-// });
 Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/rooms',[\App\Http\Controllers\API\RoomController::class,'store']);
     Route::patch('/rooms/{id}',[\App\Http\Controllers\API\RoomController::class,'update']);
@@ -82,8 +85,10 @@ Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'creat
 Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'loginUser']);
 
 // ROOMS
+
 Route::get('/rooms', [\App\Http\Controllers\API\RoomController::class,'index']);
 Route::get('/rooms/{id}', [\App\Http\Controllers\API\RoomController::class,'show']);
+
 
 // REVIEWS
 Route::get('/reviews', [\App\Http\Controllers\API\ReviewController::class,'index']);
@@ -111,13 +116,5 @@ Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class
 Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
 Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
 Route::get('/sortedDeals', [\App\Http\Controllers\API\DealController::class, 'showSorted']);
+});
 
-// Route::apiResource("contacts",\App\Http\Controllers\API\ContactController::class);
-// Route::apiResource("reviews",\App\Http\Controllers\API\ReviewController::class);
-// Route::apiResource("rooms",\App\Http\Controllers\API\RoomController::class);
-// Route::apiResource("heroes",\App\Http\Controllers\API\HeroController::class);
-// Route::apiResource("medias",\App\Http\Controllers\API\MediaController::class);
-// Route::apiResource("infos",\App\Http\Controllers\API\InfoController::class);
-// Route::apiResource("services",\App\Http\Controllers\API\ServiceController::class);
-// Route::apiResource("deals",\App\Http\Controllers\API\DealController::class);
-// Route::apiResource("users",\App\Http\Controllers\API\UserController::class);

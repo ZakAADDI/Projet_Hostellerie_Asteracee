@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\App;
+use App\Http\Resources\MediaResource;
 
 class ServiceResource extends JsonResource
 {
@@ -15,7 +17,11 @@ class ServiceResource extends JsonResource
     public function toArray($request)
     {
         return [
-            
+            'id' => $this->id,
+            'section' => $this->getTranslation('section', App::getLocale()),
+            'title'=> $this->getTranslation('title', App::getLocale()),
+            'content'=> $this->getTranslation('content', App::getLocale()),
+            'media' => new MediaResource($this->media)
         ];
     }
 }

@@ -27,6 +27,12 @@ class Infos extends Seeder
                         "en"=>"For even more comfort and relaxation, your Hostellerie de l'Astéracée is pleased to announce the opening of the doors of its winter swimming pool. The renovation work lasted 6 weeks, we will be happy to welcome you to this place which will meet all your expectations."
                     ],
                     JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Les nouveautés",
+                        "en"=>"News"
+                    ],
+                    JSON_UNESCAPED_UNICODE),
                 'media_id' => '11',
                 'publication_date' => '20/09/2022',
                 'created_at' => date("Y-m-d H:i:s"),
@@ -43,6 +49,12 @@ class Infos extends Seeder
                     [
                         "fr"=>"Notre carte évolue et nos plats aussi ! L’Hostellerie de l’Astéracée a changé certains de ses fournisseurs. Désormais, nous travaillons uniquement avec des produits frais, locaux et de saison. Notre chef étoilé et son équipe s’efforcent de toujours vous offrir une expérience culinaire d’exception.",
                         "en"=>"Our menu is changing and our dishes too! The Hostellerie de l'Asteraceae has changed some of its suppliers. From now on, we only work with fresh, local and seasonal products. Our starred chef and his team strive to always offer you an exceptional culinary experience."
+                    ],
+                    JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Les nouveautés",
+                        "en"=>"News"
                     ],
                     JSON_UNESCAPED_UNICODE),
                 'media_id' => '12',

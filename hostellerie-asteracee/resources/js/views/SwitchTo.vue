@@ -19,7 +19,7 @@
 
 <script>
 // import Header from '../subComponents/Header.vue';
-import storage from '../store';
+import storage from '../services/localStorageProvider';
 export default {
     name: 'SwitchTo',
     components: {
@@ -48,7 +48,7 @@ export default {
             this.$router.push({name:"Home"})
         },
         changeToEnglish : function(){
-            storage.set("language", "eng");
+            storage.set("language", "en");
             this.$router.push({name:"Home"})
         }
     }

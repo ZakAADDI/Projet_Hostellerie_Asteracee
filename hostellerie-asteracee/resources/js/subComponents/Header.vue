@@ -6,15 +6,14 @@
 
 
         <a
-        v-on:click="changeTo"
-        :to="{name: Home }">
+        v-on:click="changeTo">
             <img class="flag" src="../assets/EngFrFlag.png" alt="English Flag" >
         </a>
     </div>
 </template>
 
 <script>
-import storage from '../store/index';
+import storage from '../services/localStorageProvider';
 export default {
     name: 'Header',
     components: {

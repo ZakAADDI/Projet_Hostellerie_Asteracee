@@ -28,19 +28,17 @@ class DealController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title_fr' => 'required|string|max:100',
-            'title_en' => 'required|string|max:100',
-            'content_fr' => 'required|string|max:100',
-            'content_en' => 'required|string|max:100',
-            'is_active' => 'required|boolean'
+            'title' => 'required|string|max:100',
+            'content' => 'required|string|max:100',
+            'is_active' => 'required|boolean',
+            'section' => 'required|string|max:100'
 
         ]);
         $deals = Deal::create([
-            'title_fr' => $request->title_fr,
-            'title_en' => $request->title_en,
-            'content_fr' => $request->content_fr,
-            'content_en' => $request->content_en,
+            'title' => $request->title,
+            'content' => $request->content,
             'is_active' => $request->is_active,
+            'section' => $request->section
         ]);
         return response()->json($deals, 201);
     }
@@ -102,6 +100,7 @@ class DealController extends Controller
                     ->orderBy('updated_at', 'asc')
                     ->limit(2)
                     ->get();
-        return response()->json($deals);
+        return response()->json(DealResource::Collection($deals));
+
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use Illuminate\Http\Request;
@@ -16,9 +16,16 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $media = Media::all();
+        // $media = Media::all();
 
         return response()->json(MediaResource::Collection(Media::all(), 200));
+
+        echo "CurrentLocale : " . App::currentLocale();
+        echo "<br>";
+        $local = "en";
+        App::setLocale($local);
+        echo "NewCurrentLocale : " . App::currentLocale();
+
     }
 
     /**

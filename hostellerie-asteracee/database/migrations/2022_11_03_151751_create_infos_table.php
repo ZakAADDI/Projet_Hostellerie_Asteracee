@@ -17,6 +17,12 @@ class CreateInfosTable extends Migration
             $table->id();
             $table->json('title');
             $table->json('content');
+            $table->json('section')->default(json_encode(
+                [
+                    "fr"=>"Les nouveautés",
+                    "en"=>"News"
+                ],
+                JSON_UNESCAPED_UNICODE));
             $table->unsignedBigInteger('media_id');
             $table->string('publication_date');
             $table->timestamps();

@@ -22,6 +22,11 @@ class Services extends Seeder
                         "en"=>"Gastronomic Restaurant"
                     ],
                     JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Nos Services",
+                        "en"=>"Our Services"
+                    ],JSON_UNESCAPED_UNICODE),
                 'content'=> json_encode(
                     [
                         "fr"=>"Content en Français",
@@ -40,6 +45,11 @@ class Services extends Seeder
                         "en"=>"Relaxation"
                     ],
                     JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Nos Services",
+                        "en"=>"Our Services"
+                    ],JSON_UNESCAPED_UNICODE),
                 'content'=> json_encode(
                     [
                         "fr"=>"Content en Français",
@@ -58,6 +68,11 @@ class Services extends Seeder
                         "en"=>"Body Wellness"
                     ],
                     JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Nos Services",
+                        "en"=>"Our Services"
+                    ],JSON_UNESCAPED_UNICODE),
                 'content'=> json_encode(
                     [
                         "fr"=>"Content en Français",

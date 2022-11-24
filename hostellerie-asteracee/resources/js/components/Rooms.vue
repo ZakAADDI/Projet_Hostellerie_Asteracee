@@ -2,8 +2,8 @@
     <section class="bg-white light:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv shadow-md shadow-gray-700" >
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 v-if="language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Nos Chambres</h2>
-                <h2 v-if="!language" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">Our Rooms</h2>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">{{ this.section }}</h2>
+
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
 
@@ -11,7 +11,13 @@
                 <div
                     v-for="room in rooms" :key=room.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
-                    <Card :showPrice="true" :image="room.media" :titleFr="room.type" :titleEn="room.type" :price="room.price" :description="room.description"/>
+                    <Card
+                    :showPrice="true"
+                    :image="room.media['data']"
+                    :alt="room.media['alt']"
+                    :title="room.type"
+                    :price="room.price"
+                    :description="room.description"/>
                 </div>
 
             </div>
@@ -20,30 +26,24 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosProvider from "../services/axiosConfigProvider"
 import Card from '../components/Card.vue'
-import storage from '../store/index.js'
 export default {
     name: 'Rooms',
     components: {
         Card
     },
     data(){
-        return{
-            rooms : []
-        }
-    },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            return language === "fr";
+        return {
+            section: '',
+            rooms: []
         }
     },
     async created(){
-        const baseUri = 'http://127.0.0.1:8000/api';
-        let response = await axios.get(baseUri + '/rooms');
-        this.rooms = response.data;
-        console.log(this.rooms);
+        this.rooms = (await axiosProvider.get('/rooms'))?.data;
+        this.section = this.rooms[0].section;
+        this.token = decodeURIComponent(document.cookie);
+        console.log(this.token)
     }
 }
 </script>

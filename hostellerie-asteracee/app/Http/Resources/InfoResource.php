@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Resources;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\App;
 use App\Http\Resources\MediaResource;
-
-class RoomResource extends JsonResource
+class InfoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,12 +17,11 @@ class RoomResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'title' => $this->getTranslation('title', App::getLocale()),
             'section' => $this->getTranslation('section', App::getLocale()),
-            'description'=> $this->getTranslation('description', App::getLocale()),
-            'price' => $this->price,
-            'type' => $this->type,
-            'capacity' => $this->capacity,
-            'media' => new MediaResource($this->media)
+            'content'=> $this->getTranslation('content', App::getLocale()),
+            'media' => new MediaResource($this->media),
+            'publication_date' => $this->publication_date
         ];
     }
 }

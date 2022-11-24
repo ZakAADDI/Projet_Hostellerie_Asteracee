@@ -27,6 +27,12 @@ class Deals extends Seeder
                         "en"=>"New for any reservation of a minimum luxury room, we offer you access to the spa"
                     ],
                     JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Offres Exceptionnelles",
+                        "en"=>"Special Offers"
+                    ],
+                    JSON_UNESCAPED_UNICODE),
                 'is_active' => true,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -44,6 +50,12 @@ class Deals extends Seeder
                         "en"=>"From November 2 to November 12, book a deluxe room for the price of a standard room"
                     ],
                     JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Offres Exceptionnelles",
+                        "en"=>"Special Offers"
+                    ],
+                    JSON_UNESCAPED_UNICODE),
                 'is_active' => true,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -59,6 +71,12 @@ class Deals extends Seeder
                     [
                         "fr"=>"Du 5 au 31 décembre, bénéficier de la taxe de séjour offerte pour toute réservation",
                         "en"=>"From December 5 to 31, benefit from the tourist tax offered for any reservation"
+                    ],
+                    JSON_UNESCAPED_UNICODE),
+                'section'=> json_encode(
+                    [
+                        "fr"=>"Offres Exceptionnelles",
+                        "en"=>"Special Offers"
                     ],
                     JSON_UNESCAPED_UNICODE),
                 'is_active' => false,
