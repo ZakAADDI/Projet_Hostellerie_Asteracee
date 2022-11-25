@@ -1,5 +1,5 @@
 <template>
-    <span class="border-4 border-[#D2BD4D] p-2 h-64 my-2 flex flex-col w-1/4 justify-around items-center">
+    <span class="border-4 border-[#E6B34B] p-2 h-64 my-2 flex flex-col w-1/4 justify-around items-center">
                 <div class="properties">
                     <p>Titre de l'offre :{{ dealProps.title}}</p>
                     <p>Description {{ dealProps.content }}</p>

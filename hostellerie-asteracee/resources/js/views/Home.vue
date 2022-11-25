@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <Hero />
+        <BookingBanner />
         <Separator />
         <Rooms />
         <DealsBanner/>
@@ -10,6 +11,7 @@
         <News />
         <Separator />
         <Reviews />
+        <Prestations />
     </div>
 </template>
 
@@ -21,6 +23,8 @@ import Services from '../components/Services.vue'
 import News from '../components/News.vue'
 import Reviews from '../components/Reviews.vue'
 import DealsBanner from '../subComponents/DealsBanner.vue'
+import BookingBanner from '../components/BookingBanner.vue'
+import Prestations from '../subComponents/Prestations.vue'
 export default {
     name: 'Home',
     components: {
@@ -30,7 +34,9 @@ export default {
     Services,
     News,
     Reviews,
-    DealsBanner
+    DealsBanner,
+    BookingBanner,
+    Prestations
 }
 }
  // On page load or when changing themes, best to add inline in `head` to avoid FOUC

@@ -49,7 +49,7 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: #D2BD4D;
+    background-color: #E6B34B;
     height: 600px;
     width: 60vw;
     margin-left: 20vw;
@@ -69,7 +69,7 @@ export default {
     position: absolute;
 }
 .video{
-    background-color: black;
+    background-color: #272023;
     height: 170%;
     width: 50vw;
     display: flex;

@@ -15,12 +15,14 @@ class InfoResource extends JsonResource
      */
     public function toArray($request)
     {
+        $media = new MediaResource($this->media);
         return [
             'id' => $this->id,
             'title' => $this->getTranslation('title', App::getLocale()),
             'section'=> $this->getTranslation('section', App::getLocale()),
             'content'=> $this->getTranslation('content', App::getLocale()),
-            'media' => new MediaResource($this->media),
+            'media_url' => $media['url'],
+            'media_alt' => $media['alt'],
             'publication_date' => $this->publication_date
         ];
     }

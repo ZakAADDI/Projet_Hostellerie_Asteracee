@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col sm:flex-row justify-evenly bg-black text-white border-t-4 border-t-[#D2BD4D]">
+    <div class="flex flex-col sm:flex-row justify-evenly bg-[#272023] text-white border-t-4 border-t-[#E6B34B]">
 
         <!-- LOCATION -->
         <div class="flex-col justify-center items-center p-5 order-1">
@@ -12,7 +12,7 @@
                 <a href="*">Accueil</a>
                 <a href="*">{{ sectionRoom }}</a>
                 <a href="*">{{ sectionService }}</a>
-                  <router-link :to="{ name: 'BackOffice' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
+                  <router-link :to="{ name: 'BackOffice' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 {{ sectionNews }}
             </router-link>
             </div>

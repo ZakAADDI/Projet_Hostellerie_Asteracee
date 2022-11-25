@@ -90,7 +90,7 @@ input{
     border: 2px solid gray;
 }
 button{
-    background-color: #D2BD4D;
+    background-color: #E6B34B;
     padding: 0.5rem;
     border-radius: 15px;
     margin: 1rem;

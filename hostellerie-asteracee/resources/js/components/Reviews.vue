@@ -96,7 +96,7 @@ img{
     width: 80vw;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid #D2BD4D;
+    border: 3px solid #E6B34B;
     margin-bottom: 3rem;
     height: auto;
 }
@@ -157,27 +157,27 @@ div.item {
 div.item:nth-of-type(1) {
   --offset: 1;
   background-color: white;
-  border: 2px solid #D2BD4D;
+  border: 2px solid #E6B34B;
 }
 div.item:nth-of-type(2) {
   --offset: 2;
   background-color: white;
-  border: 2px solid #D2BD4D;
+  border: 2px solid #E6B34B;
 }
 div.item:nth-of-type(3) {
   --offset: 3;
   background-color: white;
-  border: 2px solid #D2BD4D;
+  border: 2px solid #E6B34B;
 }
 div.item:nth-of-type(4) {
   --offset: 4;
   background-color: white;
-  border: 2px solid #D2BD4D;
+  border: 2px solid #E6B34B;
 }
 div.item:nth-of-type(5) {
   --offset: 5;
   background-color: white;
-  border: 2px solid #D2BD4D;
+  border: 2px solid #E6B34B;
 }
 
 input:nth-of-type(1) {

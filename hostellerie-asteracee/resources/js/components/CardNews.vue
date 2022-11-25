@@ -1,10 +1,10 @@
 <template>
-    <section class="flex flex-col lg:flex-row 2xl:flex-row xl:flex-row items-center bg-white border shadow-md shadow-[#D2BD4D] w-3/4 backgroundNews">
+    <section class="flex flex-col lg:flex-row 2xl:flex-row xl:flex-row items-center bg-white border shadow-md shadow-[#E6B34B] w-3/4 backgroundNews">
         <img v-if="!isEven" class="object-cover h-auto w-48" src="https://www.ville-rieumes.fr/wp-content/uploads/sites/1427/2021/03/travaux-voirie.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ title }}</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-[#272023] dark:text-white">{{ title }}</h5>
             <h2 class="mb-2 text-2x1 font-bold dark:text-white">{{ date }}</h2>
-            <p class="mb-3 font-normal text-black">{{ content }}</p>
+            <p class="mb-3 font-normal text-[#272023]">{{ content }}</p>
         </div>
         <img v-if="isEven" class="object-cover h-auto w-48" src="https://www.hthpiscine.fr/userfiles/images/Piscine_Hiver.png" alt="">
 
@@ -37,6 +37,6 @@ export default {
     margin-right: auto;
     margin-bottom: 2rem;
     margin-top: 2rem;
-    border: 2px solid #D2BD4D;
+    border: 2px solid #E6B34B;
 }
 </style>

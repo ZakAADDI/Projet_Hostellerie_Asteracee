@@ -4,35 +4,35 @@
         <h2 class="font-bold text-2xl mt-6">{{this.sectionRooms}}</h2>
             <button type="button" class="border-4 border-gray-300 bg-amber-200 p-2 rounded-lg" @click="clicked">Add new Room</button>
 
-        <div class="roomsList flex justify-between border-b-4 border-b-black">
+        <div class="roomsList flex justify-between border-b-4 border-b-[#272023]">
             <BoCardRooms  v-for="room in rooms" :key=room.id
             :roomProps="room" />
         </div>
 
         <h2 class="font-bold text-2xl mt-6">{{this.sectionDeals}}</h2>
         <button class="border-4 border-gray-300 bg-amber-200 p-2 rounded-lg" @click="clicked">Add new Deal</button>
-        <div class="newsList flex justify-between border-b-4 border-b-black">
+        <div class="newsList flex justify-between border-b-4 border-b-[#272023]">
             <BoCardDeals v-for="deal in deals" :key=deal.id
              :dealProps="deal" />
         </div>
 
         <h2 class="font-bold text-2xl mt-6">{{this.sectionServices}}</h2>
         <button class="border-4 border-gray-300 bg-amber-200 p-2 rounded-lg" @click="clicked">Add new Service</button>
-        <div class="servicesList flex justify-between border-b-4 border-b-black">
+        <div class="servicesList flex justify-between border-b-4 border-b-[#272023]">
             <BoCardServices v-for="service in services" :key=service.id
              :serviceProps="service" />
         </div>
 
         <h2 class="font-bold text-2xl mt-6">{{this.sectionInfos}}</h2>
         <button class="border-4 border-gray-300 bg-amber-200 p-2 rounded-lg" @click="clicked">Add new Info</button>
-        <div class="reviewsList flex justify-between border-b-4 border-b-black">
+        <div class="reviewsList flex justify-between border-b-4 border-b-[#272023]">
             <BoCardInfos v-for="info in infos" :key=info.id
             :infoProps="info"/>
         </div>
 
          <h2 class="font-bold text-2xl mt-6">{{this.sectionReviews}}</h2>
          <button class="border-4 border-gray-300 bg-amber-200 p-2 rounded-lg" @click="clicked">Add new Review</button>
-        <div class="reviewsList flex justify-between border-b-4 border-b-black">
+        <div class="reviewsList flex justify-between border-b-4 border-b-[#272023]">
 
         </div>
     </div>

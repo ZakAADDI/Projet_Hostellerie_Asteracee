@@ -1,5 +1,5 @@
 <template>
-    <span class="border-4 border-[#D2BD4D] p-2 h-52 my-2 flex flex-col w-1/4 justify-around items-center">
+    <span class="border-4 border-[#E6B34B] p-2 h-52 my-2 flex flex-col w-1/4 justify-around items-center">
                 <div class="properties">
                     <p>Type de chambre :{{ roomProps.type}}</p>
                     <p>Prix : {{ roomProps.price }}€</p>

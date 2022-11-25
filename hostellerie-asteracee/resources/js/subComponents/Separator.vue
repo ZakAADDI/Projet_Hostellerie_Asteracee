@@ -21,12 +21,12 @@ export default {
 
 <style scoped>
 .separator{
-    border-top: 3px solid #D2BD4D;
+    border-top: 3px solid #E6B34B;
     width: 50vw;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
-    background-color: black;
+    background-color: #272023;
 }
 img{
     margin-left: auto;

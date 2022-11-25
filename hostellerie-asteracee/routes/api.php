@@ -110,8 +110,10 @@ Route::get('/infos/{id}', [\App\Http\Controllers\API\InfoController::class,'show
 
 // SERVICES
 Route::get('/services', [\App\Http\Controllers\API\ServiceController::class,'index']);
-Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class,'show']);
 
+// Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class,'show']);
+// });
 // DEALS
 Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
 Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);

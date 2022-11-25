@@ -78,13 +78,13 @@ a{
     justify-content: center;
     align-items: center;
     margin-top: 30vh;
-    background-color: black;
-    color: #D2BD4D;
+    background-color:#272023;
+    color: #E6B34B;
     width: 400px;
     padding: 2rem;
     margin-left: auto;
     margin-right: auto;
-    border: 40px solid #D2BD4D;
+    border: 40px solid #E6B34B;
 }
 @media screen and (min-width: 576px) {
 

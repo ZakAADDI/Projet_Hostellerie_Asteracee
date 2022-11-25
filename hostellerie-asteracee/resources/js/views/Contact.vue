@@ -27,9 +27,9 @@ export default {
 form{
     display: flex;
     flex-direction: column;
-    border: 3px solid #D2BD4D;
+    border: 3px solid #E6B34B;
     width: 30vw;
-    background-color: black;
+    background-color: #272023;
     margin: auto;
     margin-top: 20vh;
     padding: 2rem;
@@ -39,7 +39,7 @@ label{
 }
 button{
 
-    border: 3px solid #D2BD4D;
+    border: 3px solid #E6B34B;
     border-radius: 15px;
     padding-top: 2rem;
     display: flex;

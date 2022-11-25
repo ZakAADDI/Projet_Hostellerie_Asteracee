@@ -1,0 +1,55 @@
+<template>
+     <form @click="submitForm" class="bookingForm shadow-md shadow-gray-700 flex justify-around items-center">
+        <div class="border-2 border-[#E6B34B] p-4 rounded-md text-white">
+            <label for="startingDate">Starting date:</label>
+        <input type="date" name="startingDate" min="2021-01-01" max="2023-12-31" class="text-[#272023] ml-2" v-model="startingDate">
+        </div>
+        <div class="border-2 border-[#E6B34B] p-4 rounded-md text-white">
+            <label for="endingDate">Ending date:</label>
+        <input type="date" name="endingDate" min="2021-01-01" max="2023-12-31" class="text-[#272023] ml-2" v-model="endingDate">
+        </div>
+        <div class="border-2 border-[#E6B34B] p-4 rounded-md text-white flex justify-center">
+            <label for="occupants">Pers :</label>
+            <input type="number" name="occupants" min="1" max="10" class="text-[#272023] rounded-m ml-2" v-model="numberOccupants">
+        </div>
+        <div>
+            <button type="button" class="bg-[#E6B34B] p-4 rounded-md text-[#272023]">Réserver</button>
+        </div>
+
+    </form>
+</template>
+
+<script>
+
+export default {
+    name: 'BookingBanner',
+     data(){
+         return{
+            startingDate: "",
+            endingDate: "",
+            numberOccupants: ""
+         }
+     },
+    methods:{
+        submitForm :function(event){
+            event.preventDefault();
+            console.log(this.startingDate);
+            console.log(this.endingDate);
+            console.log(this.numberOccupants + ' personnes');
+        }
+    }
+
+}
+</script>
+
+<style scoped>
+.bookingForm{
+    border-top: 3px solid #E6B34B;
+    height: 6rem;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    background-color: #272023;
+}
+</style>

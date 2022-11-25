@@ -55,8 +55,8 @@ class InfoController extends Controller
      */
     public function show(int $id)
     {
-        $singleInfo = Info::with('media')->where('id',$id)->get();
-        return response()->json($singleInfo, 200);
+        $info = Info::with('media')->findOrFail($id);
+        return response()->json($info, 200);
     }
 
     /**

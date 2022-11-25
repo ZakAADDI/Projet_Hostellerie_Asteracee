@@ -1,6 +1,6 @@
 <template>
 
-    <div class="w-full bg-black items-center justify-end flex h-24">
+    <div class="w-full bg-[#272023] items-center justify-end flex h-24">
         <div>
             <router-link :to="{name: 'Home'}">
                 <img class="logo top-0 w-2/4" :src=logoHeader alt="Logo Hostellerie Asteracée">
@@ -9,10 +9,10 @@
 
         <div class="flex flex-col lg:flex-row w-48">
 
-            <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
+            <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Nous Contacter
             </router-link>
-            <router-link :to="{ name: 'Connexion' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
+            <router-link :to="{ name: 'Connexion' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Connexion
             </router-link>
 

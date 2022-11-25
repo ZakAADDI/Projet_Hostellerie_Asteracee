@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Resources\ServiceResource;
+use App\Models\Media;
+
 class ServiceController extends Controller
 {
     /**
@@ -51,8 +53,8 @@ class ServiceController extends Controller
      */
     public function show(int $id)
     {
-        $service = Service::findOrFail($id);
-        return response()->json(ServiceResource::make($service));
+        $service = Service::with('media')->findOrFail($id);
+        return response()->json($service,200);
     }
 
     /**
