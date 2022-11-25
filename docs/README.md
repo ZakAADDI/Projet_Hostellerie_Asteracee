@@ -78,3 +78,31 @@ un 'localhost' (127.0.0.1:8000) doit se lancer.
 ​
 7. Une fois arrivé sur la page une erreure peut se présenter en nous demandant de générer une clé API, qui sert pour s'interfacer avec laravel, il faut simplement cliquer sur "Générer la clé" puis "refresh now".
     ```
+
+stocker des images dans laravel :
+1/ faire un dossier Images dans public/storage/
+2/ faire php artisan storage:link
+et tester le chemin en dure à partir de storage/images/xxx.jpg
+php artisan storage:link
+
+faire un chargement de la base de données avec les datas initiales:
+1/php artisan migrate:fresh
+2/ php artisan db:seed --class=Sprint1
+
+faire un controller:
+php artisan storage:link
+
+faire un model:
+php artisan storage:link
+
+faire tourner un seeder :
+php artisan db:seed --class=Reviews
+
+faire unn Middleware de contrainte pour Admin :
+php artisan make:middleware RestrictRegistrationToOneAdmin
+coder le if user->role === 1
+dans Kernel.php
+ajouter 
+protected $routeMiddleware = [
+    'restrictothers' => \App\Http\Middleware\RestrictRegistrationToOneAdmin::class
+];

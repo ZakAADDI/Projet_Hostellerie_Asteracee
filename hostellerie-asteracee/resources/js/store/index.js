@@ -1,14 +1,30 @@
-import { createStore } from 'vuex'
+const store = {
+    state:{
+        user: [
+                {
+                    email: '',
+                    token: ''
+                }
+        ]
+    },
+    getters:{
+        oneUser(state){
+            return state.user;
+        }
+    },
+    mutations:{
+        addUser(state, newUser){
+            // if(newUser.token !== undefined && newUser.email == 'string'){
+                state.user.push({
+                    email: newUser.email,
+                    token: newUser.token
+                })
+            },
+            removeUser(state){
 
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+            }
+        }
+}
+
+
+export default store;

@@ -1,0 +1,147 @@
+<template>
+    <div class="hero shadow-md shadow-gray-700">
+        <div class="media">
+            <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftAlt>
+            <div class="video">
+                <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
+                <p>{{ hero.text }}</p>
+            </div>
+
+            <img class="rightImg shadow-md shadow-gray-700" :src=rightImg :alt=rightAlt>
+        </div>
+    </div>
+</template>
+
+<script>
+import axiosProvider from "../services/axiosConfigProvider"
+export default {
+    name: 'Hero',
+
+    data(){
+        return{
+            hero : [],
+            leftImg : '',
+            rightImg : '',
+            centerImg : '',
+            leftAlt : '',
+            rightAlt : '',
+            centerAlt : ''
+        }
+    },
+    async created(){
+        this.hero = (await axiosProvider.get('/heroes'))?.data;
+        this.leftImg = this.hero.left_media['data'].url
+        this.rightImg = this.hero.right_media['data'].url
+        this.leftAlt = this.hero.left_media['data'].alt
+        this.leftAlt = this.hero.right_media['data'].alt
+    }
+}
+</script>
+
+<style scoped>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
+
+.hero{
+    font-family: 'Radley', serif;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #D2BD4D;
+    height: 600px;
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    box-shadow: 4px 4px lightyellow;
+    margin-bottom: 3rem;
+}
+.media{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.rightImg, .leftImg{
+    height: 400px;
+    margin-top: 10rem;
+    position: absolute;
+}
+.video{
+    background-color: black;
+    height: 170%;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10rem;
+    flex-direction: column;
+    color: white;
+}
+p{
+    margin-top: 28rem;
+}
+.logo{
+    position: absolute;
+}
+.rightImg{
+        display: none;
+
+    }
+.leftImg{
+        display: none;
+    }
+
+@media screen and (min-width: 576px) {
+    .rightImg{
+        display: none;
+    }
+    .leftImg{
+        display: none;
+    }
+
+}
+@media screen and (min-width: 768px) {
+    .rightImg{
+        display: none;
+    }
+    .leftImg{
+        display: none;
+    }
+
+
+}
+@media screen and (min-width: 992px) {
+    .rightImg{
+        display: none;
+    }
+    .leftImg{
+        display: none;
+    }
+
+}
+@media screen and (min-width: 1200px) {
+    .rightImg{
+        display: none;
+    }
+    .leftImg{
+        display: none;
+    }
+
+}
+@media screen and (min-width: 1400px) {
+    .leftImg{
+        left: 10vw;
+        top: 40px;
+        display: block;
+    }
+    .rightImg{
+        right: 10vw;
+        top: 40px;
+        display: block;
+    }
+
+}
+</style>
+

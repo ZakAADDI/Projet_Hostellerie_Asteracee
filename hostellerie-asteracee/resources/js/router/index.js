@@ -1,17 +1,41 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Home from '../views/Home.vue'
-
+import SwitchTo from '../views/SwitchTo.vue'
+import Contact from '../views/Contact.vue'
+import Connexion from '../views/Connexion.vue'
+import BackOffice from '../views/BackOffice.vue'
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/switchTo',
+    name: 'SwitchTo',
+    component: SwitchTo
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
+  },
+  {
+    path: '/connexion',
+    name: 'Connexion',
+    component: Connexion
+  },
+  {
+    path: '/backOffice',
+    name: 'BackOffice',
+    component: BackOffice
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
+  base : process.env.BASE_URL,
   routes
 })
 
