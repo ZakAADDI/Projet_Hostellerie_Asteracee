@@ -1,10 +1,4 @@
 <?php
-    /**
-     * Created by MaisonDuNet
-     *
-     * @author   Alexandre PERRIGAULT <alexandre@maisondunet.com>
-     * @date     28/09/2021
-     */
 
     namespace App\Http\Middleware;
 
