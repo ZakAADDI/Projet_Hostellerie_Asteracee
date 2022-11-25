@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import SwitchTo from '../views/SwitchTo.vue'
 import Contact from '../views/Contact.vue'
 import Connexion from '../views/Connexion.vue'
-
+import BackOffice from '../views/BackOffice.vue'
 const routes = [
   {
     path: '/',
@@ -25,6 +25,11 @@ const routes = [
     path: '/connexion',
     name: 'Connexion',
     component: Connexion
+  },
+  {
+    path: '/backOffice',
+    name: 'BackOffice',
+    component: BackOffice
   }
 ]
 

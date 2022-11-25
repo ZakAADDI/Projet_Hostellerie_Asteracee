@@ -12,7 +12,9 @@
                 <a href="*">Accueil</a>
                 <a href="*">{{ sectionRoom }}</a>
                 <a href="*">{{ sectionService }}</a>
-                <a href="*">{{ sectionNews }}</a>
+                  <router-link :to="{ name: 'BackOffice' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
+                {{ sectionNews }}
+            </router-link>
             </div>
         </div>
 

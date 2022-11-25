@@ -1,6 +1,6 @@
 <template>
     <div class="connexion">
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="submitForm" class="mt-8">
                 <label for="email">Email</label>
                 <input type="email" name="email" v-model="email">
                  <div class="error" v-if="emailEmpty">
@@ -22,7 +22,8 @@
 
 <script>
 import axios from 'axios'
-import storage from '../services/localStorageProvider.js'
+import storage from '../store/index'
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Connexion',
     components:{
@@ -49,19 +50,25 @@ export default {
                 email: this.email,
                 password: this.password
                 };
-                await axios.post('http://127.0.0.1:8000/api/login', this.datas).then((response) => {
+                this.response = await axios.post('http://127.0.0.1:8000/api/login', this.datas);
+                localStorage.set("user", [this.email,this.response.data.token]);
+                // if(this.response.data.status == true){
+                //      storage.mutations.addUser(JSON.stringify({
+                //         email: this.email,
+                //         token: this.response.token
+                //         }));
+                //         console.log(storage.getters.oneUser)
+
                     this.$router.push({ name: 'Home'});
-                })
-                .catch(
-                    (error) => {
-                        this.matching = true;
-                    }
-                );
+                }else{
+                    this.matching = true;
+                }
+
             }
     }
 }
 
-}
+
 </script>
 
 <style scoped>
@@ -70,7 +77,7 @@ export default {
 }
 form{
     border: 1px solid gray;
-    margin-top: 2rem;
+    margin-top: 8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -15,6 +15,7 @@ class DealResource extends JsonResource
     public function toArray($request)
     {
         return [
+                'id' => $this->id,
                 'title' => $this->getTranslation('title', App::getLocale()),
                 'content' => $this->getTranslation('content', App::getLocale()),
                 'section' => $this->getTranslation('section', App::getLocale()),

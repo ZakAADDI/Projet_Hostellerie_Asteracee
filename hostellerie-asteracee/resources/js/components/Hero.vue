@@ -55,6 +55,7 @@ export default {
     margin-left: 20vw;
     margin-right: 20vw;
     box-shadow: 4px 4px lightyellow;
+    margin-bottom: 3rem;
 }
 .media{
     display: flex;
@@ -69,12 +70,12 @@ export default {
 }
 .video{
     background-color: black;
-    height: 155%;
+    height: 170%;
     width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -5rem;
+    margin-top: -10rem;
     flex-direction: column;
     color: white;
 }
