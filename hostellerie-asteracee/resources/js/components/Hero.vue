@@ -1,13 +1,13 @@
 <template>
     <div class="hero shadow-md shadow-gray-700">
         <div class="media">
-            <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftAlt>
+            <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftImgAlt>
             <div class="video">
                 <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
                 <p>{{ hero.text }}</p>
             </div>
 
-            <img class="rightImg shadow-md shadow-gray-700" :src=rightImg :alt=rightAlt>
+            <img class="rightImg shadow-md shadow-gray-700" :src=rightImg :alt=rightImgAlt>
         </div>
     </div>
 </template>
@@ -21,19 +21,17 @@ export default {
         return{
             hero : [],
             leftImg : '',
+            leftImgAlt : '',
             rightImg : '',
-            centerImg : '',
-            leftAlt : '',
-            rightAlt : '',
-            centerAlt : ''
+            rightImgAlt : ''
         }
     },
     async created(){
         this.hero = (await axiosProvider.get('/heroes'))?.data;
-        this.leftImg = this.hero.left_media['data'].url
-        this.rightImg = this.hero.right_media['data'].url
-        this.leftAlt = this.hero.left_media['data'].alt
-        this.leftAlt = this.hero.right_media['data'].alt
+        this.leftImg = this.hero.left_img;
+        this.leftAlt = this.hero.left_img_alt;
+        this.rightImg = this.hero.right_img;
+        this.rightImgAlt = this.hero.right_img_alt;
     }
 }
 </script>
