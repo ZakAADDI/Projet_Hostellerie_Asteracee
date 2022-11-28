@@ -30,7 +30,8 @@ export default {
     },
     async created(){
         this.news = (await axiosProvider.get('/infos'))?.data;
-        this.section = this.news[0].section
+        this.sections = (await axiosProvider.get('/sections'))?.data;
+        this.section = this.sections[2].name;
 
     }
 }

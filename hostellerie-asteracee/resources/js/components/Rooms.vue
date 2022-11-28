@@ -41,7 +41,9 @@ export default {
     },
     async created(){
         this.rooms = (await axiosProvider.get('/rooms'))?.data;
-        this.section = this.rooms[0].section;
+        this.sections = (await axiosProvider.get('/sections'))?.data;
+        this.section = this.sections[0].name;
+
     }
 }
 </script>

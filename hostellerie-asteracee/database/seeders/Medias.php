@@ -54,7 +54,7 @@ class Medias extends Seeder
             ],
             [
                 'id' => '6',
-                'url' => '/storage/videos/Hostellerie.mp4',
+                'url' => 'https://www.youtube.com/embed/-B7VhYjd6xc',
                 'alt' => 'vidéo de présentation de l\'hostellerie',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

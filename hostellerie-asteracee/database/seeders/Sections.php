@@ -44,6 +44,16 @@ class Sections extends Seeder
                 'description'=> json_encode(["fr"=>"Les Nouveautés","en"=>"News"]),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'name'=> json_encode(
+                    [
+                        "fr"=>"Offres Exceptionnelles",
+                        "en"=>"Special Offers"
+                    ]),
+                'description'=> json_encode(["fr"=>"Offres Exceptionnelles","en"=>"Special Offers"]),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]
         ];
         Section::insert($datas);

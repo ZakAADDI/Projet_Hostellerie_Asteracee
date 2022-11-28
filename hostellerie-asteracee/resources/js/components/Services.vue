@@ -35,7 +35,8 @@ export default {
     },
     async created(){
         this.services = (await axiosProvider.get('/services'))?.data;
-        this.section = this.services[0].section;
+        this.sections = (await axiosProvider.get('/sections'))?.data;
+        this.section = this.sections[1].name;
     }
 }
 </script>
