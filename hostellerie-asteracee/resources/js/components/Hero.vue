@@ -23,7 +23,8 @@ export default {
             leftImg : '',
             leftImgAlt : '',
             rightImg : '',
-            rightImgAlt : ''
+            rightImgAlt : '',
+            centerMedia: ''
         }
     },
     async created(){
