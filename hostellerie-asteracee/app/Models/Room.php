@@ -4,17 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 
 class Room extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory;
 
-    protected $fillable = ['price','type','description','media_id','capacity','section'];
-    public $translatable = ['description','section'];
+    protected $fillable = ['room_types_id', 'room_number'];
 
-    public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function roomType(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Media::class, 'id', 'media_id');
+        return $this->hasOne(RoomType::class, 'id', 'room_types_id');
     }
 }
