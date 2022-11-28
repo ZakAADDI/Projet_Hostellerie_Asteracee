@@ -24,7 +24,7 @@ class Sprint1 extends Seeder
             Users::class,
             Deals::class,
             Sections::class,
-            Prestations::class
+            Prestations::class,
             Options::class
 
         ]);

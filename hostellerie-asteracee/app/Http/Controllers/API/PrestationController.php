@@ -43,4 +43,16 @@ class PrestationController extends Controller
 
         return response()->json(PrestationResource::make($prestation), 201);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(int $id)
+    {
+        $prestation = Prestation::findOrFail($id);
+        return response()->json(PrestationResource::make($prestation) ,200);
+    }
 }
