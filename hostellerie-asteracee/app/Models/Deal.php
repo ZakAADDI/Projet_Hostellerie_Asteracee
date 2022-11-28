@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class Deal extends Model
 {
     use HasFactory, HasTranslations;
-    
-    public $translatable = ['title', 'content', 'section'];
-    protected $fillable = ['title','content','is_active','section'];
+
+    public $translatable = ['title', 'content'];
+    protected $fillable = ['title','content','is_active'];
 }

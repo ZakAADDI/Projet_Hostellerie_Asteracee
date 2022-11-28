@@ -15,12 +15,6 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->json('section')->nullable()->default(json_encode(
-                [
-                    "fr"=>"Nos chambres",
-                    "en"=>"Our rooms"
-                ]
-            ));
             $table->float('price');
             $table->enum('type', ['Luxe', 'Suite', 'Standard']);
             $table->json('description');

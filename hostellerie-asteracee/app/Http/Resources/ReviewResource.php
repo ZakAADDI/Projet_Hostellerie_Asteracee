@@ -16,7 +16,6 @@ class ReviewResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'section'=> $this->getTranslation('section', App::getLocale()),
             'title' => $this->title,
             'content' => $this->content,
             'score' => $this->score,
