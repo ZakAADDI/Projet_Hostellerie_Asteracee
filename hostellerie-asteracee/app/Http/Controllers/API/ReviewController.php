@@ -52,7 +52,8 @@ class ReviewController extends Controller
      */
     public function show(int $id)
     {
-        return response()->json(Review::findOrFail($id), 200);
+        $review = Review::findOrFail($id);
+        return response()->json(ReviewResource::make($review), 200);
     }
 
     /**

@@ -23,9 +23,13 @@ class HeroResource extends JsonResource
         return [
             'text' => $this->getTranslation('text', App::getLocale()),
             'logo_media' => $logoMedia['url'],
-            'left_media' => $leftMedia['url'],
+            'logo_media_alt' => $logoMedia['alt'],
+            'left_img' => $leftMedia['url'],
+            'left_img_alt' => $leftMedia['alt'],
             'center_media' => $centerMedia['url'],
-            'right_media' => $rightMedia['url']
+            'center_media_alt' => $centerMedia['alt'],
+            'right_img' => $rightMedia['url'],
+            'right_img_alt' => $rightMedia['alt']
         ];
     }
 }

@@ -6,7 +6,8 @@
                       :title="n.title"
                       :content="n.content"
                       :date="n.publication_date"
-                      :image="n.media['data']"
+                      :image="n.media_url"
+                      :imageAlt="n.media_alt"
                       :index="i"/>
         </div>
 </div>
@@ -22,8 +23,9 @@ export default {
     },
     data(){
         return {
-            section : '',
-            news : []
+            news : [],
+            section : ''
+
         }
     },
     async created(){

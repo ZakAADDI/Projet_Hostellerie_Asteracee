@@ -54,7 +54,7 @@ class ServiceController extends Controller
     public function show(int $id)
     {
         $service = Service::with('media')->findOrFail($id);
-        return response()->json($service,200);
+        return response()->json(ServiceResource::make($service), 200);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\ContactResource;
 class ContactController extends Controller
 {
     /**
@@ -41,13 +41,13 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contact  $contact
+     * @param  int id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show(int $id)
     {
-
-        return response()->json($contact, 200);
+        $contact = Contact::findOrfail($id);
+        return response()->json(ContactResource::make($contact), 200);
     }
 
     /**
