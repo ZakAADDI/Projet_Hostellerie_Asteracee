@@ -41,8 +41,8 @@ export default {
     async created(){
 
         this.deals = (await axiosProvider.get('/sortedDeals'))?.data;
-        this.section = this.deals[0].section;
-        const words = this.section.split(" ");
+        this.section = (await axiosProvider.get('/sections'))?.data;
+        const words = this.section[3].name.split(" ");
         this.firstLineSection = words[0];
         this.secondLineSection = words[1];
 

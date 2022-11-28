@@ -76,8 +76,8 @@ export default {
         this.reviews = (await axiosProvider.get('/reviews'))?.data;
         this.displayImg = (await axiosProvider.get('/medias'))?.data;
 
-        this.femaleImg = this.displayImg[12].data;
-        this.maleImg = this.displayImg[13].data;
+        this.femaleImg = this.displayImg[12];
+        this.maleImg = this.displayImg[13];
     },
     methods:{
         isMale(review){

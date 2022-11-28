@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
-
     protected $fillable = ['room_types_id', 'room_number'];
 
     public function roomType(): \Illuminate\Database\Eloquent\Relations\HasOne

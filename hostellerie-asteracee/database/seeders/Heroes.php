@@ -19,8 +19,7 @@ class Heroes extends Seeder
                 [
                 "fr"=>"Un espace reposant entre Lac et Montagne",
                 "en"=>"A quite place between lake and mountain"
-            ],
-            JSON_UNESCAPED_UNICODE),
+            ]),
             'left_media_id' => '4',
             'center_media_id' => '6',
             'right_media_id' => '5',

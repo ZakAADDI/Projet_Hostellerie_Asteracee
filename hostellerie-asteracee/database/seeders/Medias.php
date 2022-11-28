@@ -54,7 +54,7 @@ class Medias extends Seeder
             ],
             [
                 'id' => '6',
-                'url' => '/storage/videos/Hostellerie.mp4',
+                'url' => 'https://www.youtube.com/embed/-B7VhYjd6xc',
                 'alt' => 'vidéo de présentation de l\'hostellerie',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -142,7 +142,64 @@ class Medias extends Seeder
                 'alt' => 'icon Instagram',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '19',
+                'url' => '/storage/images/alcool.svg',
+                'alt' => 'icon bar',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '20',
+                'url' => '/storage/images/coffee.svg',
+                'alt' => 'icon Coffee',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '21',
+                'url' => '/storage/images/dog-side.svg',
+                'alt' => 'icon Dog',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '22',
+                'url' => '/storage/images/pool.svg',
+                'alt' => 'icon Pool',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '23',
+                'url' => '/storage/images/human-baby-changing-table.svg',
+                'alt' => 'icon Baby',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '24',
+                'url' => '/storage/images/silverware-fork-knife.svg',
+                'alt' => 'icon Restaurant',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '25',
+                'url' => '/storage/images/smoking-off.svg',
+                'alt' => 'icon non Smoker',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'id' => '26',
+                'url' => '/storage/images/wifi.svg',
+                'alt' => 'icon Wifi',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]
+
 
         ];
         Media::insert($datas);

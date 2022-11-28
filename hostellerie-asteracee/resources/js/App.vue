@@ -59,9 +59,9 @@ export default {
 
         // Footer Icon
         this.iconSocial = (await axiosProvider.get('/medias'))?.data;
-        this.twitterLogo = this.iconSocial[15].data.url;
-        this.facebookLogo = this.iconSocial[16].data.url;
-        this.instagramLogo = this.iconSocial[17].data.url;
+        this.twitterLogo = this.iconSocial[15].url;
+        this.facebookLogo = this.iconSocial[16].url;
+        this.instagramLogo = this.iconSocial[17].url;
 
         // Footer Site Mapping
         this.rooms = (await axiosProvider.get('/rooms'))?.data;

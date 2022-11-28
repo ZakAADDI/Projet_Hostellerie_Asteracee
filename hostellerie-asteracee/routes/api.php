@@ -78,6 +78,11 @@ Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::delete('/users/{id}',[\App\Http\Controllers\API\UserController::class,'destroy']);
 });
 
+// Sections
+// Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
+    Route::post('/sections',[\App\Http\Controllers\API\SectionController::class,'store']);
+    Route::patch('/sections/{id}',[\App\Http\Controllers\API\SectionController::class,'update']);
+// });
 
 // -----------------------  Public Endpoints  ---------------------------- //
 // SANCTUM
@@ -120,7 +125,14 @@ Route::get('/services', [\App\Http\Controllers\API\ServiceController::class,'ind
 Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
 Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
 Route::get('/sortedDeals', [\App\Http\Controllers\API\DealController::class, 'showSorted']);
-});
+
+// Sections
+Route::get('/sections', [\App\Http\Controllers\API\SectionController::class,'index']);
+Route::get('/sections/{id}', [\App\Http\Controllers\API\SectionController::class,'show']);
+
+// PRESTATIONS
+Route::get('/prestations', [\App\Http\Controllers\API\PrestationController::class,'index']);
+Route::get('/prestations/{id}', [\App\Http\Controllers\API\PrestationController::class,'show']);
 
 // ROOMTYPES
 Route::get('/roomTypes', [\App\Http\Controllers\API\RoomTypeController::class,'index']);
@@ -130,3 +142,4 @@ Route::get('/roomTypes/{id}', [\App\Http\Controllers\API\RoomTypeController::cla
 Route::get('/options', [\App\Http\Controllers\API\OptionController::class,'index']);
 Route::get('/options/{id}', [\App\Http\Controllers\API\OptionController::class,'show']);
 
+});

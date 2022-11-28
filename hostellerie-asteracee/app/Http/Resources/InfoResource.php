@@ -19,7 +19,6 @@ class InfoResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->getTranslation('title', App::getLocale()),
-            'section'=> $this->getTranslation('section', App::getLocale()),
             'content'=> $this->getTranslation('content', App::getLocale()),
             'media_url' => $media['url'],
             'media_alt' => $media['alt'],

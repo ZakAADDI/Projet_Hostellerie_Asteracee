@@ -20,19 +20,12 @@ class Services extends Seeder
                     [
                         "fr"=>"Restaurant Gastronomique",
                         "en"=>"Gastronomic Restaurant"
-                    ],
-                    JSON_UNESCAPED_UNICODE),
-                'section'=> json_encode(
-                    [
-                        "fr"=>"Nos Services",
-                        "en"=>"Our Services"
-                    ],JSON_UNESCAPED_UNICODE),
+                    ]),
                 'content'=> json_encode(
                     [
                         "fr"=>"Content en Français",
                         "en"=>"Content en Anglais"
-                    ],
-                    JSON_UNESCAPED_UNICODE),
+                    ]),
                 'media_id' => '8',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -43,19 +36,12 @@ class Services extends Seeder
                     [
                         "fr"=>"SPA & bien-être",
                         "en"=>"Relaxation"
-                    ],
-                    JSON_UNESCAPED_UNICODE),
-                'section'=> json_encode(
-                    [
-                        "fr"=>"Nos Services",
-                        "en"=>"Our Services"
-                    ],JSON_UNESCAPED_UNICODE),
+                    ]),
                 'content'=> json_encode(
                     [
                         "fr"=>"Content en Français",
                         "en"=>"Content en Anglais"
-                    ],
-                    JSON_UNESCAPED_UNICODE),
+                    ]),
                 'media_id' => '9',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -66,19 +52,12 @@ class Services extends Seeder
                     [
                         "fr"=>"Sport & Fitness",
                         "en"=>"Body Wellness"
-                    ],
-                    JSON_UNESCAPED_UNICODE),
-                'section'=> json_encode(
-                    [
-                        "fr"=>"Nos Services",
-                        "en"=>"Our Services"
-                    ],JSON_UNESCAPED_UNICODE),
+                    ]),
                 'content'=> json_encode(
                     [
                         "fr"=>"Content en Français",
                         "en"=>"Content en Anglais"
-                    ],
-                    JSON_UNESCAPED_UNICODE),
+                    ]),
                 'media_id' => '10',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

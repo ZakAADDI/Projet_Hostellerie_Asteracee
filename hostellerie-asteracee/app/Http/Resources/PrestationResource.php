@@ -3,10 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\App;
-use App\Http\Resources\MediaResource;
 
-class ServiceResource extends JsonResource
+class PrestationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,8 +17,7 @@ class ServiceResource extends JsonResource
         $media = new MediaResource($this->media);
         return [
             'id' => $this->id,
-            'title'=> $this->getTranslation('title', App::getLocale()),
-            'content'=> $this->getTranslation('content', App::getLocale()),
+            'name' => $this->name,
             'media_url' => $media['url'],
             'media_alt' => $media['alt']
         ];
