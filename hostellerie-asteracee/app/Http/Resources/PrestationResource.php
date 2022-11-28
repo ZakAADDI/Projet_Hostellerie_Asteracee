@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MediaResource extends JsonResource
+class PrestationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,12 @@ class MediaResource extends JsonResource
      */
     public function toArray($request)
     {
+        $media = new MediaResource($this->media);
         return [
             'id' => $this->id,
-            'url' => $this->url,
-            'alt' => $this->alt
+            'name' => $this->name,
+            'media_url' => $media['url'],
+            'media_alt' => $media['alt']
         ];
     }
 }

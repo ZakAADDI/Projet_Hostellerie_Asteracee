@@ -78,6 +78,11 @@ Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::delete('/users/{id}',[\App\Http\Controllers\API\UserController::class,'destroy']);
 });
 
+// Sections
+// Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
+    Route::post('/sections',[\App\Http\Controllers\API\SectionController::class,'store']);
+    Route::patch('/sections/{id}',[\App\Http\Controllers\API\SectionController::class,'update']);
+// });
 
 // -----------------------  Public Endpoints  ---------------------------- //
 // SANCTUM
@@ -115,9 +120,20 @@ Route::get('/services', [\App\Http\Controllers\API\ServiceController::class,'ind
 // Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class,'show']);
 // });
+
 // DEALS
 Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
 Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
 Route::get('/sortedDeals', [\App\Http\Controllers\API\DealController::class, 'showSorted']);
-});
 
+
+// Sections
+Route::get('/sections', [\App\Http\Controllers\API\SectionController::class,'index']);
+Route::get('/sections/{id}', [\App\Http\Controllers\API\SectionController::class,'show']);
+
+// PRESTATIONS
+Route::get('/prestations', [\App\Http\Controllers\API\PrestationController::class,'index']);
+Route::get('/prestations/{id}', [\App\Http\Controllers\API\PrestationController::class,'show']);
+
+
+});

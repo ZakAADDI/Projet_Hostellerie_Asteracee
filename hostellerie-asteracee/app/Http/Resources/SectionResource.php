@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Resources;
-
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MediaResource extends JsonResource
+class SectionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,8 @@ class MediaResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'url' => $this->url,
-            'alt' => $this->alt
+            'name' => $this->getTranslation('name', App::getLocale()),
+            'description' => $this->getTranslation('description', App::getLocale()),
         ];
     }
 }
