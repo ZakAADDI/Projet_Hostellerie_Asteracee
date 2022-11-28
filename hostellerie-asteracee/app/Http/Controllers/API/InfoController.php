@@ -56,7 +56,7 @@ class InfoController extends Controller
     public function show(int $id)
     {
         $info = Info::with('media')->findOrFail($id);
-        return response()->json($info, 200);
+        return response()->json(InfoResource::make($info), 200);
     }
 
     /**

@@ -99,6 +99,7 @@ Route::get('/heroes', [\App\Http\Controllers\API\HeroController::class,'index'])
 
 // CONTACTS
 Route::get('/contacts', [\App\Http\Controllers\API\ContactController::class,'index']);
+Route::get('/contacts/{id}', [\App\Http\Controllers\API\ContactController::class,'show']);
 
 // MEDIAS
 Route::get('/medias', [\App\Http\Controllers\API\MediaController::class,'index']);

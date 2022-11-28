@@ -54,7 +54,7 @@ class DealController extends Controller
     public function show(int $id)
     {
         $deal = Deal::findOrFail($id);
-        return response()->json($deal);
+        return response()->json(DealResource::make($deal),200);
     }
 
     /**
