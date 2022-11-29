@@ -30,12 +30,8 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'price' => 'required|int',
-            'type' => 'required|max:25',
-            'description.fr' => 'required|max:256',
-            'description.en' => 'required|max:256',
-            'media_id' => 'required|exists:App\Models\Media,id|int',
-            'capacity' => 'required|int'
+            'room_types_id' => 'required|max:25',
+            'number' => 'required|room_number|int',
         ]);
 
         $room = new Room;
@@ -66,12 +62,8 @@ class RoomController extends Controller
     public function update(Request $request, int $id)
     {
         $this->validate($request,[
-            'price' => 'int',
-            'type' => 'max:25',
-            'description.fr' => 'max:256',
-            'description.en' => 'max:256',
-            'media_id' => 'exists:App\Models\Media,id|int',
-            'capacity' => 'int'
+            'room_types_id' => 'max:25',
+            'number' => 'room_number|int'
         ]);
 
         $room = Room::findOrFail($id);
