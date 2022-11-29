@@ -82,10 +82,20 @@ Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::patch('/bookings/{id}',[BookingController::class,'update']);
     Route::delete('/bookings/{id}',[BookingController::class,'destroy']);
 
+    // Sections
+    Route::post('/sections',[SectionController::class,'store']);
+    Route::patch('/sections/{id}',[SectionController::class,'update']);
 
-// Sections
-    Route::post('/sections',[\App\Http\Controllers\API\SectionController::class,'store']);
-    Route::patch('/sections/{id}',[\App\Http\Controllers\API\SectionController::class,'update']);
+    // ROOMTYPES
+    Route::post('/roomTypes',[RoomTypeController::class,'store']);
+    Route::patch('/roomTypes/{id}',[RoomTypeController::class,'update']);
+    Route::delete('/roomTypes/{id}',[RoomTypeController::class,'destroy']);
+
+    // OPTIONS
+    Route::post('/options',[OptionController::class,'store']);
+    Route::patch('/options/{id}',[OptionController::class,'update']);
+    Route::delete('/options/{id}',[OptionController::class,'destroy']);
+
  });
 
 
