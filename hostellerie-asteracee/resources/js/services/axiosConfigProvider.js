@@ -11,14 +11,14 @@ const axiosProvider = {
     post: async (endpoint, body) => {
         return axios.post(axiosProvider.baseUrl + endpoint, body),
         {
-            hearders: { Authorization: 'Bearer' + axiosProvider.getAuthorization()}
+            hearders: { Authorization: 'Bearer' + getAuthorization()}
         }
     },
 
     getAuthorization: async () => {
-        const user = await axios.get(axiosProvider.baseUrl + '/users');
-        /* can work because of missing token for 'get->/users' secured by isAdmin Middleware */
-        return user.token;
+        this.user = storage.get("user");
+       return this.token = this.user[1];
+
     },
 
     getConfig: () => {

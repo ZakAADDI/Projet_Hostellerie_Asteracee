@@ -11,6 +11,7 @@ use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\API\PrestationController;
 use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\RoomController;
+use App\Http\Controllers\API\RoomsPrestationController;
 use App\Http\Controllers\API\RoomTypeController;
 use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
@@ -88,6 +89,8 @@ Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::patch('/sections/{id}',[\App\Http\Controllers\API\SectionController::class,'update']);
  });
 
+ // ROOMSPRESTATION
+ Route::post('/roomsPrestations',[\App\Http\Controllers\API\RoomsPrestationController::class,'store']);
 
 // -----------------------  Public Endpoints  ---------------------------- //
 
@@ -152,4 +155,7 @@ Route::get('/roomTypes/{id}', [RoomTypeController::class,'show']);
 Route::get('/options', [OptionController::class,'index']);
 Route::get('/options/{id}', [OptionController::class,'show']);
 
+// ROOMSPRESTATIONS
+Route::get('/roomsPrestations', [RoomsPrestationController::class,'index']);
+Route::get('/roomsPrestations/{id}', [RoomsPrestationController::class,'show']);
 });

@@ -22,7 +22,7 @@ class RoomTypes extends Seeder
                 'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
                 'capacity' => '3',
                 'price' => 220,
-                'media_id' => '1',
+                'media_id' => 1,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -32,10 +32,10 @@ class RoomTypes extends Seeder
                 'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
                 'capacity' => '3',
                 'price' => 120,
-                'media_id' => '2',
+                'media_id' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
-                
+
             ],
             [
                 'id' => 3,
@@ -43,7 +43,7 @@ class RoomTypes extends Seeder
                 'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
                 'capacity' => '3',
                 'price' => 70,
-                'media_id' => '3',
+                'media_id' => 3,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]
