@@ -18,7 +18,7 @@ class SectionController extends Controller
     {
         $sections = Section::all();
 
-        return response()->json(SectionResource::Collection($sections), 200);
+        return response()->json(SectionResource::Collection($sections));
     }
 
     /**
@@ -42,7 +42,7 @@ class SectionController extends Controller
         ->setTranslations('description', $request->post('description'))
         ->save();
 
-        return response()->json(SectionResource::make($section), 201);
+        return response()->json(SectionResource::make($section));
     }
 
      /**
@@ -54,7 +54,7 @@ class SectionController extends Controller
     public function show(int $id)
     {
         $section = Section::findOrFail($id);
-        return response()->json(SectionResource::make($section), 200);
+        return response()->json(SectionResource::make($section));
     }
 
      /**
@@ -74,7 +74,7 @@ class SectionController extends Controller
         ]);
         $section = Section::findOrFail($id);
         $section->update($request->all());
-        return response()->json(SectionResource::make($section), 200);
+        return response()->json(SectionResource::make($section));
     }
 
     // /**

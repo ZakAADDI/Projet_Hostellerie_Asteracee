@@ -17,7 +17,7 @@ class HeroController extends Controller
     {
         $hero = Hero::with(['logoMedia','centerMedia','leftMedia','rightMedia'])->firstOrFail();
 
-        return response()->json(HeroResource::make($hero), 200);
+        return response()->json(HeroResource::make($hero));
     }
 
     /**
@@ -39,6 +39,6 @@ class HeroController extends Controller
         $hero = Hero::first();
         $hero->update($request->all());
 
-        return response()->json(HeroResource::make($hero), 200);
+        return response()->json(HeroResource::make($hero));
     }
 }

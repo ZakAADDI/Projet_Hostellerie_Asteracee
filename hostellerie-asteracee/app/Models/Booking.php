@@ -18,10 +18,10 @@ class Booking extends Model
         'card_number'
     ];
 
-//    public function room(): \Illuminate\Database\Eloquent\Relations\HasOne
-//    {
-//        return $this->hasOne(Room::class, 'id', 'room_id');
-//    }
+    public function room(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Room::class, 'id', 'room_id');
+    }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

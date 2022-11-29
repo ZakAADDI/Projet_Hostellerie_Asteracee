@@ -16,7 +16,7 @@ class ServiceResource extends JsonResource
      */
     public function toArray($request)
     {
-        $media = new MediaResource($this->media);
+        $media = $this->media;
         return [
             'id' => $this->id,
             'title'=> $this->getTranslation('title', App::getLocale()),

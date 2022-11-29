@@ -18,7 +18,7 @@ class PrestationController extends Controller
     {
         $prestations = Prestation::all();
 
-        return response()->json(PrestationResource::Collection($prestations), 200);
+        return response()->json(PrestationResource::Collection($prestations));
     }
 
     /**
@@ -41,7 +41,7 @@ class PrestationController extends Controller
         $prestation = new Prestation;
         $prestation->fill($request->post())->save();
 
-        return response()->json(PrestationResource::make($prestation), 201);
+        return response()->json(PrestationResource::make($prestation));
     }
 
     /**
@@ -53,6 +53,6 @@ class PrestationController extends Controller
     public function show(int $id)
     {
         $prestation = Prestation::findOrFail($id);
-        return response()->json(PrestationResource::make($prestation) ,200);
+        return response()->json(PrestationResource::make($prestation));
     }
 }

@@ -16,8 +16,8 @@ class RoomResource extends JsonResource
      */
     public function toArray($request)
     {
-        $roomType = new RoomTypeResource($this->roomType);
-        $media = new MediaResource($roomType->media);
+        $roomType = $this->roomType;
+        $media = $roomType->media;
 
         return [
             'id' => $this->id,

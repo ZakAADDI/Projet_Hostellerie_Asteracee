@@ -54,7 +54,7 @@ class ServiceController extends Controller
     public function show(int $id)
     {
         $service = Service::with('media')->findOrFail($id);
-        return response()->json(ServiceResource::make($service), 200);
+        return response()->json(ServiceResource::make($service));
     }
 
     /**
@@ -75,7 +75,7 @@ class ServiceController extends Controller
         ]);
         $service = Service::findOrFail($id);
         $service->update($request->all());
-        return response()->json(ServiceResource::make($service),200);
+        return response()->json(ServiceResource::make($service));
     }
 
     /**
@@ -88,6 +88,6 @@ class ServiceController extends Controller
     {
         $service = Service::where('id',$id)->first();
         $service->delete();
-        return response()->json('Service '.$id.' deleted!',200);
+        return response()->json('Service '.$id.' deleted!');
     }
 }

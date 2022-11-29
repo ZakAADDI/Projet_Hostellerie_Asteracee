@@ -18,7 +18,7 @@ class InfoController extends Controller
     {
         $infos = Info::with('media')->get();
 
-        return response()->json(InfoResource::Collection($infos), 200);
+        return response()->json(InfoResource::Collection($infos));
     }
 
     /**
@@ -44,7 +44,7 @@ class InfoController extends Controller
         ->setTranslations('content', $request->post('content'))
         ->save();
 
-        return response()->json(InfoResource::make($info), 201);
+        return response()->json(InfoResource::make($info));
     }
 
     /**
@@ -56,7 +56,7 @@ class InfoController extends Controller
     public function show(int $id)
     {
         $info = Info::with('media')->findOrFail($id);
-        return response()->json(InfoResource::make($info), 200);
+        return response()->json(InfoResource::make($info));
     }
 
     /**
@@ -77,7 +77,7 @@ class InfoController extends Controller
         ]);
         $info = Info::findOrFail($id);
         $info->update($request->all());
-        return response()->json(InfoResource::make($info), 200);
+        return response()->json(InfoResource::make($info));
     }
 
     /**
@@ -91,6 +91,6 @@ class InfoController extends Controller
         $info = Info::where('id',$id)->first();
         $info->delete();
 
-        return response()->json('Info ' .$id. ' deleted!', 200);
+        return response()->json('Info ' .$id. ' deleted!');
     }
 }

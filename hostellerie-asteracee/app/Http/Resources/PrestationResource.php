@@ -14,7 +14,7 @@ class PrestationResource extends JsonResource
      */
     public function toArray($request)
     {
-        $media = new MediaResource($this->media);
+        $media = $this->media;
         return [
             'id' => $this->id,
             'name' => $this->name,

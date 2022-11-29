@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = user::all();
-        return response()->json($users, 200);
+        return response()->json($users);
     }
 
      /**
@@ -37,7 +37,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-        return response()->json($user, 201);
+        return response()->json($user);
     }
 
     /**
@@ -49,7 +49,7 @@ class UserController extends Controller
     public function show(int $id)
     {
         $user = User::where('id',$id)->first();
-        return response()->json($user, 200);
+        return response()->json($user);
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends Controller
         ]);
         $user = User::where('id',$id)->first();
         $user->update($request->all());
-        return response()->json($user, 200);
+        return response()->json($user);
     }
 
     /**
@@ -81,6 +81,6 @@ class UserController extends Controller
     {
         $user = User::where('id',$id)->first();
         $user->delete();
-        return response()->json('User '.$id.' deleted!', 200);
+        return response()->json('User '.$id.' deleted!');
     }
 }

@@ -23,7 +23,7 @@ class CreateBookingsTable extends Migration
             $table->string('card_number');
             $table->timestamps();
 
-//            $table->foreign('room_type_id')->references('id')->on('rooms');
+            $table->foreign('room_id')->references('id')->on('rooms');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

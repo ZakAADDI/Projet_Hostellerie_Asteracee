@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Room;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BookingResource extends JsonResource
@@ -14,16 +15,17 @@ class BookingResource extends JsonResource
      */
     public function toArray($request)
     {
-//        $room = new RoomResource($this->room);
-        $user = new UserResource($this->user);
+        $room = $this->room;
+        $roomType = $room->roomType;
+        $user = $this->user;
 
         return [
             'user_first_name' => $user['first_name'],
             'user_last_name' => $user['last_name'],
             'user_email' => $user['email'],
-//            'room_type' => ,
-//            'room_price' => ,
-//            'room_number' => ,
+            'room_type' => $roomType["name"],
+            'room_price' => $roomType["price"],
+            'room_number' => $room["room_number"],
             'starting_date' => $this->starting_date,
             'ending_date' => $this->ending_date,
             'status' => $this->status,

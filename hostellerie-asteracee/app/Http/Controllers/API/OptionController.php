@@ -12,12 +12,12 @@ class OptionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
         $options = Option::all();
-        return response()->json(OptionResource::Collection($options), 200);
+        return response()->json(OptionResource::Collection($options));
     }
 
     /**
@@ -40,7 +40,7 @@ class OptionController extends Controller
     public function show(int $id)
     {
         $option = Option::findOrFail($id);
-        return response()->json(OptionResource::make($option) ,200);
+        return response()->json(OptionResource::make($option));
     }
 
     /**
@@ -65,6 +65,6 @@ class OptionController extends Controller
     {
         $option = Option::findOrFail($id);
         $option->delete();
-        return response()->json('Option ' .$id. ' deleted!', 200);
+        return response()->json('Option ' .$id. ' deleted!');
     }
 }

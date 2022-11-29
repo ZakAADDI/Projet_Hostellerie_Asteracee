@@ -16,9 +16,7 @@ class MediaController extends Controller
      */
     public function index()
     {
-        // $media = Media::all();
-
-        return response()->json(MediaResource::Collection(Media::all(), 200));
+        return response()->json(MediaResource::Collection(Media::all()));
 
         echo "CurrentLocale : " . App::currentLocale();
         echo "<br>";
@@ -46,7 +44,7 @@ class MediaController extends Controller
             'alt' => $request->alt
         ]);
 
-        return response()->json($media, 201);
+        return response()->json($media);
     }
 
     /**
@@ -77,7 +75,7 @@ class MediaController extends Controller
         $media = Media::where('id',$id)->first();
         $media->update($request->all());
 
-        return response()->json('Media ' .$id. ' updated!', 200);
+        return response()->json('Media ' .$id. ' updated!');
     }
 
     /**
@@ -90,6 +88,6 @@ class MediaController extends Controller
     {
         $media = Media::where('id',$id)->first();
         $media->delete();
-        return response()->json('Media ' .$id. ' deleted!', 200);
+        return response()->json('Media ' .$id. ' deleted!');
     }
 }

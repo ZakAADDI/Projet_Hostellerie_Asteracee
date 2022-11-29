@@ -7,8 +7,12 @@ use App\Http\Controllers\API\DealController;
 use App\Http\Controllers\API\HeroController;
 use App\Http\Controllers\API\InfoController;
 use App\Http\Controllers\API\MediaController;
+use App\Http\Controllers\API\OptionController;
+use App\Http\Controllers\API\PrestationController;
 use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\RoomController;
+use App\Http\Controllers\API\RoomTypeController;
+use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
-//Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
+Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     // ROOMS
     Route::post('/rooms',[RoomController::class,'store']);
     Route::patch('/rooms/{id}',[RoomController::class,'update']);
@@ -80,10 +84,9 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
 // Sections
-// Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
     Route::post('/sections',[\App\Http\Controllers\API\SectionController::class,'store']);
     Route::patch('/sections/{id}',[\App\Http\Controllers\API\SectionController::class,'update']);
-// });
+ });
 
 
 // -----------------------  Public Endpoints  ---------------------------- //
@@ -129,31 +132,24 @@ Route::get('/sortedDeals', [DealController::class, 'showSorted']);
     Route::get('/bookings', [BookingController::class,'index']);
     Route::get('/bookings/{id}', [BookingController::class,'show']);
 
-});
-
 // Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class,'show']);
+    Route::get('/services/{id}', [ServiceController::class,'show']);
 // });
 
-// DEALS
-Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
-Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
-Route::get('/sortedDeals', [\App\Http\Controllers\API\DealController::class, 'showSorted']);
-
 // Sections
-Route::get('/sections', [\App\Http\Controllers\API\SectionController::class,'index']);
-Route::get('/sections/{id}', [\App\Http\Controllers\API\SectionController::class,'show']);
+Route::get('/sections', [SectionController::class,'index']);
+Route::get('/sections/{id}', [SectionController::class,'show']);
 
 // PRESTATIONS
-Route::get('/prestations', [\App\Http\Controllers\API\PrestationController::class,'index']);
-Route::get('/prestations/{id}', [\App\Http\Controllers\API\PrestationController::class,'show']);
+Route::get('/prestations', [PrestationController::class,'index']);
+Route::get('/prestations/{id}', [PrestationController::class,'show']);
 
 // ROOMTYPES
-Route::get('/roomTypes', [\App\Http\Controllers\API\RoomTypeController::class,'index']);
-Route::get('/roomTypes/{id}', [\App\Http\Controllers\API\RoomTypeController::class,'show']);
+Route::get('/roomTypes', [RoomTypeController::class,'index']);
+Route::get('/roomTypes/{id}', [RoomTypeController::class,'show']);
 
 // OPTIONS
-Route::get('/options', [\App\Http\Controllers\API\OptionController::class,'index']);
-Route::get('/options/{id}', [\App\Http\Controllers\API\OptionController::class,'show']);
+Route::get('/options', [OptionController::class,'index']);
+Route::get('/options/{id}', [OptionController::class,'show']);
 
 });

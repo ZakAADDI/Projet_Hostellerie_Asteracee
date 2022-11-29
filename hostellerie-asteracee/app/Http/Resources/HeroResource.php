@@ -16,10 +16,10 @@ class HeroResource extends JsonResource
      */
     public function toArray($request)
     {
-        $logoMedia = new MediaResource($this->logoMedia);
-        $leftMedia = new MediaResource($this->leftMedia);
-        $centerMedia = new MediaResource($this->centerMedia);
-        $rightMedia = new MediaResource($this->rightMedia);
+        $logoMedia = $this->logoMedia;
+        $leftMedia = $this->leftMedia;
+        $centerMedia = $this->centerMedia;
+        $rightMedia = $this->rightMedia;
         return [
             'text' => $this->getTranslation('text', App::getLocale()),
             'logo_media' => $logoMedia['url'],

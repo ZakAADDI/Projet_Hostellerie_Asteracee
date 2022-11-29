@@ -41,7 +41,7 @@ class RoomController extends Controller
         $room = new Room;
         $room->fill($request->post())->save();
 
-        return response()->json(RoomResource::make($room), 201);
+        return response()->json(RoomResource::make($room));
     }
 
     /**
@@ -53,7 +53,7 @@ class RoomController extends Controller
     public function show(int $id)
     {
         $room = Room::findOrFail($id);
-        return response()->json(RoomResource::make($room) ,200);
+        return response()->json($room);
     }
 
     /**
@@ -76,7 +76,7 @@ class RoomController extends Controller
 
         $room = Room::findOrFail($id);
         $room->update($request->all());
-        return response()->json(RoomResource::make($room), 200);
+        return response()->json(RoomResource::make($room));
     }
 
     /**
@@ -89,6 +89,6 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $room->delete();
-        return response()->json('Room ' .$id. ' deleted!', 200);
+        return response()->json('Room ' .$id. ' deleted!');
     }
 }

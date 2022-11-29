@@ -12,7 +12,7 @@ class RoomTypeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -36,7 +36,7 @@ class RoomTypeController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\RoomType  $roomType
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(int $id)
     {
