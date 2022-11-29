@@ -26,7 +26,8 @@ class Sprint1 extends Seeder
             BookingSeeder::class,
             Sections::class,
             Prestations::class,
-            Options::class
+            Options::class,
+            BookingOptionSeeder::class
         ]);
 
     }
