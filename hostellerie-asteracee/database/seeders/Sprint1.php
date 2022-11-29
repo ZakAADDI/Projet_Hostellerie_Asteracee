@@ -23,10 +23,10 @@ class Sprint1 extends Seeder
             Services::class,
             Users::class,
             Deals::class,
+            BookingSeeder::class
             Sections::class,
             Prestations::class,
             Options::class
-
         ]);
 
     }

@@ -16,7 +16,9 @@ class Users extends Seeder
     {
         $datas = [
             [
-                'name' => 'gerant',
+                'first_name' => 'gerant',
+                'last_name' => 'gerant',
+                'address' => '3 rue du test 74000 Test',
                 'email' => 'gerant@gmail.com',
                 'password' => Hash::make('gerant'),
                 'role' => 1,
@@ -24,7 +26,9 @@ class Users extends Seeder
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
-                'name' => 'utilisateur1',
+                'first_name' => 'utilisateur1',
+                'last_name' => 'utilisateur1',
+                'address' => '3 rue du test 74000 Test',
                 'email' => 'user1@gmail.com',
                 'password' => Hash::make('user'),
                 'role' => 0,
