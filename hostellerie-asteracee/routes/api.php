@@ -77,7 +77,14 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::post('/bookings',[BookingController::class,'store']);
     Route::patch('/bookings/{id}',[BookingController::class,'update']);
     Route::delete('/bookings/{id}',[BookingController::class,'destroy']);
-//});
+
+
+// Sections
+// Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
+    Route::post('/sections',[\App\Http\Controllers\API\SectionController::class,'store']);
+    Route::patch('/sections/{id}',[\App\Http\Controllers\API\SectionController::class,'update']);
+// });
+
 
 // -----------------------  Public Endpoints  ---------------------------- //
 
@@ -112,6 +119,7 @@ Route::get('/infos/{id}', [InfoController::class,'show']);
 Route::get('/services', [ServiceController::class,'index']);
 Route::get('/services/{id}', [ServiceController::class,'show']);
 
+
 // DEALS
 Route::get('/deals', [DealController::class,'index']);
 Route::get('/deals/{id}', [DealController::class,'show']);
@@ -123,3 +131,29 @@ Route::get('/sortedDeals', [DealController::class, 'showSorted']);
 
 });
 
+// Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/services/{id}', [\App\Http\Controllers\API\ServiceController::class,'show']);
+// });
+
+// DEALS
+Route::get('/deals', [\App\Http\Controllers\API\DealController::class,'index']);
+Route::get('/deals/{id}', [\App\Http\Controllers\API\DealController::class,'show']);
+Route::get('/sortedDeals', [\App\Http\Controllers\API\DealController::class, 'showSorted']);
+
+// Sections
+Route::get('/sections', [\App\Http\Controllers\API\SectionController::class,'index']);
+Route::get('/sections/{id}', [\App\Http\Controllers\API\SectionController::class,'show']);
+
+// PRESTATIONS
+Route::get('/prestations', [\App\Http\Controllers\API\PrestationController::class,'index']);
+Route::get('/prestations/{id}', [\App\Http\Controllers\API\PrestationController::class,'show']);
+
+// ROOMTYPES
+Route::get('/roomTypes', [\App\Http\Controllers\API\RoomTypeController::class,'index']);
+Route::get('/roomTypes/{id}', [\App\Http\Controllers\API\RoomTypeController::class,'show']);
+
+// OPTIONS
+Route::get('/options', [\App\Http\Controllers\API\OptionController::class,'index']);
+Route::get('/options/{id}', [\App\Http\Controllers\API\OptionController::class,'show']);
+
+});

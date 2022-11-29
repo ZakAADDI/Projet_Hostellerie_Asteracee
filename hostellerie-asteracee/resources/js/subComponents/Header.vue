@@ -46,7 +46,7 @@ export default {
     },
      async created(){
         this.medias = (await axiosProvider.get('/medias'))?.data;
-        this.logoHeader = this.medias[6].data.url;
+        this.logoHeader = this.medias[6].url;
     }
 }
 </script>

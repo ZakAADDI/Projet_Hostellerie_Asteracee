@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ReviewResource extends JsonResource
+class SectionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,13 +16,8 @@ class ReviewResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'content' => $this->content,
-            'score' => $this->score,
-            'user_firstname' => $this->user_firstname,
-            'user_lastname' => $this->user_lastname,
-            'gender' => $this->gender
-
+            'name' => $this->getTranslation('name', App::getLocale()),
+            'description' => $this->getTranslation('description', App::getLocale()),
         ];
     }
 }

@@ -15,12 +15,6 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->json('section')->nullable()->default(json_encode(
-                [
-                    "fr" => "Avis Clients",
-                    "en" => "Customers Reviews"
-                ]
-            ));
             $table->string('title');
             $table->text('content');
             $table->enum('score',[1,2,3,4,5]);

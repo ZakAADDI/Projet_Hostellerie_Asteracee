@@ -52,7 +52,7 @@ class RoomController extends Controller
      */
     public function show(int $id)
     {
-        $room = Room::with('media')->findOrFail($id);
+        $room = Room::findOrFail($id);
         return response()->json(RoomResource::make($room) ,200);
     }
 

@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Deal extends Model
+class Option extends Model
 {
     use HasFactory, HasTranslations;
-
-    public $translatable = ['title', 'content'];
-    protected $fillable = ['title','content','is_active'];
+    public $translatable = ['name','description','frequency'];
+    protected $fillable = ['name', 'price', 'description', 'frequency'];
 }

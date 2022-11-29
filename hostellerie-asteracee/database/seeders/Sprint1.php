@@ -14,6 +14,7 @@ class Sprint1 extends Seeder
     {
         $this->call([
             Medias::class,
+            RoomTypes::class,
             Infos::class,
             Contacts::class,
             Heroes::class,
@@ -23,6 +24,9 @@ class Sprint1 extends Seeder
             Users::class,
             Deals::class,
             BookingSeeder::class
+            Sections::class,
+            Prestations::class,
+            Options::class
         ]);
 
     }

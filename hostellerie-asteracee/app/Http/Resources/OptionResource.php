@@ -4,9 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\App;
-use App\Http\Resources\MediaResource;
 
-class ServiceResource extends JsonResource
+class OptionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,13 +15,12 @@ class ServiceResource extends JsonResource
      */
     public function toArray($request)
     {
-        $media = new MediaResource($this->media);
         return [
             'id' => $this->id,
-            'title'=> $this->getTranslation('title', App::getLocale()),
-            'content'=> $this->getTranslation('content', App::getLocale()),
-            'media_url' => $media['url'],
-            'media_alt' => $media['alt']
+            'name' => $this->getTranslation('name', App::getLocale()),
+            'description' => $this->getTranslation('description', App::getLocale()),
+            'frequency' => $this->getTranslation('frequency', App::getLocale()),
+            'price' => $this->price
         ];
     }
 }

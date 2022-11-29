@@ -18,7 +18,6 @@ class DealResource extends JsonResource
                 'id' => $this->id,
                 'title' => $this->getTranslation('title', App::getLocale()),
                 'content' => $this->getTranslation('content', App::getLocale()),
-                'section' => $this->getTranslation('section', App::getLocale()),
                 'is_active' => $this->is_active,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at

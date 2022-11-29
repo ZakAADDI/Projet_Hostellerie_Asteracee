@@ -3,7 +3,7 @@
         <div class="media">
             <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftImgAlt>
             <div class="video">
-                <iframe width="650" height="365" src="https://www.youtube.com/embed/-B7VhYjd6xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
+                <iframe width="650" height="365" :src=centerMedia  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
                 <p>{{ hero.text }}</p>
             </div>
 
@@ -23,15 +23,20 @@ export default {
             leftImg : '',
             leftImgAlt : '',
             rightImg : '',
-            rightImgAlt : ''
+            rightImgAlt : '',
+            centerMedia: ''
         }
     },
     async created(){
         this.hero = (await axiosProvider.get('/heroes'))?.data;
+
         this.leftImg = this.hero.left_img;
-        this.leftAlt = this.hero.left_img_alt;
+        this.leftImgAlt = this.hero.left_img_alt;
+
         this.rightImg = this.hero.right_img;
         this.rightImgAlt = this.hero.right_img_alt;
+
+        this.centerMedia = this.hero.center_media;
     }
 }
 </script>
