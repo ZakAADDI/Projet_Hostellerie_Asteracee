@@ -60,7 +60,14 @@ class RoomsPrestationController extends Controller
      */
     public function update(Request $request, int $id)
     {
-       //
+        $this->validate($request,[
+            'prestation_id' => 'int|max:25',
+            'room_type_id' => 'int|max:25'
+        ]);
+
+        $roomPrestation = RoomPrestation::findOrFail($id);
+        $roomPrestation->update($request->all());
+        return response()->json(RoomPrestation::make($roomPrestation),200)
     }
 
     /**
