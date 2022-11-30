@@ -44,7 +44,7 @@ class InfoController extends Controller
         ->setTranslations('content', $request->post('content'))
         ->save();
 
-        return response()->json(InfoResource::make($info));
+        return response()->json(InfoResource::make($info),201);
     }
 
     /**
