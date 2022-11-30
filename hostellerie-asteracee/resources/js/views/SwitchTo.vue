@@ -1,6 +1,5 @@
 <template>
     <div class="switchTo">
-        <img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée">
         <div class="content">
             <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
             <h1 v-if="language">Would you like to continue in English ?</h1>
@@ -54,8 +53,18 @@ export default {
 </script>
 
 <style scoped>
+
 .switchTo{
     height: 40vh;
+     animation: fadein ease-in-out 0.5s;
+}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 a{
     cursor: pointer;

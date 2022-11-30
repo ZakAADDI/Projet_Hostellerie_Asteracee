@@ -74,6 +74,16 @@ export default {
 <style scoped>
 .connexion{
     height: 70vh;
+    animation: fadein ease-in-out 0.5s;
+
+}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 form{
     border: 1px solid gray;

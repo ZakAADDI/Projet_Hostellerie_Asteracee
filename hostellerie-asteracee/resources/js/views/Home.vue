@@ -47,7 +47,16 @@ export default {
     }
 </script>
 
-<style >
-
-
+<style scoped>
+.home{
+     animation: fadein ease-in-out 0.5s;
+}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+  }
 </style>

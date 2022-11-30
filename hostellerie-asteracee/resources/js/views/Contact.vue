@@ -23,6 +23,15 @@ export default {
 <style scoped>
 .contact{
     height: 50vh;
+    animation: fadein ease-in-out 0.5s;
+}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 form{
     display: flex;
