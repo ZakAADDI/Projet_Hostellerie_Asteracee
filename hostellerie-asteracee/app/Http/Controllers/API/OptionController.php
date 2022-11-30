@@ -28,7 +28,18 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name.fr' => 'required|max:128',
+            'name.en' => 'required|max:128',
+            'description.fr' => 'required|max:256',
+            'description.en' => 'required|max:256',
+            'price' => 'required|int',
+        ]);
+
+        $option = new Option;
+        $option->fill($request->post())->save();
+
+        return response()->json(OptionResource::make($option));
     }
 
     /**
@@ -52,7 +63,16 @@ class OptionController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        //
+        $this->validate($request,[
+            'name.fr' => 'max:128',
+            'name.en' => 'max:128',
+            'description.fr' => 'max:256',
+            'description.en' => 'max:256',
+            'price' => 'int',
+        ]);
+        $option = Option::findOrFail($id);
+        $option->update($request->all());
+        return response()->json(OptionResource::make($option));
     }
 
     /**

@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use App\Models\RoomsPrestation;
 use App\Http\Controllers\Controller;
-use App\Models\Room;
 use Illuminate\Http\Request;
-use App\Http\Resources\RoomResource;
+use App\Http\Resources\RoomsPrestationResource;
 
-class RoomController extends Controller
+class RoomsPrestationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::all();
+        $prestations = RoomsPrestation::all();
+        return response()->json(RoomsPrestationResource::Collection($prestations), 200);
 
-        return response()->json(RoomResource::Collection($rooms), 200);
     }
 
     /**
@@ -30,14 +29,14 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'room_types_id' => 'required|max:25',
-            'number' => 'required|room_number|int',
+            'prestation_id' => 'required|max:25',
+            'room_type_id' => 'required|max:25'
         ]);
 
-        $room = new Room;
-        $room->fill($request->post())->save();
+        $roomPrestation = new RoomsPrestation;
+        $roomPrestation->fill($request->post())->save();
 
-        return response()->json(RoomResource::make($room));
+        return response()->json(RoomsPrestationResource::make($roomPrestation),201);
     }
 
     /**
@@ -48,8 +47,8 @@ class RoomController extends Controller
      */
     public function show(int $id)
     {
-        $room = Room::findOrFail($id);
-        return response()->json($room);
+        $roomPrestation = RoomsPrestation::findOrFail($id);
+        return response()->json(RoomsPrestationResource::make($roomPrestation));
     }
 
     /**
@@ -62,13 +61,13 @@ class RoomController extends Controller
     public function update(Request $request, int $id)
     {
         $this->validate($request,[
-            'room_types_id' => 'max:25',
-            'number' => 'room_number|int'
+            'prestation_id' => 'int|max:25',
+            'room_type_id' => 'int|max:25'
         ]);
 
-        $room = Room::findOrFail($id);
-        $room->update($request->all());
-        return response()->json(RoomResource::make($room),200);
+        $roomPrestation = RoomsPrestation::findOrFail($id);
+        $roomPrestation->update($request->all());
+        return response()->json(RoomsPrestation::make($roomPrestation),200);
     }
 
     /**
@@ -79,8 +78,6 @@ class RoomController extends Controller
      */
     public function destroy(int $id)
     {
-        $room = Room::findOrFail($id);
-        $room->delete();
-        return response()->json('Room ' .$id. ' deleted!',200);
+        //
     }
 }

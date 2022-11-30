@@ -18,7 +18,7 @@ class PrestationController extends Controller
     {
         $prestations = Prestation::all();
 
-        return response()->json(PrestationResource::Collection($prestations));
+        return response()->json(PrestationResource::Collection($prestations),200);
     }
 
     /**
@@ -41,7 +41,30 @@ class PrestationController extends Controller
         $prestation = new Prestation;
         $prestation->fill($request->post())->save();
 
-        return response()->json(PrestationResource::make($prestation));
+        return response()->json(PrestationResource::make($prestation),201);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, int $id)
+    {
+        $this->validate($request,[
+            'price' => 'required|int',
+            'type' => 'required|max:25',
+            'description.fr' => 'required|max:256',
+            'description.en' => 'required|max:256',
+            'media_id' => 'required|exists:App\Models\Media,id|int',
+            'capacity' => 'required|int'
+        ]);
+
+        $prestation = Prestation::findOrFail($id);
+        $prestation->update($request->all());
+        return response()->json(PrestationResource::make($prestation),200);
     }
 
     /**
@@ -53,6 +76,19 @@ class PrestationController extends Controller
     public function show(int $id)
     {
         $prestation = Prestation::findOrFail($id);
-        return response()->json(PrestationResource::make($prestation));
+        return response()->json(PrestationResource::make($prestation),200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(int $id)
+    {
+        $prestation = Prestation::findOrFail($id);
+        $prestation->delete();
+        return response()->json('Prestation ' .$id. ' deleted!',200);
     }
 }

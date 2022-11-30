@@ -15,7 +15,7 @@ class CreateRoomTypesTable extends Migration
     {
         Schema::create('room_types', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', ['Luxe', 'Suite', 'Standard']);
+            $table->string('name');
             $table->json('description');
             $table->integer('capacity');
             $table->float('price');

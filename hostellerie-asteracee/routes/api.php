@@ -12,6 +12,7 @@ use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\API\PrestationController;
 use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\RoomController;
+use App\Http\Controllers\API\RoomsPrestationController;
 use App\Http\Controllers\API\RoomTypeController;
 use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
@@ -83,6 +84,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         Route::patch('/bookings/{id}', [BookingController::class, 'update']);
         Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
 
+
         // BOOKINGS_OPTIONS
         Route::post('/booking_options', [BookingOptionController::class, 'store']);
         Route::patch('/booking_options/{id}', [BookingOptionController::class, 'update']);
@@ -92,7 +94,23 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         // Sections
         Route::post('/sections', [SectionController::class, 'store']);
         Route::patch('/sections/{id}', [SectionController::class, 'update']);
-//    });
+
+        // ROOMTYPES
+        Route::post('/roomTypes',[RoomTypeController::class,'store']);
+        Route::patch('/roomTypes/{id}',[RoomTypeController::class,'update']);
+        Route::delete('/roomTypes/{id}',[RoomTypeController::class,'destroy']);
+
+        // OPTIONS
+        Route::post('/options',[OptionController::class,'store']);
+        Route::patch('/options/{id}',[OptionController::class,'update']);
+        Route::delete('/options/{id}',[OptionController::class,'destroy']);
+        
+        // ROOMSPRESTATION
+        Route::post('/roomsPrestations',[RoomsPrestationController::class,'store']);
+        Route::patch('/roomsPrestations/{id}',[RoomsPrestationController::class,'update']);
+
+ // });
+
 
 
 // -----------------------  Public Endpoints  ---------------------------- //
@@ -140,7 +158,6 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 // Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/services/{id}', [ServiceController::class, 'show']);
-// });
 
 // Sections
     Route::get('/sections', [SectionController::class, 'index']);
@@ -161,4 +178,9 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 // BOOKING_OPTIONS
     Route::get('/booking_options', [BookingOptionController::class, 'index']);
     Route::get('/booking_options/{id}', [BookingOptionController::class, 'show']);
+
+// ROOMSPRESTATIONS
+    Route::get('/roomsPrestations', [RoomsPrestationController::class,'index']);
+    Route::get('/roomsPrestations/{id}', [RoomsPrestationController::class,'show']);
+
 });

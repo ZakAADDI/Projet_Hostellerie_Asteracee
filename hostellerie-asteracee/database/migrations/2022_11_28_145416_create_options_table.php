@@ -18,7 +18,7 @@ class CreateOptionsTable extends Migration
             $table->json('name');
             $table->json('description');
             $table->float('price');
-            $table->json('frequency');
+            $table->json('frequency')->nullable();
             $table->timestamps();
         });
     }
