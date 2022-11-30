@@ -104,7 +104,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         Route::post('/options',[OptionController::class,'store']);
         Route::patch('/options/{id}',[OptionController::class,'update']);
         Route::delete('/options/{id}',[OptionController::class,'destroy']);
-        
+
         // ROOMSPRESTATION
         Route::post('/roomsPrestations',[RoomsPrestationController::class,'store']);
         Route::patch('/roomsPrestations/{id}',[RoomsPrestationController::class,'update']);
@@ -121,7 +121,8 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 // ROOMS
     Route::get('/rooms', [RoomController::class, 'index']);
-    Route::get('/rooms/{id}', [RoomController::class, 'show']);
+    Route::get('/rooms/{room}', [RoomController::class, 'show']);
+    Route::post('/filteredRoom', [RoomController::class, 'showFiltered']);
 
 // REVIEWS
     Route::get('/reviews', [ReviewController::class, 'index']);
