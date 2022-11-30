@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth:sanctum','isAdmin']], function () {
 
  // ROOMSPRESTATION
  Route::post('/roomsPrestations',[\App\Http\Controllers\API\RoomsPrestationController::class,'store']);
+ Route::patch('/roomsPrestations/{id}',[\App\Http\Controllers\API\RoomsPrestationController::class,'update']);
 
 // -----------------------  Public Endpoints  ---------------------------- //
 
