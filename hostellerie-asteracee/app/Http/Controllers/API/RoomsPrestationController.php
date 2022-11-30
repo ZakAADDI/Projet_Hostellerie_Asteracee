@@ -65,9 +65,9 @@ class RoomsPrestationController extends Controller
             'room_type_id' => 'int|max:25'
         ]);
 
-        $roomPrestation = RoomPrestation::findOrFail($id);
+        $roomPrestation = RoomsPrestation::findOrFail($id);
         $roomPrestation->update($request->all());
-        return response()->json(RoomPrestation::make($roomPrestation),200)
+        return response()->json(RoomsPrestation::make($roomPrestation),200);
     }
 
     /**
