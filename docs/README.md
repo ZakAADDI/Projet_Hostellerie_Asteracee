@@ -13,8 +13,15 @@ php artisan storage:link
 ### 2 - La base de données :
 Notre projet fonctionne sur une base de données local pour le développement, il faut donc créer un fichier db.sqlite dans le dossier 
 ```sh
-Projet_Hostellerie_Asteracee/hostellerie-asteracee/database/ 
+Projet_Hostellerie_Asteracee/hostellerie-asteracee/database/
 ```
+Pour ce faire il suffit d'exécuter la commande suivante
+
+```sh
+touch db.sqlite
+```
+Pour le moment le fichier restera vide et se remplira lors des migrations et des seedings
+
 ### 3 - Le fichier d'environnement :
 Le fichier .env doit être placé à la racine du projet 
 ```sh
@@ -22,7 +29,7 @@ Projet_Hostellerie_Asteracee/hostellerie-asteracee/
 ```
 Un fichier .env.exemple est disponible pour plus de simplicité.
 
-Il suffira de remplire 
+Il suffira de remplir
 ```sh
 # DB_CONNECTION=sqlite
 # DB_HOST=127.0.0.1
@@ -34,7 +41,7 @@ Il suffira de remplire
 
 ### 4 - Composer :
 
-On lance composer pour installer les dépendances de l'application:
+On lance composer pour installer les dépendances de l'application
 ```sh
     composer install
 ```
