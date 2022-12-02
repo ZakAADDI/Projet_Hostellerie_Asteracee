@@ -16,7 +16,7 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $infos = Info::with('media')->get();
+        $infos = Info::all();
 
         return response()->json(InfoResource::Collection($infos));
     }
@@ -55,7 +55,7 @@ class InfoController extends Controller
      */
     public function show(int $id)
     {
-        $info = Info::with('media')->findOrFail($id);
+        $info = Info::findOrFail($id);
         return response()->json(InfoResource::make($info));
     }
 

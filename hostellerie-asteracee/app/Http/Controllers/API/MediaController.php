@@ -17,13 +17,6 @@ class MediaController extends Controller
     public function index()
     {
         return response()->json(MediaResource::Collection(Media::all()));
-
-        echo "CurrentLocale : " . App::currentLocale();
-        echo "<br>";
-        $local = "en";
-        App::setLocale($local);
-        echo "NewCurrentLocale : " . App::currentLocale();
-
     }
 
     /**
