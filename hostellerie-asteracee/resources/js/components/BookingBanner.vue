@@ -1,5 +1,5 @@
 <template>
-     <form @click="submitForm" class="bookingForm shadow-md shadow-gray-700 flex justify-around items-center">
+     <form @submit.prevent="submitForm" class="bookingForm shadow-md shadow-gray-700 flex justify-around items-center">
         <div class="border-2 border-[#E6B34B] p-4 rounded-md text-white">
             <label for="startingDate">Starting date:</label>
         <input type="date" name="startingDate" min="2021-01-01" max="2023-12-31" class="text-[#272023] ml-2" v-model="startingDate">
@@ -13,14 +13,14 @@
             <input type="number" name="occupants" min="1" max="10" class="text-[#272023] rounded-m ml-2" v-model="numberOccupants">
         </div>
         <div>
-            <button type="button" class="bg-[#E6B34B] p-4 rounded-md text-[#272023]">Réserver</button>
+            <button type="submit" class="bg-[#E6B34B] p-4 rounded-md text-[#272023]">Réserver</button>
         </div>
 
     </form>
 </template>
 
 <script>
-
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'BookingBanner',
      data(){
@@ -31,11 +31,12 @@ export default {
          }
      },
     methods:{
-        submitForm :function(event){
-            event.preventDefault();
-            console.log(this.startingDate);
-            console.log(this.endingDate);
-            console.log(this.numberOccupants + ' personnes');
+        submitForm :function(){
+            // console.log(this.startingDate);
+            // console.log(this.endingDate);
+            // console.log(this.numberOccupants + ' personnes');
+            localStorage.set("userChoice",{"startingDate" : this.startingDate,"endingDate" : this.endingDate,"occupants":this.numberOccupants});
+            this.$router.push('FiltredRooms');
         }
     }
 

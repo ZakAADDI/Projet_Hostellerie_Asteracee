@@ -1,28 +1,40 @@
 <template>
-    <div class="connexion">
-        <form @submit.prevent="submitForm" class="mt-8">
-                <label for="email">Email</label>
-                <input type="email" name="email" v-model="email">
-                 <div class="error" v-if="emailEmpty">
-                    Vous devez saisir un mail
-                </div>
-                <label for="message">Password</label>
-                <input type="password" name="password" v-model="password">
-                 <div class="error" v-if="passwordEmpty">
-                Merci de saisir votre mot de passe
-                </div>
-                <button>Envoyer</button>
-                <div class="error" v-if="matching">
-                Une erreure est survenue
-                </div>
-        </form>
-
+    <div class="connexion flex flex-col justify-center grow items-center">
+        <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3">
+        <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
+        <span class="font-bold text-2xl">Bienvenue sur votre espace client</span>
+        <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
+        <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3 mb-8">
+        <div class="flex justify-between border-t-4 w-1/2 border-t-[#E6B34B] bg-[#272023] text-white">
+            <form @submit.prevent="connectUser" class="flex flex-col w-1/2 p-8">
+            <p class="text-center">Déjà Client ?</p>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" v-model="email">
+                     <div class="error" v-if="emailEmpty">
+                        Vous devez saisir un mail
+                    </div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" v-model="password">
+                     <div class="error" v-if="passwordEmpty">
+                     Merci de saisir votre mot de passe
+                    </div>
+                    <button class="text-[#272023]">Se connecter</button>
+                    <div class="error" v-if="matching">
+                    Une erreure est survenue
+                    </div>
+            </form>
+            <div class=" flex flex-col justify-center items-center w-1/2 border-l-2 border-l-[#E6B34B]">
+                <p>Nouveau Client ?</p>
+                 <router-link :to="{ name: 'CreateUser' }" class="text-white">
+                    <button class="text-[#272023]">Créer un compte</button>
+                </router-link>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import storage from '../store/index'
 import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Connexion',
@@ -38,7 +50,7 @@ export default {
         }
     },
     methods:{
-        async submitForm(){
+        async connectUser(){
             if(this.email == ""){
                 this.emailEmpty = true;
             }
@@ -52,13 +64,6 @@ export default {
                 };
                 this.response = await axios.post('http://127.0.0.1:8000/api/login', this.datas);
                 localStorage.set("user", [this.email,this.response.data.token]);
-                // if(this.response.data.status == true){
-                //      storage.mutations.addUser(JSON.stringify({
-                //         email: this.email,
-                //         token: this.response.token
-                //         }));
-                //         console.log(storage.getters.oneUser)
-
                     this.$router.push({ name: 'Home'});
                 }else{
                     this.matching = true;
@@ -85,19 +90,10 @@ export default {
     opacity:1;
     }
 }
-form{
-    border: 1px solid gray;
-    margin-top: 8rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30vw;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 input{
     border: 2px solid gray;
+    color: #272023;
 }
 button{
     background-color: #E6B34B;

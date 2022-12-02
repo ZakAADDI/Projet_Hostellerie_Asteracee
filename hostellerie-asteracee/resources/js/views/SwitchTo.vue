@@ -1,5 +1,5 @@
 <template>
-    <div class="switchTo">
+    <div class="switchTo flex flex-col items-center justify-center grow">
         <div class="content">
             <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
             <h1 v-if="language">Would you like to continue in English ?</h1>
@@ -86,7 +86,6 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30vh;
     background-color:#272023;
     color: #E6B34B;
     width: 400px;

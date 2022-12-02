@@ -8,11 +8,16 @@ const axiosProvider = {
         return axios.get(axiosProvider.baseUrl + endpoint, axiosProvider.getConfig());
     },
 
-    post: async (endpoint, body) => {
+    postWithAuth: async (endpoint, body) => {
         return axios.post(axiosProvider.baseUrl + endpoint, body),
         {
             hearders: { Authorization: 'Bearer' + getAuthorization()}
         }
+    },
+    postWithOutAuth: async (endpoint, body) => {
+        // return axios.post(axiosProvider.baseUrl + endpoint, body)
+        console.log(endpoint)
+        console.log(body);
     },
 
     getAuthorization: async () => {
