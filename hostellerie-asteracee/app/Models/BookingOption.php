@@ -16,11 +16,11 @@ class BookingOption extends Model
 
     public function getBooking(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsTo(Booking::class,'booking_id','id');
     }
 
     public function getOption(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Option::class);
+        return $this->belongsTo(Option::class,'option_id','id');
     }
 }

@@ -16,7 +16,7 @@ class BookingOptionController extends Controller
      */
     public function index()
     {
-        return response()->json(BookingOption::all());
+        return response()->json(BookingOptionResource::collection(BookingOption::all()));
     }
 
     /**

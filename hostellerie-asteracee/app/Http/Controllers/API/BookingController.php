@@ -32,7 +32,6 @@ class BookingController extends Controller
             'starting_date' => 'required|max:256',
             'room_id' => 'required|exists:App\Models\Room,id|int',
             'user_id' => 'required|exists:App\Models\User,id|int',
-            'card_number' => 'required|string'
         ]);
 
         $booking = new Booking;
@@ -67,7 +66,6 @@ class BookingController extends Controller
             'starting_date' => 'max:256',
             'room_id' => 'exists:App\Models\Room,id|int',
             'user_id' => 'exists:App\Models\User,id|int',
-            'card_number' => 'string'
         ]);
 
         $booking = Booking::findOrFail($id);
