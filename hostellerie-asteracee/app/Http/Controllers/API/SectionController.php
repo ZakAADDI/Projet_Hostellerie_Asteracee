@@ -30,16 +30,13 @@ class SectionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name.fr' => 'required|string|max:100',
-            'name.en' => 'required|string|max:100',
-            'description.fr' => 'required|string|max:300',
-            'description.en' => 'required|string|max:300'
+            'title.fr' => 'required|string|max:100',
+            'title.en' => 'required|string|max:100'
         ]);
 
         $section = new Section;
         $section ->fill($request->post())
-        ->setTranslations('name', $request->post('name'))
-        ->setTranslations('description', $request->post('description'))
+        ->setTranslations('title', $request->post('title'))
         ->save();
 
         return response()->json(SectionResource::make($section));
@@ -67,10 +64,8 @@ class SectionController extends Controller
     public function update(Request $request, int $id)
     {
         $this->validate($request,[
-            'name.fr' => 'string|max:100',
-            'name.en' => 'string|max:100',
-            'description.fr' => 'string|max:100',
-            'description.en' => 'string|max:100'
+            'title.fr' => 'string|max:100',
+            'title.en' => 'string|max:100'
         ]);
         $section = Section::findOrFail($id);
         $section->update($request->all());

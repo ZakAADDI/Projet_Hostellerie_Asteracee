@@ -16,8 +16,7 @@ class SectionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->getTranslation('name', App::getLocale()),
-            'description' => $this->getTranslation('description', App::getLocale()),
+            'title' => $this->getTranslation('title', App::getLocale()),
         ];
     }
 }
