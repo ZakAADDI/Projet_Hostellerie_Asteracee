@@ -78,12 +78,12 @@ class RoomController extends Controller
     {
         $this->validate($request, [
             'room_types_id' => 'max:25',
-            'number' => 'room_number|int'
+            'number' => 'unique:App\Models\Room,room_number|int'
         ]);
 
         $room = Room::findOrFail($id);
         $room->update($request->all());
-        return response()->json(RoomResource::make($room), 200);
+        return response()->json(RoomResource::make($room));
     }
 
     /**

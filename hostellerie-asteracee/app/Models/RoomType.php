@@ -30,6 +30,6 @@ class RoomType extends Model
 
     public function getRoomPrestations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(RoomsPrestation::class);
+        return $this->hasMany(RoomsPrestation::class,'prestation_id');
     }
 }

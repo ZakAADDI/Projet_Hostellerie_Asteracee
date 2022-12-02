@@ -14,6 +14,6 @@ class Option extends Model
 
     public function getBookingOptions(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(BookingOption::class);
+        return $this->hasMany(BookingOption::class,'option_id');
     }
 }

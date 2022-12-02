@@ -40,7 +40,7 @@ class RoomRepository
      */
     public static function getRoomPrestations($room): \Illuminate\Support\Collection
     {
-        $prestationsIds = RoomsPrestation::where('room_type_id','=',$room->room_types_id)
+        $prestationsIds = RoomsPrestation::where('room_type_id','=',$room->room_type_id)
             ->pluck('prestation_id')
             ->toArray();
 

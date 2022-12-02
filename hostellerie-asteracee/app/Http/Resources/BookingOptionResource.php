@@ -14,12 +14,10 @@ class BookingOptionResource extends JsonResource
      */
     public function toArray($request)
     {
-        $booking = BookingResource::make($this->getBooking);
-        $option = OptionResource::make($this->getOption);
-//        dd($booking);
         return [
-            $booking,
-            $option
+            'count' => $this->count,
+            'booking' => BookingResource::make($this->getBooking),
+            'option' => OptionResource::make($this->getOption)
         ];
     }
 }

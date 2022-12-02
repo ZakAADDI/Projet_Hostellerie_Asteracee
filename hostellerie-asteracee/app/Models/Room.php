@@ -12,12 +12,12 @@ class Room extends Model
 
     public function getRoomType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(RoomType::class);
+        return $this->belongsTo(RoomType::class,'room_type_id','id');
     }
 
     public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class,'room_id');
     }
 
 }
