@@ -10,12 +10,12 @@ class RoomsPrestation extends Model
     use HasFactory;
     protected $fillable = ['prestation_id','room_type_id'];
 
-    public function findRoomType()
+    public function getRoomType()
     {
-        return $this->hasOne(RoomType::class,'id','room_type_id');
+        return $this->belongsTo(RoomType::class);
     }
-    public function findPrestation()
+    public function getPrestation()
     {
-        return $this->hasOne(Prestation::class,'id','prestation_id');
+        return $this->belongsTo(Prestation::class);
     }
 }

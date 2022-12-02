@@ -12,8 +12,8 @@ class Service extends Model
     public $translatable = ['title','content'];
     protected $fillable = ['title','content','media_id'];
 
-    public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function getMedia(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Media::class, 'id','media_id');
+        return $this->hasOne(Media::class,'id','media_id');
     }
 }

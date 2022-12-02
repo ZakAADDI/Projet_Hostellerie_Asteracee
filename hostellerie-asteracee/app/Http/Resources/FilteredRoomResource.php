@@ -2,11 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Repositories\RoomRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FilteredRoomResource extends JsonResource
 {
-    private static $data;
+//    private static $data;
 
     /**
      * Transform the resource into an array.
@@ -16,19 +17,20 @@ class FilteredRoomResource extends JsonResource
      */
     public function toArray($request)
     {
+        $prestations = RoomRepository::getRoomPrestations($this);
+//        dd($prestations);
+
         return [
-            'room_type' => $this->id,
+            'room_type' => $this->room_types_id,
             'description' => $this->id,
-            'media' => $this->id,
-            'price' => $this->id,
-            'deals' => $this->id
+            'prestations' => $prestations
         ];
     }
 
-    public static function customCollection($resource, $data): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-    {
-        // You can add as many params as you want.
-        self::$data = $data;
-        return parent::collection($resource);
-    }
+//    public static function customCollection($resource, $data): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+//    {
+//        // You can add as many params as you want.
+//        self::$data = $data;
+//        return parent::collection($resource);
+//    }
 }

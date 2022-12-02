@@ -26,7 +26,7 @@ class Services extends Seeder
                         "fr"=>"Content en Français",
                         "en"=>"Content en Anglais"
                     ]),
-                'media_id' => '8',
+                'media_id' => 8,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
 
@@ -42,7 +42,7 @@ class Services extends Seeder
                         "fr"=>"Content en Français",
                         "en"=>"Content en Anglais"
                     ]),
-                'media_id' => '9',
+                'media_id' => 9,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
 
@@ -58,7 +58,7 @@ class Services extends Seeder
                         "fr"=>"Content en Français",
                         "en"=>"Content en Anglais"
                     ]),
-                'media_id' => '10',
+                'media_id' => 10,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
 

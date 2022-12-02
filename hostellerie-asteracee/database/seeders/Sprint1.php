@@ -15,13 +15,13 @@ class Sprint1 extends Seeder
         $this->call([
             Medias::class,
             RoomTypes::class,
+            Users::class,
             Infos::class,
             Contacts::class,
             Heroes::class,
             Reviews::class,
             Rooms::class,
             Services::class,
-            Users::class,
             Deals::class,
             BookingSeeder::class,
             Sections::class,
@@ -29,7 +29,6 @@ class Sprint1 extends Seeder
             Options::class,
             BookingOptionSeeder::class,
             RoomsPrestations::class
-
         ]);
 
     }

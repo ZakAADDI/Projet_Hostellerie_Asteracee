@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use App\Models\Deal;
 class Deals extends Seeder
@@ -26,6 +27,9 @@ class Deals extends Seeder
                         "en"=>"New for any reservation of a minimum luxury room, we offer you access to the spa"
                     ]),
                 'is_active' => true,
+                'starting_date' => Carbon::createFromDate('2022','11','25')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2022','11','26')->format('Y-m-d'),
+                'room_type_id' => 1,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -41,6 +45,9 @@ class Deals extends Seeder
                         "en"=>"From November 2 to November 12, book a deluxe room for the price of a standard room"
                     ]),
                 'is_active' => true,
+                'starting_date' => Carbon::createFromDate('2022','11','25')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2022','11','26')->format('Y-m-d'),
+                'room_type_id' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -56,6 +63,9 @@ class Deals extends Seeder
                         "en"=>"From December 5 to 31, benefit from the tourist tax offered for any reservation"
                     ]),
                 'is_active' => false,
+                'starting_date' => Carbon::createFromDate('2022','11','25')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2022','11','26')->format('Y-m-d'),
+                'room_type_id' => 3,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]

@@ -12,7 +12,8 @@ class Info extends Model
 
     protected $fillable = ['title','content','media_id','publication_date'];
     public $translatable = ['title','content'];
-    public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
+
+    public function getMedia(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Media::class,'id','media_id');
     }

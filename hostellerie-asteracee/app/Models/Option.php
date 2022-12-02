@@ -9,6 +9,11 @@ use Spatie\Translatable\HasTranslations;
 class Option extends Model
 {
     use HasFactory, HasTranslations;
-    public $translatable = ['name','description','frequency'];
-    protected $fillable = ['name', 'price', 'description', 'frequency'];
+    public $translatable = ['name','description'];
+    protected $fillable = ['name', 'price', 'description','type'];
+
+    public function getBookingOptions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(BookingOption::class);
+    }
 }

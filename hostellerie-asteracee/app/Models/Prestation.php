@@ -11,9 +11,14 @@ class Prestation extends Model
 
     protected $fillable = ['name','media_id'];
 
-    public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function getMedia(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Media::class, 'id', 'media_id');
+    }
+
+    public function getRoomPrestations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(RoomsPrestation::class);
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\RoomRepository;
+use App\Http\Resources\FilteredRoomResource;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Http\Resources\RoomResource;
@@ -31,11 +32,8 @@ class RoomController extends Controller
     {
         $rooms = RoomRepository::getAvailableRooms($request->starting_date,$request->ending_date);
 
-//        dd($unavailableRoomsIds);
-//        $rooms = Room::all();
-
-        return response()->json($rooms);
-//        return response()->json(RoomResource::Collection($rooms));
+//        return response()->json($rooms);
+        return response()->json(FilteredRoomResource::Collection($rooms));
     }
 
     /**

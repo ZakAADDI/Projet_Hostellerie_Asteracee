@@ -18,7 +18,12 @@ class CreateDealsTable extends Migration
             $table->json('title');
             $table->json('content');
             $table->boolean('is_active')->nullable()->default(0);
+            $table->date('starting_date');
+            $table->date('ending_date');
+            $table->unsignedBigInteger('room_type_id');
             $table->timestamps();
+
+            $table->foreign('room_type_id')->references('id')->on('room_types');
         });
     }
 
