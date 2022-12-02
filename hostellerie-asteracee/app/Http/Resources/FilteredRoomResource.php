@@ -20,7 +20,7 @@ class FilteredRoomResource extends JsonResource
         return [
             'room_type' => RoomTypeResource::make($this->getRoomType),
             'number' => $this->room_number,
-            'prestations' => PrestationResource::make(RoomRepository::getRoomPrestations($this))
+            'prestations' => PrestationResource::collection(RoomRepository::getRoomPrestations($this))
         ];
     }
 }
