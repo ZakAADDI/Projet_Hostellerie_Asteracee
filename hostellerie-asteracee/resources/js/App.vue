@@ -1,6 +1,6 @@
 <template>
 
-    <div class>
+    <div class="flex flex-col h-screen">
         <Header />
 
 

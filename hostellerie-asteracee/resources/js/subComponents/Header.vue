@@ -1,6 +1,6 @@
 <template>
 
-    <div class="w-full bg-[#272023] items-center justify-end flex h-24">
+    <div class="w-full bg-[#272023] items-center justify-end flex h-24 grow-0">
         <div>
             <router-link :to="{name: 'Home'}">
                 <img class="logo top-0 w-2/4" :src=logoHeader alt="Logo Hostellerie Asteracée">
