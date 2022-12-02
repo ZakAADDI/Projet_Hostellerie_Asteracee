@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function getReviews(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class,'user_id');
     }
 
     public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
