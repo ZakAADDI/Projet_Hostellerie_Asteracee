@@ -14,13 +14,12 @@ class PrestationResource extends JsonResource
      */
     public function toArray($request)
     {
-        $media = $this->media;
+        $media = $this->getMedia;
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'media_id' => $media['id'],
-            'media_url' => $media['url'],
-            'media_alt' => $media['alt']
+            'media_url' => $media->url,
+            'media_alt' => $media->alt
         ];
     }
 }
