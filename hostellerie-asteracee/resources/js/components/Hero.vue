@@ -28,7 +28,7 @@ export default {
         }
     },
     async created(){
-        this.hero = (await axiosProvider.get('/heroes'))?.data;
+        this.hero = (await axiosProvider.get('/hero'))?.data;
 
         this.leftImg = this.hero.left_img;
         this.leftImgAlt = this.hero.left_img_alt;

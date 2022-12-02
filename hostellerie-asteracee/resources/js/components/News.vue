@@ -31,7 +31,7 @@ export default {
     async created(){
         this.news = (await axiosProvider.get('/infos'))?.data;
         this.sections = (await axiosProvider.get('/sections'))?.data;
-        this.section = this.sections[2].name;
+        this.section = this.sections[2].title;
 
     }
 }

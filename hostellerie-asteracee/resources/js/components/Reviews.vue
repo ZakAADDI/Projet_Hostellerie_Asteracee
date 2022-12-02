@@ -81,7 +81,7 @@ export default {
     },
     methods:{
         isMale(review){
-            return review.gender == 'Male';
+            return review.gender == 'male';
         }
     }
 }

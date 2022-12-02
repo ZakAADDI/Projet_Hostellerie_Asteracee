@@ -33,9 +33,7 @@ class ReviewController extends Controller
             'title' => 'required|max:100',
             'content' => 'required|max:256',
             'score' => 'required|int|max:5',
-            'user_firstname' => 'required|max:100',
-            'user_lastname' => 'required|max:100',
-            'gender' => 'required|max:6'
+            'user_id' => 'exists:App\Models\Media,id|int',
         ]);
 
         $review = new Review;
@@ -69,9 +67,7 @@ class ReviewController extends Controller
             'title' => 'required|max:100',
             'content' => 'required|max:512',
             'score' => 'required|int|max:5',
-            'user_firstname' => 'required|max:100',
-            'user_lastname' => 'required|max:100',
-            'gender' => 'required|max:6'
+            'user_id' => 'exists:App\Models\Media,id|int',
         ]);
 
         $review = Review::findOrFail($id);

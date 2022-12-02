@@ -12,10 +12,10 @@ class RoomsPrestation extends Model
 
     public function getRoomType()
     {
-        return $this->belongsTo(RoomType::class);
+        return $this->belongsTo(RoomType::class,'room_type_id','id');
     }
     public function getPrestation()
     {
-        return $this->belongsTo(Prestation::class);
+        return $this->belongsTo(Prestation::class,'prestation_id','id');
     }
 }

@@ -14,7 +14,7 @@ class RoomTypeResource extends JsonResource
      */
     public function toArray($request)
     {
-        $media = $this->media;
+        $media = $this->getMedia;
 
         return [
             'id' => $this->id,
@@ -22,9 +22,8 @@ class RoomTypeResource extends JsonResource
             'description'=> $this->getTranslation('description', App::getLocale()),
             'capacity' => $this->capacity,
             'price' => $this->price,
-            'media_id' => $media['id'],
-            'media_url' => $media['url'],
-            'media_alt' => $media['alt']
+            'media_url' => $media->url,
+            'media_alt' => $media->alt
         ];
     }
 }

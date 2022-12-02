@@ -30,12 +30,8 @@ class PrestationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'price' => 'required|int',
-            'type' => 'required|max:25',
-            'description.fr' => 'required|max:256',
-            'description.en' => 'required|max:256',
-            'media_id' => 'required|exists:App\Models\Media,id|int',
-            'capacity' => 'required|int'
+            'name' => 'required|max:256',
+            'media_id' => 'required|exists:App\Models\Media,id|int'
         ]);
 
         $prestation = new Prestation;
@@ -54,12 +50,8 @@ class PrestationController extends Controller
     public function update(Request $request, int $id)
     {
         $this->validate($request,[
-            'price' => 'required|int',
-            'type' => 'required|max:25',
-            'description.fr' => 'required|max:256',
-            'description.en' => 'required|max:256',
-            'media_id' => 'required|exists:App\Models\Media,id|int',
-            'capacity' => 'required|int'
+            'name' => 'required|max:256',
+            'media_id' => 'required|exists:App\Models\Media,id|int'
         ]);
 
         $prestation = Prestation::findOrFail($id);

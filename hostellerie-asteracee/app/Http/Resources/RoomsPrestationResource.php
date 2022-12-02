@@ -16,11 +16,9 @@ class RoomsPrestationResource extends JsonResource
      */
     public function toArray($request)
     {
-        $prestation = PrestationResource::make($this->findPrestation);
-        $room_type = RoomTypeResource::make($this->findRoomType);
-        $string = "test";
-        $_SERVER['token'] = base64_encode($string);
-        dd(base64_decode($_SERVER['token']));
+        $prestation = PrestationResource::make($this->getPrestation);
+        $room_type = $this->getRoomType;
+
         return [
 
             "prestation" => $prestation,

@@ -42,11 +42,11 @@ export default {
         }
     },
     async created(){
-        this.response = (await axiosProvider.get('/rooms'))?.data;
+        // this.response = (await axiosProvider.get('/rooms'))?.data;
         this.sections = (await axiosProvider.get('/sections'))?.data;
-        this.choosenRooms.push([this.response[0],this.response[26],this.response[24]]);
-        this.rooms = this.choosenRooms[0];
-        this.section = this.sections[0].name;
+        // this.choosenRooms.push([this.response[0],this.response[26],this.response[24]]);
+        // this.rooms = this.choosenRooms[0];
+        this.section = this.sections[0].title;
 
     }
 }
