@@ -17,7 +17,7 @@ class CreateRoomTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->json('description');
-            $table->integer('capacity');
+            $table->integer('capacity')->nullable();
             $table->float('price');
             $table->unsignedBigInteger('media_id');
             $table->timestamps();

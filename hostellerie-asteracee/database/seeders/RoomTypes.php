@@ -19,8 +19,8 @@ class RoomTypes extends Seeder
             [
                 'id' => 1,
                 'name' => 'Suite',
-                'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
-                'capacity' => '3',
+                'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"]),
+                'capacity' => 3,
                 'price' => 220,
                 'media_id' => 1,
                 'created_at' => date("Y-m-d H:i:s"),
@@ -29,8 +29,8 @@ class RoomTypes extends Seeder
             [
                 'id' => 2,
                 'name' => 'Luxe',
-                'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
-                'capacity' => '3',
+                'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"]),
+                'capacity' => 3,
                 'price' => 120,
                 'media_id' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
@@ -40,8 +40,8 @@ class RoomTypes extends Seeder
             [
                 'id' => 3,
                 'name' => 'Standard',
-                'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"],JSON_UNESCAPED_UNICODE),
-                'capacity' => '3',
+                'description'=> json_encode(["fr"=>"description en Français","en"=>"Description en Anglais"]),
+                'capacity' => 3,
                 'price' => 70,
                 'media_id' => 3,
                 'created_at' => date("Y-m-d H:i:s"),

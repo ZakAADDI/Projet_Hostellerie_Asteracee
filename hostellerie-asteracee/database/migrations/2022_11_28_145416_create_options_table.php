@@ -17,8 +17,8 @@ class CreateOptionsTable extends Migration
             $table->id();
             $table->json('name');
             $table->json('description');
+            $table->enum('type',['daily','weekly','stay']);
             $table->float('price');
-            $table->json('frequency')->nullable();
             $table->timestamps();
         });
     }

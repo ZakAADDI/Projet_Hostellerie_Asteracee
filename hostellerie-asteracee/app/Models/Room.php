@@ -8,10 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
-    protected $fillable = ['room_types_id', 'room_number'];
+    protected $fillable = ['room_type_id', 'room_number'];
 
-    public function roomType(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function getRoomType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(RoomType::class, 'id', 'room_types_id');
+        return $this->belongsTo(RoomType::class);
     }
+
+    public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
+
 }

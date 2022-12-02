@@ -10,16 +10,17 @@ class BookingOption extends Model
     use HasFactory;
     protected $fillable = [
         'booking_id',
-        'option_id'
+        'option_id',
+        'count'
     ];
 
-    public function getBooking(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function getBooking(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(Booking::class, 'id', 'booking_id');
+        return $this->belongsTo(Booking::class);
     }
 
-    public function getOption(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function getOption(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(Option::class, 'id', 'option_id');
+        return $this->belongsTo(Option::class);
     }
 }
