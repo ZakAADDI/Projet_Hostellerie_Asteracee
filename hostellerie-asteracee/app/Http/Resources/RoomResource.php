@@ -2,9 +2,6 @@
 
 namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\App;
-use App\Http\Resources\RoomTypeResource;
-
 
 class RoomResource extends JsonResource
 {

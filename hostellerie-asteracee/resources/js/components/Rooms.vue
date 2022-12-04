@@ -13,11 +13,11 @@
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
                     <Card
                     :showPrice="true"
-                    :image="room.image"
-                    :alt="room.imageAlt"
-                    :title="room.room_name"
+                    :image="room.media_url"
+                    :alt="room.media_alt"
+                    :title="room.name"
                     :price="room.price"
-                    :description="room.room_description"/>
+                    :description="room.description"/>
                 </div>
 
             </div>
@@ -38,14 +38,12 @@ export default {
             section: '',
             response: [],
             rooms: [],
-            choosenRooms:[]
         }
     },
     async created(){
-        // this.response = (await axiosProvider.get('/rooms'))?.data;
+        this.rooms = (await axiosProvider.get('/roomTypes'))?.data;
+        console.log(this.rooms)
         this.sections = (await axiosProvider.get('/sections'))?.data;
-        // this.choosenRooms.push([this.response[0],this.response[26],this.response[24]]);
-        // this.rooms = this.choosenRooms[0];
         this.section = this.sections[0].title;
 
     }
