@@ -8,6 +8,7 @@ import CreateUser from '../views/CreateUser.vue'
 import ConfirmCreatedAccount from '../views/ConfirmCreatedAccount.vue'
 import SomethingWentWrong from '../views/SomethingWentWrong.vue'
 import FiltredRooms from '../views/FiltredRooms.vue'
+import SelectOptions from '../views/SelectOptions.vue'
 const routes = [
   {
     path: '/',
@@ -48,6 +49,11 @@ const routes = [
     path: '/filtredRooms',
     name: 'FiltredRooms',
     component: FiltredRooms
+  },
+  {
+    path: '/selectOptions',
+    name: 'SelectOptions',
+    component: SelectOptions
   }
 ]
 

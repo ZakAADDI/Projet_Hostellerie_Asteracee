@@ -42,7 +42,6 @@ export default {
     },
     async created(){
         this.rooms = (await axiosProvider.get('/roomTypes'))?.data;
-        console.log(this.rooms)
         this.sections = (await axiosProvider.get('/sections'))?.data;
         this.section = this.sections[0].title;
 
