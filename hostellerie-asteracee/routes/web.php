@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +18,3 @@ use App\Mail\TestMail;
 Route::get('/', function () {
     return view('home');
 });
-
-Route::get('/sendEmail', '\App\Http\Controllers\EmailController@sendEmail',);
