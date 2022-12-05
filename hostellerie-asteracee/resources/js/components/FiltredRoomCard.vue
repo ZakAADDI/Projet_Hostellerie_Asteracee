@@ -1,5 +1,5 @@
 <template>
-    <div class="filtredRoomsCard border-4 border-[#E6B34B] w-2/3 p-6 flex flex-col items-center bg-[#272023] text-white shadow-md shadow-gray-200 m-8 transform transition duration-500 hover:scale-110">
+    <div class="filtredRoomsCard border-4 border-[#E6B34B] w-2/3 p-6 flex flex-col items-center bg-[#272023] text-white shadow-md shadow-gray-400 m-8 transform transition duration-500 hover:scale-110">
         <p>{{ roomName }}</p>
         <img class="" style="width:80px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
         <p>{{ roomDescription }}</p>
@@ -7,7 +7,7 @@
         <p>Prix : {{ roomPrice }} € /nuit/pers.</p>
         <div class="flex justify-between">
            <span v-for="prestation in roomPrestations" :key=prestation.id >
-            <img :src=prestation.media_url alt="">
+            <img :src=prestation.media_url alt="" class="fill-white">
         </span>
         </div>
 
@@ -27,7 +27,8 @@ export default {
         roomAlt: String,
         roomPrice: Number,
         roomPrestations: Object,
-        roomNumber: Number
+        roomNumber: Number,
+        roomId: Number
     },
     data(){
         return{
@@ -36,7 +37,7 @@ export default {
     },
     methods:{
         addToCart: function(){
-            localStorage.set("cartRoom", {"roomNumber" : this.roomNumber});
+            localStorage.set("cartRoom", {"roomId" : this.roomId});
             this.$router.push({ name: 'SelectOptions'});
 
         }
@@ -46,7 +47,8 @@ export default {
 
 <style scoped>
 .filtredRoomsCard{
-     animation: fadein ease-in-out 0.5s;
+    animation: fadein ease-in-out 0.5s;
+
 }
 @keyframes fadein {
     0% {
