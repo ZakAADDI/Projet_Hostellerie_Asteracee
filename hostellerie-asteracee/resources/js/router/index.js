@@ -7,8 +7,10 @@ import Connexion from '../views/Connexion.vue'
 import CreateUser from '../views/CreateUser.vue'
 import ConfirmCreatedAccount from '../views/ConfirmCreatedAccount.vue'
 import SomethingWentWrong from '../views/SomethingWentWrong.vue'
-import FiltredRooms from '../views/FiltredRooms.vue'
+import FilteredRooms from '../views/FilteredRooms.vue'
 import SelectOptions from '../views/SelectOptions.vue'
+import ConfirmUserIdentity from '../views/ConfirmUserIdentity.vue'
+import RecapOrder from '../views/RecapOrder'
 const routes = [
   {
     path: '/',
@@ -46,14 +48,24 @@ const routes = [
     component: SomethingWentWrong
   },
   {
-    path: '/filtredRooms',
-    name: 'FiltredRooms',
-    component: FiltredRooms
+    path: '/filteredRooms',
+    name: 'FilteredRooms',
+    component: FilteredRooms
   },
   {
     path: '/selectOptions',
     name: 'SelectOptions',
     component: SelectOptions
+  },
+  {
+    path: '/confirmUserIdentity',
+    name: 'ConfirmUserIdentity',
+    component: ConfirmUserIdentity
+  },
+  {
+    path: '/recapOrder',
+    name: 'RecapOrder',
+    component: RecapOrder
   }
 ]
 

@@ -1,12 +1,12 @@
 <template>
-    <div class="filtredRooms flex flex-col items-center mt-16 grow">
+    <div class="filteredRooms flex flex-col items-center mt-16 grow">
         <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center">
         <span class="text-[#E6B34B] text-2xl">Votre réservation : </span>
             <span> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
         </div>
         <button class="mt-4 bg-red-500 p-2 rounded-md text-[#272023]" @click="removeData">Annuler ma recherche</button>
         <div class="flex flex-col justify-center items-center" v-for="room in rooms" :key=room.id>
-            <FiltredRoomCard
+            <FilteredRoomCard
             :roomName="room.room_type.name"
             :roomNumber="room.number"
             :roomPrestations="room.prestations"
@@ -22,19 +22,19 @@
 </template>
 
 <script>
-import FiltredRoomCard from '../components/FiltredRoomCard.vue'
+import FilteredRoomCard from '../components/FilteredRoomCard.vue'
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
 
 export default {
-    name: 'FiltredRooms',
+    name: 'FilteredRooms',
     data(){
         return{
             rooms:[]
         }
     },
     components:{
-        FiltredRoomCard
+        FilteredRoomCard
     },
     async created(){
         this.userChoice = localStorage.get("userChoice");
@@ -45,7 +45,6 @@ export default {
             }
         ]
         this.rooms = (await axiosProvider.postWithOutAuth('/filteredRooms',this.body))?.data;
-        console.log(this.rooms);
     },
     methods:{
         removeData(event){
@@ -59,7 +58,7 @@ export default {
 </script>
 
 <style scoped>
-.filtredRooms{
+.filteredRooms{
     animation: fadein ease-in-out 0.5s;
 }
 @keyframes fadein {

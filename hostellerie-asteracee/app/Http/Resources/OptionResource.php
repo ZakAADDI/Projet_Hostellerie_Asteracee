@@ -16,6 +16,7 @@ class OptionResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->getTranslation('name', App::getLocale()),
             'description' => $this->getTranslation('description', App::getLocale()),
             'price' => $this->price,

@@ -31,8 +31,20 @@ export default {
      },
     methods:{
         submitForm :function(){
-            localStorage.set("userChoice",{"startingDate" : this.startingDate,"endingDate" : this.endingDate,"occupants":this.numberOccupants});
-            this.$router.push('FiltredRooms');
+            let date1 = new Date(this.startingDate);
+            let date2 = new Date(this.endingDate);
+            let diff = date2.getTime() - date1.getTime();
+            let days = Math.ceil(diff/(1000*3600*24));
+            console.log(days);
+
+            localStorage.set(
+                "userChoice",
+                    {
+                        "startingDate" : this.startingDate,"endingDate" : this.endingDate,"occupants":this.numberOccupants,
+                        "nbrOfDays": days
+                    }
+                );
+            this.$router.push('FilteredRooms');
         }
     }
 
