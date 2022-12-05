@@ -18,6 +18,7 @@ class FilteredRoomResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'room_id' => $this->id,
             'room_type' => RoomTypeResource::make($this->getRoomType),
             'number' => $this->room_number,
             'prestations' => PrestationResource::collection(RoomRepository::getRoomPrestations($this))

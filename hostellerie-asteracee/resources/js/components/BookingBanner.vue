@@ -15,7 +15,6 @@
         <div>
             <button type="submit" class="bg-[#E6B34B] p-4 rounded-md text-[#272023]">Réserver</button>
         </div>
-
     </form>
 </template>
 
@@ -32,9 +31,6 @@ export default {
      },
     methods:{
         submitForm :function(){
-            // console.log(this.startingDate);
-            // console.log(this.endingDate);
-            // console.log(this.numberOccupants + ' personnes');
             localStorage.set("userChoice",{"startingDate" : this.startingDate,"endingDate" : this.endingDate,"occupants":this.numberOccupants});
             this.$router.push('FiltredRooms');
         }

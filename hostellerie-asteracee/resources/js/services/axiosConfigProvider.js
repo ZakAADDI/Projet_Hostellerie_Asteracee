@@ -15,9 +15,8 @@ const axiosProvider = {
         }
     },
     postWithOutAuth: async (endpoint, body) => {
-        // return axios.post(axiosProvider.baseUrl + endpoint, body)
-        console.log(endpoint)
-        console.log(body);
+        return axios.post(axiosProvider.baseUrl + endpoint, body)
+
     },
 
     getAuthorization: async () => {
