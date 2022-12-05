@@ -41,9 +41,16 @@ export default {
     width: 200px;
     height: 300px;
     perspective: 1000px;
-
+    animation: fadein ease-in-out 1.5s;
 }
-
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
 .flip-card-inner {
     position: relative;
     text-align: center;

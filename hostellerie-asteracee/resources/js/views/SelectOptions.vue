@@ -97,6 +97,7 @@ export default {
                 }
             });
             localStorage.set("cartOptions",{"options":this.userOptions})
+            this.$router.push({name:'ConfirmUserIdentity'})
 
         },
         removeData(event){

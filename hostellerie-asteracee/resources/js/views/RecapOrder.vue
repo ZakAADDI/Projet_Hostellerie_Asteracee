@@ -14,7 +14,6 @@ export default {
 
 <style scoped>
 .recapOrder{
-    height: 50vh;
     animation: fadein ease-in-out 0.5s;
 }
 @keyframes fadein {
