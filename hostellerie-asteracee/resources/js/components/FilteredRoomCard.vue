@@ -6,7 +6,7 @@
         <p>{{ roomDescription }}</p>
     </div>
         <img class="border-4 border-[#E6B34B] shadow-md shadow-gray-200 sm:w-1/3" :src=roomImage :alt=roomAlt>
-    <div class="flex flex-col justify-center items-center sm:flex flex-col sm:mx-auto">
+    <div class="flex flex-col justify-center items-center sm:flex sm:mx-auto">
         <p class="mt-2">Prix : {{ roomPrice }} € /nuit/pers.</p>
         <div class="flex justify-between">
            <span v-for="prestation in roomPrestations" :key=prestation.id >

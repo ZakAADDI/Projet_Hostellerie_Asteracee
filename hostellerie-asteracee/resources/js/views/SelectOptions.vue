@@ -1,37 +1,34 @@
 <template>
 <div class="flex flex-col grow">
 
-     <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center w-1/2 mx-auto">
-    <span class="text-[#E6B34B] text-2xl">Votre réservation : </span>
-            <span> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
-    </div>
-    <span class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center">
-        <span class="text-[#E6B34B] text-2xl">Votre chambre : </span>
-        <p>{{ roomName }}</p>
-        <p>{{ roomDescription }}</p>
-        <img class="border-4 border-[#E6B34B] shadow-md shadow-gray-200" :src=roomImage :alt=roomAlt>
-        <p>Prix : {{ roomPrice }} € /nuit/pers.</p>
-        <div class="flex justify-between">
-           <span v-for="prestation in roomPrestations" :key=prestation.id >
-            <img :src=prestation.media_url alt="" class="fill-white">
-        </span>
-        </div>
-    </span>
 
-    <div class="options flex flex-col items-center justify-center mx-auto grow border-4 border-[#E6B34B] bg-[#272023] text-white shadow-md shadow-gray-400 w-2/3">
+    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
+            <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
+            <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
+            <span>soit {{ userChoice.nbrOfDays }} jours</span>
+            <span>Pour {{ userChoice.occupants }} pers.</span>
+    </div>
+    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center my-6 mx-6">
+            <span class="text-[#E6B34B] text-2xl">Votre chambre :</span>
+            <span class="text-xl font-bold">{{ roomName }}</span>
+            <span class="text-center">{{ roomDescription }}</span>
+            <span class="font-bold">Prix : {{ roomPrice }} €/nuits/pers</span>
+    </div>
+
+    <div class="options flex flex-col items-center justify-center mx-auto grow border-4 border-[#E6B34B] bg-[#272023] text-white shadow-md shadow-gray-400 w-2/3 mb-6">
     <span class="text-[#E6B34B] text-2xl">Vos options : </span>
         <h1 class="mb-4">Choisissez les options de votre séjour</h1>
 
         <form @submit.prevent="submitForm">
             <div class="flex flex-col justify-between" v-for="option in options" v-bind:key=option.id>
                 <div class="flex justify-arround items-center">
-                    <input type="checkbox" :id="option.id" :value="option.id" v-model="selectedOption" >
-                    <label :for="option.id">{{ option.name }}</label>
+                    <input type="checkbox" :id="option.id" :value="option.id" v-model="selectedOption" class="mr-2">
+                    <label :for="option.id" class="font-bold">{{ option.name }}</label>
                 </div>
 
                 <span>{{ option.description }}</span>
-                <div class="flex">
-                    <span>Prix {{ option.price }} €
+                <div class="flex flex-row">
+                    <span class="flex flex-row font-bold">Prix {{ option.price }} €
                         <p v-if="option.type === 'daily'">/jour</p>
                         <p v-if="option.type === 'weekly'">/semaine</p>
                         <p v-if="option.type === 'stay'">/sejour</p>
@@ -45,6 +42,7 @@
             </div>
 
         </form>
+
     </div>
 </div>
 </template>

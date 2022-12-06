@@ -1,10 +1,11 @@
 <template>
     <div class="confirmUserIdentity flex flex-col grow">
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
-            <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
+            <span class="text-[#E6B34B] text-2xl font-bold">Votre séjour :</span>
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
             <span>Pour {{ userChoice.occupants }} pers.</span>
+            <span>{{ userChoice.room_price }}</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
