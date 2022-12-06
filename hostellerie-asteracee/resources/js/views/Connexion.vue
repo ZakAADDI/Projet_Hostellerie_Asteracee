@@ -78,7 +78,6 @@ export default {
 
 <style scoped>
 .connexion{
-    height: 70vh;
     animation: fadein ease-in-out 0.5s;
 
 }

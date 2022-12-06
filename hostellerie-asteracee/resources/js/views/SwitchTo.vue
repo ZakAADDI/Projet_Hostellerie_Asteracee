@@ -55,7 +55,6 @@ export default {
 <style scoped>
 
 .switchTo{
-    height: 40vh;
      animation: fadein ease-in-out 0.5s;
 }
 @keyframes fadein {

@@ -139,7 +139,6 @@ export default {
 
 <style scoped>
 .newUser{
-    height: 70vh;
     animation: fadein ease-in-out 0.5s;
 
 }

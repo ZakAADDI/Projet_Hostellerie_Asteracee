@@ -27,6 +27,16 @@ export default {
     margin-right: auto;
     margin-bottom: 2rem;
     background-color: #272023;
+    animation: fadein ease-in-out 2s;
+}
+
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 img{
     margin-left: auto;

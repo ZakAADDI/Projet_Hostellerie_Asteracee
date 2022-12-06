@@ -59,7 +59,7 @@ class RoomController extends Controller
     public function show(Room $room)
     {
 //        $room = Room::findOrFail($id);
-        return response()->json($room);
+        return response()->json(RoomResource::make($room));
     }
 
     /**

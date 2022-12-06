@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\API\PersonalAccessToken;
+use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+
 class UserController extends Controller
 {
     /**
@@ -82,5 +85,12 @@ class UserController extends Controller
         $user = User::where('id',$id)->first();
         $user->delete();
         return response()->json('User '.$id.' deleted!');
+    }
+
+    public function findUser(Request $request)
+    {
+        $token = $request->token;
+        $response = SanctumPersonalAccessToken::findToken($token);
+        return User::where('id',$response->tokenable_id)->firstOrFail();
     }
 }

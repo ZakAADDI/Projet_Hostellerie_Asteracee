@@ -118,6 +118,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 // SANCTUM
     Route::post('/register', [AuthController::class, 'createUser']);
     Route::post('/login', [AuthController::class, 'loginUser']);
+    Route::post('/findUser', [UserController::class, 'findUser']);
 
 // ROOMS
     Route::get('/rooms', [RoomController::class, 'index']);

@@ -1,13 +1,13 @@
 <template>
-    <div class="hero shadow-md shadow-gray-700">
-        <div class="media">
-            <img class="leftImg shadow-md shadow-gray-700"  :src=leftImg :alt=leftImgAlt>
-            <div class="video">
-                <iframe width="650" height="365" :src=centerMedia  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
-                <p>{{ hero.text }}</p>
+    <div class="hero shadow-md shadow-gray-700 flex flex-col justify-center bg-[#E6B34B] mb-12 mx-auto">
+        <div class="media flex justify-around mt-8">
+            <img class="leftImg shadow-md shadow-gray-700 mt-40 absolute"  :src=leftImg :alt=leftImgAlt>
+            <div class="video bg-[#272023] flex flex-col text-white justify-center items-center">
+                <iframe class="mt-4" width="650" height="365" :src=centerMedia  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; z-index: 1;"></iframe>
+                <p class="text-center">{{ hero.text }}</p>
             </div>
 
-            <img class="rightImg shadow-md shadow-gray-700" :src=rightImg :alt=rightImgAlt>
+            <img class="rightImg shadow-md shadow-gray-700 mt-40 absolute" :src=rightImg :alt=rightImgAlt>
         </div>
     </div>
 </template>
@@ -43,50 +43,30 @@ export default {
 
 <style scoped>
 
-
-@import url('https://fonts.googleapis.com/css2?family=Radley&display=swap');
-
 .hero{
-    font-family: 'Radley', serif;
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #E6B34B;
     height: 600px;
     width: 60vw;
     margin-left: 20vw;
     margin-right: 20vw;
-    box-shadow: 4px 4px lightyellow;
-    margin-bottom: 3rem;
+    animation: fadein ease-in-out 0.8s;
 }
-.media{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 2rem;
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
-
 .rightImg, .leftImg{
     height: 400px;
-    margin-top: 10rem;
-    position: absolute;
 }
 .video{
-    background-color: #272023;
-    height: 170%;
     width: 50vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: -10rem;
-    flex-direction: column;
-    color: white;
 }
 p{
     margin-top: 28rem;
-}
-.logo{
-    position: absolute;
 }
 .rightImg{
         display: none;

@@ -10,7 +10,7 @@
                 <img class="absolute ml-16 bottom-0 top-60" style="width:80px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             </div>
             <div class="flip-card-back">
-               <div class="bg-[#E6B34B] text-[#272023] flex justify-start pl-4 w-2/4">{{ title }}</div>
+               <div class="bg-[#E6B34B] text-[#272023] flex justify-start pl-4 w-3/4">{{ title }}</div>
                 <div class="text-white ">{{ description }}</div>
 
                 <div v-if="showPrice" class="bg-[#E6B34B] text-[#272023] flex justify-end pr-4 w-2/4">- {{ price }} € </div>
@@ -41,9 +41,16 @@ export default {
     width: 200px;
     height: 300px;
     perspective: 1000px;
-
+    animation: fadein ease-in-out 1.5s;
 }
-
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
 .flip-card-inner {
     position: relative;
     text-align: center;
