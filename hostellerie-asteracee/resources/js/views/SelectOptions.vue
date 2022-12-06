@@ -1,7 +1,6 @@
 <template>
 <div class="flex flex-col grow">
-
-
+        <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
     <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
             <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>

@@ -1,5 +1,5 @@
 <template>
-    <div class="confirmOrder flex flex-col items-center grow mt-8 lg:mt-20">
+    <div class="confirmOrder flex flex-col items-center grow mt-8 lg:mt-32">
     <span class="text-[#E6B34B] text-2xl">Merci pour votre réservation</span>
     <div class="flex flex-col justify-center items-center p-6">
         <p class="text-center mb-2">Vous allez recevoir dans quelques instants un email de confirmation, avec le récapitulatif de votre réservation</p>

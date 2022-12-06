@@ -1,11 +1,25 @@
 <template>
-    <div class="filteredRooms flex flex-col items-center mt-16 grow">
+    <div class="filteredRooms flex flex-col items-center grow">
+        <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
         <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center">
         <span class="text-[#E6B34B] text-2xl">Votre réservation : </span>
             <span> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
         </div>
-        <button class="mt-4 bg-red-500 p-2 rounded-md text-[#272023]" @click="removeData">Annuler ma recherche</button>
-        <div class="flex flex-col justify-center items-center" v-for="room in rooms" :key=room.id>
+        <button class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">Annuler ma recherche</button>
+        <div class="flex flex-col justify-center items-center lg:flex-row lg:flex-wrap" v-for="room in rooms" :key=room.id>
+            <Card
+            :title="room.room_type.name"
+            :image="room.room_type.media_url"
+            :alt="room.room_type.media_alt"
+            :price="room.room_type.price"
+            :showPrice="true"
+            :description="room.room_type.description"
+            :showButton="true"
+            :roomNumber="room.number"
+            :roomPrestations="room.prestations"
+            :roomId="room.room_id"
+            class="inline md:hidden mb-20"
+            />
             <FilteredRoomCard
             :roomName="room.room_type.name"
             :roomNumber="room.number"
@@ -14,10 +28,9 @@
             :roomImage="room.room_type.media_url"
             :roomAlt="room.room_type.media_alt"
             :roomPrice="room.room_type.price"
-            :roomId="room.room_id" />
+            :roomId="room.room_id"
+            class="hidden md:flex" />
         </div>
-
-
     </div>
 </template>
 
@@ -25,7 +38,7 @@
 import FilteredRoomCard from '../components/FilteredRoomCard.vue'
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
-
+import Card from '../components/Card.vue'
 export default {
     name: 'FilteredRooms',
     data(){
@@ -34,7 +47,8 @@ export default {
         }
     },
     components:{
-        FilteredRoomCard
+        FilteredRoomCard,
+        Card
     },
     async created(){
         this.userChoice = localStorage.get("userChoice");
@@ -44,7 +58,6 @@ export default {
         ]
 
         this.rooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
-        console.log(this.rooms);
     },
     methods:{
         removeData(event){
@@ -59,7 +72,7 @@ export default {
 
 <style scoped>
 .filteredRooms{
-    animation: fadein ease-in-out 0.5s;
+    animation: fadein ease-in-out 1s;
 }
 @keyframes fadein {
     0% {
