@@ -16,24 +16,19 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rooms = Room::all();
+        $startingDate = $request->input('starting');
+        $endingDate = $request->input('ending');
 
-        return response()->json(RoomResource::Collection($rooms), 200);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function showFiltered(Request $request)
-    {
-        $rooms = RoomRepository::getAvailableRooms($request->starting_date,$request->ending_date);
+        if ($startingDate && $endingDate){
+            $rooms = RoomRepository::getAvailableRooms($startingDate,$endingDate);
+        } else {
+            $rooms = Room::all();
+        }
 
 //        return response()->json($rooms);
-        return response()->json(FilteredRoomResource::Collection($rooms));
+        return response()->json(RoomResource::Collection($rooms));
     }
 
     /**

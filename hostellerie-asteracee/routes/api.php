@@ -123,7 +123,6 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 // ROOMS
     Route::get('/rooms', [RoomController::class, 'index']);
     Route::get('/rooms/{room}', [RoomController::class, 'show']);
-    Route::post('/filteredRooms', [RoomController::class, 'showFiltered']);
 
 // REVIEWS
     Route::get('/reviews', [ReviewController::class, 'index']);

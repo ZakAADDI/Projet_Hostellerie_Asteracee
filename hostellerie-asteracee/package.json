@@ -8,7 +8,7 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "sprint1" : "php artisan migrate:fresh && php artisan db:seed --class=Sprint1"
+        "sprint1": "php artisan migrate:fresh && php artisan db:seed --class=Sprint1"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",
@@ -20,6 +20,7 @@
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
+        "@emailjs/browser": "^3.10.0",
         "vue": "^3.2.41",
         "vue-router": "^4.1.6",
         "vuex": "^4.1.0"

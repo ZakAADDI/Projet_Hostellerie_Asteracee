@@ -38,13 +38,13 @@ export default {
     },
     async created(){
         this.userChoice = localStorage.get("userChoice");
-        this.body = [
-            {
-                "starting_date": this.userChoice.startingDate,
-                "ending_date":  this.userChoice.endingDate
-            }
+        this.parameters = [
+            this.userChoice.startingDate,
+            this.userChoice.endingDate
         ]
-        this.rooms = (await axiosProvider.postWithOutAuth('/filteredRooms',this.body))?.data;
+
+        this.rooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
+        console.log(this.rooms);
     },
     methods:{
         removeData(event){

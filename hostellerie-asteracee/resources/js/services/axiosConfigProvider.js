@@ -18,6 +18,11 @@ const axiosProvider = {
         return axios.post(axiosProvider.baseUrl + endpoint, body)
 
     },
+    getWithParameters: async (endpoint, parameters) => {
+        // console.log(parameters[0])
+        return axios.get(axiosProvider.baseUrl + endpoint, {params: {starting: parameters[0],ending: parameters[1]}})
+
+    },
 
     getAuthorization: async () => {
         this.user = storage.get("user");
