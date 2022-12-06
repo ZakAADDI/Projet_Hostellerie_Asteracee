@@ -1,9 +1,36 @@
 <template>
+<div>
+    <div class="inline lg:hidden">
+        <nav>
+      <div class="navbar">
+        <div class="container nav-container">
+            <input class="checkbox" type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>
+          <div class="logo">
+        <img class="top-0" :src=logoHeader alt="Logo Hostellerie Asteracée">
 
-    <div class="w-full bg-[#272023] items-center justify-end flex h-24 grow-0">
+          </div>
+          <div class="menu-items">
+                    <img class="w-1/2 mx-auto mb-6" :src=logoHeader alt="Logo Hostellerie Asteracée">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Nos Chambres</a></li>
+            <li><a href="#">Nos Services</a></li>
+            <li><a href="#">Les prestations</a></li>
+            <li><a href="#">Nous contacter</a></li>
+            <li><a href="#">Qui sommes nous ?</a></li>
+          </div>
+        </div>
+      </div>
+    </nav>
+    </div>
+    <div class="hidden lg:flex w-full bg-[#272023] items-center justify-end flex h-24 grow-0">
         <div>
             <router-link :to="{name: 'Home'}">
-                <img class="logo top-0 w-2/4" :src=logoHeader alt="Logo Hostellerie Asteracée">
+                <img class="logo" :src=logoHeader alt="Logo Hostellerie Asteracée">
             </router-link>
         </div>
 
@@ -20,11 +47,11 @@
 
         <a
         v-on:click="changeTo">
-            <img class="text-white mr-16 sm:ml-14" src="../assets/EngFrFlag.png" alt="English Flag" >
+            <img class="text-white mr-16 sm:ml-14 w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
         </a>
 
     </div>
-
+</div>
 </template>
 
 <script>
@@ -53,9 +80,146 @@ export default {
 
 <style scoped>
 
-img{
-    width: 40px;
+.container {
+  max-width: 1050px;
+  width: 100%;
+  margin: auto;
 }
+
+.navbar {
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+
+.navbar .menu-items {
+  display: flex;
+}
+
+.navbar .nav-container li {
+  list-style: none;
+}
+
+.navbar .nav-container a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.7rem;
+}
+
+.navbar .nav-container a:hover{
+    font-weight: bolder;
+}
+
+.nav-container {
+  /* display: block; */
+  /* position: relative; */
+  position: fixed;
+  z-index: 9999;
+  height: 60px;
+  background-color: #272023;
+}
+
+.nav-container .checkbox {
+  position: absolute;
+  display: block;
+  height: 32px;
+  width: 32px;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nav-container .hamburger-lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-container .hamburger-lines .line {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: #E6B34B;
+}
+
+.nav-container .hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.navbar .menu-items {
+  padding-top: 120px;
+  height: 100vh;
+  width: 100%;
+  transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
+  margin-right: -40px;
+  transition: transform 0.5s ease-in-out;
+  text-align: center;
+}
+
+.navbar .menu-items li {
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.menu-items{
+    position: fixed;
+    top: 60px;
+    z-index: 999;
+    background-color: #272023;
+}
+
+
+.nav-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .logo{
+  display: none;
+}
+
+/* test test test test test test test test test test */
+
 .logo{
     left: 24vw;
     width: 50%;
