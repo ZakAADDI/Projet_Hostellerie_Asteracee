@@ -1,7 +1,8 @@
 <template>
     <div class="confirmUserIdentity flex flex-col grow">
+        <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
-            <span class="text-[#E6B34B] text-2xl font-bold">Votre séjour :</span>
+            <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
             <span>Pour {{ userChoice.occupants }} pers.</span>
@@ -14,9 +15,10 @@
             <span>Prix : {{ cartRoom.roomPrice}} €/nuits/pers</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
+
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
             <span class="text-[#E6B34B] text-2xl">Vos options :</span>
-            <div>
+            <div class="flex flex-col items-center">
                 <div v-for="option in options" :key=option.id>
                     <span>- {{ option.name }}</span>
                     <span> - {{ option.price }} €
@@ -26,11 +28,10 @@
                     </span>
 
                 </div>
-                <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-auto my-2">
-                    Modifier
-                </button>
+                <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
             </div>
         </div>
+
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center my-6 mx-2">
             <span class="text-[#E6B34B] text-2xl">Vos informations :</span>
             <span>Civilité : {{ currentUser.gender}}</span>
@@ -40,7 +41,7 @@
             <span>Email : {{ currentUser.email }}</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
-        <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">Terminer et réserver</button>
+        <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6" @click="submitBooking">Terminer et réserver</button>
         <button type="submit" class="bg-red-500 p-4 rounded-md text-[#272023] mx-6 my-4" @click="removeData">Annuler</button>
 
 
@@ -75,6 +76,9 @@ export default {
         this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
     },
     methods:{
+        submitBooking(){
+            this.$router.push({ name : 'RecapOrder'});
+        },
         removeData(event){
             event.preventDefault;
             localStorage.unset("userChoice");

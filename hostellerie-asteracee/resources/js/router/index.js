@@ -10,7 +10,8 @@ import SomethingWentWrong from '../views/SomethingWentWrong.vue'
 import FilteredRooms from '../views/FilteredRooms.vue'
 import SelectOptions from '../views/SelectOptions.vue'
 import ConfirmUserIdentity from '../views/ConfirmUserIdentity.vue'
-import RecapOrder from '../views/RecapOrder'
+import RecapOrder from '../views/RecapOrder.vue'
+import ConfirmOrder from '../views/ConfirmOrder.vue'
 const routes = [
   {
     path: '/',
@@ -66,6 +67,11 @@ const routes = [
     path: '/recapOrder',
     name: 'RecapOrder',
     component: RecapOrder
+  },
+  {
+    path: '/confirmOrder',
+    name: 'ConfirmOrder',
+    component: ConfirmOrder
   }
 ]
 

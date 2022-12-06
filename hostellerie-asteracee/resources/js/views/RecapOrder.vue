@@ -1,13 +1,93 @@
 <template>
-    <div class="recapOrder">
-        <span class="text-[#E6B34B] text-2xl">Page de Recap Order</span>
+    <div class="recapOrder grow">
+        <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center lg:h-60 lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6">
+        <span class="text-[#E6B34B] text-2xl">Récapitulatif de votre réservation :</span>
+        </div>
+        <div class="confirmUserIdentity flex flex-col grow">
+        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
+            <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
+            <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
+            <span>soit {{ userChoice.nbrOfDays }} jours</span>
+            <span>Pour {{ userChoice.occupants }} pers.</span>
+            <span>{{ userChoice.room_price }}</span>
+        </div>
+        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
+            <span class="text-[#E6B34B] text-2xl">Votre chambre :</span>
+            <span>{{ cartRoom.roomName}}</span>
+            <span>Prix : {{ cartRoom.roomPrice}} €/nuits/pers</span>
+        </div>
+
+        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
+            <span class="text-[#E6B34B] text-2xl">Vos options :</span>
+            <div class="flex flex-col items-center">
+                <div v-for="option in options" :key=option.id>
+                    <span>- {{ option.name }}</span>
+                    <span> - {{ option.price }} €
+                            <span v-if="option.type ===     'daily'">/jour</span>
+                            <span v-if="option.type ===     'weekly'">/semaine</span>
+                            <span v-if="option.type === 'stay'">/   sejour</span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 mx-6 lg:w-1/3 lg:mx-auto">
+            <span class="text-[#E6B34B] text-2xl">Vos informations :</span>
+            <span>Civilité : {{ currentUser.gender}}</span>
+            <span>Nom : {{ currentUser.lastname}}</span>
+            <span>Prénom : {{ currentUser.firstname}}</span>
+            <span>Adresse : {{ currentUser.address }}</span>
+            <span>Email : {{ currentUser.email }}</span>
+        </div>
+        <div class="flex justify-center items-center">
+            <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6" @click="submitBooking">Réserver</button>
+            <button type="submit" class="bg-red-500 p-4 rounded-md text-[#272023] mx-6 my-4" @click="removeData">Annuler</button>
+        </div>
+
+    </div>
     </div>
 </template>
 
 <script>
+import localStorage from '../services/localStorageProvider'
+import axiosProvider from '../services/axiosConfigProvider'
 export default {
     name: 'RecapOrder',
     components:{
+    },
+      async created(){
+        this.userChoice = localStorage.get("userChoice");
+        this.cartRoom = localStorage.get("cartRoom");
+        this.cartOptions = localStorage.get("cartOptions");
+        this.options = this.cartOptions.options;
+        this.userToken = localStorage.get("user")[1];
+        this.body =
+            {
+                "token":this.userToken
+            }
+        this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+    },
+     data(){
+        return{
+            userChoice: Object,
+            cartRoom: Object,
+            cartOptions: Object,
+            currentUser : Object,
+            options: Object
+        }
+    },
+    methods:{
+        submitBooking(){
+            this.$router.push({ name : 'ConfirmOrder'});
+        },
+        removeData(event){
+            event.preventDefault;
+            localStorage.unset("userChoice");
+            localStorage.unset("cartRoom");
+            localStorage.unset("cartOptions");
+            this.$router.push({ name: 'Home'});
+        }
     }
 }
 </script>
