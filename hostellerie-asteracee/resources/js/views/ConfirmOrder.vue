@@ -1,6 +1,7 @@
 <template>
+
     <!--Template FR -->
-    <div v-if="currentLanguage" class="confirmOrder flex flex-col items-center grow mt-8 lg:mt-20">
+    <div v-if="currentLanguage" class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
         <span class="text-[#E6B34B] text-2xl">Merci pour votre réservation</span>
         <div class="flex flex-col justify-center items-center p-6">
             <p class="text-center mb-2">Vous allez recevoir dans quelques instants un email de confirmation, avec le récapitulatif de votre réservation.</p>
@@ -10,8 +11,9 @@
         </div>
         <button @click="endBooking" class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6 mb-6">Retour à l'accueil</button>
     </div>
+    
     <!--Template EN -->
-    <div v-if="!currentLanguage" class="confirmOrder flex flex-col items-center grow mt-8 lg:mt-20">
+    <div v-if="!currentLanguage" class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
         <span class="text-[#E6B34B] text-2xl">Thank you for you booking</span>
         <div class="flex flex-col justify-center items-center p-6">
             <p class="text-center mb-2">You will receive in a few moments a confirmation email, with the summary of your booking.</p>

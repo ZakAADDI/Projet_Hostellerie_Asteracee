@@ -9,10 +9,14 @@ const axiosProvider = {
     },
 
     postWithAuth: async (endpoint, body) => {
-        return axios.post(axiosProvider.baseUrl + endpoint, body),
-        {
-            hearders: { Authorization: 'Bearer' + getAuthorization()}
-        }
+        const token = storage.get("user")[1]
+        const option = {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+    }
+    const response = axios.post(axiosProvider.baseUrl + endpoint, body,option);
+    return response;
     },
     postWithOutAuth: async (endpoint, body) => {
         return axios.post(axiosProvider.baseUrl + endpoint, body)
@@ -25,8 +29,7 @@ const axiosProvider = {
     },
 
     getAuthorization: async () => {
-        this.user = storage.get("user");
-       return this.token = this.user[1];
+       return storage.get("user")[1];
 
     },
 

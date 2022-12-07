@@ -14,6 +14,7 @@
                 <div class="text-white ">{{ description }}</div>
 
                 <div v-if="showPrice" class="bg-[#E6B34B] text-[#272023] flex justify-end pr-4 w-2/4">- {{ price }} € </div>
+                <button v-if="showButton" type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023] w-1/2 mx-auto mb-2" @click="addToCart">Réserver</button>
             </div>
         </div>
     </div>
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Card',
     props: {
@@ -29,8 +30,32 @@ export default {
         description: String,
         price: Number,
         showPrice: Boolean,
-        image: String
+        image: String,
+        showButton: Boolean,
+        roomNumber: Number,
+        roomPrestations: Object,
+        roomId: Number,
+        alt: String
     },
+    methods:{
+        addToCart: function(){
+            localStorage.set(
+                "cartRoom",
+                    {
+                        "roomId" : this.roomId,
+                        "roomName" : this.title,
+                        "roomDescription" : this.description,
+                        "roomPrestations" : this.roomPrestations,
+                        "roomImage" : this.image,
+                        "roomAlt" : this.alt,
+                        "roomPrice" : this.price,
+                        "roomNumber" : this.roomNumber,
+                    }
+                );
+            this.$router.push({ name: 'SelectOptions'});
+
+        }
+    }
 }
 </script>
 
