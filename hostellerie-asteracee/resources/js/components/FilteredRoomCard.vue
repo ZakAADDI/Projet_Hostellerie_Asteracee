@@ -5,11 +5,11 @@
             <img style="width:40px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             <p class="text-center">{{ roomDescription }}</p>
         </div>
-        <div>
+        <div class="my-auto">
             <img class="border-4 border-[#E6B34B] shadow-md shadow-gray-200 mx-auto w-1/2" :src=roomImage :alt=roomAlt>
         </div>
         <div class="flex flex-col justify-center items-center">
-            <p class="mt-2">Prix : {{ roomPrice }} € /nuit/pers.</p>
+            <p class="mt-2 text-center">Prix : {{ roomPrice }} € /nuit/pers.</p>
             <div class="flex justify-between">
                <span class="bg-[#E6B34B]" v-for="prestation in roomPrestations" :key=prestation.id >
                 <img :src=prestation.media_url :alt=prestation.media_alt class="fill-white">

@@ -1,6 +1,25 @@
 <template>
     <div class="filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
-        <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
+        <span class="lg:mt-28">Etape 2 : Sélection de votre chambre </span>
+        <div class="flex mb-6 w-screen justify-center items-center">
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+            <div class="cercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+            <div class="cercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+            <div class="cercle"></div>
+        </div>
         <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center">
         <span class="text-[#E6B34B] text-2xl">Votre réservation : </span>
             <span> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
@@ -71,6 +90,42 @@ export default {
 </script>
 
 <style scoped>
+.cercle{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 2rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #272023;
+}
+.cercleOk{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 2rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #E6B34B;
+}
+.smCercle{
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 2rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #272023;
+}
+.smCercleOk{
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 2rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #E6B34B;
+}
 .filteredRooms{
     animation: fadein ease-in-out 1s;
 }

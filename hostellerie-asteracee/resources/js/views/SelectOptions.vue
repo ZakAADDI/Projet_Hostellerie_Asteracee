@@ -1,7 +1,26 @@
 <template>
-<div class="flex flex-col grow mt-28 lg:mt-0">
-        <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
-    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-2/3 lg:mx-auto">
+<div class="options flex flex-col grow mt-28 lg:mt-0">
+    <span class="text-center lg:mt-28">Etape 3 : Sélection de vos options</span>
+    <div class="flex mb-6 w-screen justify-center items-center">
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+            <div class="cercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+                <div class="smCercle"></div>
+            <div class="cercle"></div>
+        </div>
+   <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center  lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6 p-2 border-t-4 border-t-[#E6B34B]">
             <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
@@ -9,14 +28,14 @@
             <span>{{ userChoice.room_price }}</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
-    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-2/3 lg:mx-auto mb-14">
+    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
             <span class="text-[#E6B34B] text-2xl">Votre chambre :</span>
             <span>{{ roomName}}</span>
             <span>Prix : {{ roomPrice}} €/nuits/pers</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
 
-    <div class="options flex flex-col items-center justify-center mx-auto grow border-4 border-[#E6B34B] bg-[#272023] text-white shadow-md shadow-gray-400 w-2/3 mb-6">
+    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 mx-6 lg:w-1/2 lg:mx-auto">
     <span class="text-[#E6B34B] text-2xl">Vos options : </span>
         <h1 class="mb-4">Choisissez les options de votre séjour</h1>
 
@@ -114,6 +133,42 @@ export default {
 </script>
 
 <style scoped>
+.cercle{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 2rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #272023;
+}
+.cercleOk{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 2rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #E6B34B;
+}
+.smCercle{
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 2rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #272023;
+}
+.smCercleOk{
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 2rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #E6B34B;
+}
 .options{
     animation: fadein ease-in-out 0.5s;
 }

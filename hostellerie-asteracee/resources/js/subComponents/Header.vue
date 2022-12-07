@@ -3,23 +3,23 @@
     <div class="inline lg:hidden grow-0">
         <nav>
       <div class="navbar">
+
         <div class="container nav-container">
+            <a
+            v-on:click="changeTo">
+            <img class="text-white mx-auto w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
+            </a>
             <input class="checkbox" type="checkbox" name="" id="" />
             <div class="hamburger-lines">
               <span class="line line1"></span>
               <span class="line line2"></span>
               <span class="line line3"></span>
             </div>
-          <div class="logo">
-        <img class="mt-6 " :src=logoHeader alt="Logo Hostellerie Asteracée">
+        <div class="flex items-center justify-center w-screen mt-6 absolute">
+            <img class="w-1/2 absolute" :src=logoHeader alt="Logo Hostellerie Asteracée">
+        </div>
 
-          </div>
           <div class="menu-items">
-
-            <li><a
-            v-on:click="changeTo">
-            <img class="text-white mx-auto w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
-            </a></li>
             <li><a href="#">Accueil</a></li>
             <li><router-link :to="{name:'Connexion'}">Se connecter</router-link></li>
             <li><a href="#">Nos Chambres</a></li>
