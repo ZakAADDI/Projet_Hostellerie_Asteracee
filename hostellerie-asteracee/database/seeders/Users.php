@@ -19,12 +19,12 @@ class Users extends Seeder
             [
                 'firstname' => 'gerant',
                 'lastname' => 'gerant',
+                'name' => 'employee',
                 'address' => '3 rue du test 74000 Test',
                 'email' => 'gerant@gmail.com',
-                'picture' => 'img',
                 'gender' => 'female',
                 'password' => Hash::make('gerant'),
-                'role_id' => 1,
+                'role_id' => 2,
                 'birth_date' => Carbon::createFromDate('1990','10','10'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -32,13 +32,27 @@ class Users extends Seeder
             [
                 'firstname' => 'utilisateur1',
                 'lastname' => 'utilisateur1',
+                'name' => 'user',
                 'address' => '3 rue du test 74000 Test',
                 'email' => 'user1@gmail.com',
-                'picture' => 'img',
                 'gender' => 'male',
                 'password' => Hash::make('user'),
                 'role_id' => 2,
                 'birth_date' => Carbon::createFromDate('1995','2','20'),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+
+            [
+                'firstname' => 'admin',
+                'lastname' => 'admin',
+                'name' => 'admin',
+                'address' => '3 rue du test 74000 Test',
+                'email' => 'admin@gmail.com',
+                'gender' => 'male',
+                'password' => Hash::make('admin'),
+                'role_id' => 2,
+                'birth_date' => Carbon::createFromDate('1995','2','18'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]
