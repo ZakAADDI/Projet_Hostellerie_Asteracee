@@ -25,7 +25,7 @@
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
             <span>Pour {{ userChoice.occupants }} pers.</span>
-            <span>{{ userChoice.room_price }}</span>
+            <span class="text-2xl">soit {{ total_room_price }} € ttc.</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
     <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
@@ -55,6 +55,10 @@
                     </span>
                 </div>
 
+            </div>
+            <div class="flex flex-col justify-center items-center mt-6 text-2xl">
+                <span>Total de vos options : </span>
+                <span>{{total_options_price}} € pour votre séjour</span>
             </div>
             <div class="flex flex-col m-4">
                 <button type="submit" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mb-4">Enregistrer mes options</button>
@@ -89,7 +93,9 @@ export default {
             roomId: Number,
             roomPrice: Number,
             userOptions:[],
-            selectedOption: []
+            selectedOption: [],
+            total_room_price: Number,
+            total_options_price: Number
         }
     },
     async created(){
@@ -105,6 +111,35 @@ export default {
          this.roomAlt = this.userRoom.room_type.media_alt
          this.roomPrice = this.userRoom.room_type.price
          this.roomId = this.userRoom.room_id
+
+        this.userChoice = localStorage.get("userChoice");
+        this.cartRoom = localStorage.get("cartRoom");
+
+        this.room_occupantsDays = this.userChoice.occupants * this.userChoice.nbrOfDays;
+        this.total_room_price = this.room_occupantsDays * this.cartRoom.roomPrice;
+
+
+
+    },
+    updated(){
+        this.total_options_price = 0;
+        this.nbrOfWeek = Math.ceil(this.userChoice.nbrOfDays / 7);
+
+        this.options.forEach(element => {
+                if(document.getElementById(element.id).checked){
+                    if(element.type == "daily"){
+                        this.optionAmount = element.price * this.userChoice.nbrOfDays;
+                        this.totalSingleOptionAmount = this.optionAmount * this.userChoice.occupants
+                    }
+                    if(element.type == "weekly"){
+                        this.totalSingleOptionAmount = element.price * this.nbrOfWeek
+                    }
+                    if(element.type == "stay"){
+                        this.totalSingleOptionAmount = element.price
+                    }
+                    this.total_options_price += this.totalSingleOptionAmount
+                }
+            });
     },
     methods:{
         submitForm(){
@@ -115,6 +150,8 @@ export default {
                 }
             });
             localStorage.set("cartOptions",{"options":this.userOptions})
+            localStorage.set("total_room_price", this.total_room_price);
+            localStorage.set("total_options_price", this.total_options_price)
             this.$router.push({name:'ConfirmUserIdentity'})
 
         },

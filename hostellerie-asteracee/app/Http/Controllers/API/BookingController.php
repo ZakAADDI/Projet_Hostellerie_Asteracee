@@ -30,6 +30,7 @@ class BookingController extends Controller
         $this->validate($request,[
             'ending_date' => 'required|max:25',
             'starting_date' => 'required|max:256',
+            'total_price' => 'integer',
             'room_id' => 'required|exists:App\Models\Room,id|int',
             'user_id' => 'required|exists:App\Models\User,id|int',
         ]);
