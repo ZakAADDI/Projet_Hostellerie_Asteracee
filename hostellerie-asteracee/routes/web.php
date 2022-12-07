@@ -18,3 +18,7 @@ use App\Mail\TestMail;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

@@ -29,7 +29,7 @@
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
             <span>Pour {{ userChoice.occupants }} pers.</span>
-            <span>{{ userChoice.room_price }}</span>
+            <span class="text-2xl">soit {{ total_room_price }} € ttc.</span>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
             <span class="text-[#E6B34B] text-2xl">Votre chambre :</span>
@@ -46,19 +46,26 @@
                             <span v-if="option.type ===     'daily'">/jour</span>
                             <span v-if="option.type ===     'weekly'">/semaine</span>
                             <span v-if="option.type === 'stay'">/   sejour</span>
+
                     </span>
 
                 </div>
+                <span class="text-2xl">soit {{ total_options_price }} € ttc.</span>
             </div>
         </div>
 
-        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 mx-6 lg:w-1/3 lg:mx-auto">
+        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
             <span class="text-[#E6B34B] text-2xl">Vos informations :</span>
             <span>Civilité : {{ currentUser.gender}}</span>
             <span>Nom : {{ currentUser.lastname}}</span>
             <span>Prénom : {{ currentUser.firstname}}</span>
             <span>Adresse : {{ currentUser.address }}</span>
             <span>Email : {{ currentUser.email }}</span>
+        </div>
+        <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 pb-2 mx-6 lg:w-1/3 lg:mx-auto">
+            <span class="text-[#E6B34B] text-2xl">Montant total de votre séjour</span>
+            <span class="text-3xl">{{this.total_roomOptions }} €</span>
+
         </div>
         <div class="flex justify-center items-center">
             <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6" @click="submitBooking">Réserver</button>
@@ -82,6 +89,9 @@ export default {
         this.userChoice = localStorage.get("userChoice");
         this.cartRoom = localStorage.get("cartRoom");
         this.cartOptions = localStorage.get("cartOptions");
+        this.total_room_price = localStorage.get("total_room_price");
+        this.total_options_price = localStorage.get("total_options_price");
+        this.total_roomOptions = this.total_room_price + this.total_options_price;
         this.options = this.cartOptions.options;
         this.userToken = localStorage.get("user")[1];
         this.body =
@@ -90,16 +100,16 @@ export default {
             }
         this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
         this.services = (await axiosProvider.get('/services'))?.data;
-            //console.log(this.services);
             this.service1 = this.services[0];
             this.service2 = this.services[1];
             this.service3 = this.services[2];
-            // console.log(this.service1);
-            // console.log(this.sev-if=currentLanguagervice2);
-            // console.log(this.service3);
+
     },
      data(){
         return{
+            total_roomOptions: Number,
+            room_occupantsDays: Number,
+            total_room_price: Number,
             userChoice: Object,
             cartRoom: Object,
             cartOptions: Object,
@@ -160,19 +170,20 @@ export default {
                     service3Name : this.service3.title,
                     service3Content : this.service3.content,
                 };
-            
+
                 if(this.language == "fr"){
-                    this.response = emailjs.send('service_221d5yz', 'template_uym8zdc', this.body, 'bbyfEd_o77jz3eSoT')  
+                    this.response = emailjs.send('service_221d5yz', 'template_uym8zdc', this.body, 'bbyfEd_o77jz3eSoT')
                 }
                 if(this.language == "en"){
                     this.response = emailjs.send('service_2xuxogk', 'template_q5sj1a8', this.body, '7EV5cfIjJKZzqpYhk')
                 }
                 this.$router.push({ name : 'ConfirmOrder'});
-            },   
+            },
         async submitBooking(){
             this.body={
                 ending_date : this.userChoice.endingDate,
                 starting_date : this.userChoice.startingDate,
+                total_price : this.total_room_price,
                 room_id : this.cartRoom.roomId,
                 user_id : 1
             };

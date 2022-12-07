@@ -25,7 +25,7 @@
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
             <span>Pour {{ userChoice.occupants }} pers.</span>
-            <span>{{ userChoice.room_price }}</span>
+            <span class="text-2xl">soit {{ total_room_price }} € ttc.</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
@@ -47,6 +47,7 @@
                     </span>
 
                 </div>
+                <span class="text-2xl">soit {{ total_options_price }} € ttc.</span>
                 <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
             </div>
         </div>
@@ -78,7 +79,8 @@ export default {
             userChoice: Object,
             cartRoom: Object,
             cartOptions: Object,
-            currentUser : Object
+            currentUser : Object,
+            total_room_price: Number
         }
     },
     components:{
@@ -87,6 +89,8 @@ export default {
         this.userChoice = localStorage.get("userChoice");
         this.cartRoom = localStorage.get("cartRoom");
         this.cartOptions = localStorage.get("cartOptions");
+        this.total_room_price = localStorage.get("total_room_price");
+        this.total_options_price = localStorage.get("total_options_price");
         this.options = this.cartOptions.options;
         this.userToken = localStorage.get("user")[1];
         this.body =
