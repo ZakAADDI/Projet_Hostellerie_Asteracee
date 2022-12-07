@@ -52,6 +52,8 @@
 <script>
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
+import emailjs from '@emailjs/browser';
+
 export default {
     name: 'RecapOrder',
     components:{
@@ -67,6 +69,14 @@ export default {
                 "token":this.userToken
             }
         this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+        this.services = (await axiosProvider.get('/services'))?.data;
+            //console.log(this.services);
+            this.service1 = this.services[0];
+            this.service2 = this.services[1];
+            this.service3 = this.services[2];
+            // console.log(this.service1);
+            // console.log(this.sev-if=currentLanguagervice2);
+            // console.log(this.service3);
     },
      data(){
         return{
@@ -74,12 +84,71 @@ export default {
             cartRoom: Object,
             cartOptions: Object,
             currentUser : Object,
-            options: Object
+            options: Object,
+            services: Object,
+            civility : '',
+            language: '',
+            gender: '',
+            firstname:'',
+            lastname:'',
+            startingDate:'',
+            endingDate:'',
+            nbrOfDays:'',
+            occupants:'',
+            roomName:'',
+            roomPrestations:'',
+            roomDescription:'',
+            roomPrice:'',
+            service1Name:'',
+            service1Content:'',
+            service2Name:'',
+            service2Content:'',
+            service3Name:'',
+            service3Content:''
         }
     },
     methods:{
-        submitBooking(){
-            this.$router.push({ name : 'ConfirmOrder'});
+        submitBooking(e){
+            this.language = localStorage.get("language");
+            if(this.currentUser.gender === "male" && this.language == "fr"){
+                this.civility = "Monsieur"
+            }
+            if(this.currentUser.gender === "male" && this.language == "en"){
+                this.civility = "Sir"
+            }
+            if(this.currentUser.gender === "female" && this.language == "fr"){
+                this.civility = "Madame"
+            }
+            if(this.currentUser.gender === "female" && this.language == "en"){
+                this.civility = "Miss"
+            }
+            this.body = {
+                    gender: this.civility,
+                    firstname: this.currentUser.firstname,
+                    lastname: this.currentUser.lastname,
+                    startingDate: this.userChoice.startingDate,
+                    endingDate: this.userChoice.endingDate,
+                    nbrOfDays: this.userChoice.nbrOfDays,
+                    occupants: this.userChoice.occupants,
+                    roomName: this.cartRoom.roomName,
+                    roomDescription: this.cartRoom.roomDescription,
+                    roomPrice: this.cartRoom.roomPrice,
+                    service1Name : this.service1.title,
+                    service1Content : this.service1.content,
+                    service2Name : this.service2.title,
+                    service2Content : this.service2.content,
+                    service3Name : this.service3.title,
+                    service3Content : this.service3.content,
+                };
+            
+                if(this.language == "fr"){
+                    this.response = emailjs.send('service_221d5yz', 'template_uym8zdc', this.body, 'bbyfEd_o77jz3eSoT')  
+                }
+                if(this.language == "en"){
+                    this.response = emailjs.send('service_2xuxogk', 'template_q5sj1a8', this.body, '7EV5cfIjJKZzqpYhk')
+                }
+                this.$router.push({ name : 'ConfirmOrder'});
+            }   
         },
         removeData(event){
             event.preventDefault;
@@ -88,8 +157,8 @@ export default {
             localStorage.unset("cartOptions");
             this.$router.push({ name: 'Home'});
         }
-    }
 }
+
 </script>
 
 <style scoped>
