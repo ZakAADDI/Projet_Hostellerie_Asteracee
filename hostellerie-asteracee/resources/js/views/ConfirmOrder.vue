@@ -1,42 +1,74 @@
 <template>
-    <div class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
-    <span class="text-[#E6B34B] text-2xl">Merci pour votre réservation</span>
-    <div class="flex flex-col justify-center items-center p-6">
-        <p class="text-center mb-2">Vous allez recevoir dans quelques instants un email de confirmation, avec le récapitulatif de votre réservation</p>
-        <p class="text-center mb-2"> ainsi que des informations utiles pour bien préparer votre séjour.</p>
-        <p class="text-center mb-2">En vous souhaitant une belle journée</p>
-        <p class="text-center mb-2">L'équipe de l'Hostellerie de l'Astéracée</p>
-    </div>
 
-        <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6 mb-6" @click="endBooking">Retour à la réception</button>
+    <!--Template FR -->
+    <div v-if="currentLanguage" class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
+        <span class="text-[#E6B34B] text-2xl">Merci pour votre réservation</span>
+        <div class="flex flex-col justify-center items-center p-6">
+            <p class="text-center mb-2">Vous allez recevoir dans quelques instants un email de confirmation, avec le récapitulatif de votre réservation.</p>
+            <p class="text-center mb-2">Ainsi que des informations utiles pour bien préparer votre séjour.</p>
+            <p class="text-center mb-2">En vous souhaitant un bon séjour.</p>
+            <p class="text-center mb-2">L'équipe de l'Hostellerie de l'Astéracée.</p>
+        </div>
+        <button @click="endBooking" class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6 mb-6">Retour à l'accueil</button>
+    </div>
+    
+    <!--Template EN -->
+    <div v-if="!currentLanguage" class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
+        <span class="text-[#E6B34B] text-2xl">Thank you for you booking</span>
+        <div class="flex flex-col justify-center items-center p-6">
+            <p class="text-center mb-2">You will receive in a few moments a confirmation email, with the summary of your booking.</p>
+            <p class="text-center mb-2">As well as useful information to prepare your stay.</p>
+            <p class="text-center mb-2">Wishing you a good stay.</p>
+            <p class="text-center mb-2">The Hostellerie de l'Astéracée team.</p>
+        </div>
+        <button @click="endBooking" class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6 mb-6">Back to homepage</button>
     </div>
 </template>
 
 <script>
+import localStorage from '../services/localStorageProvider'
 export default {
-    name: 'Confirm Order',
-    components:{
-    },
-    methods:{
-        endBooking(){
-            // sendEmail
-            this.$router.push({ name : 'Home'});
+    name: 'ConfirmOrder',
+    data(){
+        return{
+            currentLanguage: "false"
         }
-
+    },
+    components: {
+    },
+    created(){
+            this.language = localStorage.get("language");
+            if(this.language == "fr"){
+                return this.currentLanguage = true;
+            }
+            if(this.language == "en"){
+                return this.currentLanguage = false;
+            }
+        
+    },
+    methods: {
+        endBooking() {
+            localStorage.unset("cartOptions");
+            localStorage.unset("userChoice");
+            localStorage.unset("cartRoom");
+            this.$router.push({name: 'Home'});
+        }
     }
 }
 </script>
 
 <style scoped>
-.confirmOrder{
+.confirmOrder {
     animation: fadein ease-in-out 0.5s;
 }
+
 @keyframes fadein {
     0% {
-    opacity:0;
+        opacity: 0;
     }
+
     100% {
-    opacity:1;
+        opacity: 1;
     }
 }
 </style>
