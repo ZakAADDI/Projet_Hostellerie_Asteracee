@@ -113,7 +113,7 @@ export default {
                         gender : this.gender,
                         firstname : this.firstname,
                         lastname : this.lastname,
-                        email : this.lastname,
+                        email : this.email,
                         password : this.password
                     }
                 ;
