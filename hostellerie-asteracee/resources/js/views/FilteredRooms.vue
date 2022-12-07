@@ -1,5 +1,5 @@
 <template>
-    <div class="filteredRooms flex flex-col items-center grow">
+    <div class="filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
         <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
         <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center">
         <span class="text-[#E6B34B] text-2xl">Votre réservation : </span>

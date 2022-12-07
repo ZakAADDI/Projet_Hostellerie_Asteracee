@@ -1,6 +1,6 @@
 <template>
-    <div class="recapOrder grow">
-        <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center lg:h-60 lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6">
+    <div class="recapOrder grow mt-28 lg:mt-0">
+        <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center lg:h-44 lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6 p-2 border-t-4 border-t-[#E6B34B]">
         <span class="text-[#E6B34B] text-2xl">Récapitulatif de votre réservation :</span>
         </div>
         <div class="confirmUserIdentity flex flex-col grow">
@@ -52,6 +52,7 @@
 <script>
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
+
 export default {
     name: 'RecapOrder',
     components:{
@@ -78,8 +79,20 @@ export default {
         }
     },
     methods:{
-        submitBooking(){
-            this.$router.push({ name : 'ConfirmOrder'});
+        async submitBooking(){
+            this.body={
+                ending_date : this.userChoice.endingDate,
+                starting_date : this.userChoice.startingDate,
+                room_id : this.cartRoom.roomId,
+                user_id : 1
+            };
+            this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
+            if(this.newBooking.status == 200){
+                this.$router.push({ name : 'ConfirmOrder'});
+            }else{
+                this.$router.push({name:'SomethingWentWrong'});
+            }
+
         },
         removeData(event){
             event.preventDefault;

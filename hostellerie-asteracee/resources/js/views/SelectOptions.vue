@@ -1,18 +1,20 @@
 <template>
-<div class="flex flex-col grow">
+<div class="flex flex-col grow mt-28 lg:mt-0">
         <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
-    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6">
+    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-2/3 lg:mx-auto">
             <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
             <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
             <span>soit {{ userChoice.nbrOfDays }} jours</span>
             <span>Pour {{ userChoice.occupants }} pers.</span>
-    </div>
-    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center my-6 mx-6">
+            <span>{{ userChoice.room_price }}</span>
+            <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
+        </div>
+    <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-2/3 lg:mx-auto mb-14">
             <span class="text-[#E6B34B] text-2xl">Votre chambre :</span>
-            <span class="text-xl font-bold">{{ roomName }}</span>
-            <span class="text-center">{{ roomDescription }}</span>
-            <span class="font-bold">Prix : {{ roomPrice }} €/nuits/pers</span>
-    </div>
+            <span>{{ roomName}}</span>
+            <span>Prix : {{ roomPrice}} €/nuits/pers</span>
+            <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
+        </div>
 
     <div class="options flex flex-col items-center justify-center mx-auto grow border-4 border-[#E6B34B] bg-[#272023] text-white shadow-md shadow-gray-400 w-2/3 mb-6">
     <span class="text-[#E6B34B] text-2xl">Vos options : </span>

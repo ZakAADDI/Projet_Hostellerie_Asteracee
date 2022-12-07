@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="inline lg:hidden">
+    <div class="inline lg:hidden grow-0">
         <nav>
       <div class="navbar">
         <div class="container nav-container">
@@ -11,12 +11,17 @@
               <span class="line line3"></span>
             </div>
           <div class="logo">
-        <img class="top-0" :src=logoHeader alt="Logo Hostellerie Asteracée">
+        <img class="mt-6 " :src=logoHeader alt="Logo Hostellerie Asteracée">
 
           </div>
           <div class="menu-items">
-                    <img class="w-1/2 mx-auto mb-6" :src=logoHeader alt="Logo Hostellerie Asteracée">
+
+            <li><a
+            v-on:click="changeTo">
+            <img class="text-white mx-auto w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
+            </a></li>
             <li><a href="#">Accueil</a></li>
+            <li><router-link :to="{name:'Connexion'}">Se connecter</router-link></li>
             <li><a href="#">Nos Chambres</a></li>
             <li><a href="#">Nos Services</a></li>
             <li><a href="#">Les prestations</a></li>
@@ -27,7 +32,7 @@
       </div>
     </nav>
     </div>
-    <div class="hidden lg:flex w-full bg-[#272023] items-center justify-end flex h-24 grow-0">
+    <div class="hidden lg:flex w-full bg-[#272023] items-center justify-end h-24 grow-0">
         <div>
             <router-link :to="{name: 'Home'}">
                 <img class="logo" :src=logoHeader alt="Logo Hostellerie Asteracée">
@@ -47,7 +52,7 @@
 
         <a
         v-on:click="changeTo">
-            <img class="text-white mr-16 sm:ml-14 w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
+            <img class="text-white mr-16 sm:ml-14 w-10 mx-auto" src="../assets/EngFrFlag.png" alt="English Flag" >
         </a>
 
     </div>
@@ -213,12 +218,6 @@ export default {
 .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
   transform: rotate(-45deg);
 }
-
-.nav-container input[type="checkbox"]:checked ~ .logo{
-  display: none;
-}
-
-/* test test test test test test test test test test */
 
 .logo{
     left: 24vw;

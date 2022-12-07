@@ -1,5 +1,5 @@
 <template>
-    <div class="confirmUserIdentity flex flex-col grow">
+    <div class="confirmUserIdentity flex flex-col grow mt-28 lg:mt-0">
         <div class="lg:w-1/3 bg-[#272023] lg:h-20 lg:mx-auto lg:mb-14"></div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-2/3 lg:mx-auto">
             <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
