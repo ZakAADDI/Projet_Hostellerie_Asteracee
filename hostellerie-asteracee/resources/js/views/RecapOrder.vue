@@ -190,6 +190,7 @@ export default {
             localStorage.unset("cartOptions");
             this.$router.push({ name: 'Home'});
         }
+    }
 }
 
 </script>
