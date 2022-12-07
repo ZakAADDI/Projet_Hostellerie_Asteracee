@@ -1,6 +1,26 @@
 <template>
-    <div class="recapOrder grow">
-        <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center lg:h-60 lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6">
+    <div class="recapOrder flex flex-col grow mt-28 lg:mt-0">
+        <span class="text-center lg:mt-28">Etape 5 : Confirmation de votre identité</span>
+        <div class="flex mb-6 w-screen justify-center items-center">
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+                <div class="smCercleOk"></div>
+            <div class="cercle"></div>
+        </div>
+        <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center  lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6 p-2 border-t-4 border-t-[#E6B34B]">
         <span class="text-[#E6B34B] text-2xl">Récapitulatif de votre réservation :</span>
         </div>
         <div class="confirmUserIdentity flex flex-col grow">
@@ -52,6 +72,7 @@
 <script>
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
+
 export default {
     name: 'RecapOrder',
     components:{
@@ -78,8 +99,20 @@ export default {
         }
     },
     methods:{
-        submitBooking(){
-            this.$router.push({ name : 'ConfirmOrder'});
+        async submitBooking(){
+            this.body={
+                ending_date : this.userChoice.endingDate,
+                starting_date : this.userChoice.startingDate,
+                room_id : this.cartRoom.roomId,
+                user_id : 1
+            };
+            this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
+            if(this.newBooking.status == 200){
+                this.$router.push({ name : 'ConfirmOrder'});
+            }else{
+                this.$router.push({name:'SomethingWentWrong'});
+            }
+
         },
         removeData(event){
             event.preventDefault;
@@ -93,6 +126,42 @@ export default {
 </script>
 
 <style scoped>
+.cercle{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 2rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #272023;
+}
+.cercleOk{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 2rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #E6B34B;
+}
+.smCercle{
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 2rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #272023;
+}
+.smCercleOk{
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 2rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #E6B34B;
+}
 .recapOrder{
     animation: fadein ease-in-out 0.5s;
 }

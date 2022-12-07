@@ -3,11 +3,8 @@
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv shadow-md shadow-gray-700" >
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-[#272023] light:text-white">{{ this.section }}</h2>
-
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-[#272023]" >
-
-
                 <div
                     v-for="room in rooms" :key=room.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
@@ -19,7 +16,6 @@
                     :price="room.price"
                     :description="room.description"/>
                 </div>
-
             </div>
         </div>
     </section>

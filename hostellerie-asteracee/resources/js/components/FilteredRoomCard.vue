@@ -1,20 +1,22 @@
 <template>
-    <div class="filteredRoomsCard border-4 border-[#E6B34B] w-2/3 p-6 flex flex-col items-center bg-[#272023] text-white shadow-md shadow-gray-400 m-8 transform transition duration-500 hover:scale-110 sm:flex-row sm:w-4/5 lg:w-11/12">
-    <div class="flex flex-col justify-center items-center sm:mx-auto">
-        <p>{{ roomName }}</p>
-        <img style="width:80px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
-        <p>{{ roomDescription }}</p>
-    </div>
-        <img class="border-4 border-[#E6B34B] shadow-md shadow-gray-200 sm:w-1/3" :src=roomImage :alt=roomAlt>
-    <div class="flex flex-col justify-center items-center sm:flex sm:mx-auto">
-        <p class="mt-2">Prix : {{ roomPrice }} € /nuit/pers.</p>
-        <div class="flex justify-between">
-           <span v-for="prestation in roomPrestations" :key=prestation.id >
-            <img :src=prestation.media_url alt="" class="fill-white">
-        </span>
+    <div class="filteredRoomsCard border-4 border-[#E6B34B] w-2/3 p-6 flex flex-row bg-[#272023] text-white shadow-md shadow-gray-400 m-4 transform transition duration-500 hover:scale-110 lg:w-3/4">
+        <div class="flex flex-col justify-between items-center sm:mx-auto">
+            <p class="text-2xl text-[#E6B34B]">{{ roomName }}</p>
+            <img style="width:40px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
+            <p class="text-center">{{ roomDescription }}</p>
         </div>
-        <button type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023]" @click="addToCart">Réserver</button>
-    </div>
+        <div class="my-auto">
+            <img class="border-4 border-[#E6B34B] shadow-md shadow-gray-200 mx-auto w-1/2" :src=roomImage :alt=roomAlt>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+            <p class="mt-2 text-center">Prix : {{ roomPrice }} € /nuit/pers.</p>
+            <div class="flex justify-between">
+               <span class="bg-[#E6B34B]" v-for="prestation in roomPrestations" :key=prestation.id >
+                <img :src=prestation.media_url :alt=prestation.media_alt class="fill-white">
+            </span>
+            </div>
+            <button type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023]" @click="addToCart">Réserver Maintenant</button>
+        </div>
 
     </div>
 </template>
