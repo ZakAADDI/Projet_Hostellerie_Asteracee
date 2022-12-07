@@ -24,7 +24,7 @@ class Users extends Seeder
                 'picture' => 'img',
                 'gender' => 'female',
                 'password' => Hash::make('gerant'),
-                'role' => 1,
+                'role_id' => 1,
                 'birth_date' => Carbon::createFromDate('1990','10','10'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -37,7 +37,7 @@ class Users extends Seeder
                 'picture' => 'img',
                 'gender' => 'male',
                 'password' => Hash::make('user'),
-                'role' => 0,
+                'role_id' => 2,
                 'birth_date' => Carbon::createFromDate('1995','2','20'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

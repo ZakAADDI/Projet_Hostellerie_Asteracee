@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('name');
             $table->string('picture')->nullable();
             $table->enum('gender',['male','female'])->nullable();
             $table->date('birth_date')->nullable();
@@ -26,7 +27,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->boolean('role')->default(0);
             $table->string('api_token', 80)->unique()->nullable()->default(null);
             $table->timestamps();
         });
