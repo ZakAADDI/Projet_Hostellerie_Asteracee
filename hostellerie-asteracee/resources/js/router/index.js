@@ -12,6 +12,7 @@ import SelectOptions from '../views/SelectOptions.vue'
 import ConfirmUserIdentity from '../views/ConfirmUserIdentity.vue'
 import RecapOrder from '../views/RecapOrder.vue'
 import ConfirmOrder from '../views/ConfirmOrder.vue'
+import ConfirmLogout from '../views/ConfirmLogout.vue'
 const routes = [
   {
     path: '/',
@@ -37,6 +38,11 @@ const routes = [
     path: '/createUser',
     name: 'CreateUser',
     component: CreateUser
+  },
+  {
+    path: '/logout',
+    name: 'ConfirmLogout',
+    component: ConfirmLogout
   },
   {
     path: '/confirmCreatedAccount',

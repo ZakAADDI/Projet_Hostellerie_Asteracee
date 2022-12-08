@@ -22,6 +22,7 @@
 
 <script>
 import axiosProvider from "../js/services/axiosConfigProvider"
+import localStorage from '../js/services/localStorageProvider'
 import storage from './services/localStorageProvider';
 import Header from './subComponents/Header.vue';
 import Footer from './subComponents/Footer.vue';
@@ -70,6 +71,11 @@ export default {
         this.sectionService= this.services[0].section;
         this.news = (await axiosProvider.get('/infos'))?.data;
         this.sectionNews = this.news[0].section;
+        this.currentUser = localStorage.get("user");
+        if(this.currentUser != undefined || this.currentUser != null){
+                        setInterval(function(){localStorage.unset("user")}, 7200000);
+                    }
+
     }
 }
 </script>
