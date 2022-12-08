@@ -12,6 +12,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-translatable": "5.2",
         "tcg/voyager": "^1.6"
     },
