@@ -16,7 +16,9 @@
               <span class="line line3"></span>
             </div>
         <div class="flex items-center justify-center w-screen mt-6 absolute">
-            <img class="w-1/2 absolute" :src=logoHeader alt="Logo Hostellerie Asteracée">
+            <router-link class="w-1/2 absolute" :to="{name: 'Home'}">
+                <img  :src=logoHeader alt="Logo Hostellerie Asteracée">
+            </router-link>
         </div>
 
           <div class="menu-items">
