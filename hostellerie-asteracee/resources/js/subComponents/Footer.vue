@@ -10,6 +10,8 @@
             <div class="hidden sm:flex md:flex lg:flex xl:flex flex-col justify-center items-center">
                 <h5>Plan du site</h5>
                 <router-link :to="{name:'Home'}">Accueil</router-link>
+                <router-link :to="{name:'OurRooms'}">Nos chambres</router-link>
+                <router-link :to="{name:'OurServices'}">Nos services</router-link>
                 <router-link :to="{name:'Contact'}">Nous contacter</router-link>
                 <router-link :to="{name:'WhoAreWe'}">Qui Sommes Nous ?</router-link>
             </div>
