@@ -24,3 +24,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get("simple-qrcode", [\App\Http\Controllers\SimpleQRcodeController::class,'generate']);
+
+Route::get('send-booking-recap', [App\Http\Controllers\EmailController::class, 'sendBookingRecap']);

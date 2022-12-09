@@ -24,13 +24,18 @@ Configurer plusieurs élements de la partir MAIL.
 ```sh
 MAIL_MAILER=mailgun
 MAIL_HOST=smtp.mailgun.org
-MAIL_PORT=1025
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS=null
+MAIL_PORT=587
+MAIL_USERNAME=postmaster@sandboxaa869b3691a04a20a816fcfd402fd6c0.mailgun.org
+MAIL_PASSWORD=44ad187714efc4d19440bb8480066d3e-bdb2c8b4-a40692c6
+MAIL_ENCRYPTION=SSL
+MAIL_FROM_ADDRESS=arthur.raynal@le-campus-numerique.fr
 MAIL_FROM_NAME="${APP_NAME}"
+MAILGUN_ENDPOINT=api.mailgun.net
+MAILGUN_DOMAIN=sandboxaa869b3691a04a20a816fcfd402fd6c0.mailgun.org
+MAILGUN_SECRET=11e97c46c55dc2e05feae4d179dcdd44-bdb2c8b4-8153c18c
 ```
+
+Dans MAILGUN_DOMAIN, ne mettre QUE le nom de domaine (pas de https://...)
 
 ### 4 - Vérification du fichier config/services.php :
 
@@ -103,7 +108,7 @@ On vérifie les différents drivers supportés par mailgun.
 php artisan make:mail TestMail
 ```
 
-Un fichier era créé à ce niveau : hostellerie-asteracee/app/Mail/TestMail.php
+Un fichier sera créé à ce niveau : hostellerie-asteracee/app/Mail/TestMail.php
 
 ### 7 - Création de la vue du mail:
 
@@ -132,8 +137,6 @@ de la manière suivante.
 
 ### 9 - Configuration de la route :
 
-
-
 ```sh 
-
+Route::get('send-email', [App\Http\Controllers\EmailController::class, 'sendEmail']);
 ```
