@@ -1,41 +1,49 @@
 <template>
-    <div class="prestations shadow-md shadow-gray-700 flex justify-around">
-        <img src="../assets/images/svg/alcool.svg" alt="alcool">
-        <img src="../assets/images/svg/coffee.svg" alt="coffee">
-        <img src="../assets/images/svg/dog-side.svg" alt="dog">
-        <img src="../assets/images/svg/pool.svg" alt="pool">
-        <img src="../assets/images/svg/human-baby-changing-table.svg" alt="human-baby-changing-table">
-        <img src="../assets/images/svg/silverware-fork-knife.svg" alt="silverware-fork-knife">
-        <img src="../assets/images/svg/smoking-off.svg" alt="smoking-off">
-        <img src="../assets/images/svg/wifi.svg" alt="wifi">
+    <div class="prestations shadow-md shadow-gray-700 flex flex-col justify-center border-t-4 border-t-[#E6B34B] mx-auto my-4 w-2/3 h-32 sm:flex-row">
+        <div class="flex flex-row justify-between mx-8 my-4 sm:mx-0" v-for="svg in firstPart" :key=svg.id >
+            <img class="w-9" :src=svg.media_url :alt=svg.media_alt>
+        </div>
+        <div class="flex flex-row justify-between mx-8 my-4 sm:mx-0" v-for="svg in secondPart" :key=svg.id >
+            <img class="w-9" :src=svg.media_url :alt=svg.media_alt>
+        </div>
     </div>
 </template>
 
 <script>
+import axiosProvider from '../services/axiosConfigProvider'
 export default {
     name: 'Prestations',
-    components: {
-
+    data(){
+        return{
+            firstPart: [],
+            secondPart: [],
+            svg: Object
+        }
     },
-    methods: {
-
-    },
-    computed: {
-
+    async created(){
+        this.svgs = (await axiosProvider.get('/prestations'))?.data;
+        this.svgs.forEach(svg => {
+            if(svg.id<= 4){
+                this.firstPart.push(svg);
+            }
+            if(svg.id>4){
+                this.secondPart.push(svg);
+            }
+        });
     }
 }
 </script>
 
 <style scoped>
 .prestations{
-    border-top: 3px solid #E6B34B;
-    height: 6rem;
-    width: 50vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
+     animation: fadein ease-in-out 0.5s;
 }
-img{
-    width: 35px;
-}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+  }
 </style>
