@@ -9,10 +9,9 @@
             </div>
             <div class="hidden sm:flex md:flex lg:flex xl:flex flex-col justify-center items-center">
                 <h5>Plan du site</h5>
-                <a href="*">Accueil</a>
-                <a href="*">{{ sectionRoom }}</a>
-                <a href="*">{{ sectionService }}</a>
-                <a href="*">{{ sectionNews }}</a>
+                <router-link :to="{name:'Home'}">Accueil</router-link>
+                <router-link :to="{name:'Contact'}">Nous contacter</router-link>
+                <router-link :to="{name:'WhoAreWe'}">Qui Sommes Nous ?</router-link>
             </div>
         </div>
 

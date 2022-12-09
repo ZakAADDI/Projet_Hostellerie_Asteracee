@@ -10,6 +10,7 @@
         <Separator />
         <News />
         <Separator />
+        <BannerTitle />
         <Reviews />
         <Prestations />
     </div>
@@ -25,6 +26,7 @@ import Reviews from '../components/Reviews.vue'
 import DealsBanner from '../subComponents/DealsBanner.vue'
 import BookingBanner from '../components/BookingBanner.vue'
 import Prestations from '../subComponents/Prestations.vue'
+import BannerTitle from '../subComponents/BannerTitle.vue'
 export default {
     name: 'Home',
     components: {
@@ -36,7 +38,8 @@ export default {
     Reviews,
     DealsBanner,
     BookingBanner,
-    Prestations
+    Prestations,
+    BannerTitle
 }
 }
  // On page load or when changing themes, best to add inline in `head` to avoid FOUC

@@ -1,5 +1,5 @@
 <template>
-    <div class="prestations shadow-md shadow-gray-700 flex flex-col justify-center border-t-4 border-t-[#E6B34B] mx-auto my-4 w-2/3 h-32 sm:flex-row">
+    <div class="prestations  flex flex-col justify-center mx-auto my-4 w-2/3 h-32 sm:flex-row mt-12">
         <div class="flex flex-row justify-between sm:justify-around mx-auto my-4 sm:mx-0 w-1/2">
             <img class="w-9" :src=svg.media_url :alt=svg.media_alt v-for="svg in firstPart" :key=svg.id >
         </div>
@@ -36,7 +36,7 @@ export default {
 
 <style scoped>
 .prestations{
-     animation: fadein ease-in-out 0.5s;
+     animation: fadein ease-in-out 2s;
 }
 @keyframes fadein {
     0% {

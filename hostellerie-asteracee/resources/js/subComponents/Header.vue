@@ -22,13 +22,13 @@
         </div>
 
           <div class="menu-items">
-            <li><a href="#">Accueil</a></li>
+            <li><router-link :to="{name:'Home'}">Accueil</router-link></li>
             <li><router-link :to="{name:'Connexion'}">Se connecter</router-link></li>
-            <li><a href="#">Nos Chambres</a></li>
-            <li><a href="#">Nos Services</a></li>
+            <li><router-link :to="{name:'OurRooms'}">Nos Chambres</router-link></li>
+            <li><router-link :to="{name:'OurServices'}">Nos Services</router-link></li>
             <li><a href="#">Les prestations</a></li>
-            <li><a href="#">Nous contacter</a></li>
-            <li><a href="#">Qui sommes nous ?</a></li>
+            <li><router-link :to="{name:'Contact'}">Nous contacter</router-link></li>
+            <li><router-link :to="{name:'WhoAreWe'}">Qui sommes nous ?</router-link></li>
           </div>
         </div>
       </div>

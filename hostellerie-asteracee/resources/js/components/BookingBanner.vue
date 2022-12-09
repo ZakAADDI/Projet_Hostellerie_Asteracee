@@ -10,7 +10,7 @@
         <input type="date" name="endingDate" min="2021-01-01" max="2023-12-31" class="text-[#272023] ml-2 bg-[#E6B34B] p-1" v-model="endingDate">
         </div>
         <div class="border-2 border-[#E6B34B] p-4 rounded-md text-white flex md:flex-col  justify-between w-11/12 mb-2 md:mr-2 lg:flex-row lg:justify-center lg:w-1/4 lg:items-baseline">
-            <label class="text-center" for="occupants">Voyagers :</label>
+            <label class="text-center" for="occupants">Pers :</label>
             <input type="number" name="occupants" min="1" max="10" class="text-[#272023] rounded-m ml-2 bg-[#E6B34B] text-center p-1" v-model="numberOccupants">
         </div>
         <div class="flex justify-center items-center">
