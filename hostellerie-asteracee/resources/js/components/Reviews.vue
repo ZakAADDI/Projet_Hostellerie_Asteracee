@@ -140,8 +140,8 @@ main#carousel {
 
 div.item {
   position: absolute;
-  width: 400px;
-  height: 420px;
+  width: 350px;
+  height: 500px;
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
   transition: all 0.25s linear;
