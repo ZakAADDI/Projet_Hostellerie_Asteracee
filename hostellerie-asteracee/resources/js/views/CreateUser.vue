@@ -114,10 +114,14 @@ export default {
                         firstname : this.firstname,
                         lastname : this.lastname,
                         email : this.lastname,
-                        password : this.password
+                        password : this.password,
+                        name : this.firstname,
+                        address : 'test'
                     }
                 ;
                 this.response = (await axiosProvider.postWithOutAuth('/register',this.datas));
+                console.log(this.response)
+                
                 this.$router.push({ name: 'ConfirmCreatedAccount'});
                 // if(this.response.status == 201){
                 //     console.log('account created');
@@ -128,7 +132,9 @@ export default {
                 // }
 
             }
-        }
+        },
+
+        
     }
 
 

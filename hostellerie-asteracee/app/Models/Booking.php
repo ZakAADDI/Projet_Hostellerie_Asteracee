@@ -20,7 +20,7 @@ class Booking extends Model
 
     public function getRoom(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Room::class,'id','room_type_id');
+        return $this->belongsTo(Room::class, 'room_id','id');
     }
 
     public function getUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
