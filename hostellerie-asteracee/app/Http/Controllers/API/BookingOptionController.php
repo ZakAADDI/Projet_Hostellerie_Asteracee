@@ -35,7 +35,7 @@ class BookingOptionController extends Controller
         $booking_option = new BookingOption();
         $booking_option->fill($request->post())->save();
 
-        return response()->json($booking_option);
+        return response()->json(BookingOptionResource::make($booking_option));
     }
 
     /**

@@ -22,7 +22,7 @@
 
 <script>
 import axiosProvider from "../js/services/axiosConfigProvider"
-import storage from './services/localStorageProvider';
+import localStorage from '../js/services/localStorageProvider'
 import Header from './subComponents/Header.vue';
 import Footer from './subComponents/Footer.vue';
 export default {
@@ -45,8 +45,8 @@ export default {
         Footer
     },
     created() {
-        if(this.currentLanguage = storage.get("language") == ''){
-            this.currentLanguage = storage.set("language", "fr");
+        if(this.currentLanguage = localStorage.get("language") == ''){
+            this.currentLanguage = localStorage.set("language", "fr");
         }
 
     },
@@ -70,6 +70,11 @@ export default {
         this.sectionService= this.services[0].section;
         this.news = (await axiosProvider.get('/infos'))?.data;
         this.sectionNews = this.news[0].section;
+        this.currentUser = localStorage.get("user");
+        if(this.currentUser != undefined || this.currentUser != null){
+                        setInterval(function(){localStorage.unset("user")}, 7200000);
+                    }
+
     }
 }
 </script>

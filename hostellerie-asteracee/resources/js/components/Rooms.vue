@@ -58,7 +58,6 @@ export default {
     width: auto;
 }
 .flip-card {
-    font-family: 'Radley', serif;
     width: 200px;
     height: 300px;
     perspective: 1000px;

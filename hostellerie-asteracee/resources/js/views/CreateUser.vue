@@ -49,6 +49,7 @@
 
 <script>
 import axiosProvider from "../services/axiosConfigProvider"
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'CreateUser',
     components: {
@@ -113,19 +114,27 @@ export default {
                         gender : this.gender,
                         firstname : this.firstname,
                         lastname : this.lastname,
-                        email : this.lastname,
+                        email : this.email,
                         password : this.password
                     }
                 ;
                 this.response = (await axiosProvider.postWithOutAuth('/register',this.datas));
-                this.$router.push({ name: 'ConfirmCreatedAccount'});
-                // if(this.response.status == 201){
-                //     console.log('account created');
-                //     this.$router.push({ name: 'ConfirmCreatedAccount'});
-                // }else{
-                //     console.log('something went wrong!');
-                //     this.$router.push({name : 'SomethingWentWrong'});
-                // }
+
+                // this.$router.push({ name: 'ConfirmCreatedAccount'});
+                console.log(this.response);
+                if(this.response.status == 200){
+                    console.log('account created');
+                    this.datas = {
+                        email: this.email,
+                        password: this.password
+                    };
+                    this.loginUser = await axios.post('http://127.0.0.1:8000/api/login', this.datas);
+                    localStorage.set("user", [this.email,this.response.data.token]);
+                    this.$router.push({ name: 'ConfirmCreatedAccount'});
+                }else{
+                    console.log('something went wrong!');
+                    this.$router.push({name : 'SomethingWentWrong'});
+                }
 
             }
         }
