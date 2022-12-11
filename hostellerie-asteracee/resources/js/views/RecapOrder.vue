@@ -1,6 +1,7 @@
 <template>
     <div class="recapOrder flex flex-col grow mt-28 lg:mt-0">
-        <span class="text-center lg:mt-28">Etape 5 : Confirmation de votre identité</span>
+        <span v-if="language" class="text-center lg:mt-28">Etape 5 : Récapitulatif de réservation</span>
+        <span v-if="!language" class="text-center lg:mt-28">Set 5 : Booking summary</span>
         <div class="flex mb-6 w-screen justify-center items-center">
             <div class="cercleOk"></div>
                 <div class="smCercleOk"></div>
@@ -21,55 +22,76 @@
             <div class="cercle"></div>
         </div>
         <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center  lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6 p-2 border-t-4 border-t-[#E6B34B]">
-        <span class="text-[#E6B34B] text-2xl">Récapitulatif de votre réservation :</span>
+        <span v-if="language" class="text-[#E6B34B] text-2xl">Récapitulatif de votre réservation :</span>
+        <span v-if="!language" class="text-[#E6B34B] text-2xl">Booking summary :</span>
         </div>
         <div class="confirmUserIdentity flex flex-col grow">
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
-            <span class="text-[#E6B34B] text-2xl">Votre séjour :</span>
-            <span>Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
-            <span>soit {{ userChoice.nbrOfDays }} jours</span>
-            <span>Pour {{ userChoice.occupants }} pers.</span>
-            <span class="text-2xl">soit {{ total_room_price }} € ttc.</span>
+            <span v-if="language" class="text-[#E6B34B] text-2xl">Votre séjour :</span>
+            <span v-if="!language" class="text-[#E6B34B] text-2xl">Your stay :</span>
+            <span v-if="language">Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
+            <span v-if="!language">From {{ userChoice.startingDate }} to {{ userChoice.endingDate }}</span>
+            <span v-if="language">soit {{ userChoice.nbrOfDays }} jours</span>
+            <span v-if="!language">i.e {{ userChoice.nbrOfDays }} days</span>
+            <span v-if="language">Pour {{ userChoice.occupants }} pers.</span>
+            <span v-if="!language">For {{ userChoice.occupants }} pers.</span>
+            <span v-if="language" class="text-2xl">soit {{ total_room_price }} € ttc.</span>
+            <span v-if="!language" class="text-2xl">i.e {{ total_room_price }} € ati.</span>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
-            <span class="text-[#E6B34B] text-2xl">Votre chambre :</span>
+            <span v-if="language" class="text-[#E6B34B] text-2xl">Votre chambre :</span>
+            <span v-if="!language" class="text-[#E6B34B] text-2xl">Your room :</span>
             <span>{{ cartRoom.roomName}}</span>
-            <span>Prix : {{ cartRoom.roomPrice}} €/nuits/pers</span>
+            <span v-if="language">Prix : {{ cartRoom.roomPrice}} €/nuits/pers</span>
+            <span v-if="!language">Price : {{ cartRoom.roomPrice}} €/nights/pers</span>
         </div>
 
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
-            <span class="text-[#E6B34B] text-2xl">Vos options :</span>
+            <span v-if="language" class="text-[#E6B34B] text-2xl">Vos options :</span>
+            <span v-if="!language" class="text-[#E6B34B] text-2xl">Your options :</span>
             <div class="flex flex-col items-center">
                 <div v-for="option in options" :key=option.id>
                     <span>- {{ option.name }}</span>
                     <span> - {{ option.price }} €
-                            <span v-if="option.type ===     'daily'">/jour</span>
-                            <span v-if="option.type ===     'weekly'">/semaine</span>
-                            <span v-if="option.type === 'stay'">/   sejour</span>
+                            <span v-if="option.type === 'daily' && language">/pers/jour</span>
+                            <span v-if="option.type === 'daily' && !language">/pers/day</span>
+                            <span v-if="option.type === 'weekly' && language">/semaine</span>
+                            <span v-if="option.type === 'weekly' && !language">/week</span>
+                            <span v-if="option.type === 'stay' && language">/sejour</span>
+                            <span v-if="option.type === 'stay' && !language">/stay</span>
 
                     </span>
 
                 </div>
-                <span class="text-2xl">soit {{ total_options_price }} € ttc.</span>
+                <span v-if="language" class="text-2xl">soit {{ total_options_price }} € ttc.</span>
+                <span v-if="!language" class="text-2xl">i.e {{ total_options_price }} € ati.</span>
             </div>
         </div>
 
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
-            <span class="text-[#E6B34B] text-2xl">Vos informations :</span>
-            <span>Civilité : {{ currentUser.gender}}</span>
-            <span>Nom : {{ currentUser.lastname}}</span>
-            <span>Prénom : {{ currentUser.firstname}}</span>
-            <span>Adresse : {{ currentUser.address }}</span>
-            <span>Email : {{ currentUser.email }}</span>
+            <span v-if="language" class="text-[#E6B34B] text-2xl">Vos informations :</span>
+            <span v-if="!language" class="text-[#E6B34B] text-2xl">Your id informations :</span>
+            <span v-if="language" >Civilité : {{ currentUser.gender}}</span>
+            <span v-if="!language" >Civility : {{ currentUser.gender}}</span>
+            <span v-if="language" >Nom : {{ currentUser.lastname}}</span>
+            <span v-if="!language" >Lastname : {{ currentUser.lastname}}</span>
+            <span v-if="language" >Prénom : {{ currentUser.firstname}}</span>
+            <span v-if="!language" >Firstname : {{ currentUser.firstname}}</span>
+            <span v-if="language" >Adresse : {{ currentUser.address }}</span>
+            <span v-if="!language" >Address : {{ currentUser.address }}</span>
+            <span >Email : {{ currentUser.email }}</span>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 pb-2 mx-6 lg:w-1/3 lg:mx-auto">
-            <span class="text-[#E6B34B] text-2xl">Montant total de votre séjour</span>
+            <span v-if="language" class="text-[#E6B34B] text-2xl">Montant total de votre séjour</span>
+            <span v-if="!language" class="text-[#E6B34B] text-2xl">Total amount for you stay</span>
             <span class="text-3xl">{{this.total_roomOptions }} €</span>
 
         </div>
         <div class="flex justify-center items-center">
-            <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6" @click="submitBooking">Réserver</button>
-            <button type="submit" class="bg-red-500 p-4 rounded-md text-[#272023] mx-6 my-4" @click="removeData">Annuler</button>
+            <button v-if="language" class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6" @click="submitBooking">Réserver</button>
+            <button v-if="!language" class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6" @click="submitBooking">Book now</button>
+            <button v-if="language" type="submit" class="bg-red-500 p-4 rounded-md text-[#272023] mx-6 my-4" @click="removeData">Annuler</button>
+            <button v-if="!language" type="submit" class="bg-red-500 p-4 rounded-md text-[#272023] mx-6 my-4" @click="removeData">Cancel</button>
         </div>
 
     </div>
@@ -190,15 +212,15 @@ export default {
             this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
                 this.options=this.cartOptions.options;
-                this.options.forEach(option => {
-                    // console.log(this.newBooking.data.booking_id)
-                    this.optionToStore = {
-                        'booking_id': this.newBooking.data.booking_id,
-                        'option_id': option.id
-                    };
-                    this.optionToSave = (axiosProvider.postWithAuth('/bookingOptions', this.optionToStore));
-                });
-
+                if(this.options.length>0){
+                    this.options.forEach(option => {
+                        this.optionToStore = {
+                            'booking_id': this.newBooking.data.booking_id,
+                            'option_id': option.id
+                        };
+                        this.optionToSave = (axiosProvider.postWithAuth('/bookingOptions', this.optionToStore));
+                     });
+                }
                 this.$router.push({ name : 'ConfirmOrder'});
             }else{
                 this.$router.push({name:'SomethingWentWrong'});
@@ -210,6 +232,15 @@ export default {
             localStorage.unset("cartRoom");
             localStorage.unset("cartOptions");
             this.$router.push({ name: 'Home'});
+        }
+    },
+    computed:{
+         language(){
+            if(localStorage.get("language") == "fr"){
+                return true;
+             }else{
+                 return false;
+            }
         }
     }
 }

@@ -23,7 +23,6 @@
 <script>
 import axiosProvider from "../js/services/axiosConfigProvider"
 import localStorage from '../js/services/localStorageProvider'
-import storage from './services/localStorageProvider';
 import Header from './subComponents/Header.vue';
 import Footer from './subComponents/Footer.vue';
 export default {
@@ -46,8 +45,8 @@ export default {
         Footer
     },
     created() {
-        if(this.currentLanguage = storage.get("language") == ''){
-            this.currentLanguage = storage.set("language", "fr");
+        if(this.currentLanguage = localStorage.get("language") == ''){
+            this.currentLanguage = localStorage.set("language", "fr");
         }
 
     },

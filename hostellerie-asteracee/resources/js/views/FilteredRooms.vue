@@ -1,6 +1,7 @@
 <template>
     <div class="filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
-        <span class="lg:mt-28">Etape 2 : Sélection de votre chambre </span>
+        <span v-if="language" class="lg:mt-28">Etape 2 : Sélection de votre chambre </span>
+        <span v-if="!language" class="lg:mt-28">Step 2 : Select your room </span>
         <div class="flex mb-6 w-screen justify-center items-center">
             <div class="cercleOk"></div>
                 <div class="smCercleOk"></div>
@@ -21,10 +22,14 @@
             <div class="cercle"></div>
         </div>
         <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center">
-        <span class="text-[#E6B34B] text-2xl">Votre réservation : </span>
-            <span> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
+        <span v-if="language" class="text-[#E6B34B] text-2xl">Votre réservation : </span>
+        <span v-if="!language" class="text-[#E6B34B] text-2xl">Your booking : </span>
+            <span v-if="language"> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
+            <span v-if="!language"> From {{ this.userChoice.startingDate}} to {{ this.userChoice.endingDate}} for {{ this.userChoice.occupants }} pers.</span>
+
         </div>
-        <button class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">Annuler ma recherche</button>
+        <button v-if="language" class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">Annuler ma recherche</button>
+        <button v-if="!language" class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">Cancel</button>
         <div class="flex flex-col justify-center items-center lg:flex-row lg:flex-wrap" v-for="room in rooms" :key=room.id>
             <Card
             :title="room.room_type.name"
@@ -84,6 +89,15 @@ export default {
             localStorage.unset("userChoice");
             localStorage.unset("cartRoom");
             this.$router.push({ name: 'Home'});
+        }
+    },
+    computed:{
+         language(){
+            if(localStorage.get("language") == "fr"){
+                return true;
+             }else{
+                 return false;
+            }
         }
     }
 }
