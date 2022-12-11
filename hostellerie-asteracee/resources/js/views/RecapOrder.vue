@@ -189,6 +189,16 @@ export default {
             };
             this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
+                this.options=this.cartOptions.options;
+                this.options.forEach(option => {
+                    // console.log(this.newBooking.data.booking_id)
+                    this.optionToStore = {
+                        'booking_id': this.newBooking.data.booking_id,
+                        'option_id': option.id
+                    };
+                    this.optionToSave = (axiosProvider.postWithAuth('/bookingOptions', this.optionToStore));
+                });
+
                 this.$router.push({ name : 'ConfirmOrder'});
             }else{
                 this.$router.push({name:'SomethingWentWrong'});

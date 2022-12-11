@@ -20,13 +20,11 @@ class BookingOptionSeeder extends Seeder
                 'booking_id' => 1,
                 'option_id' => 1,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-                'count' => 1
+                'updated_at' => Carbon::now()
             ],
             [
                 'booking_id' => 2,
                 'option_id' => 1,
-                'count' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
 
@@ -34,28 +32,24 @@ class BookingOptionSeeder extends Seeder
             [
                 'booking_id' => 3,
                 'option_id' => 3,
-                'count' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'booking_id' => 2,
                 'option_id' => 3,
-                'count' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'booking_id' => 3,
                 'option_id' => 1,
-                'count' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'booking_id' => 3,
                 'option_id' => 4,
-                'count' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

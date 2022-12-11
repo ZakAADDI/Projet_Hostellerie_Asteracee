@@ -19,7 +19,8 @@ class BookingResource extends JsonResource
             'user' => UserResource::make($this->getUser),
             'starting_date' => $this->starting_date,
             'ending_date' => $this->ending_date,
-            'status' => $this->status
+            'status' => $this->status,
+            'booking_id' => $this->id
         ];
     }
 }

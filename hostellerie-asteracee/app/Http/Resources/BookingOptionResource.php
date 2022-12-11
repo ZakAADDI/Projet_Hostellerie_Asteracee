@@ -15,7 +15,6 @@ class BookingOptionResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'count' => $this->count,
             'booking' => BookingResource::make($this->getBooking),
             'option' => OptionResource::make($this->getOption)
         ];
