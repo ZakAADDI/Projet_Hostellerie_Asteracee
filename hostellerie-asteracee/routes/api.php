@@ -17,6 +17,7 @@ use App\Http\Controllers\API\RoomTypeController;
 use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,8 +77,11 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         // USERS
         Route::get('/users', [UserController::class, 'index']);
         Route::get('/users/{id}', [UserController::class, 'show']);
-        Route::patch('/users/{id}', [UserController::class, 'update']);
+        Route::post('/users/{id}', [UserController::class, 'update']);
         Route::delete('/users/{id}', [UserController::class, 'destroy']);
+        Route::post('/checkUser/{id}', [UserController::class, 'checkUser']);
+        Route::post('/updatePassword/{id}', [UserController::class, 'updatePassword']);
+
 
         // BOOKINGS
         Route::post('/bookings', [BookingController::class, 'store']);

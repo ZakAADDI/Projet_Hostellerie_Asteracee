@@ -12,6 +12,9 @@ import SelectOptions from '../views/SelectOptions.vue'
 import ConfirmUserIdentity from '../views/ConfirmUserIdentity.vue'
 import RecapOrder from '../views/RecapOrder.vue'
 import ConfirmOrder from '../views/ConfirmOrder.vue'
+import UpdateUser from '../views/UpdateUser.vue'
+import UserProfile from '../views/UserProfile.vue'
+import UpdatePassword from '../views/UpdatePassword.vue'
 const routes = [
   {
     path: '/',
@@ -72,6 +75,21 @@ const routes = [
     path: '/confirmOrder',
     name: 'ConfirmOrder',
     component: ConfirmOrder
+  },
+  {
+    path: '/updateUser',
+    name: 'UpdateUser',
+    component: UpdateUser
+  },
+  {
+    path: '/userProfile',
+    name: 'UserProfile',
+    component: UserProfile
+  },
+  {
+    path: '/updatePassword',
+    name: 'UpdatePassword',
+    component: UpdatePassword
   }
 ]
 

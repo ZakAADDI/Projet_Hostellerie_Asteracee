@@ -6,9 +6,9 @@
            <fieldset>Civilité</fieldset>
            <div>
                 <input type="radio" value="male" name="male" v-model="gender" checked>
-                    <label for="gendre">Homme</label>
+                    <label for="gender">Homme</label>
                 <input type="radio" value="female" name="female" v-model="gender">
-                    <label for="gendre">Femme</label>
+                    <label for="gender">Femme</label>
                 <div class="error" v-if="firstnameEmpty">
                         Merci de choisir une civilité
                 </div>
