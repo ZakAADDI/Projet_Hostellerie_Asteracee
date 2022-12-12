@@ -9,7 +9,7 @@
 
             <img class="rightImg shadow-md shadow-gray-700 mt-40 absolute" :src=rightImg :alt=rightImgAlt>
         </div>
-        
+
     </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
 <style scoped>
 
 .hero{
-    height: 600px;
+    height: 410px;
     width: 60vw;
     margin-left: 20vw;
     margin-right: 20vw;
@@ -117,12 +117,12 @@ p{
 @media screen and (min-width: 1400px) {
     .leftImg{
         left: 10vw;
-        top: 40px;
+        top: -26px;
         display: block;
     }
     .rightImg{
         right: 10vw;
-        top: 40px;
+        top: -26px;
         display: block;
     }
 
