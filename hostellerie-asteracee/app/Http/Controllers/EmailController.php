@@ -18,7 +18,6 @@ class EmailController extends Controller
         /**
          * Store a receiver email address to a variable.
          */
-        $reveiverEmailAddress = $request->email;
         //dd($reveiverEmailAddress);
         /**
          * Import the Mail class at the top of this page,
@@ -30,6 +29,7 @@ class EmailController extends Controller
          */
 
         $user = User::findOrFail($request->user_id);
+        $reveiverEmailAddress = $user->email;
         $booking = Booking::findOrFail($request->booking_id);
         $optionIds = $booking->getBookingOptions()->pluck('option_id');
         $options = [];
@@ -37,8 +37,9 @@ class EmailController extends Controller
             $options[] = Option::findOrFail($id);
         }
         $roomType = RoomType::findOrFail($booking->getRoom()->firstOrFail()->room_type_id);
-
+        //dd($reveiverEmailAddress);
         Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType));
+        Mail::to("hostellerie.asteracee@gmail.com")->send(new BookingRecap($user,$booking,$options, $roomType));
 
         /**
          * Check if the email has been sent successfully, or not.

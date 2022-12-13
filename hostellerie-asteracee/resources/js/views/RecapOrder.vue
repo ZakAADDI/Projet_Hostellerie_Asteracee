@@ -156,61 +156,22 @@ export default {
             service2Name:'',
             service2Content:'',
             service3Name:'',
-            service3Content:''
+            service3Content:'',
+            language: ''
         }
     },
     methods:{
-        submitBooking(e){
-            this.language = localStorage.get("language");
-            if(this.currentUser.gender === "male" && this.language == "fr"){
-                this.civility = "Monsieur"
-            }
-            if(this.currentUser.gender === "male" && this.language == "en"){
-                this.civility = "Sir"
-            }
-            if(this.currentUser.gender === "female" && this.language == "fr"){
-                this.civility = "Madame"
-            }
-            if(this.currentUser.gender === "female" && this.language == "en"){
-                this.civility = "Miss"
-            }
-            this.body = {
-                    gender: this.civility,
-                    firstname: this.currentUser.firstname,
-                    lastname: this.currentUser.lastname,
-                    startingDate: this.userChoice.startingDate,
-                    endingDate: this.userChoice.endingDate,
-                    nbrOfDays: this.userChoice.nbrOfDays,
-                    occupants: this.userChoice.occupants,
-                    roomName: this.cartRoom.roomName,
-                    roomDescription: this.cartRoom.roomDescription,
-                    roomPrice: this.cartRoom.roomPrice,
-                    service1Name : this.service1.title,
-                    service1Content : this.service1.content,
-                    service2Name : this.service2.title,
-                    service2Content : this.service2.content,
-                    service3Name : this.service3.title,
-                    service3Content : this.service3.content,
-                };
-
-                if(this.language == "fr"){
-                    this.response = emailjs.send('service_221d5yz', 'template_uym8zdc', this.body, 'bbyfEd_o77jz3eSoT')
-                }
-                if(this.language == "en"){
-                    this.response = emailjs.send('service_2xuxogk', 'template_q5sj1a8', this.body, '7EV5cfIjJKZzqpYhk')
-                }
-                this.$router.push({ name : 'ConfirmOrder'});
-            },
         async submitBooking(){
             this.body={
                 ending_date : this.userChoice.endingDate,
                 starting_date : this.userChoice.startingDate,
                 total_price : this.total_room_price,
                 room_id : this.cartRoom.roomId,
-                user_id : 1
+                user_id : this.currentUser.id
             };
             this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
+                console.log('200')
                 this.options=this.cartOptions.options;
                 if(this.options.length>0){
                     this.options.forEach(option => {
@@ -221,6 +182,10 @@ export default {
                         this.optionToSave = (axiosProvider.postWithAuth('/bookingOptions', this.optionToStore));
                      });
                 }
+                let body = {"user_id": 4,"booking_id": 1}
+                console.log(body)
+                let response = await axios.post('/send-booking-recap', body)
+                console.log(response)
                 this.$router.push({ name : 'ConfirmOrder'});
             }else{
                 this.$router.push({name:'SomethingWentWrong'});

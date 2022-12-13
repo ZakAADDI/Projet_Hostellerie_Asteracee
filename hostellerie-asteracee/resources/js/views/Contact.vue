@@ -53,9 +53,9 @@ export default {
                     message: this.message,
                     subject: this.subject
                 })
-                console.log('Ok')
+                this.$router.push({name:'Home'});
             } catch (error) {
-                console.log({ error })
+                this.$router.push({name:'SomethingWentWrong'})
             }
         }
     }

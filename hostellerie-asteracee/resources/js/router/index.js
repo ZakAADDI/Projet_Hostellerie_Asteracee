@@ -19,6 +19,7 @@ import ConfirmLogout from '../views/ConfirmLogout.vue'
 import WhoAreWe from '../views/WhoAreWe.vue'
 import OurRooms from '../views/OurRooms.vue'
 import OurServices from '../views/OurServices.vue'
+import ConfirmDeleteAccount from '../views/ConfirmDeleteAccount.vue'
 
 const routes = [
   {
@@ -115,6 +116,11 @@ const routes = [
     path: '/services',
     name: 'OurServices',
     component: OurServices
+  },
+  {
+    path: '/confirmDeleteAccount',
+    name: 'ConfirmDeleteAccount',
+    component: ConfirmDeleteAccount
   }
 ]
 

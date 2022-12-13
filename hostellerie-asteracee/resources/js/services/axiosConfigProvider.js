@@ -34,6 +34,13 @@ const axiosProvider = {
 
     },
 
+    getWithBody: async (endpoint, body) => {
+        // console.log(parameters[0])
+        return axios.get("http://127.0.0.1:8000/" + endpoint, body)
+
+    },
+
+
     getAuthorization: async () => {
        return storage.get("user")[1];
 

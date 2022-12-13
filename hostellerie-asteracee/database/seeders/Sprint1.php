@@ -13,7 +13,7 @@ class Sprint1 extends Seeder
     public function run()
     {
         $this->call([
-            VoyagerDatabaseSeeder::class,
+            // VoyagerDatabaseSeeder::class,
             Medias::class,
             RoomTypes::class,
             Users::class,
