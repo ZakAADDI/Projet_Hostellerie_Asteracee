@@ -11,6 +11,9 @@ const store = createStore({
     getters:{
         oneUser(state){
             return state.user;
+        },
+        oneLanguage(state){
+            return state.language;
         }
     },
     mutations:{
@@ -22,13 +25,19 @@ const store = createStore({
             },
         addLanguage(state, newLanguage){
                 state.language.push({
-                    currentLanguage: newLanguage.language
+                    currentLanguage : newLanguage
                 })
             },
         removeUser(state){
-                state.user = {}
-            }
+                state.user = [
+                ]
+            },
+        removeLanguage(state){
+                state.language = [
+                ]
         }
+
+    }
 }
 )
 

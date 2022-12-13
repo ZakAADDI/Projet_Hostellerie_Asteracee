@@ -123,7 +123,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/register', [AuthController::class, 'createUser']);
     Route::post('/login', [AuthController::class, 'loginUser']);
     Route::post('/findUser', [UserController::class, 'findUser']);
-    Route::post('/logout', [UserController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/checkToken', [UserController::class, 'checkToken']);
 
 // ROOMS

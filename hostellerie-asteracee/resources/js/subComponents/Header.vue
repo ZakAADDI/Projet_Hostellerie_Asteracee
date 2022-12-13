@@ -42,7 +42,7 @@
             </router-link>
         </div>
 
-        <div class="flex flex-col lg:flex-row w-48">
+        <div class="flex-row w-48">
 
             <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Nous Contacter
@@ -68,6 +68,7 @@
 <script>
 import axiosProvider from "../services/axiosConfigProvider";
 import store from '../store/index'
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Header',
     data(){
@@ -80,13 +81,17 @@ export default {
     },
     methods:{
         changeTo : function(){
+            store.commit('removeLanguage');
             this.$router.push({name:"SwitchTo"})
         }
     },
      async created(){
         this.medias = (await axiosProvider.get('/medias'))?.data;
         this.logoHeader = this.medias[6].url;
+        this.language = localStorage.get('language');
+        store.commit('addLanguage', this.language)
     },
+
     computed:{
         user(){
             if(store.state.user.length >0){

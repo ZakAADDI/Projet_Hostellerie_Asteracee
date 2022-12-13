@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\API\PersonalAccessToken;
 use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
-use Mockery\Undefined;
 
 class UserController extends Controller
 {
@@ -65,9 +63,9 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        
+
         $this->validate($request, [
-            
+
             'civility' => 'required',
             'lastname' => 'string|max:64',
             'firstname' => 'string|max:64',
@@ -78,7 +76,7 @@ class UserController extends Controller
 
         ]);
         $user = User::where('id',$id)->first();
-        
+
         $user->update($request->all());
         return response()->json('updated');
     }
@@ -97,7 +95,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         $user = User::where('id', $id)->first();
-        
+
         if($user->email === $request->email)
         {
             if(Hash::check($request->password, $user->password)){
@@ -152,13 +150,6 @@ class UserController extends Controller
         $token = $request->token;
         $response = SanctumPersonalAccessToken::findToken($token);
         return User::where('id',$response->tokenable_id)->firstOrFail();
-    }
-
-    public function logout(Request $request)
-    {
-        $token = $request->token;
-        $response = SanctumPersonalAccessToken::findToken($token)->delete();
-        return $response;
     }
 
     public function checkToken(Request $request)

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+
 class AuthController extends Controller
 {
     /**
@@ -102,5 +104,13 @@ class AuthController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        $token = $request->token;
+        $response = SanctumPersonalAccessToken::findToken($token)->delete();
+        Auth::logout();
+        return $response;
     }
 }
