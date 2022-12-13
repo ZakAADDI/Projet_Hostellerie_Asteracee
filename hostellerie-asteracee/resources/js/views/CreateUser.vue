@@ -6,9 +6,9 @@
            <fieldset>Civilité</fieldset>
            <div>
                 <input type="radio" value="male" name="male" v-model="gender" checked>
-                    <label for="gender">Homme</label>
+                    <label for="gendre">Homme</label>
                 <input type="radio" value="female" name="female" v-model="gender">
-                    <label for="gender">Femme</label>
+                    <label for="gendre">Femme</label>
                 <div class="error" v-if="firstnameEmpty">
                         Merci de choisir une civilité
                 </div>
@@ -114,17 +114,16 @@ export default {
                         gender : this.gender,
                         firstname : this.firstname,
                         lastname : this.lastname,
-                        email : this.lastname,
-                        password : this.password,
-                        name : this.firstname,
-                        address : 'test'
+                        email : this.email,
+                        password : this.password
                     }
                 ;
                 this.response = (await axiosProvider.postWithOutAuth('/register',this.datas));
-                // console.log(this.response)  
-           
+
+                // this.$router.push({ name: 'ConfirmCreatedAccount'});
+                console.log(this.response);
                 if(this.response.status == 200){
-                // console.log('account created');
+                    console.log('account created');
                     this.datas = {
                         email: this.email,
                         password: this.password
@@ -133,14 +132,12 @@ export default {
                     localStorage.set("user", [this.email,this.response.data.token]);
                     this.$router.push({ name: 'ConfirmCreatedAccount'});
                 }else{
-                    // console.log('something went wrong!');
+                    console.log('something went wrong!');
                     this.$router.push({name : 'SomethingWentWrong'});
                 }
 
             }
-        },
-
-        
+        }
     }
 
 
