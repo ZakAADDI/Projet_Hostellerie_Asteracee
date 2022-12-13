@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
-//    Route::group(['middleware' => ['auth:sanctum', 'isAdmin']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMS
         Route::post('/rooms', [RoomController::class, 'store']);
         Route::patch('/rooms/{id}', [RoomController::class, 'update']);
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         Route::post('/roomPrestations',[RoomsPrestationController::class,'store']);
         Route::patch('/roomPrestations/{id}',[RoomsPrestationController::class,'update']);
 
- // });
+});
 
 
 
@@ -123,6 +123,8 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::post('/register', [AuthController::class, 'createUser']);
     Route::post('/login', [AuthController::class, 'loginUser']);
     Route::post('/findUser', [UserController::class, 'findUser']);
+    Route::post('/logout', [UserController::class, 'logout']);
+    Route::post('/checkToken', [UserController::class, 'checkToken']);
 
 // ROOMS
     Route::get('/rooms', [RoomController::class, 'index']);

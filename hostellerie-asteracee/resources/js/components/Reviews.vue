@@ -1,5 +1,6 @@
 <template>
-    <div class="reviews shadow-md shadow-gray-700">
+
+    <div class="reviews shadow-md shadow-gray-700 pt-7 sm:w-8/12 border-4 border-[#E6B34B] mb-12 w-screen">
         <input type="radio" name="position" />
         <input type="radio" name="position" />
         <input type="radio" name="position" checked />
@@ -7,7 +8,7 @@
         <input type="radio" name="position" />
         <main id="carousel">
             <div class="item" v-for="review in reviews" :key=review.id>
-                <span class="user">
+                <span class="flex justify-start items-center text-2xl w-full">
                 <img v-if="isMale(review)" :src=maleImg.url alt="" style="width: 60px;">
                 <img v-if="!isMale(review)" :src=femaleImg.url alt="" style="width: 60px;">
 
@@ -15,39 +16,39 @@
                 <p>{{ review.title }}</p>
                 <span >
                     <span class="flex m-4" v-if="review.score == '1'">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored star">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
                     </span>
                     <span class="flex m-4" v-if="review.score == '2'">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
                     </span>
                     <span class="flex m-4" v-if="review.score == '3'">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
                     </span>
                     <span class="flex m-4" v-if="review.score == '4'">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starEmpty.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starEmpty.png" alt="empty colored sta">
                     </span>
                     <span class="flex m-4" v-if="review.score == '5'">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
-                        <img src="../assets/images/starFull.png" alt="">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
+                        <img src="../assets/images/starFull.png" alt="full colored star">
                     </span>
 
                 </span>
@@ -93,21 +94,11 @@ img{
 }
 
 .reviews{
-    width: 80vw;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid #E6B34B;
-    margin-bottom: 3rem;
     height: auto;
 }
 
-.user{
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1.5rem;
-}
 .user img{
     margin-right: 1rem;
 }
@@ -140,8 +131,8 @@ main#carousel {
 
 div.item {
   position: absolute;
-  width: 400px;
-  height: 420px;
+  width: 350px;
+  height: 500px;
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
   transition: all 0.25s linear;

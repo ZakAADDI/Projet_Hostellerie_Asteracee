@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\API\PersonalAccessToken;
 use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+use Mockery\Undefined;
 
 class UserController extends Controller
 {
@@ -151,5 +152,29 @@ class UserController extends Controller
         $token = $request->token;
         $response = SanctumPersonalAccessToken::findToken($token);
         return User::where('id',$response->tokenable_id)->firstOrFail();
+    }
+
+    public function logout(Request $request)
+    {
+        $token = $request->token;
+        $response = SanctumPersonalAccessToken::findToken($token)->delete();
+        return $response;
+    }
+
+    public function checkToken(Request $request)
+    {
+        $token = $request->token;
+        $response = SanctumPersonalAccessToken::findToken($token);
+        if($response != null){
+            return response()->json([
+                'status' => true,
+                'message' => 'user authenticated'
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'user logged out'
+            ]);
+        }
     }
 }

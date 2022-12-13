@@ -15,6 +15,11 @@ import ConfirmOrder from '../views/ConfirmOrder.vue'
 import UpdateUser from '../views/UpdateUser.vue'
 import UserProfile from '../views/UserProfile.vue'
 import UpdatePassword from '../views/UpdatePassword.vue'
+import ConfirmLogout from '../views/ConfirmLogout.vue'
+import WhoAreWe from '../views/WhoAreWe.vue'
+import OurRooms from '../views/OurRooms.vue'
+import OurServices from '../views/OurServices.vue'
+
 const routes = [
   {
     path: '/',
@@ -40,6 +45,11 @@ const routes = [
     path: '/createUser',
     name: 'CreateUser',
     component: CreateUser
+  },
+  {
+    path: '/logout',
+    name: 'ConfirmLogout',
+    component: ConfirmLogout
   },
   {
     path: '/confirmCreatedAccount',
@@ -90,6 +100,21 @@ const routes = [
     path: '/updatePassword',
     name: 'UpdatePassword',
     component: UpdatePassword
+  },
+  {
+    path: '/whoAreWe',
+    name: 'WhoAreWe',
+    component: WhoAreWe
+  },
+  {
+    path: '/rooms',
+    name: 'OurRooms',
+    component: OurRooms
+  },
+  {
+    path: '/services',
+    name: 'OurServices',
+    component: OurServices
   }
 ]
 

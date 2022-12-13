@@ -17,7 +17,6 @@ class CreateBookingOptionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('booking_id');
             $table->unsignedBigInteger('option_id');
-            $table->integer('count');
             $table->timestamps();
 
             $table->foreign('booking_id')->references('id')->on('bookings');

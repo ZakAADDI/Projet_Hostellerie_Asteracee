@@ -24,7 +24,13 @@ const axiosProvider = {
     },
     getWithParameters: async (endpoint, parameters) => {
         // console.log(parameters[0])
-        return axios.get(axiosProvider.baseUrl + endpoint, {params: {starting: parameters[0],ending: parameters[1]}})
+        return axios.get(axiosProvider.baseUrl + endpoint,
+            {
+                params:
+                    {starting: parameters[0],ending: parameters[1]},
+                headers:
+                    {"Accept-Language": storage.get("language")}
+            })
 
     },
 
