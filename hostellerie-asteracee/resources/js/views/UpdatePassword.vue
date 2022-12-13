@@ -20,7 +20,7 @@
            
         </form>
         <div v-if="userFound" >
-            <form class="flex flex-col justify-center items-center" @submit.prevent="updatePassword">
+            <form class="update flex flex-col justify-center items-center" @submit.prevent="updatePassword">
                 <label class="text-xl ml-10 mt-3 text-white" for="newPassword">Nouveau mot de passe</label>
                 <input class="w-72 h-8 mx-auto text-black" name="newPassword" type="password" v-model="newPassword">
                 <div class="error" v-if="newPasswordEmpty">
@@ -134,5 +134,16 @@ export default {
 .error{
     font-weight: bold;
     color: red;
+}
+.update, .password{
+    animation: fadein ease-in-out 0.5s;
+}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 </style>

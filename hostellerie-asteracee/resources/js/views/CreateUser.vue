@@ -5,7 +5,7 @@
          <h2 class="text-center">Formulaire d'inscription</h2>
            <fieldset>Civilité</fieldset>
            <div>
-                <input type="radio" value="male" name="male" v-model="gender" checked>
+                <input type="radio" value="male" name="male" v-model="gender">
                     <label for="gendre">Homme</label>
                 <input type="radio" value="female" name="female" v-model="gender">
                     <label for="gendre">Femme</label>
