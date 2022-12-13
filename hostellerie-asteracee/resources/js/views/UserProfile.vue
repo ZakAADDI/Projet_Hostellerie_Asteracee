@@ -3,6 +3,7 @@
         <h1>Profil utilisateur</h1>
         <router-link :to="{name:'UpdateUser'}">Mettre à jour mon profil</router-link>
         <router-link :to="{name:'UpdatePassword'}">Mettre à jour mon mot de passe</router-link>
+        <router-link :to="{name:'DeleteUser'}">Supprimer mon compte</router-link>
 
     </div>
 </template>
