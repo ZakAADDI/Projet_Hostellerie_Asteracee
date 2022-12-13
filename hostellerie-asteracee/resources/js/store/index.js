@@ -1,10 +1,11 @@
-const store = {
+import {createStore} from "vuex";
+const store = createStore({
     state:{
         user: [
-                {
-                    email: '',
-                    token: ''
-                }
+
+        ],
+        language:[
+
         ]
     },
     getters:{
@@ -14,17 +15,21 @@ const store = {
     },
     mutations:{
         addUser(state, newUser){
-            // if(newUser.token !== undefined && newUser.email == 'string'){
                 state.user.push({
                     email: newUser.email,
                     token: newUser.token
                 })
             },
-            removeUser(state){
-
+        addLanguage(state, newLanguage){
+                state.language.push({
+                    currentLanguage: newLanguage.language
+                })
+            },
+        removeUser(state){
+                state.user = {}
             }
         }
 }
-
+)
 
 export default store;

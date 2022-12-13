@@ -8,12 +8,14 @@
 
 <script>
 import localStorage from '../services/localStorageProvider'
+import store from '../store/index'
 export default {
     name: 'ConfirmLogout',
     components:{
     },
     computed:{
         logout(){
+            store.commit('removeUser');
             localStorage.unset("user");
             localStorage.unset("userChoice");
             localStorage.unset("total_options_price");

@@ -28,6 +28,11 @@
                 <div class="error" v-if="emailEmpty">
                         Vous devez saisir un mail
                     </div>
+            <label for="address">Adresse</label>
+                <input type="text" name="address" v-model="address">
+                <div class="error" v-if="addressEmpty">
+                        Vous devez saisir votre adresse postale
+                    </div>
             <label for="password">Mot de passe</label>
                 <input type="password" name="password" v-model="password">
                 <div class="error" v-if="passwordEmpty">
@@ -68,7 +73,9 @@ export default {
             passwordEmpty : false,
             confirmPassword:'',
             confirmPasswordEmpty : false,
-            checkPassword: false
+            checkPassword: false,
+            address: '',
+            addressEmpty: false
         }
     },
     methods:{
@@ -80,6 +87,7 @@ export default {
             this.passwordEmpty=false,
             this.confirmPasswordEmpty=false,
             this.checkPassword=false;
+            this.addressEmpty=false;
 
             if(this.gender ==""){
                 this.genderEmtpy = true;
@@ -99,14 +107,19 @@ export default {
             if(this.confirmPassword == ""){
                 this.confirmPasswordEmpty = true
             }
+            if(this.address == ""){
+                this.addressEmpty = true
+            }
             if(this.password != this.confirmPassword){
                 this.checkPassword = true;
             }
+
             if(!this.genderEmtpy
             && !this.firstnameEmpty
             && !this.lastnameEmpty
             && !this.emailEmpty
             && !this.passwordEmpty
+            && !this.confirmPasswordEmpty
             && !this.confirmPasswordEmpty
             && !this.checkPassword){
                 this.datas =
@@ -115,12 +128,12 @@ export default {
                         firstname : this.firstname,
                         lastname : this.lastname,
                         email : this.email,
-                        password : this.password
+                        password : this.password,
+                        address : this.address
                     }
                 ;
                 this.response = (await axiosProvider.postWithOutAuth('/register',this.datas));
 
-                // this.$router.push({ name: 'ConfirmCreatedAccount'});
                 console.log(this.response);
                 if(this.response.status == 200){
                     console.log('account created');

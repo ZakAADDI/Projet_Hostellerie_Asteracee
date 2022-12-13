@@ -23,7 +23,8 @@
 
           <div class="menu-items">
             <li><router-link :to="{name:'Home'}">Accueil</router-link></li>
-            <li><router-link :to="{name:'Connexion'}">Se connecter</router-link></li>
+            <li><router-link v-if="!user" :to="{name:'Connexion'}">Se connecter</router-link></li>
+            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">Se déconnecter</router-link></li>
             <li><router-link :to="{name:'OurRooms'}">Nos Chambres</router-link></li>
             <li><router-link :to="{name:'OurServices'}">Nos Services</router-link></li>
             <li><a href="#">Les prestations</a></li>
@@ -46,8 +47,11 @@
             <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Nous Contacter
             </router-link>
-            <router-link :to="{ name: 'Connexion' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
+            <router-link :to="{ name: 'Connexion' }" v-if="!user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Connexion
+            </router-link>
+            <router-link :to="{ name: 'ConfirmLogout' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
+                Deconnexion
             </router-link>
 
         </div>
@@ -63,6 +67,7 @@
 
 <script>
 import axiosProvider from "../services/axiosConfigProvider";
+import store from '../store/index'
 export default {
     name: 'Header',
     data(){
@@ -81,6 +86,15 @@ export default {
      async created(){
         this.medias = (await axiosProvider.get('/medias'))?.data;
         this.logoHeader = this.medias[6].url;
+    },
+    computed:{
+        user(){
+            if(store.state.user.length >0){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 }
 </script>

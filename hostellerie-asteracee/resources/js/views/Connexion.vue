@@ -36,6 +36,7 @@
 <script>
 import axios from 'axios'
 import localStorage from '../services/localStorageProvider'
+import store from '../store/index.js'
 export default {
     name: 'Connexion',
     components:{
@@ -63,6 +64,10 @@ export default {
                 password: this.password
                 };
                 this.response = await axios.post('http://127.0.0.1:8000/api/login', this.datas);
+                store.commit('addUser',{
+                    email: this.email,
+                    token: this.response.data.token
+                });
                 localStorage.set("user", [this.email,this.response.data.token]);
                     this.$router.push({ name: 'Home'});
                 }else{

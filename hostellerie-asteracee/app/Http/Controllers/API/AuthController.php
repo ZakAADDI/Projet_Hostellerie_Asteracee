@@ -25,6 +25,7 @@ class AuthController extends Controller
                 'gender' => 'required',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required',
+                'address' => 'required'
             ]);
 
             if($validateUser->fails()){
@@ -40,7 +41,7 @@ class AuthController extends Controller
                 'lastname' => $request->lastname,
                 'gender' => $request->gender,
                 'name' => $request->firstname,
-                'address' => 'test 74000',
+                'address' => $request->address,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ]);

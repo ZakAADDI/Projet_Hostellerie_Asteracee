@@ -24,7 +24,7 @@ class Users extends Seeder
                 'email' => 'gerant@gmail.com',
                 'gender' => 'female',
                 'password' => Hash::make('gerant'),
-                'role_id' => 2,
+                'role_id' => 3,
                 'birth_date' => Carbon::createFromDate('1990','11','10')->format('Y-m-d'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -51,7 +51,7 @@ class Users extends Seeder
                 'email' => 'admin@gmail.com',
                 'gender' => 'male',
                 'password' => Hash::make('admin'),
-                'role_id' => 2,
+                'role_id' => 1,
                 'birth_date' => Carbon::createFromDate('1995','2','18')->format('Y-m-d'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

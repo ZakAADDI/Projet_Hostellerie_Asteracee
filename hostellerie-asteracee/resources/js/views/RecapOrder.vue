@@ -207,7 +207,7 @@ export default {
                 starting_date : this.userChoice.startingDate,
                 total_price : this.total_room_price,
                 room_id : this.cartRoom.roomId,
-                user_id : 1
+                user_id : this.currentUser.id
             };
             this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
