@@ -25,7 +25,7 @@ class Users extends Seeder
                 'gender' => 'female',
                 'password' => Hash::make('gerant'),
                 'role_id' => 2,
-                'birth_date' => Carbon::createFromDate('1990','10','10'),
+                'birth_date' => Carbon::createFromDate('1990','11','10')->format('Y-m-d'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -38,7 +38,7 @@ class Users extends Seeder
                 'gender' => 'male',
                 'password' => Hash::make('user'),
                 'role_id' => 2,
-                'birth_date' => Carbon::createFromDate('1995','2','20'),
+                'birth_date' => Carbon::createFromDate('1995','2','20')->format('Y-m-d'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -52,7 +52,7 @@ class Users extends Seeder
                 'gender' => 'male',
                 'password' => Hash::make('admin'),
                 'role_id' => 2,
-                'birth_date' => Carbon::createFromDate('1995','2','18'),
+                'birth_date' => Carbon::createFromDate('1995','2','18')->format('Y-m-d'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]

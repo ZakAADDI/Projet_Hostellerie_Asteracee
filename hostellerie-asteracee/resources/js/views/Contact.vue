@@ -1,4 +1,5 @@
 <template>
+    <div>
 
     <div class="flex flex-col mt-12">
         <hr class="w-80 h-1.5 bg-[#E6B34B] mx-auto sm:w-11/12">
@@ -26,6 +27,7 @@
 
         </form>
     </div>
+</div>
 </template>
 
 <script>
