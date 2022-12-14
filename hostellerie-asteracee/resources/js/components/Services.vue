@@ -137,7 +137,6 @@ img {
     padding-top: 2rem;
 }
 .lg\:grid-cols-3{
-    width: 70vw;
     margin-left: auto;
     margin-right: auto;
 }
