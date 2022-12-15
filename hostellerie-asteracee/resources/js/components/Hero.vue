@@ -50,6 +50,7 @@ export default {
     margin-left: 20vw;
     margin-right: 20vw;
     animation: fadein ease-in-out 0.8s;
+    margin-top: 5rem;
 }
 @keyframes fadein {
     0% {
