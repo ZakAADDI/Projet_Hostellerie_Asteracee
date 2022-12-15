@@ -141,7 +141,7 @@ export default {
                         email: this.email,
                         password: this.password
                     };
-                    this.loginUser = await axios.post('http://127.0.0.1:8000/api/login', this.datas);
+                    this.loginUser = await axios.post('/api/login', this.datas);
                     localStorage.set("user", [this.email,this.response.data.token]);
                     this.$router.push({ name: 'ConfirmCreatedAccount'});
                 }else{

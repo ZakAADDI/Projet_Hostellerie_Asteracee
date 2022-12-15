@@ -2,7 +2,7 @@ import storage from "./localStorageProvider";
 import axios from "axios";
 
 const axiosProvider = {
-    baseUrl: "http://127.0.0.1:8000/api",
+    baseUrl: "/api",
 
     get: (endpoint) => {
         return axios.get(axiosProvider.baseUrl + endpoint, axiosProvider.getConfig());

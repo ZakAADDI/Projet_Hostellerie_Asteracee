@@ -12,12 +12,12 @@
             <div class="error" v-if="passwordEmpty">
                      Merci de saisir votre mot de passe
                     </div>
-        
+
             <div class="error" v-if="matching">
                      User not found
                     </div>
             <button type="submit" class="bg-[#E6B34B] h-12 w-56 mx-auto my-10 rounded-sm text-2xl font-bold">Connexion</button>
-           
+
         </form>
         <div v-if="userFound" >
             <form class="update flex flex-col justify-center items-center" @submit.prevent="updatePassword">
@@ -85,7 +85,7 @@ export default {
                 email: this.email,
                 password: this.password
                 };
-                this.response = await axios.post('http://127.0.0.1:8000/api/checkUser/'+this.currentUser.id, this.datas);
+                this.response = await axios.post('/api/checkUser/'+this.currentUser.id, this.datas);
                 if(this.response.data.status == true){
                     //console.log('Jusque là ça va!')
                     this.userFound = true;
@@ -101,7 +101,7 @@ export default {
                 "token":this.userToken
             }
             this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
-    
+
             if(this.newPassword == ""){
                 this.newPasswordEmpty = true;
             }
@@ -114,7 +114,7 @@ export default {
                     this.newData ={
                         newPassword : this.newPassword
                     }
-                    this.response = await axios.post('http://127.0.0.1:8000/api/updatePassword/'+this.currentUser.id, this.newData);
+                    this.response = await axios.post('/api/updatePassword/'+this.currentUser.id, this.newData);
                     if(this.response.data.status == true){
                         this.$router.push({name: 'UserProfile'})
                     }else{
@@ -124,7 +124,7 @@ export default {
                     this.matchingNewPassword = true;
                 }
             }
-            
+
         }
     }
 }
