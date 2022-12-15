@@ -1,6 +1,5 @@
 <template>
-    <div class="switchTo">
-        <img class="logo" src="../assets/images/LogoHeader.svg" alt="Logo Hostellerie Asteracée">
+    <div class="switchTo flex flex-col items-center justify-center grow">
         <div class="content">
             <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
             <h1 v-if="language">Would you like to continue in English ?</h1>
@@ -20,6 +19,7 @@
 <script>
 // import Header from '../subComponents/Header.vue';
 import storage from '../services/localStorageProvider';
+import store from '../store/index'
 export default {
     name: 'SwitchTo',
     components: {
@@ -41,10 +41,14 @@ export default {
         },
         changeToFrench : function(){
             storage.set("language", "fr");
+            this.language = 'fr';
+            store.commit('addLanguage', 'fr')
             this.$router.push({name:"Home"})
         },
         changeToEnglish : function(){
             storage.set("language", "en");
+            this.language = 'en';
+            store.commit('addLanguage', 'en')
             this.$router.push({name:"Home"})
         }
     }
@@ -54,8 +58,17 @@ export default {
 </script>
 
 <style scoped>
+
 .switchTo{
-    height: 40vh;
+     animation: fadein ease-in-out 0.5s;
+}
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 a{
     cursor: pointer;
@@ -77,14 +90,13 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30vh;
-    background-color: black;
-    color: #D2BD4D;
+    background-color:#272023;
+    color: #E6B34B;
     width: 400px;
     padding: 2rem;
     margin-left: auto;
     margin-right: auto;
-    border: 40px solid #D2BD4D;
+    border: 40px solid #E6B34B;
 }
 @media screen and (min-width: 576px) {
 

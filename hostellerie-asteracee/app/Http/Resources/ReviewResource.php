@@ -14,15 +14,16 @@ class ReviewResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = $this->getUser;
         return [
             'id' => $this->id,
-            'section'=> $this->getTranslation('section', App::getLocale()),
             'title' => $this->title,
             'content' => $this->content,
             'score' => $this->score,
-            'user_firstname' => $this->user_firstname,
-            'user_lastname' => $this->user_lastname,
-            'gender' => $this->gender
+            'user_firstname' => $user['firstname'],
+            'user_lastname' => $user['lastname'],
+            'gender' => $user['gender'],
+            'user_picture' => $user['picture']
 
         ];
     }

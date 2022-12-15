@@ -18,7 +18,7 @@ class ReviewController extends Controller
     {
         $reviews = Review::all();
 
-        return response()->json(ReviewResource::Collection($reviews), 200);
+        return response()->json(ReviewResource::Collection($reviews));
     }
 
     /**
@@ -33,15 +33,13 @@ class ReviewController extends Controller
             'title' => 'required|max:100',
             'content' => 'required|max:256',
             'score' => 'required|int|max:5',
-            'user_firstname' => 'required|max:100',
-            'user_lastname' => 'required|max:100',
-            'gender' => 'required|max:6'
+            'user_id' => 'exists:App\Models\Media,id|int',
         ]);
 
         $review = new Review;
         $review->fill($request->post())->save();
 
-        return response()->json(ReviewResource::make($review), 201);
+        return response()->json(ReviewResource::make($review));
     }
 
     /**
@@ -52,7 +50,8 @@ class ReviewController extends Controller
      */
     public function show(int $id)
     {
-        return response()->json(Review::findOrFail($id), 200);
+        $review = Review::findOrFail($id);
+        return response()->json(ReviewResource::make($review));
     }
 
     /**
@@ -68,26 +67,24 @@ class ReviewController extends Controller
             'title' => 'required|max:100',
             'content' => 'required|max:512',
             'score' => 'required|int|max:5',
-            'user_firstname' => 'required|max:100',
-            'user_lastname' => 'required|max:100',
-            'gender' => 'required|max:6'
+            'user_id' => 'exists:App\Models\Media,id|int',
         ]);
 
         $review = Review::findOrFail($id);
         $review->update($request->all());
-        return response()->json(ReviewResource::make($review),200);
+        return response()->json(ReviewResource::make($review));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(int $id)
     {
         $review = Review::findOrFail($id);
         $review->delete();
-        return response()->json('Review ' .$id. ' deleted!', 200);
+        return response()->json('Review ' .$id. ' deleted!');
     }
 }

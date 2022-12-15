@@ -16,14 +16,14 @@ class DealController extends Controller
     public function index()
     {
         $deals = Deal::all();
-        return response()->json(DealResource::Collection($deals), 200);
+        return response()->json(DealResource::Collection($deals));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -42,7 +42,7 @@ class DealController extends Controller
             ->setTranslations('content', $request->post('content'))
             ->save();
 
-        return response()->json(DealResource::make($deal), 201);
+        return response()->json(DealResource::make($deal));
     }
 
     /**
@@ -54,7 +54,7 @@ class DealController extends Controller
     public function show(int $id)
     {
         $deal = Deal::findOrFail($id);
-        return response()->json($deal);
+        return response()->json(DealResource::make($deal));
     }
 
     /**
@@ -75,7 +75,7 @@ class DealController extends Controller
         ]);
         $deal = Deal::findOrFail($id);
         $deal->update($request->all());
-        return response()->json(DealResource::make($deal), 200);
+        return response()->json(DealResource::make($deal));
     }
 
     /**
@@ -102,6 +102,5 @@ class DealController extends Controller
                     ->limit(2)
                     ->get();
         return response()->json(DealResource::Collection($deals));
-
     }
 }

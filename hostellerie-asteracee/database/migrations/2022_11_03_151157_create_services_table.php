@@ -15,8 +15,6 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->json('section')->nullable()->default(json_encode(["fr" => "Nos services",
-                "en" => "Our services"]));
             $table->json('title');
             $table->json('content');
             $table->unsignedBigInteger('media_id');

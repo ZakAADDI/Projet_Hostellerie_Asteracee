@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col sm:flex-row justify-evenly bg-black text-white border-t-4 border-t-[#D2BD4D]">
+    <div class="flex flex-col sm:flex-row justify-evenly bg-[#272023] text-white border-t-4 border-t-[#E6B34B] relative bottom-0 w-full grow-0">
 
         <!-- LOCATION -->
         <div class="flex-col justify-center items-center p-5 order-1">
@@ -8,13 +8,18 @@
                 <p>{{ address }}</p>
             </div>
             <div class="hidden sm:flex md:flex lg:flex xl:flex flex-col justify-center items-center">
-                <h5>Plan du site</h5>
-                <a href="*">Accueil</a>
-                <a href="*">{{ sectionRoom }}</a>
-                <a href="*">{{ sectionService }}</a>
-                  <router-link :to="{ name: 'BackOffice' }" class="mr-8 text-white hover:text-[#D2BD4D] duration-700 w-48 flex flex-col justify-center items-center">
-                {{ sectionNews }}
-            </router-link>
+                <h5 v-if="language">Plan du site</h5>
+                <h5 v-if="!language">Website navigation</h5>
+                <router-link :to="{name:'Home'}" v-if="language">Accueil</router-link>
+                <router-link :to="{name:'Home'}" v-if="!language">Home</router-link>
+                <router-link :to="{name:'OurRooms'}" v-if="language">Nos chambres</router-link>
+                <router-link :to="{name:'OurRooms'}" v-if="!language">Our Rooms</router-link>
+                <router-link :to="{name:'OurServices'}" v-if="language">Nos services</router-link>
+                <router-link :to="{name:'OurServices'}" v-if="!language">Our services</router-link>
+                <router-link :to="{name:'Contact'}" v-if="language">Nous contacter</router-link>
+                <router-link :to="{name:'Contact'}" v-if="!language">Contact Us</router-link>
+                <router-link :to="{name:'WhoAreWe'}" v-if="language">Qui Sommes Nous ?</router-link>
+                <router-link :to="{name:'WhoAreWe'}" v-if="!language">About us</router-link>
             </div>
         </div>
 
@@ -50,6 +55,7 @@
 </template>
 
 <script>
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Footer',
     props:{
@@ -62,8 +68,17 @@ export default {
         sectionRoom: String,
         sectionService: String,
         sectionNews: String
-   }
+   },
+    computed:{
+         language(){
+            if(localStorage.get("language") == "fr"){
+                return true;
+             }else{
+                 return false;
+            }
+        }
 
+    }
 }
 </script>
 

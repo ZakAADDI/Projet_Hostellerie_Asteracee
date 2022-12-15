@@ -13,15 +13,23 @@ class Sprint1 extends Seeder
     public function run()
     {
         $this->call([
+            VoyagerDatabaseSeeder::class,
             Medias::class,
+            RoomTypes::class,
+            Users::class,
             Infos::class,
             Contacts::class,
             Heroes::class,
             Reviews::class,
             Rooms::class,
             Services::class,
-            Users::class,
             Deals::class,
+            BookingSeeder::class,
+            Sections::class,
+            Prestations::class,
+            Options::class,
+            BookingOptionSeeder::class,
+            RoomsPrestations::class
         ]);
 
     }

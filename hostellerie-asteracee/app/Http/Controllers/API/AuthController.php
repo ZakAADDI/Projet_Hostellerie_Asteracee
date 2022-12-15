@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+
 class AuthController extends Controller
 {
     /**
@@ -20,9 +22,12 @@ class AuthController extends Controller
             //Validated
             $validateUser = Validator::make($request->all(),
             [
-                'name' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'gender' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required'
+                'password' => 'required',
+                'address' => 'required'
             ]);
 
             if($validateUser->fails()){
@@ -34,7 +39,11 @@ class AuthController extends Controller
             }
 
             $user = User::create([
-                'name' => $request->name,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'gender' => $request->gender,
+                'name' => $request->firstname,
+                'address' => $request->address,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ]);
@@ -95,5 +104,13 @@ class AuthController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        $token = $request->token;
+        $response = SanctumPersonalAccessToken::findToken($token)->delete();
+        Auth::logout();
+        return $response;
     }
 }

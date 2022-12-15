@@ -2,9 +2,7 @@
 
 namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\App;
-use App\Http\Resources\MediaResource;
-
+use App\Http\Repositories\RoomRepository;
 class RoomResource extends JsonResource
 {
     /**
@@ -16,13 +14,10 @@ class RoomResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'description'=> $this->getTranslation('description', App::getLocale()),
-            'section'=> $this->getTranslation('section', App::getLocale()),
-            'price' => $this->price,
-            'type' => $this->type,
-            'capacity' => $this->capacity,
-            'media' => new MediaResource($this->media)
+            'room_id' => $this->id,
+            'room_type' => RoomTypeResource::make($this->getRoomType),
+            'number' => $this->room_number,
+            'prestations' => PrestationResource::collection(RoomRepository::getRoomPrestations($this))
         ];
     }
 }

@@ -4,15 +4,15 @@
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">{{ this.section }}</h2>
             </div>
-            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-[#272023]" >
                 <div
                     v-for="service in services" :key=service.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
                     <Card :showPrice="false"
-                          :image="service.media['data']"
+                          :image="service.media_url"
                           :title="service.title"
                           :description="service.content"
-                          :alt="service.media['alt']"/>
+                          :alt="service.media_alt"/>
                 </div>
             </div>
         </div>
@@ -35,7 +35,8 @@ export default {
     },
     async created(){
         this.services = (await axiosProvider.get('/services'))?.data;
-        this.section = this.services[0].section;
+        this.sections = (await axiosProvider.get('/sections'))?.data;
+        this.section = this.sections[1].title;
     }
 }
 </script>
@@ -76,18 +77,18 @@ export default {
     width: auto;
     height: auto;
     backface-visibility: hidden;
-    border: 1px solid #D2BD4D;
+    border: 1px solid #E6B34B;
 }
 
 .flip-card-front {
     background-color: white;
-    color: black;
+    color: #272023;
     height: 350px;
     box-shadow: 4px 4px 4px gray;
 }
 
 .flip-card-back {
-    background-color: black;
+    background-color: #272023;
     color: white;
     transform: rotateY(180deg);
     width: 200px;
@@ -100,8 +101,8 @@ export default {
 
 .type {
     width: 50%;
-    background-color: #D2BD4D;
-    color: black;
+    background-color: #E6B34B;
+    color: #272023;
     display: flex;
     justify-content: flex-start;
     padding-left: 1rem;
@@ -113,8 +114,8 @@ export default {
 
 .price {
     width: 50%;
-    background-color: #D2BD4D;
-    color: black;
+    background-color: #E6B34B;
+    color: #272023;
     display: flex;
     justify-content: flex-end;
     padding-right: 1rem;
@@ -136,13 +137,12 @@ img {
     padding-top: 2rem;
 }
 .lg\:grid-cols-3{
-    width: 70vw;
     margin-left: auto;
     margin-right: auto;
 }
 .backgroundDiv{
     width: 80vw;
-    background-color: #D2BD4D;
+    background-color: #E6B34B;
     margin-bottom: 3rem;
 }
 </style>

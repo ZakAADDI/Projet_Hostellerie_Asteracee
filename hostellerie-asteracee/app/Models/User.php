@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,6 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'firstname',
+        'lastname',
+        'avatar',
+        'gender',
+        'birthdate',
+        'loyalty',
+        'address',
         'name',
         'email',
         'password'
@@ -31,7 +38,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'role'
+//        'role'
     ];
 
     /**
@@ -42,4 +49,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getReviews(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Review::class,'user_id');
+    }
+
+    public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

@@ -21,12 +21,22 @@ export default {
 
 <style scoped>
 .separator{
-    border-top: 3px solid #D2BD4D;
+    border-top: 3px solid #E6B34B;
     width: 50vw;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
-    background-color: black;
+    background-color: #272023;
+    animation: fadein ease-in-out 2s;
+}
+
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 img{
     margin-left: auto;

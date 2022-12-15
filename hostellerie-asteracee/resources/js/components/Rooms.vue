@@ -2,24 +2,20 @@
     <section class="bg-white light:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 backgroundDiv shadow-md shadow-gray-700" >
             <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 light:text-white">{{ this.section }}</h2>
-
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-[#272023] light:text-white">{{ this.section }}</h2>
             </div>
-            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-black" >
-
-
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 bg-[#272023]" >
                 <div
                     v-for="room in rooms" :key=room.id
                     class="flex flex-col p-6 mx-auto max-w-lg xl:p-8 light:bg-gray-800 light:text-white flip-card">
                     <Card
                     :showPrice="true"
-                    :image="room.media['data']"
-                    :alt="room.media['alt']"
-                    :title="room.type"
+                    :image="room.media_url"
+                    :alt="room.media_alt"
+                    :title="room.name"
                     :price="room.price"
                     :description="room.description"/>
                 </div>
-
             </div>
         </div>
     </section>
@@ -36,12 +32,15 @@ export default {
     data(){
         return {
             section: '',
-            rooms: []
+            response: [],
+            rooms: [],
         }
     },
     async created(){
-        this.rooms = (await axiosProvider.get('/rooms'))?.data;
-        this.section = this.rooms[0].section;
+        this.rooms = (await axiosProvider.get('/roomTypes'))?.data;
+        this.sections = (await axiosProvider.get('/sections'))?.data;
+        this.section = this.sections[0].title;
+
     }
 }
 </script>
@@ -59,7 +58,6 @@ export default {
     width: auto;
 }
 .flip-card {
-    font-family: 'Radley', serif;
     width: 200px;
     height: 300px;
     perspective: 1000px;
@@ -83,19 +81,19 @@ export default {
     width: 200px;
     height: 350px;
     backface-visibility: hidden;
-    border: 1px solid #D2BD4D;
+    border: 1px solid #E6B34B;
 }
 
 .flip-card-front {
     background-color: white;
-    color: black;
+    color: #272023;
     width: 200px;
     height: 350px;
     box-shadow: 4px 4px 4px gray;
 }
 
 .flip-card-back {
-    background-color: black;
+    background-color: #272023;
     color: white;
     transform: rotateY(180deg);
     width: 200px;
@@ -108,8 +106,8 @@ export default {
 
 .type {
     width: 50%;
-    background-color: #D2BD4D;
-    color: black;
+    background-color: #E6B34B;
+    color: #272023;
     display: flex;
     justify-content: flex-start;
     padding-left: 1rem;
@@ -121,8 +119,8 @@ export default {
 
 .price {
     width: 50%;
-    background-color: #D2BD4D;
-    color: black;
+    background-color: #E6B34B;
+    color: #272023;
     display: flex;
     justify-content: flex-end;
     padding-right: 1rem;
@@ -144,13 +142,12 @@ img {
     padding-top: 2rem;
 }
 .lg\:grid-cols-3{
-    width: 70vw;
     margin-left: auto;
     margin-right: auto;
 }
 .backgroundDiv{
     width: 80vw;
-    background-color: #D2BD4D;
+    background-color: #E6B34B;
     margin-bottom: 3rem;
 }
 </style>

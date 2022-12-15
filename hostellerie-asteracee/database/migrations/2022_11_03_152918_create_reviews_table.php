@@ -15,19 +15,13 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->json('section')->nullable()->default(json_encode(
-                [
-                    "fr" => "Avis Clients",
-                    "en" => "Customers Reviews"
-                ]
-            ));
             $table->string('title');
             $table->text('content');
             $table->enum('score',[1,2,3,4,5]);
-            $table->string('user_firstname');
-            $table->string('user_lastname');
-            $table->enum('gender',['Female', 'Male']);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

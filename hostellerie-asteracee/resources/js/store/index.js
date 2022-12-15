@@ -1,30 +1,44 @@
-const store = {
+import {createStore} from "vuex";
+const store = createStore({
     state:{
         user: [
-                {
-                    email: '',
-                    token: ''
-                }
+
+        ],
+        language:[
+
         ]
     },
     getters:{
         oneUser(state){
             return state.user;
+        },
+        oneLanguage(state){
+            return state.language;
         }
     },
     mutations:{
         addUser(state, newUser){
-            // if(newUser.token !== undefined && newUser.email == 'string'){
                 state.user.push({
                     email: newUser.email,
                     token: newUser.token
                 })
             },
-            removeUser(state){
-
-            }
+        addLanguage(state, newLanguage){
+                state.language.push({
+                    currentLanguage : newLanguage
+                })
+            },
+        removeUser(state){
+                state.user = [
+                ]
+            },
+        removeLanguage(state){
+                state.language = [
+                ]
         }
-}
 
+    }
+}
+)
 
 export default store;

@@ -5,25 +5,25 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\ContactResource;
 class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
         $contacts = Contact::all();
-        return response()->json($contacts, 200);
+        return response()->json($contacts);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -35,19 +35,19 @@ class ContactController extends Controller
             'name' => $request->name,
             'text' => $request->text
         ]);
-        return response()->json($contact, 201);
+        return response()->json($contact);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @param  int id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Contact $contact)
+    public function show(int $id)
     {
-
-        return response()->json($contact, 200);
+        $contact = Contact::findOrfail($id);
+        return response()->json(ContactResource::make($contact));
     }
 
     /**
@@ -55,7 +55,7 @@ class ContactController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, int $id)
     {
@@ -66,19 +66,19 @@ class ContactController extends Controller
         $contact = Contact::where('id', $id)->first();
         $contact->update($request->all());
 
-        return response()->json($contact, 200);
+        return response()->json($contact);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Contact $contact)
     {
         $contact->delete();
 
-        return response()->json('Contact deleted!', 200);
+        return response()->json('Contact deleted!');
     }
 }

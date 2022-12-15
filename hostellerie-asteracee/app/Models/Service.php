@@ -9,11 +9,11 @@ use Spatie\Translatable\HasTranslations;
 class Service extends Model
 {
     use HasFactory, HasTranslations;
-    public $translatable = ['title','content','section'];
-    protected $fillable = ['title','content','media_id','section'];
+    public $translatable = ['title','content'];
+    protected $fillable = ['title','content','media_id'];
 
-    public function media(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function getMedia(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Media::class, 'id','media_id');
+        return $this->hasOne(Media::class,'id','media_id');
     }
 }

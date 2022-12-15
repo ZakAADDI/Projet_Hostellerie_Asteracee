@@ -2,7 +2,7 @@
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front shadow-md shadow-gray-200 relative">
-                <img style="width:200px;height:180px" :src=image.url :alt=image.alt>
+                <img style="width:200px;height:180px" :src=image :alt=image.alt>
                 <div class="pt-8">
                     <span >{{ title }}</span>
                 </div>
@@ -10,10 +10,11 @@
                 <img class="absolute ml-16 bottom-0 top-60" style="width:80px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie">
             </div>
             <div class="flip-card-back">
-               <div class="bg-[#D2BD4D] text-black flex justify-start pl-4 w-2/4">{{ title }}</div>
+               <div class="bg-[#E6B34B] text-[#272023] flex justify-start pl-4 w-3/4">{{ title }}</div>
                 <div class="text-white ">{{ description }}</div>
 
-                <div v-if="showPrice" class="bg-[#D2BD4D] text-black flex justify-end pr-4 w-2/4">- {{ price }} € </div>
+                <div v-if="showPrice" class="bg-[#E6B34B] text-[#272023] flex justify-end pr-4 w-2/4">- {{ price }} € </div>
+                <button v-if="showButton" type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023] w-1/2 mx-auto mb-2" @click="addToCart">Réserver</button>
             </div>
         </div>
     </div>
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-
+import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Card',
     props: {
@@ -29,8 +30,32 @@ export default {
         description: String,
         price: Number,
         showPrice: Boolean,
-        image: Object
+        image: String,
+        showButton: Boolean,
+        roomNumber: Number,
+        roomPrestations: Object,
+        roomId: Number,
+        alt: String
     },
+    methods:{
+        addToCart: function(){
+            localStorage.set(
+                "cartRoom",
+                    {
+                        "roomId" : this.roomId,
+                        "roomName" : this.title,
+                        "roomDescription" : this.description,
+                        "roomPrestations" : this.roomPrestations,
+                        "roomImage" : this.image,
+                        "roomAlt" : this.alt,
+                        "roomPrice" : this.price,
+                        "roomNumber" : this.roomNumber,
+                    }
+                );
+            this.$router.push({ name: 'SelectOptions'});
+
+        }
+    }
 }
 </script>
 
@@ -41,9 +66,16 @@ export default {
     width: 200px;
     height: 300px;
     perspective: 1000px;
-
+    animation: fadein ease-in-out 1.5s;
 }
-
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
 .flip-card-inner {
     position: relative;
     text-align: center;
@@ -61,17 +93,17 @@ export default {
     width: auto;
     height: auto;
     backface-visibility: hidden;
-    border: 1px solid #D2BD4D;
+    border: 1px solid #E6B34B;
 }
 
 .flip-card-front {
     background-color: white;
-    color: black;
+    color: #272023;
     height: 350px;
 }
 
 .flip-card-back {
-    background-color: black;
+    background-color: #272023;
     color: white;
     transform: rotateY(180deg);
     width: 200px;

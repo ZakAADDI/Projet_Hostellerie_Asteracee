@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+Route::get("simple-qrcode", [\App\Http\Controllers\SimpleQRcodeController::class,'generate']);
+
+Route::get('send-booking-recap', [App\Http\Controllers\EmailController::class, 'sendBookingRecap']);
+
+Route::get('send-subscribe-email', [App\Http\Controllers\EmailController::class, 'sendSubscribe']);
