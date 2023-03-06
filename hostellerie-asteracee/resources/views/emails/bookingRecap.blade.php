@@ -97,7 +97,7 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
-                                    <img src="/hostellerie-asteracee/public/storage/images/classique_room.png" width="125" height="120" style="display: block; border: 0px;" /><br>
+                                    <img src="{{$img}}" width="125" height="120" style="display: block; border: 0px " /><br>
                                     <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
                                         Votre réservation à été enregistrée !
                                     </h2>

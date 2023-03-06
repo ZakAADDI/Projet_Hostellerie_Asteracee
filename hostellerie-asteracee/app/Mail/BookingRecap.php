@@ -10,6 +10,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class BookingRecap extends Mailable
 {
@@ -19,6 +20,7 @@ class BookingRecap extends Mailable
     public User $user;
     public $options;
     public RoomType $room_type;
+    public string $img;
 
     /**
      * Create a new message instance.
@@ -31,6 +33,7 @@ class BookingRecap extends Mailable
         $this->user = $user;
         $this->options = $options;
         $this->room_type = $roomType;
+        $this->img = Storage::temporaryUrl('leftImg.png', now()->addHours(1));
     }
 
     /**
@@ -40,6 +43,7 @@ class BookingRecap extends Mailable
      */
     public function build()
     {
+        
         return $this->view('emails.bookingRecap')
             ->with([
                 'userName' => $this->user->firstname . ' ' . $this->user->lastname,
