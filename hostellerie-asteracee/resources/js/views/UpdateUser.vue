@@ -14,22 +14,22 @@
             <form @submit.prevent="updateUser" class="flex flex-col text-white">
                 <label for="civility" class="text-xl ml-10 mt-3">Civilité</label>
                 <div class="mx-auto">
-                    
+
                     <input type="radio" value="male" name="male" v-model="gender">
                     <label for="gender" class="mx-8">Homme</label>
                     <input type="radio" value="female" name="female" v-model="gender">
                     <label for="gender" class="mx-8">Femme</label>
-                        
+
                 </div>
                 <label class="text-xl ml-10 mt-3" for="lastname">NOM</label>
                 <input class="w-72 h-8 mx-auto text-black" name="lastname" type="text" v-model="lastname" :v-html=this.lastname>
 
                 <label class="text-xl ml-10 mt-3" for="firstname">Prénom</label>
                 <input class="w-72 h-8 mx-auto text-black" name="firstname" type="text" v-model="firstname" >
-                
+
                 <label class="text-xl ml-10 mt-3" for="birth_date">Date de naissance (format mm-dd-yyyy)</label>
                 <input class="w-72 h-8 mx-auto text-black" name="birth_date" type="date" v-model="birth_date">
-                
+
                 <label class="text-xl ml-10 mt-3" for="address">Adresse</label>
                 <input class="w-72 h-8 mx-auto text-black" name="address" type="text" v-model="address">
 
@@ -40,7 +40,7 @@
 
             </form>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
@@ -64,7 +64,7 @@ export default {
     methods: {
         async updateUser(){
             this.body = {
-            civility : this.gender,
+            gender : this.gender,
             lastname : this.lastname,
             firstname : this.firstname,
             birth_date : this.birth_date,
@@ -92,9 +92,9 @@ export default {
         this.birth_date = this.currentUser.birth_date
         this.address = this.currentUser.address
         this.email = this.currentUser.email
-        
-        
-        
+
+
+
     }
 }
 </script>

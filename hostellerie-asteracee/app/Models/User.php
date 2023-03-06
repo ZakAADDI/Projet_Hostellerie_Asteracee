@@ -22,7 +22,7 @@ class User extends \TCG\Voyager\Models\User
         'lastname',
         'avatar',
         'gender',
-        'birthdate',
+        'birth_date',
         'loyalty',
         'address',
         'name',
