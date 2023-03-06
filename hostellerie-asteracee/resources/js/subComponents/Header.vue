@@ -50,6 +50,9 @@
             <router-link :to="{ name: 'Connexion' }" v-if="!user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Connexion
             </router-link>
+            <router-link :to="{ name: 'UserProfile' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
+                Mon Compte
+            </router-link>
             <router-link :to="{ name: 'ConfirmLogout' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Deconnexion
             </router-link>
