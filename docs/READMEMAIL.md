@@ -140,3 +140,28 @@ de la manière suivante.
 ```sh 
 Route::get('send-email', [App\Http\Controllers\EmailController::class, 'sendEmail']);
 ```
+
+### 10 - installation driver s3 :
+
+```sh 
+composer require --with-all-dependencies league/flysystem-aws-s3-v3 "^1.0"
+```
+
+dans le .env 
+
+FILESYSTEM_DRIVER=s3
+
+AWS_ACCESS_KEY_ID=SCW9A18KJQXJRT61AFK9
+AWS_SECRET_ACCESS_KEY=4a4f5dbe-0437-4ba6-bd5f-0b033cad66c9
+AWS_DEFAULT_REGION=fr-par
+AWS_BUCKET=asteracee
+AWS_USE_PATH_STYLE_ENDPOINT=true
+AWS_ENDPOINT=https://s3.fr-par.scw.cloud
+
+dans le model du template de mail :
+
+ajout dans le construct :
+public string $img;
+
+utiliser temporaryUrl :
+$this->img = Storage::temporaryUrl('leftImg.png', now()->addHours(1));
