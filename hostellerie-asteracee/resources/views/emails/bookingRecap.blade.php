@@ -79,7 +79,7 @@
                         </td>
                         <td align="right" width="300">
                         <![endif]-->
-                        
+
                         <!--[if (gte mso 9)|(IE)]>
                         </td>
                         </tr>
@@ -97,7 +97,7 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
-                                    <img src="/hostellerie-asteracee/public/storage/images/classique_room.png" width="125" height="120" style="display: block; border: 0px;" /><br>
+                                    <img src="{{$logo}}" width="300" height="120" style="display: block; border: 0px;" /><br>
                                     <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
                                         Votre réservation à été enregistrée !
                                     </h2>
@@ -106,7 +106,7 @@
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                     <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                    {{$userName}}                                    
+                                    {{$userName}}
                                     </p>
                                 </td>
                             </tr>
@@ -241,7 +241,7 @@
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                <img src="./public/codes-qr/QR-site.svg" alt="e">
+                                                <img src="{{$qrcode}}" width="300" height="120" style="display: block; border: 0px;" />
                                             </td>
                                         </tr>
                                     </table>
@@ -276,7 +276,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                 <tr>
                     <td bgcolor="#ffffff" align="center" style="padding: 30px 30px 30px 30px; color: #666666; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
-                        <p style="margin: 0;">This email was built and tested with Litmus. <a href="https://litmus.com?utm_campaign=litmus_templates&utm_source=litmus_community&utm_medium=templates" style="color: #5db3ec;">What's Litmus?</a></p>
+
                     </td>
                 </tr>
             </table>

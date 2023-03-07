@@ -10,16 +10,15 @@ use App\Models\User;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class EmailController extends Controller
 {
-    public function sendBookingRecap(Request $request)
+    public function sendBookingRecap(int $bookingId)
     {
         /**
          * Store a receiver email address to a variable.
          */
-        $reveiverEmailAddress = $request->email;
-        //dd($reveiverEmailAddress);
         /**
          * Import the Mail class at the top of this page,
          * and call the to() method for passing the
@@ -29,17 +28,27 @@ class EmailController extends Controller
          * HelloEmail class that contains the email template.
          */
 
-        $user = User::findOrFail($request->user_id);
-        $booking = Booking::findOrFail($request->booking_id);
+        $booking = Booking::findOrFail($bookingId);
         $optionIds = $booking->getBookingOptions()->pluck('option_id');
         $options = [];
         foreach ($optionIds as $id){
             $options[] = Option::findOrFail($id);
         }
-        $roomType = RoomType::findOrFail($booking->getRoom()->firstOrFail()->room_type_id);
 
+        $roomType = RoomType::findOrFail($booking->getRoom()->firstOrFail()->room_type_id);
+        $user = User::findOrFail($booking->user_id);
+        $reveiverEmailAddress = $user->email;
+
+        $qr = New SimpleQRcodeController;
+        $hash = \Hash::make($bookingId);
+
+        $booking->hash = $hash;
+        $booking->save();
+        $qr->generate($hash);
+//        https://api.open-meteo.com/v1/forecast?latitude=45.92&longitude=6.14&daily=weathercode,temperature_2m_max,temperature_2m_min,uv_index_max&timezone=auto&start_date=2023-03-08&end_date=2023-03-08
         Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType));
 
+//        Storage::delete('qr-code/'.$hash.'.png');
         /**
          * Check if the email has been sent successfully, or not.
          * Return the appropriate message.

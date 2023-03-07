@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailController;
 use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Throwable;
 
 class BookingController extends Controller
 {
@@ -35,10 +37,19 @@ class BookingController extends Controller
             'user_id' => 'required|exists:App\Models\User,id|int',
         ]);
 
-        $booking = new Booking;
-        $booking->fill($request->post())->save();
+        //try {
+            $booking = new Booking;
+            $booking->fill($request->post())->save();
 
-        return response()->json(BookingResource::make($booking));
+            $emailController = new EmailController();
+
+            $emailController->sendBookingRecap($booking->id);
+
+            return response()->json(BookingResource::make($booking));
+        //} catch (Throwable $e) {
+         //   return response()->json($e);
+        //}
+
     }
 
     /**

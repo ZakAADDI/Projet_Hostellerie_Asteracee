@@ -21,6 +21,7 @@ class CreateBookingsTable extends Migration
             $table->date('ending_date');
             $table->enum('status',['ongoing','canceled','ended'])->default('ongoing');
             $table->float('total_price')->nullable();
+            $table->string('hash')->unique()->nullable();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');
