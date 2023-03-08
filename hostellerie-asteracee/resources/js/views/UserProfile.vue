@@ -12,7 +12,7 @@
                 <div>
                     <h1>Mes réservations</h1>
                     <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                        <router-link :to="{name:'Home'}">Voir mes réservations</router-link>
+                        <router-link :to="{name:'UserBookingsView'}">Voir mes réservations</router-link>
                     </button>
                 </div>
 

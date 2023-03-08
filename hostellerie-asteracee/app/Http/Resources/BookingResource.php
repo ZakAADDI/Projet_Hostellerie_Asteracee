@@ -20,7 +20,8 @@ class BookingResource extends JsonResource
             'starting_date' => $this->starting_date,
             'ending_date' => $this->ending_date,
             'status' => $this->status,
-            'booking_id' => $this->id
+            'booking_id' => $this->id,
+            'total_price' => $this->total_price
         ];
     }
 }

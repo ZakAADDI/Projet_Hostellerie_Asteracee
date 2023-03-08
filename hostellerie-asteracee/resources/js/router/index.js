@@ -20,6 +20,7 @@ import WhoAreWe from '../views/WhoAreWe.vue'
 import OurRooms from '../views/OurRooms.vue'
 import OurServices from '../views/OurServices.vue'
 import DeleteAccount from '../views/DeleteAccount.vue'
+import UserBookingsView from '../views/UserBookingsView.vue'
 
 const routes = [
   {
@@ -101,6 +102,11 @@ const routes = [
     path: '/userProfile',
     name: 'UserProfile',
     component: UserProfile
+  },
+  {
+    path: '/userBookingsView',
+    name: 'UserBookingsView',
+    component: UserBookingsView
   },
   {
     path: '/updatePassword',
