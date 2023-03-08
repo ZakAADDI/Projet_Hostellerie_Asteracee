@@ -8,7 +8,9 @@ use App\Models\Booking;
 use App\Models\Option;
 use App\Models\User;
 use App\Models\RoomType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,8 +47,8 @@ class EmailController extends Controller
         $booking->hash = $hash;
         $booking->save();
         $qr->generate($hash);
-//        https://api.open-meteo.com/v1/forecast?latitude=45.92&longitude=6.14&daily=weathercode,temperature_2m_max,temperature_2m_min,uv_index_max&timezone=auto&start_date=2023-03-08&end_date=2023-03-08
-        Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType));
+        $weatherAPI = Http::get('https://api.open-meteo.com/v1/dwd-icon?latitude=45.91&longitude=6.13&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&start_date='. $booking->starting_date .'&end_date=' . $booking->ending_date)->json();
+        Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType, $weatherAPI));
 
 //        Storage::delete('qr-code/'.$hash.'.png');
         /**
