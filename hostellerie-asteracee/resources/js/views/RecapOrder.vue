@@ -209,7 +209,7 @@ export default {
                 room_id : this.cartRoom.roomId,
                 user_id : this.currentUser.id
             };
-            this.newBooking = (await axiosProvider.postWithAuth('/bookings',this.body));
+            this.newBooking = (await axiosProvider.postWithOutAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
                 this.options=this.cartOptions.options;
                 if(this.options.length>0){
@@ -218,7 +218,7 @@ export default {
                             'booking_id': this.newBooking.data.booking_id,
                             'option_id': option.id
                         };
-                        this.optionToSave = (axiosProvider.postWithAuth('/bookingOptions', this.optionToStore));
+                        this.optionToSave = (axiosProvider.postWithOutAuth('/bookingOptions', this.optionToStore));
                      });
                 }
                 localStorage.unset("cartOptions");

@@ -113,4 +113,10 @@ class AuthController extends Controller
         Auth::logout();
         return $response;
     }
+
+    public function getUserInfo()
+    {
+        $response = Auth::user();
+        var_dump($response);
+    }
 }
