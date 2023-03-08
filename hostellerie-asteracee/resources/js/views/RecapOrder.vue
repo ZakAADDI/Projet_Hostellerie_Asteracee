@@ -221,6 +221,11 @@ export default {
                         this.optionToSave = (axiosProvider.postWithAuth('/bookingOptions', this.optionToStore));
                      });
                 }
+                localStorage.unset("cartOptions");
+                localStorage.unset("userChoice");
+                localStorage.unset("cartRoom");
+                localStorage.unset("total_room_price");
+                localStorage.unset("total_options_price");
                 this.$router.push({ name : 'ConfirmOrder'});
             }else{
                 this.$router.push({name:'SomethingWentWrong'});
