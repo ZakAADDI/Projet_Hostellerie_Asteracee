@@ -16,7 +16,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::orderBy('created_at','desc')->take(5)->get();
 
         return response()->json(ReviewResource::Collection($reviews));
     }
@@ -33,7 +33,7 @@ class ReviewController extends Controller
             'title' => 'required|max:100',
             'content' => 'required|max:256',
             'score' => 'required|int|max:5',
-            'user_id' => 'exists:App\Models\Media,id|int',
+            'booking_id' => 'exists:App\Models\Booking,id|int',
         ]);
 
         $review = new Review;

@@ -32,4 +32,10 @@ class Booking extends Model
     {
         return $this->hasMany(BookingOption::class,'booking_id');
     }
+
+    public function getReview(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Review::class);
+    }
+
 }
