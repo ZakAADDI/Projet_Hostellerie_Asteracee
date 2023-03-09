@@ -61,10 +61,10 @@ export default {
     },
     methods:{
         updateBooking(){
-            console.log('update ' + this.bookingId + ' ?')
+            return this.bookingId;
         },
         deleteBooking(){
-            console.log('delete ' + this.bookingId + ' ?')
+            return this.bookingId;
         }
     }
 

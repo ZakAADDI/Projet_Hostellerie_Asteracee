@@ -97,7 +97,6 @@ export default {
         this.loyaltyRemains = 10 - this.loyalty;
 
         this.userInfo =  (await axiosProvider.get('/user/info'));
-        console.log(this.userInfo)
 
     },
     methods:{

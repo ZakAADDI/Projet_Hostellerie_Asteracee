@@ -53,9 +53,7 @@ export default {
                     message: this.message,
                     subject: this.subject
                 })
-                console.log('Ok')
             } catch (error) {
-                console.log({ error })
             }
         }
     }

@@ -101,7 +101,6 @@
 <script>
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
-import emailjs from '@emailjs/browser';
 
 export default {
     name: 'RecapOrder',
@@ -115,12 +114,8 @@ export default {
         this.total_options_price = localStorage.get("total_options_price");
         this.total_roomOptions = this.total_room_price + this.total_options_price;
         this.options = this.cartOptions.options;
-        this.userToken = localStorage.get("user")[1];
-        this.body =
-            {
-                "token":this.userToken
-            }
-        this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+        this.currentUser =  await axiosProvider.get('/user/info');
+        this.currentUser = this.currentUser.data;
         this.services = (await axiosProvider.get('/services'))?.data;
             this.service1 = this.services[0];
             this.service2 = this.services[1];
@@ -160,47 +155,6 @@ export default {
         }
     },
     methods:{
-        submitBooking(e){
-            this.language = localStorage.get("language");
-            if(this.currentUser.gender === "male" && this.language == "fr"){
-                this.civility = "Monsieur"
-            }
-            if(this.currentUser.gender === "male" && this.language == "en"){
-                this.civility = "Sir"
-            }
-            if(this.currentUser.gender === "female" && this.language == "fr"){
-                this.civility = "Madame"
-            }
-            if(this.currentUser.gender === "female" && this.language == "en"){
-                this.civility = "Miss"
-            }
-            this.body = {
-                    gender: this.civility,
-                    firstname: this.currentUser.firstname,
-                    lastname: this.currentUser.lastname,
-                    startingDate: this.userChoice.startingDate,
-                    endingDate: this.userChoice.endingDate,
-                    nbrOfDays: this.userChoice.nbrOfDays,
-                    occupants: this.userChoice.occupants,
-                    roomName: this.cartRoom.roomName,
-                    roomDescription: this.cartRoom.roomDescription,
-                    roomPrice: this.cartRoom.roomPrice,
-                    service1Name : this.service1.title,
-                    service1Content : this.service1.content,
-                    service2Name : this.service2.title,
-                    service2Content : this.service2.content,
-                    service3Name : this.service3.title,
-                    service3Content : this.service3.content,
-                };
-
-                if(this.language == "fr"){
-                    this.response = emailjs.send('service_221d5yz', 'template_uym8zdc', this.body, 'bbyfEd_o77jz3eSoT')
-                }
-                if(this.language == "en"){
-                    this.response = emailjs.send('service_2xuxogk', 'template_q5sj1a8', this.body, '7EV5cfIjJKZzqpYhk')
-                }
-                this.$router.push({ name : 'ConfirmOrder'});
-            },
         async submitBooking(){
             this.body={
                 ending_date : this.userChoice.endingDate,
@@ -226,7 +180,7 @@ export default {
                 localStorage.unset("cartRoom");
                 localStorage.unset("total_room_price");
                 localStorage.unset("total_options_price");
-                this.$router.push({ name : 'ConfirmOrder'});
+                // this.$router.push({ name : 'ConfirmOrder'});
             }else{
                 this.$router.push({name:'SomethingWentWrong'});
             }
