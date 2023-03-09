@@ -75,6 +75,9 @@ export default {
                         setInterval(function(){localStorage.unset("user")}, 7200000);
                     }
 
+    },
+    mounted(){
+        this.userInfo =  axiosProvider.get('/user/info');
     }
 }
 </script>

@@ -63,22 +63,21 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-
+        // dd($request);
         $this->validate($request, [
 
-            'civility' => 'required',
+            'gender' => 'string|max:6',
             'lastname' => 'string|max:64',
             'firstname' => 'string|max:64',
-            'birth_date' => 'date|max:64',
+            'birth_date' => 'date',
             'address' => 'string|max:128',
-            'email' => 'email|max:64',
-            'picture' => 'string'
+            'email' => 'email|max:64'
 
         ]);
         $user = User::where('id',$id)->first();
 
         $user->update($request->all());
-        return response()->json('updated');
+        return response()->json($user);
     }
 
     /**

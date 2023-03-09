@@ -2,12 +2,14 @@
     <div class="password flex flex-col items-center justify-center grow bg-[#272023] w-11/12 mx-auto border-4 border-[#E6B34B] my-12">
         <form @submit.prevent="checkUser" class="flex flex-col justify-center items-center">
             <h1 class="text-white">Mise à jour password</h1>
-            <label class="text-xl ml-10 mt-3 text-white" for="email">eMail</label>
-            <input class="w-72 h-8 mx-auto text-black" name="email" type="email" v-model="email">
+            <div class="flex flex-col justify-center items-center">
+                <label class="text-xl mt-3 text-white" for="email">eMail</label>
+                <input class="w-72 h-8 mx-auto text-black" name="email" type="email" v-model="email">
+            </div>
             <div class="error" v-if="emailEmpty">
                         Vous devez saisir un mail
                     </div>
-            <label class="text-xl ml-10 mt-3 text-white" for="password">Mot de passe actuel</label>
+            <label class="text-xl mt-3 text-white" for="password">Mot de passe actuel</label>
             <input class="w-72 h-8 mx-auto text-black" name="password" type="password" v-model="password">
             <div class="error" v-if="passwordEmpty">
                      Merci de saisir votre mot de passe
@@ -21,13 +23,13 @@
         </form>
         <div v-if="userFound" >
             <form class="update flex flex-col justify-center items-center" @submit.prevent="updatePassword">
-                <label class="text-xl ml-10 mt-3 text-white" for="newPassword">Nouveau mot de passe</label>
+                <label class="text-xl mt-3 text-white" for="newPassword">Nouveau mot de passe</label>
                 <input class="w-72 h-8 mx-auto text-black" name="newPassword" type="password" v-model="newPassword">
                 <div class="error" v-if="newPasswordEmpty">
                      Merci de saisir votre nouveau mot de passe
                 </div>
 
-                <label class="text-xl ml-10 mt-3 text-white" for="newPassword">Confirmation de votre nouveau mot de passe</label>
+                <label class="text-xl mt-3 text-white" for="newPassword">Confirmation de votre nouveau mot de passe</label>
                 <input class="w-72 h-8 mx-auto text-black" name="newPasswordConfirm" type="password" v-model="newPasswordConfirm">
                 <div class="error" v-if="newPasswordConfirmEmpty">
                      Merci de confirmer votre nouveau mot de passe

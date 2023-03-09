@@ -80,7 +80,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::delete('/users/{id}', [UserController::class, 'destroy']);
         Route::post('/checkUser/{id}', [UserController::class, 'checkUser']);
         Route::post('/updatePassword/{id}', [UserController::class, 'updatePassword']);
-
+        Route::get('/user/info', [Authcontroller::class, 'getUserInfo']);
+        
 
         // BOOKINGS
         Route::post('/bookings', [BookingController::class, 'store']);
@@ -161,6 +162,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 // BOOKING
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::get('/bookings/{id}', [BookingController::class, 'show']);
+    Route::post('/findUserBookings', [BookingController::class,'findUserBookings']);
 
 // Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/services/{id}', [ServiceController::class, 'show']);

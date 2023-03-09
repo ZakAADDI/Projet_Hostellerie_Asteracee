@@ -25,6 +25,8 @@
             <li><router-link :to="{name:'Home'}">Accueil</router-link></li>
             <li><router-link v-if="!user" :to="{name:'Connexion'}">Se connecter</router-link></li>
             <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">Se déconnecter</router-link></li>
+            <li><router-link v-if="user" :to="{name:'UserProfile'}">Mon Compte</router-link></li>
+
             <li><router-link :to="{name:'OurRooms'}">Nos Chambres</router-link></li>
             <li><router-link :to="{name:'OurServices'}">Nos Services</router-link></li>
             <li><a href="#">Les prestations</a></li>
@@ -49,6 +51,9 @@
             </router-link>
             <router-link :to="{ name: 'Connexion' }" v-if="!user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Connexion
+            </router-link>
+            <router-link :to="{ name: 'UserProfile' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
+                Mon Compte
             </router-link>
             <router-link :to="{ name: 'ConfirmLogout' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
                 Deconnexion

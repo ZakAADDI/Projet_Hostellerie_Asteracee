@@ -19,7 +19,11 @@ import ConfirmLogout from '../views/ConfirmLogout.vue'
 import WhoAreWe from '../views/WhoAreWe.vue'
 import OurRooms from '../views/OurRooms.vue'
 import OurServices from '../views/OurServices.vue'
+import DeleteAccount from '../views/DeleteAccount.vue'
+import UserBookingsView from '../views/UserBookingsView.vue'
+import AddReview from '../views/AddReview.vue'
 import ConfirmBooking from '../views/ConfirmBooking'
+
 
 const routes = [
   {
@@ -58,6 +62,11 @@ const routes = [
     component: ConfirmCreatedAccount
   },
   {
+    path: '/deleteAccount',
+    name: 'DeleteAccount',
+    component: DeleteAccount
+  },
+  {
     path: '/somethingWentWrong',
     name: 'SomethingWentWrong',
     component: SomethingWentWrong
@@ -87,11 +96,11 @@ const routes = [
     name: 'ConfirmOrder',
     component: ConfirmOrder
   },
-    {
-        path: '/confirmBooking',
-        name: 'ConfirmBooking',
-        component: ConfirmBooking
-    },
+  {
+    path: '/confirmBooking',
+    name: 'ConfirmBooking',
+    component: ConfirmBooking
+  },
   {
     path: '/updateUser',
     name: 'UpdateUser',
@@ -101,6 +110,16 @@ const routes = [
     path: '/userProfile',
     name: 'UserProfile',
     component: UserProfile
+  },
+  {
+    path: '/addReview',
+    name: 'AddReview',
+    component: AddReview
+  },
+  {
+    path: '/userBookingsView',
+    name: 'UserBookingsView',
+    component: UserBookingsView
   },
   {
     path: '/updatePassword',

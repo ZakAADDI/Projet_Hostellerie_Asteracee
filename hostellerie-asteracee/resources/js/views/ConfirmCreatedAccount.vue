@@ -4,7 +4,7 @@
         <router-link :to="{ name: 'Home' }" class=" text-[#E6B34B]">
                 Retour à l'accueil
         </router-link>
-        <router-link :to="{ name: 'Home' }" class=" text-[#E6B34B]">
+        <router-link :to="{ name: 'UserProfile' }" class=" text-[#E6B34B]">
                 Voir mon compte
         </router-link>
     </div>

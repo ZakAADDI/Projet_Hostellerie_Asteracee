@@ -56,12 +56,27 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function findUserBookings(Request $request)
+    {
+        $this->validate($request,[
+            'userId'=> 'int|max:6'
+        ]);
+        $id = $request->userId;
+        $bookings = Booking::where('user_id',$id)->get();
+        return response()->json(BookingResource::Collection($bookings));
+    }
+
+    /**
+     * Display the specified resource.
+     *
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(int $id)
     {
-//        return response()->json(BookingResource::make(Booking::findOrFail($id)));
         return response()->json(Booking::findOrFail($id));
     }
 
