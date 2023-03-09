@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         // REVIEWS
         Route::post('/reviews', [ReviewController::class, 'store']);
-        Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
         Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
         // HEROES
@@ -88,7 +87,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/bookings', [BookingController::class, 'store']);
         Route::patch('/bookings/{id}', [BookingController::class, 'update']);
         Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
-
+        Route::get('/bookings/confirm/{id}', [BookingController::class, 'confirmBooking']);
 
         // BOOKINGS_OPTIONS
         Route::post('/bookingOptions', [BookingOptionController::class, 'store']);

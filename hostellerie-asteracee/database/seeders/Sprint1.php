@@ -20,7 +20,6 @@ class Sprint1 extends Seeder
             Infos::class,
             Contacts::class,
             Heroes::class,
-            Reviews::class,
             Rooms::class,
             Services::class,
             Deals::class,
@@ -29,7 +28,8 @@ class Sprint1 extends Seeder
             Prestations::class,
             Options::class,
             BookingOptionSeeder::class,
-            RoomsPrestations::class
+            RoomsPrestations::class,
+            Reviews::class
         ]);
 
     }

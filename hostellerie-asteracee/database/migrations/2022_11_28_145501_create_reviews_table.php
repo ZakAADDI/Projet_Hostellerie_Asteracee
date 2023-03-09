@@ -18,10 +18,10 @@ class CreateReviewsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->enum('score',[1,2,3,4,5]);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('booking_id')->unique();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('booking_id')->references('id')->on('bookings');
         });
     }
 

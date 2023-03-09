@@ -22,6 +22,9 @@ import OurServices from '../views/OurServices.vue'
 import DeleteAccount from '../views/DeleteAccount.vue'
 import UserBookingsView from '../views/UserBookingsView.vue'
 import AddReview from '../views/AddReview.vue'
+import ConfirmBooking from '../views/ConfirmBooking'
+
+
 const routes = [
   {
     path: '/',
@@ -92,6 +95,11 @@ const routes = [
     path: '/confirmOrder',
     name: 'ConfirmOrder',
     component: ConfirmOrder
+  },
+  {
+    path: '/confirmBooking',
+    name: 'ConfirmBooking',
+    component: ConfirmBooking
   },
   {
     path: '/updateUser',
