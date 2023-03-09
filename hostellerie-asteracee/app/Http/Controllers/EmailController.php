@@ -31,6 +31,7 @@ class EmailController extends Controller
          */
 
         $booking = Booking::findOrFail($bookingId);
+
         $optionIds = $booking->getBookingOptions()->pluck('option_id');
         $options = [];
         foreach ($optionIds as $id){
@@ -42,11 +43,8 @@ class EmailController extends Controller
         $reveiverEmailAddress = $user->email;
 
         $qr = New SimpleQRcodeController;
-        $hash = \Hash::make($bookingId);
+        $qr->generate($booking->id);
 
-        $booking->hash = $hash;
-        $booking->save();
-        $qr->generate($hash);
         $weatherAPI = Http::get('https://api.open-meteo.com/v1/dwd-icon?latitude=45.91&longitude=6.13&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&start_date='. $booking->starting_date .'&end_date=' . $booking->ending_date)->json();
         Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType, $weatherAPI));
 

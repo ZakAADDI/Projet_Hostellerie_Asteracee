@@ -42,7 +42,7 @@ class BookingRecap extends Mailable
         $this->options = $options;
         $this->room_type = $roomType;
         $this->logo = Storage::temporaryUrl('LogoHeader.png', now()->addMinutes(1));
-        $this->qrcode = Storage::temporaryUrl('qr-code/'.$booking->hash.'.png', now()->addMinutes(1));
+        $this->qrcode = Storage::temporaryUrl('qr-code/'.$booking->id.'.png', now()->addMinutes(1));
 
         $diffDate = Carbon::now()->diffInDays(Carbon::createFromFormat('Y-m-d',$booking->starting_date)->toDateTimeString());
         $this->showWeather = $diffDate<6;

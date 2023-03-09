@@ -19,6 +19,7 @@ import ConfirmLogout from '../views/ConfirmLogout.vue'
 import WhoAreWe from '../views/WhoAreWe.vue'
 import OurRooms from '../views/OurRooms.vue'
 import OurServices from '../views/OurServices.vue'
+import ConfirmBooking from '../views/ConfirmBooking'
 
 const routes = [
   {
@@ -86,6 +87,11 @@ const routes = [
     name: 'ConfirmOrder',
     component: ConfirmOrder
   },
+    {
+        path: '/confirmBooking',
+        name: 'ConfirmBooking',
+        component: ConfirmBooking
+    },
   {
     path: '/updateUser',
     name: 'UpdateUser',

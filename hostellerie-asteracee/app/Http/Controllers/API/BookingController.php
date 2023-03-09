@@ -37,7 +37,7 @@ class BookingController extends Controller
             'user_id' => 'required|exists:App\Models\User,id|int',
         ]);
 
-        //try {
+        try {
             $booking = new Booking;
             $booking->fill($request->post())->save();
 
@@ -45,10 +45,11 @@ class BookingController extends Controller
 
             $emailController->sendBookingRecap($booking->id);
 
+
             return response()->json(BookingResource::make($booking));
-        //} catch (Throwable $e) {
-         //   return response()->json($e);
-        //}
+        } catch (Throwable $e) {
+            return response()->json($e);
+        }
 
     }
 
@@ -96,5 +97,13 @@ class BookingController extends Controller
     {
         Booking::findOrFail($id)->delete();
         return response()->json('Entry ' .$id. ' deleted!');
+    }
+
+    public function confirmBooking(int $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->is_confirmed = true;
+        $booking->save();
+        return response()->json('ok');
     }
 }
