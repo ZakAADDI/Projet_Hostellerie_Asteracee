@@ -18,6 +18,7 @@ use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,7 +82,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/checkUser/{id}', [UserController::class, 'checkUser']);
         Route::post('/updatePassword/{id}', [UserController::class, 'updatePassword']);
         Route::get('/user/info', [Authcontroller::class, 'getUserInfo']);
-        
+
 
         // BOOKINGS
         Route::post('/bookings', [BookingController::class, 'store']);
@@ -112,6 +113,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMSPRESTATION
         Route::post('/roomPrestations',[RoomsPrestationController::class,'store']);
         Route::patch('/roomPrestations/{id}',[RoomsPrestationController::class,'update']);
+
+        // EMAIL
+        Route::post('/sendBookingRecap',[EmailController::class,'sendBookingRecap']);
 
 });
 
