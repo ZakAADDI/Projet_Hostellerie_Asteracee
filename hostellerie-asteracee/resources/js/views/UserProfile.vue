@@ -44,6 +44,15 @@
                         <router-link :to="{name:'DeleteAccount'}">Supprimer mon compte</router-link>
                         </button>
                 </div>
+
+                <div class="mt-6">
+                    <h1 class="flex flex-col items-center justify-center">Racontez nous votre expérience</h1>
+                    <div class="flex justify-center">
+                    <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
+                        <router-link :to="{name:'AddReview'}">Ajouter un commentaire</router-link>
+                    </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,6 +95,9 @@ export default {
 
         this.loyalty = this.currentUser.loyalty;
         this.loyaltyRemains = 10 - this.loyalty;
+
+        this.userInfo =  (await axiosProvider.get('/user/info'));
+        console.log(this.userInfo)
 
     },
     methods:{

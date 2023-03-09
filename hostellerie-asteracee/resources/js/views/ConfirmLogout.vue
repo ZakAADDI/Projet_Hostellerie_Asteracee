@@ -8,6 +8,8 @@
 
 <script>
 import localStorage from '../services/localStorageProvider'
+import axios from 'axios'
+
 import store from '../store/index'
 export default {
     name: 'ConfirmLogout',
@@ -22,6 +24,8 @@ export default {
             localStorage.unset("cartRoom");
             localStorage.unset("cartOptions");
             localStorage.unset("total_room_price");
+            axios.post('/api/logout');
+
             this.$router.push({name:'Home'})
         },
         returnHome(){

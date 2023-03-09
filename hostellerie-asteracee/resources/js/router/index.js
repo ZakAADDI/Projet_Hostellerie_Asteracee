@@ -21,7 +21,7 @@ import OurRooms from '../views/OurRooms.vue'
 import OurServices from '../views/OurServices.vue'
 import DeleteAccount from '../views/DeleteAccount.vue'
 import UserBookingsView from '../views/UserBookingsView.vue'
-
+import AddReview from '../views/AddReview.vue'
 const routes = [
   {
     path: '/',
@@ -102,6 +102,11 @@ const routes = [
     path: '/userProfile',
     name: 'UserProfile',
     component: UserProfile
+  },
+  {
+    path: '/addReview',
+    name: 'AddReview',
+    component: AddReview
   },
   {
     path: '/userBookingsView',
