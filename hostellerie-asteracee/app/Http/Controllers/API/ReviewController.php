@@ -55,27 +55,6 @@ class ReviewController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update(Request $request, int $id)
-    {
-        $this->validate($request,[
-            'title' => 'required|max:100',
-            'content' => 'required|max:512',
-            'score' => 'required|int|max:5',
-            'user_id' => 'exists:App\Models\Media,id|int',
-        ]);
-
-        $review = Review::findOrFail($id);
-        $review->update($request->all());
-        return response()->json(ReviewResource::make($review));
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int $id
