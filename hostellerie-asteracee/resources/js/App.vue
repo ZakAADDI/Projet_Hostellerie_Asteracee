@@ -76,8 +76,9 @@ export default {
                     }
 
     },
-    mounted(){
-        this.userInfo =  axiosProvider.get('/user/info');
+    async mounted(){
+        this.userInfo =  await axiosProvider.get('/user/info');
+        // console.log(this.userInfo)
     }
 }
 </script>

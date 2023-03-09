@@ -66,7 +66,6 @@ export default {
                     reviewbody : this.bodyReview
                 }
             }
-            console.log(this.datas)
             // AXIOS TODO
         }
     },
@@ -83,7 +82,6 @@ export default {
                 this.endedBookings.push(booking);
             }
         });
-        console.log(this.endedBookings)
     }
 }
 </script>

@@ -47,7 +47,6 @@ export default {
         submitForm :function(){
             let date1 = new Date(this.startingDate);
             let date2 = new Date(this.endingDate);
-            console.log(this.numberOccupants)
             let diff = date2.getTime() - date1.getTime();
             let days = Math.ceil(diff/(1000*3600*24));
             if(this.startingDate == ""){

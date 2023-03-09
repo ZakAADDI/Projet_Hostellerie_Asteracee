@@ -89,7 +89,6 @@ export default {
                 };
                 this.response = await axios.post('/api/checkUser/'+this.currentUser.id, this.datas);
                 if(this.response.data.status == true){
-                    //console.log('Jusque là ça va!')
                     this.userFound = true;
                 }else{
                     this.matching = true;

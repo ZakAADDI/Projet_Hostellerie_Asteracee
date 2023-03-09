@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
 
 class EmailController extends Controller
 {
-    public function sendBookingRecap(int $bookingId)
+    public function sendBookingRecap(Request $request)
     {
         /**
          * Store a receiver email address to a variable.
@@ -30,23 +30,26 @@ class EmailController extends Controller
          * HelloEmail class that contains the email template.
          */
 
-        $booking = Booking::findOrFail($bookingId);
+        $booking = Booking::findOrFail($request->booking_id);
+        if($request->user_id === $booking->getUser()->firstOrFail()->id){
+            $optionIds = $booking->getBookingOptions()->pluck('option_id');
+            $options = [];
+            foreach ($optionIds as $id){
+                $options[] = Option::findOrFail($id);
+            }
 
-        $optionIds = $booking->getBookingOptions()->pluck('option_id');
-        $options = [];
-        foreach ($optionIds as $id){
-            $options[] = Option::findOrFail($id);
+            $roomType = RoomType::findOrFail($booking->getRoom()->firstOrFail()->room_type_id);
+            $user = User::findOrFail($booking->user_id);
+            $reveiverEmailAddress = $user->email;
+
+            $qr = New SimpleQRcodeController;
+            $qr->generate($booking->id);
+
+            $weatherAPI = Http::get('https://api.open-meteo.com/v1/dwd-icon?latitude=45.91&longitude=6.13&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&start_date='. $booking->starting_date .'&end_date=' . $booking->ending_date)->json();
+            Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType, $weatherAPI));
+
         }
 
-        $roomType = RoomType::findOrFail($booking->getRoom()->firstOrFail()->room_type_id);
-        $user = User::findOrFail($booking->user_id);
-        $reveiverEmailAddress = $user->email;
-
-        $qr = New SimpleQRcodeController;
-        $qr->generate($booking->id);
-
-        $weatherAPI = Http::get('https://api.open-meteo.com/v1/dwd-icon?latitude=45.91&longitude=6.13&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&start_date='. $booking->starting_date .'&end_date=' . $booking->ending_date)->json();
-        Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType, $weatherAPI));
 
 //        Storage::delete('qr-code/'.$hash.'.png');
         /**

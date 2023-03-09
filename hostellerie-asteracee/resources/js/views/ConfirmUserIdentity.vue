@@ -106,7 +106,8 @@ export default {
             cartRoom: Object,
             cartOptions: Object,
             currentUser : Object,
-            total_room_price: Number
+            total_room_price: Number,
+            language: Boolean
         }
     },
     components:{
@@ -126,11 +127,9 @@ export default {
         this.total_options_price = localStorage.get("total_options_price");
         this.options = this.cartOptions.options;
         this.userToken = localStorage.get("user")[1];
-        this.body =
-            {
-                "token":this.userToken
-            }
-        this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+        this.currentUser =  await axiosProvider.get('/user/info');
+        this.currentUser = this.currentUser.data;
+
     },
     methods:{
         submitBooking(){

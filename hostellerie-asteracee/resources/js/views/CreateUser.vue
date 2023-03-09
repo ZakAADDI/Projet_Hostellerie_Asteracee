@@ -134,9 +134,7 @@ export default {
                 ;
                 this.response = (await axiosProvider.postWithOutAuth('/register',this.datas));
 
-                console.log(this.response);
                 if(this.response.status == 200){
-                    console.log('account created');
                     this.datas = {
                         email: this.email,
                         password: this.password
@@ -145,7 +143,6 @@ export default {
                     localStorage.set("user", [this.email,this.response.data.token]);
                     this.$router.push({ name: 'ConfirmCreatedAccount'});
                 }else{
-                    console.log('something went wrong!');
                     this.$router.push({name : 'SomethingWentWrong'});
                 }
 

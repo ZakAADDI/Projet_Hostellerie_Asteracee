@@ -41,11 +41,6 @@ class BookingController extends Controller
             $booking = new Booking;
             $booking->fill($request->post())->save();
 
-            $emailController = new EmailController();
-
-            $emailController->sendBookingRecap($booking->id);
-
-
             return response()->json(BookingResource::make($booking));
         } catch (Throwable $e) {
             return response()->json($e);

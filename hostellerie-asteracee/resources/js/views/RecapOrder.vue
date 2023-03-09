@@ -71,15 +71,15 @@
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
             <span v-if="language" class="text-[#E6B34B] text-2xl">Vos informations :</span>
             <span v-if="!language" class="text-[#E6B34B] text-2xl">Your id informations :</span>
-            <span v-if="language" >Civilité : {{ currentUser.gender}}</span>
-            <span v-if="!language" >Civility : {{ currentUser.gender}}</span>
-            <span v-if="language" >Nom : {{ currentUser.lastname}}</span>
-            <span v-if="!language" >Lastname : {{ currentUser.lastname}}</span>
-            <span v-if="language" >Prénom : {{ currentUser.firstname}}</span>
-            <span v-if="!language" >Firstname : {{ currentUser.firstname}}</span>
-            <span v-if="language" >Adresse : {{ currentUser.address }}</span>
-            <span v-if="!language" >Address : {{ currentUser.address }}</span>
-            <span >Email : {{ currentUser.email }}</span>
+            <span v-if="language" >Civilité : {{ user.gender}}</span>
+            <span v-if="!language" >Civility : {{ user.gender}}</span>
+            <span v-if="language" >Nom : {{ user.lastname}}</span>
+            <span v-if="!language" >Lastname : {{ user.lastname}}</span>
+            <span v-if="language" >Prénom : {{ user.firstname}}</span>
+            <span v-if="!language" >Firstname : {{ user.firstname}}</span>
+            <span v-if="language" >Adresse : {{ user.address }}</span>
+            <span v-if="!language" >Address : {{ user.address }}</span>
+            <span >Email : {{ user.email }}</span>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 pb-2 mx-6 lg:w-1/3 lg:mx-auto">
             <span v-if="language" class="text-[#E6B34B] text-2xl">Montant total de votre séjour</span>
@@ -101,7 +101,6 @@
 <script>
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
-import emailjs from '@emailjs/browser';
 
 export default {
     name: 'RecapOrder',
@@ -115,12 +114,8 @@ export default {
         this.total_options_price = localStorage.get("total_options_price");
         this.total_roomOptions = this.total_room_price + this.total_options_price;
         this.options = this.cartOptions.options;
-        this.userToken = localStorage.get("user")[1];
-        this.body =
-            {
-                "token":this.userToken
-            }
-        this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+        this.userDatas =  await axiosProvider.get('/user/info');
+        this.user = this.userDatas.data;
         this.services = (await axiosProvider.get('/services'))?.data;
             this.service1 = this.services[0];
             this.service2 = this.services[1];
@@ -135,7 +130,7 @@ export default {
             userChoice: Object,
             cartRoom: Object,
             cartOptions: Object,
-            currentUser : Object,
+            user : Object,
             options: Object,
             services: Object,
             civility : '',
@@ -160,54 +155,16 @@ export default {
         }
     },
     methods:{
-        submitBooking(e){
-            this.language = localStorage.get("language");
-            if(this.currentUser.gender === "male" && this.language == "fr"){
-                this.civility = "Monsieur"
-            }
-            if(this.currentUser.gender === "male" && this.language == "en"){
-                this.civility = "Sir"
-            }
-            if(this.currentUser.gender === "female" && this.language == "fr"){
-                this.civility = "Madame"
-            }
-            if(this.currentUser.gender === "female" && this.language == "en"){
-                this.civility = "Miss"
-            }
-            this.body = {
-                    gender: this.civility,
-                    firstname: this.currentUser.firstname,
-                    lastname: this.currentUser.lastname,
-                    startingDate: this.userChoice.startingDate,
-                    endingDate: this.userChoice.endingDate,
-                    nbrOfDays: this.userChoice.nbrOfDays,
-                    occupants: this.userChoice.occupants,
-                    roomName: this.cartRoom.roomName,
-                    roomDescription: this.cartRoom.roomDescription,
-                    roomPrice: this.cartRoom.roomPrice,
-                    service1Name : this.service1.title,
-                    service1Content : this.service1.content,
-                    service2Name : this.service2.title,
-                    service2Content : this.service2.content,
-                    service3Name : this.service3.title,
-                    service3Content : this.service3.content,
-                };
-
-                if(this.language == "fr"){
-                    this.response = emailjs.send('service_221d5yz', 'template_uym8zdc', this.body, 'bbyfEd_o77jz3eSoT')
-                }
-                if(this.language == "en"){
-                    this.response = emailjs.send('service_2xuxogk', 'template_q5sj1a8', this.body, '7EV5cfIjJKZzqpYhk')
-                }
-                this.$router.push({ name : 'ConfirmOrder'});
-            },
         async submitBooking(){
+             this.currentUser =  await axiosProvider.get('/user/info');
+             this.user = this.currentUser.data;
+            this.currentUser = this.currentUser.data.id;
             this.body={
                 ending_date : this.userChoice.endingDate,
                 starting_date : this.userChoice.startingDate,
                 total_price : this.total_room_price,
                 room_id : this.cartRoom.roomId,
-                user_id : this.currentUser.id
+                user_id : this.currentUser
             };
             this.newBooking = (await axiosProvider.postWithOutAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
@@ -221,6 +178,13 @@ export default {
                         this.optionToSave = (axiosProvider.postWithOutAuth('/bookingOptions', this.optionToStore));
                      });
                 }
+
+            this.emailBody={
+                'booking_id' : this.newBooking.data.booking_id,
+                'user_id' : this.currentUser
+
+            };
+            this.email = (await axiosProvider.postWithOutAuth('/sendBookingRecap',this.emailBody))
                 localStorage.unset("cartOptions");
                 localStorage.unset("userChoice");
                 localStorage.unset("cartRoom");
