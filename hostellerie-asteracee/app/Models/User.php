@@ -50,11 +50,6 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
 
-    public function getReviews(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Review::class,'user_id');
-    }
-
     public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Booking::class);

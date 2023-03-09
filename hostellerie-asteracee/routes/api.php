@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         // REVIEWS
         Route::post('/reviews', [ReviewController::class, 'store']);
-        Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
         Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
         // HEROES
