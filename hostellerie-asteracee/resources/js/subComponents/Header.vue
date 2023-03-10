@@ -22,16 +22,15 @@
         </div>
 
           <div class="menu-items">
-            <li><router-link :to="{name:'Home'}">Accueil</router-link></li>
-            <li><router-link v-if="!user" :to="{name:'Connexion'}">Se connecter</router-link></li>
-            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">Se déconnecter</router-link></li>
-            <li><router-link v-if="user" :to="{name:'UserProfile'}">Mon Compte</router-link></li>
+            <li><router-link :to="{name:'Home'}">{{ $t("message.home") }}</router-link></li>
+            <li><router-link v-if="!user" :to="{name:'Connexion'}">{{ $t("message.login") }}</router-link></li>
+            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">{{ $t("message.logout") }}</router-link></li>
+            <li><router-link v-if="user" :to="{name:'UserProfile'}">{{ $t("message.myAccount") }}</router-link></li>
 
-            <li><router-link :to="{name:'OurRooms'}">Nos Chambres</router-link></li>
-            <li><router-link :to="{name:'OurServices'}">Nos Services</router-link></li>
-            <li><a href="#">Les prestations</a></li>
-            <li><router-link :to="{name:'Contact'}">Nous contacter</router-link></li>
-            <li><router-link :to="{name:'WhoAreWe'}">Qui sommes nous ?</router-link></li>
+            <li><router-link :to="{name:'OurRooms'}">{{ $t("message.ourRooms") }}</router-link></li>
+            <li><router-link :to="{name:'OurServices'}">{{ $t("message.ourServices") }}</router-link></li>
+            <li><router-link :to="{name:'Contact'}">{{ $t("message.contactUs") }}</router-link></li>
+            <li><router-link :to="{name:'WhoAreWe'}">{{ $t("message.whoAreWe") }}</router-link></li>
           </div>
         </div>
       </div>

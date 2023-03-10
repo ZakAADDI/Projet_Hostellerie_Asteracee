@@ -2,7 +2,7 @@
     <div class="connexion flex flex-col justify-center grow items-center mt-24 mb-8">
         <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3">
         <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
-        <span class="font-bold text-2xl">Bienvenue sur votre espace client</span>
+        <span class="font-bold text-2xl">{{ $t("message.hello") }}</span>
         <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
         <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3 mb-8">
         <div class="flex flex-col lg:flex-row lg:w-2/3 justify-center items-center border-t-4 border-t-[#E6B34B] bg-[#272023] text-white">
@@ -52,7 +52,7 @@ export default {
     },
     methods:{
         async connectUser(){
-            
+
             if(this.email == ""){
                 this.emailEmpty = true;
             }
