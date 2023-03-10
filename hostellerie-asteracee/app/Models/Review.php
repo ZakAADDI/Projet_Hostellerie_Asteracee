@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','content','score','user_id'];
+    protected $fillable = ['title','content','score','booking_id'];
 
     public function getBooking(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
