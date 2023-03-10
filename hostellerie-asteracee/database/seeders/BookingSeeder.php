@@ -19,8 +19,8 @@ class BookingSeeder extends Seeder
             [
                 'room_id' => 11,
                 'user_id' => 2,
-                'starting_date' => Carbon::createFromDate('2022','11','25')->format('Y-m-d'),
-                'ending_date' => Carbon::createFromDate('2022','11','30')->format('Y-m-d'),
+                'starting_date' => Carbon::createFromDate('2023','03','08')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2023','03','09')->format('Y-m-d'),
                 'status' => "ongoing",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -28,8 +28,8 @@ class BookingSeeder extends Seeder
             [
                 'room_id' => 2,
                 'user_id' => 1,
-                'starting_date' => Carbon::createFromDate('2022','11','26')->format('Y-m-d'),
-                'ending_date' => Carbon::createFromDate('2022','11','30')->format('Y-m-d'),
+                'starting_date' => Carbon::createFromDate('2023','03','01')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2023','03','02')->format('Y-m-d'),
                 'status' => "ongoing",
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -37,8 +37,8 @@ class BookingSeeder extends Seeder
             [
                 'room_id' => 3,
                 'user_id' => 1,
-                'starting_date' => Carbon::createFromDate('2022','11','27')->format('Y-m-d'),
-                'ending_date' => Carbon::createFromDate('2022','12','2')->format('Y-m-d'),
+                'starting_date' => Carbon::createFromDate('2023','03','06')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2023','03','08')->format('Y-m-d'),
                 'status' => "ongoing",
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -47,8 +47,8 @@ class BookingSeeder extends Seeder
             [
                 'room_id' => 4,
                 'user_id' => 1,
-                'starting_date' => Carbon::createFromDate('2022','11','30')->format('Y-m-d'),
-                'ending_date' => Carbon::createFromDate('2022','12','5')->format('Y-m-d'),
+                'starting_date' => Carbon::createFromDate('2023','03','06')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2023','03','11')->format('Y-m-d'),
                 'status' => "ongoing",
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
