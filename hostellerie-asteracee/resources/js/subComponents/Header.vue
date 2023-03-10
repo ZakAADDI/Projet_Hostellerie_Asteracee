@@ -26,6 +26,7 @@
             <li><router-link v-if="!user" :to="{name:'Connexion'}">Se connecter</router-link></li>
             <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">Se déconnecter</router-link></li>
             <li><router-link v-if="user" :to="{name:'UserProfile'}">Mon Compte</router-link></li>
+            <li>vgerg{{ test }}</li>
 
             <li><router-link :to="{name:'OurRooms'}">Nos Chambres</router-link></li>
             <li><router-link :to="{name:'OurServices'}">Nos Services</router-link></li>
@@ -78,11 +79,9 @@ export default {
     name: 'Header',
     data(){
         return{
-            logoHeader: ''
+            logoHeader: '',
+            userInfos: []
         }
-    },
-    components: {
-
     },
     methods:{
         changeTo : function(){
@@ -95,11 +94,21 @@ export default {
         this.logoHeader = this.medias[6].url;
         this.language = localStorage.get('language');
         store.commit('addLanguage', this.language)
+        // this.userInfos =  await axiosProvider.get('/user/info');
+        console.log('here')
+        this.userData = store.oneUser;
+        // console.log(this.userData);
+        // this.userInfos = localStorage.get('user');
+        // console.log(this.userInfos);
     },
-
     computed:{
+        // test() {
+        //     return store.state.user
+        // },
         user(){
-            if(store.state.user.length >0){
+            this.userData = store.state.user;
+            console.log(this.userData);
+            if(this.userData.email){
                 return true;
             }else{
                 return false;
