@@ -22,7 +22,8 @@ import OurServices from '../views/OurServices.vue'
 import DeleteAccount from '../views/DeleteAccount.vue'
 import UserBookingsView from '../views/UserBookingsView.vue'
 import AddReview from '../views/AddReview.vue'
-import ConfirmBooking from '../views/ConfirmBooking'
+import ConfirmBooking from '../views/ConfirmBooking.vue'
+import ConfirmAddedReview from '../views/ConfirmAddedReview.vue'
 
 
 const routes = [
@@ -95,6 +96,11 @@ const routes = [
     path: '/confirmOrder',
     name: 'ConfirmOrder',
     component: ConfirmOrder
+  },
+  {
+    path: '/confirmAddedReview',
+    name: 'ConfirmAddedReview ',
+    component: ConfirmAddedReview
   },
   {
     path: '/confirmBooking',

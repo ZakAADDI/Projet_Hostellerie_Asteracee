@@ -29,6 +29,7 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'title' => 'required|max:100',
             'content' => 'required|max:256',
