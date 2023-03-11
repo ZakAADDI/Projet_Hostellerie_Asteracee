@@ -1,11 +1,8 @@
 <template>
-
     <div class="flex flex-col h-screen">
         <Header />
 
-
         <router-view/>
-
 
         <Footer
         :twitterLogo="this.twitterLogo"
@@ -25,6 +22,8 @@ import axiosProvider from "../js/services/axiosConfigProvider"
 import localStorage from '../js/services/localStorageProvider'
 import Header from './subComponents/Header.vue';
 import Footer from './subComponents/Footer.vue';
+import store from '../js/store/index'
+
 export default {
     name: "App.vue",
      data(){
@@ -74,11 +73,12 @@ export default {
         if(this.currentUser != undefined || this.currentUser != null){
                         setInterval(function(){localStorage.unset("user")}, 7200000);
                     }
-
     },
     async mounted(){
         this.userInfo =  await axiosProvider.get('/user/info');
-        // console.log(this.userInfo)
+        if(this.userInfo.data == ""){
+            store.removeUser();
+        }
     }
 }
 </script>

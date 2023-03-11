@@ -175,6 +175,7 @@ export default {
             localStorage.set("cartOptions",{"options":this.userOptions})
             localStorage.set("total_room_price", this.total_room_price);
             localStorage.set("total_options_price", this.total_options_price)
+            localStorage.set("optionsID",this.userOptions)
             this.$router.push({name:'ConfirmUserIdentity'})
 
         },

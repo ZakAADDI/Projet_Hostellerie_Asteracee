@@ -74,12 +74,8 @@ export default {
     components:{
     },
     async created(){
-        this.userToken = localStorage.get("user")[1];
-        this.body =
-            {
-                "token":this.userToken
-            }
-        this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+
+        this.currentUser = (await axiosProvider.get('/user/info')).data;
         this.userId = this.currentUser.id;
 
         this.displayImg = (await axiosProvider.get('/medias'))?.data;

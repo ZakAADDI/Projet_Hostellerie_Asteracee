@@ -118,5 +118,6 @@ class AuthController extends Controller
     {
         $response = Auth::user();
         return $response;
+
     }
 }

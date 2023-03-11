@@ -78,11 +78,9 @@ export default {
     name: 'Header',
     data(){
         return{
-            logoHeader: ''
+            logoHeader: '',
+            userInfos: []
         }
-    },
-    components: {
-
     },
     methods:{
         changeTo : function(){
@@ -95,11 +93,12 @@ export default {
         this.logoHeader = this.medias[6].url;
         this.language = localStorage.get('language');
         store.commit('addLanguage', this.language)
+        this.userData = store.oneUser;
     },
-
     computed:{
         user(){
-            if(store.state.user.length >0){
+            this.userData = store.state.user;
+            if(this.userData.email){
                 return true;
             }else{
                 return false;
