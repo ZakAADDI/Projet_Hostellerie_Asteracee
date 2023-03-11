@@ -66,15 +66,11 @@ export default {
             matchingNewPassword : false
         }
     },
+    async created(){
+        this.currentUser = (await axiosProvider.get('/user/info')).data;
+    },
     methods:{
         async checkUser(){
-            this.userToken = localStorage.get("user")[1];
-            this.body =
-            {
-                "token":this.userToken
-            }
-            this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
-
             if(this.email == ""){
                 this.emailEmpty = true;
             }
@@ -87,8 +83,7 @@ export default {
                 email: this.email,
                 password: this.password
                 };
-                this.response = await axios.post('/api/checkUser/'+this.currentUser.id, this.datas);
-                if(this.response.data.status == true){
+               if(this.currentUser.email == this.email){
                     this.userFound = true;
                 }else{
                     this.matching = true;
@@ -96,13 +91,6 @@ export default {
             }
         },
         async updatePassword(){
-            this.userToken = localStorage.get("user")[1];
-            this.body =
-            {
-                "token":this.userToken
-            }
-            this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
-
             if(this.newPassword == ""){
                 this.newPasswordEmpty = true;
             }

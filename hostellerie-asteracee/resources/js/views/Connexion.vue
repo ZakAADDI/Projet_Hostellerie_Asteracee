@@ -52,7 +52,7 @@ export default {
     },
     methods:{
         async connectUser(){
-            
+
             if(this.email == ""){
                 this.emailEmpty = true;
             }

@@ -1,11 +1,8 @@
 <template>
-
     <div class="flex flex-col h-screen">
         <Header />
 
-
         <router-view/>
-
 
         <Footer
         :twitterLogo="this.twitterLogo"
@@ -76,16 +73,12 @@ export default {
         if(this.currentUser != undefined || this.currentUser != null){
                         setInterval(function(){localStorage.unset("user")}, 7200000);
                     }
-        this.userInfo =  await axiosProvider.get('/user/info');
-
     },
     async mounted(){
         this.userInfo =  await axiosProvider.get('/user/info');
         if(this.userInfo.data == ""){
             store.removeUser();
         }
-
-
     }
 }
 </script>
