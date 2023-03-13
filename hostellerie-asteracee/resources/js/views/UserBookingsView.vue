@@ -37,12 +37,7 @@ export default {
       BookingCard
     },
     async created(){
-        this.userToken = localStorage.get("user")[1];
-        this.body =
-            {
-                "token":this.userToken
-            }
-        this.currentUser = (await axiosProvider.postWithOutAuth('/findUser',this.body))?.data;
+        this.currentUser = (await axiosProvider.get('/user/info')).data;
         this.userId = this.currentUser.id;
         this.body =
         {

@@ -92,7 +92,6 @@ export default {
         this.total_room_price = localStorage.get("total_room_price");
         this.total_options_price = localStorage.get("total_options_price");
         this.options = this.cartOptions.options;
-        this.userToken = localStorage.get("user")[1];
         this.currentUser =  await axiosProvider.get('/user/info');
         this.currentUser = this.currentUser.data;
 

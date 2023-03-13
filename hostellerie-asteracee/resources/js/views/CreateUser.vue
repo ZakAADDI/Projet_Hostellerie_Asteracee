@@ -55,6 +55,8 @@
 <script>
 import axiosProvider from "../services/axiosConfigProvider"
 import localStorage from '../services/localStorageProvider'
+import store from '../store/index.js'
+
 export default {
     name: 'CreateUser',
     components: {
@@ -141,6 +143,10 @@ export default {
                     };
                     this.loginUser = await axios.post('/api/login', this.datas);
                     localStorage.set("user", [this.email,this.response.data.token]);
+                    store.commit('addUser',{
+                    email: this.email,
+                    token: this.response.data.token
+                });
                     this.$router.push({ name: 'ConfirmCreatedAccount'});
                 }else{
                     this.$router.push({name : 'SomethingWentWrong'});

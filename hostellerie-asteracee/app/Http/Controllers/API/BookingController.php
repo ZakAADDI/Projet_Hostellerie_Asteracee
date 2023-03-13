@@ -5,8 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
 use App\Http\Resources\BookingResource;
+use App\Http\Resources\RoomResource;
 use App\Models\Booking;
+use App\Models\Room;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Throwable;
 
 class BookingController extends Controller
@@ -32,14 +36,57 @@ class BookingController extends Controller
         $this->validate($request,[
             'ending_date' => 'required|max:25',
             'starting_date' => 'required|max:256',
-            'total_price' => 'integer',
             'room_id' => 'required|exists:App\Models\Room,id|int',
             'user_id' => 'required|exists:App\Models\User,id|int',
+            'occupants' => 'integer'
         ]);
+        // DURATION
+        $starting_date = $request->starting_date;
+        $date1 = new DateTime($starting_date);
+        $ending_date = $request->ending_date;
+        $date2 = new DateTime($ending_date);
+        $duration = $date2->diff($date1)->format("%a");
 
+        //ROOM PRICE
+        $room = Room::find($request->room_id);
+        $roomData = $room->getRoomType()->firstOrFail();
+        $roomPrice = $roomData->price;
+
+        // OCCUPANTS & DAYS
+        $occupants = $request->occupants;
+        $occupantsDays = $occupants * $duration;
+
+        //OPTIONS DURATION
+        $nbrOfWeek = ceil($duration/7);
+        $options = $request->options;
+
+        //OPTIONS AMOUNT
+        $optionAmount = 0;
+        foreach($options as $option){
+            if($option['type'] == "daily"){
+                $optionAmount = $optionAmount + ($option['price'] * $duration) * $occupants;
+
+            }
+            if($option['type'] == "weekly"){
+                $optionAmount = $optionAmount + $option['price'] * $nbrOfWeek;
+            }
+            if($option['type'] == "stay"){
+                $optionAmount = $optionAmount + $option['price'];
+            }
+        }
+        $total_room_price = $occupantsDays * $roomPrice ;
+
+
+        $total_amount = $total_room_price + $optionAmount;
         try {
             $booking = new Booking;
-            $booking->fill($request->post())->save();
+            $booking->fill(array(
+                'ending_date' => $ending_date,
+                'starting_date' => $starting_date,
+                'room_id' => $request->room_id,
+                'user_id' => $request->user_id,
+                'total_price' => $total_amount
+            ))->save();
 
             return response()->json(BookingResource::make($booking));
         } catch (Throwable $e) {

@@ -98,6 +98,7 @@ export default {
             this.service1 = this.services[0];
             this.service2 = this.services[1];
             this.service3 = this.services[2];
+        this.optionsID = localStorage.get("optionsID");
 
     },
      data(){
@@ -139,9 +140,10 @@ export default {
             this.body={
                 ending_date : this.userChoice.endingDate,
                 starting_date : this.userChoice.startingDate,
-                total_price : this.total_room_price,
                 room_id : this.cartRoom.roomId,
-                user_id : this.currentUser
+                user_id : this.currentUser,
+                options : this.optionsID,
+                occupants: this.userChoice.occupants
             };
             this.newBooking = (await axiosProvider.postWithOutAuth('/bookings',this.body));
             if(this.newBooking.status == 200){
@@ -167,6 +169,7 @@ export default {
                 localStorage.unset("cartRoom");
                 localStorage.unset("total_room_price");
                 localStorage.unset("total_options_price");
+                localStorage.unset("optionsID");
                 this.$router.push({ name : 'ConfirmOrder'});
             }else{
                 this.$router.push({name:'SomethingWentWrong'});
