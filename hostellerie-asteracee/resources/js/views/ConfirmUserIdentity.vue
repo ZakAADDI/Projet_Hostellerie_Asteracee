@@ -30,7 +30,7 @@
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">{{ $t("message.modify") }}</button>
         </div>
         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
-            <span class="text-[#E6B34B] text-2xl">{{ $t("message.youRoom") }} :</span>
+            <span class="text-[#E6B34B] text-2xl">{{ $t("message.yourRoom") }} :</span>
             <span>{{ cartRoom.roomName}}</span>
             <span>{{ $t("message.price") }} : {{ cartRoom.roomPrice}} {{ $t("message.pricePerNightPerPers") }}</span>
             <button class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">{{ $t("message.modify") }}</button>

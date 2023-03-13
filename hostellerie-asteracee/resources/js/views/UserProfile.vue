@@ -18,7 +18,7 @@
 
                 <div class="flex">
                     <div class="flex flex-col items-center">
-                    <h1>{{ $t("message.bookingInProgress") }}</h1>
+                    <h1>{{ $t("message.bookingsInProgress") }}</h1>
                     <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
                         <router-link :to="{name:'UserBookingsView',query:{userBookings: 'running'}}">{{ $t("message.view") }}</router-link>
                     </button>

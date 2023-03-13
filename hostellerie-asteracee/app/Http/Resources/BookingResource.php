@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Booking;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BookingResource extends JsonResource
@@ -14,9 +15,11 @@ class BookingResource extends JsonResource
      */
     public function toArray($request)
     {
+        $booking = Booking::findOrFail($this->id);
         return [
             'room' => RoomResource::make($this->getRoom),
             'user' => UserResource::make($this->getUser),
+//            'options' => OptionResource::collection($this->),
             'starting_date' => $this->starting_date,
             'ending_date' => $this->ending_date,
             'status' => $this->status,

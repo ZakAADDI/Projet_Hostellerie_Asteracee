@@ -208,7 +208,7 @@ export const translations = {
             bookingSummary: 'Récapitulatif de réservation',
             totalAmountStay: 'Total du séjour',
             step3: 'Etpe 3 : Selectionnez vos options',
-            chooseOptions: 'Veuillezchoisir vos options',
+            chooseOptions: 'Veuillez choisir vos options',
             amountForOptions: 'Total des options',
             atiForStay: 'TTC. du séjour',
             saveMyOptions: 'Enregistrer mes options',

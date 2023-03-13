@@ -37,7 +37,7 @@
 
     <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 mx-6 lg:w-1/2 lg:mx-auto">
     <span  class="text-[#E6B34B] text-2xl">{{ $t("message.yourOptions") }} : </span>
-        <h1  class="mb-4">{{ $t("message.chooseYourOptions") }}</h1>
+        <h1  class="mb-4">{{ $t("message.chooseOptions") }}</h1>
 
         <form @submit.prevent="submitForm">
             <div class="flex flex-col justify-between" v-for="option in options" v-bind:key=option.id>
@@ -51,7 +51,7 @@
                     <span class="flex flex-row font-bold">{{ $t("message.price") }} {{ option.price }} €
                         <p v-if="option.type === 'daily'">{{ $t("message.perPersPerDay") }}</p>
                         <p v-if="option.type === 'weekly'">{{ $t("message.perWeek") }}</p>
-                        <p v-if="option.type === 'stay'">{{ $t("message.perSaty") }}</p>
+                        <p v-if="option.type === 'stay'">{{ $t("message.perStay") }}</p>
                     </span>
                 </div>
 
