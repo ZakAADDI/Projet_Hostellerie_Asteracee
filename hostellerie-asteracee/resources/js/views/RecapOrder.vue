@@ -1,7 +1,11 @@
 <template>
     <div v-if="!localStorageExists" class="flex flex-col justify-center align-center grow mt-28 lg:mt-24">
-    <span class="text-center mb-6">Votre réservation est terminée</span>
-    <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-auto w-1/5"><router-link :to="{name:'Home'}">Accueil</router-link></button>
+        <span class="text-center mb-6">Votre réservation est terminée</span>
+        <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-auto w-1/5">
+            <router-link :to="{name:'Home'}">
+                Accueil
+            </router-link>
+        </button>
     </div>
     <div v-if="localStorageExists" class="recapOrder flex flex-col grow mt-28 lg:mt-0">
         <span v-if="language" class="text-center lg:mt-28">Etape 5 : Récapitulatif de réservation</span>
@@ -63,9 +67,7 @@
                             <span v-if="option.type === 'weekly' && !language">/week</span>
                             <span v-if="option.type === 'stay' && language">/sejour</span>
                             <span v-if="option.type === 'stay' && !language">/stay</span>
-
                     </span>
-
                 </div>
                 <span v-if="language" class="text-2xl">soit {{ total_options_price }} € ttc.</span>
                 <span v-if="!language" class="text-2xl">i.e {{ total_options_price }} € ati.</span>

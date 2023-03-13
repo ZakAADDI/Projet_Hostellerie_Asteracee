@@ -158,7 +158,8 @@ class BookingController extends Controller
      */
     public function show(int $id)
     {
-        return response()->json(Booking::findOrFail($id));
+        $booking = Booking::where('id',$id)->first();
+        return response()->json(BookingResource::make($booking));
     }
 
     /**

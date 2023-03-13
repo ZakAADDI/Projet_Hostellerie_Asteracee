@@ -23,7 +23,6 @@
 
 <script>
 import BookingCard from '../components/BookingCard.vue'
-import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
 
 export default {
@@ -64,7 +63,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>
