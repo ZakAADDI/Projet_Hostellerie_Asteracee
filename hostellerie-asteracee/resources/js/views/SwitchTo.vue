@@ -1,13 +1,10 @@
 <template>
     <div class="switchTo flex flex-col items-center justify-center grow">
         <div class="content">
-            <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
-            <h1 v-if="language">Would you like to continue in English ?</h1>
+            <h1 >{{ $t("message.doYouWantToContinueInEnglish") }}</h1>
             <div class="buttons">
-                <a class="choice" v-if="!language" v-on:click="changeToFrench">Oui</a>
-                <a class="choice" v-if="language" v-on:click="changeToEnglish">Yes</a>
-                <button class="choice" v-if="language" v-on:click="noChange">Non</button>
-                <button class="choice" v-if="!language" v-on:click="noChange">No</button>
+                <a class="choice" v-on:click="changeToEnglish">{{ $t("message.yes") }}</a>
+                <button class="choice" v-on:click="noChange">{{ $t("message.no") }}</button>
             </div>
 
 
@@ -17,23 +14,12 @@
 </template>
 
 <script>
-// import Header from '../subComponents/Header.vue';
 import storage from '../services/localStorageProvider';
 import store from '../store/index'
 export default {
     name: 'SwitchTo',
     components: {
         // Header
-    },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            if(language == "fr"){
-                return true;
-            }else{
-                return false;
-            }
-        }
     },
     methods:{
         noChange(){

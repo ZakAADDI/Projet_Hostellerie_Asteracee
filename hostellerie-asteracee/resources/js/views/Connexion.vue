@@ -2,31 +2,31 @@
     <div class="connexion flex flex-col justify-center grow items-center mt-24 mb-8">
         <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3">
         <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
-        <span class="font-bold text-2xl">Bienvenue sur votre espace client</span>
+        <span class="font-bold text-2xl">{{ $t("message.hello") }}</span>
         <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
         <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3 mb-8">
         <div class="flex flex-col lg:flex-row lg:w-2/3 justify-center items-center border-t-4 border-t-[#E6B34B] bg-[#272023] text-white">
             <form @submit.prevent="connectUser" class="flex flex-col p-8 pb-8 lg:w-1/2">
-            <p class="text-center">Déjà Client ?</p>
+            <p class="text-center">{{ $t("message.alreadyClient") }} ?</p>
                     <label for="email" class="lg:w-1/2 lg:mx-auto">Email</label>
                     <input type="email" name="email" v-model="email" class="lg:w-1/2 lg:mx-auto">
                      <div class="error" v-if="emailEmpty">
-                        Vous devez saisir un mail
+                         {{ $t("message.plsEnterEmail") }}
                     </div>
-                    <label for="password" class="lg:w-1/2 lg:mx-auto">Password</label>
+                    <label for="password" class="lg:w-1/2 lg:mx-auto">{{ $t("message.password") }}</label>
                     <input type="password" name="password" v-model="password" class="lg:w-1/2 lg:mx-auto">
                      <div class="error" v-if="passwordEmpty">
-                     Merci de saisir votre mot de passe
+                         {{ $t("message.plsEnterPasswd") }}
                     </div>
-                    <button class="text-[#272023] my-8 lg:w-1/2 lg:mx-auto">Se connecter</button>
+                    <button class="text-[#272023] my-8 lg:w-1/2 lg:mx-auto">{{ $t("message.login") }}</button>
                     <div class="error" v-if="matching">
-                    Une erreure est survenue
+                        {{ $t("message.errOccurred") }}
                     </div>
             </form>
             <div class=" flex flex-col justify-center items-center w-1/2 border-t-2 lg:border-l-2 lg:border-l-[#E6B34B] lg:border-t-0 border-t-[#E6B34B] lg:w-1/2">
-                <p>Nouveau Client ?</p>
+                <p>{{ $t("message.newClient") }} ?</p>
                  <router-link :to="{ name: 'CreateUser' }" class="text-white mx-auto my-8">
-                    <button class="text-[#272023] w-full">Créer un compte</button>
+                    <button class="text-[#272023] w-full">{{ $t("message.creatAcc") }}</button>
                 </router-link>
             </div>
         </div>

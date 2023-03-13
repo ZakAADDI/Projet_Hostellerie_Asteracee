@@ -1,7 +1,7 @@
 <template>
      <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
         <div class="flex flex-col items-center justify-center">
-            <h1>Profil utilisateur</h1>
+            <h1>{{ $t("message.profil") }}</h1>
                 <div class="flex w-full mt-12">
                     <div class="w-2/5 ml-14 mb-4">
                         <img v-if="isMale(currentUser)" :src=maleImg.url alt="" style="width: 120px;">
@@ -9,47 +9,47 @@
                         {{this.currentUser.firstname}} {{this.currentUser.lastname}}
                     </div>
                     <div class="flex flex-col">
-                        <h1>Loyalty</h1>
-                        <span>Nombre de réservations effectuées : {{ this.currentUser.loyalty }}</span>
-                        <span>Nombre de réservations restantes avant remise : {{ this.loyaltyRemains }}</span>
+                        <h1>{{ $t("message.loyalty") }}</h1>
+                        <span>{{ $t("message.nbBookingDone") }} : {{ this.currentUser.loyalty }}</span>
+                        <span>{{ $t("message.nbBookingRemaining") }} : {{ this.loyaltyRemains }}</span>
                     </div>
                 </div>
 
 
                 <div class="flex">
                     <div class="flex flex-col items-center">
-                    <h1>Mes réservations en cours</h1>
+                    <h1>{{ $t("message.bookingInProgress") }}</h1>
                     <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                        <router-link :to="{name:'UserBookingsView',query:{userBookings: 'running'}}">Voir mes réservations en cours</router-link>
+                        <router-link :to="{name:'UserBookingsView',query:{userBookings: 'running'}}">{{ $t("message.view") }}</router-link>
                     </button>
                     </div>
                     <div class="flex flex-col items-center">
-                    <h1>Mes réservations terminées</h1>
+                    <h1>{{ $t("message.bookingsEnded") }}</h1>
                     <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                        <router-link :to="{name:'UserBookingsView',query:{userBookings: 'ended'}}">Voir mes réservations terminées</router-link>
+                        <router-link :to="{name:'UserBookingsView',query:{userBookings: 'ended'}}">{{ $t("message.view") }}</router-link>
                     </button>
                     </div>
                 </div>
 
                 <div class="mt-6">
-                    <h1 class="flex flex-col items-center">Mon Profil</h1>
+                    <h1 class="flex flex-col items-center">{{ $t("message.myAccount") }}</h1>
                     <div class="flex">
                         <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                            <router-link :to="{name:'UpdateUser'}">Mettre à jour mon profil</router-link>
+                            <router-link :to="{name:'UpdateUser'}">{{ $t("message.updateProfil") }}</router-link>
                         </button>
                         <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                        <router-link :to="{name:'UpdatePassword'}">Mettre à jour mon mot de passe</router-link>
+                        <router-link :to="{name:'UpdatePassword'}">{{ $t("message.updatePasswd") }}</router-link>
                         </button>
                         <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                        <router-link :to="{name:'DeleteAccount'}">Supprimer mon compte</router-link>
+                        <router-link :to="{name:'DeleteAccount'}">{{ $t("message.deleteMyAcc") }}</router-link>
                         </button>
                 </div>
 
                 <div class="mt-6">
-                    <h1 class="flex flex-col items-center justify-center">Racontez nous votre expérience</h1>
+                    <h1 class="flex flex-col items-center justify-center">{{ $t("message.tellUsYourExp") }}</h1>
                     <div class="flex justify-center">
                     <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-6">
-                        <router-link :to="{name:'AddReview'}">Ajouter un commentaire</router-link>
+                        <router-link :to="{name:'AddReview'}">{{ $t("message.addReview") }}</router-link>
                     </button>
                     </div>
                 </div>
