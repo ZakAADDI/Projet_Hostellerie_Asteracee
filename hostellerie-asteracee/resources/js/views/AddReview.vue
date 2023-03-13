@@ -1,27 +1,27 @@
 <template>
          <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
 
-        <h1>Choisir une date</h1>
+        <h1>{{ $t("message.selectDate") }}</h1>
         <select name="date" id="date" v-model="bookingId" class="text-black">
             <option v-for="endedBooking in this.endedBookings" :value=endedBooking.booking_id>
-                du {{ endedBooking.starting_date }} au {{ endedBooking.ending_date }}</option>
+                du {{ endedBooking.starting_date }} {{ $t("message.to") }} {{ endedBooking.ending_date }}</option>
         </select>
-        <button @click="letReview">Continuer</button>
-        <button @click="returnUserProfil">Retour</button>
+        <button @click="letReview">{{ $t("message.next") }}</button>
+        <button @click="returnUserProfil">{{ $t("message.goBack") }}</button>
         <div v-if="formReview" >
             <form class="update flex flex-col justify-center items-center" @submit.prevent="publishReview">
-                <label class="text-xl mt-3 text-white" for="newPassword">Titre de votre Commentaire</label>
+                <label class="text-xl mt-3 text-white" for="newPassword">{{ $t("message.titleOfYourComm") }}</label>
                 <input class="w-72 h-8 mx-auto text-black" name="title" type="text" v-model="title">
                 <div class="error" v-if="titleEmtpy">
-                     Merci de saisir le titre de votre commentaire
+                    {{ $t("message.titleOfYourComm") }}
                 </div>
 
-                <label class="text-xl mt-3 text-white" for="bodyReview">Votre commentaire</label>
+                <label class="text-xl mt-3 text-white" for="bodyReview">{{ $t("message.yourComm") }}</label>
                 <textarea class="w-72 h-32 mx-auto text-black" name="bodyReview" type="text" v-model="bodyReview"></textarea>
                 <div class="error" v-if="bodyReviewEmpty">
-                     Merci de saisir votre commentaire
+                    {{ $t("message.enterYourComm") }}
                     </div>
-                <button type="submit" class="bg-[#E6B34B] h-12 w-56 mx-auto my-10 rounded-sm text-2xl font-bold">Publish</button>
+                <button type="submit" class="bg-[#E6B34B] h-12 w-56 mx-auto my-10 rounded-sm text-2xl font-bold">{{ $t("message.publish") }}</button>
             </form>
         </div>
     </div>

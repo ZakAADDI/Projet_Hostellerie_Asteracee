@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center justify-center grow">
-        <h1>Qui Sommes Nous ?
+        <h1>{{ $t("message.whoAreWe") }}
         </h1>
     </div>
 </template>

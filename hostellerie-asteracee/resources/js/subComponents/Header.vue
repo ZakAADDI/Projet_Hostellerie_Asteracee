@@ -24,7 +24,7 @@
           <div class="menu-items">
             <li><router-link :to="{name:'Home'}">{{ $t("message.home") }}</router-link></li>
             <li><router-link v-if="!user" :to="{name:'Connexion'}">{{ $t("message.login") }}</router-link></li>
-            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">{{ $t("message.logout") }}</router-link></li>
+            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}"> {{ $t("message.logout") }}</router-link></li>
             <li><router-link v-if="user" :to="{name:'UserProfile'}">{{ $t("message.myAccount") }}</router-link></li>
 
             <li><router-link :to="{name:'OurRooms'}">{{ $t("message.ourRooms") }}</router-link></li>
@@ -46,16 +46,16 @@
         <div class="flex-row w-48">
 
             <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Nous Contacter
+                {{ $t("message.contactUs") }}
             </router-link>
             <router-link :to="{ name: 'Connexion' }" v-if="!user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Connexion
+                {{ $t("message.login") }}
             </router-link>
             <router-link :to="{ name: 'UserProfile' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Mon Compte
+                {{ $t("message.myAccount") }}
             </router-link>
             <router-link :to="{ name: 'ConfirmLogout' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Deconnexion
+                {{ $t("message.logout") }}
             </router-link>
 
         </div>

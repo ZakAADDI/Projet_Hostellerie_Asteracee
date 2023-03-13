@@ -8,18 +8,12 @@
                 <p>{{ address }}</p>
             </div>
             <div class="hidden sm:flex md:flex lg:flex xl:flex flex-col justify-center items-center">
-                <h5 v-if="language">Plan du site</h5>
-                <h5 v-if="!language">Website navigation</h5>
-                <router-link :to="{name:'Home'}" v-if="language">Accueil</router-link>
-                <router-link :to="{name:'Home'}" v-if="!language">Home</router-link>
-                <router-link :to="{name:'OurRooms'}" v-if="language">Nos chambres</router-link>
-                <router-link :to="{name:'OurRooms'}" v-if="!language">Our Rooms</router-link>
-                <router-link :to="{name:'OurServices'}" v-if="language">Nos services</router-link>
-                <router-link :to="{name:'OurServices'}" v-if="!language">Our services</router-link>
-                <router-link :to="{name:'Contact'}" v-if="language">Nous contacter</router-link>
-                <router-link :to="{name:'Contact'}" v-if="!language">Contact Us</router-link>
-                <router-link :to="{name:'WhoAreWe'}" v-if="language">Qui Sommes Nous ?</router-link>
-                <router-link :to="{name:'WhoAreWe'}" v-if="!language">About us</router-link>
+                <h5 >{{ $t("message.siteMap") }}</h5>
+                <router-link :to="{name:'Home'}">{{ $t("message.home") }}</router-link>
+                <router-link :to="{name:'OurRooms'}">{{ $t("message.ourRooms") }}</router-link>
+                <router-link :to="{name:'OurServices'}">{{ $t("message.ourServices") }}</router-link>
+                <router-link :to="{name:'Contact'}" >{{ $t("message.contactUs") }}</router-link>
+                <router-link :to="{name:'WhoAreWe'}" >{{ $t("message.whoAreWe") }}</router-link>
             </div>
         </div>
 
@@ -55,7 +49,6 @@
 </template>
 
 <script>
-import localStorage from '../services/localStorageProvider'
 export default {
     name: 'Footer',
     props:{
@@ -68,17 +61,7 @@ export default {
         sectionRoom: String,
         sectionService: String,
         sectionNews: String
-   },
-    computed:{
-         language(){
-            if(localStorage.get("language") == "fr"){
-                return true;
-             }else{
-                 return false;
-            }
-        }
-
-    }
+   }
 }
 </script>
 

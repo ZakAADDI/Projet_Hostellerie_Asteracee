@@ -14,7 +14,7 @@
         <div class="xl:flex xl:justify-around h-full mt-7 xl:mt-0 2xl:justify-around">
             <!-- Content -->
             <div class="flex flex-col text-3xl text-[#E6B34B] font-bold sm:mb-16 xl:mt-8">
-                <h2 class="ml-3 sm:ml-24 xl:ml-14">{{ this.firstLineSection }}</h2>
+                <h2 class="ml-3 sm:ml-24 xl:ml-14"> {{ this.firstLineSection }}</h2>
                 <h2 class="ml-7 sm:ml-32 xl:ml-20">{{ this.secondLineSection }}</h2>
             </div>
             <div class="text-white text-center flex flex-col mx-2 my-6 xl:justify-center" v-for="deal in deals" :key=deal.id >

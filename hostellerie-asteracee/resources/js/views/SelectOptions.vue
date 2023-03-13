@@ -1,7 +1,6 @@
 <template>
 <div class="options flex flex-col grow mt-28 lg:mt-0">
-    <span v-if="language" class="text-center lg:mt-28">Etape 3 : Sélection de vos options</span>
-    <span v-if="!language" class="text-center lg:mt-28">Step 3 : Select your jouney options</span>
+    <span class="text-center lg:mt-28">{{ $t("message.step3") }}</span>
     <div class="flex mb-6 w-screen justify-center items-center">
             <div class="cercleOk"></div>
                 <div class="smCercleOk"></div>
@@ -22,34 +21,23 @@
             <div class="cercle"></div>
         </div>
    <div class="bg-[#272023] text-white flex flex-col justify-center items-center mx-6 text-center  lg:justify-end lg:w-1/3 lg:mx-auto lg:pb-6 p-2 border-t-4 border-t-[#E6B34B]">
-            <span v-if="language" class="text-[#E6B34B] text-2xl">Votre séjour :</span>
-            <span v-if="!language" class="text-[#E6B34B] text-2xl">Your stay :</span>
-            <span v-if="language">Du {{ userChoice.startingDate }} au {{ userChoice.endingDate }}</span>
-            <span v-if="!language">From {{ userChoice.startingDate }} to {{ userChoice.endingDate }}</span>
-            <span v-if="language">soit {{ userChoice.nbrOfDays }} jours</span>
-            <span v-if="!language">i.e {{ userChoice.nbrOfDays }} days</span>
-            <span v-if="language">Pour {{ userChoice.occupants }} pers.</span>
-            <span v-if="!language">For {{ userChoice.occupants }} pers.</span>
-            <span v-if="language" class="text-2xl">soit {{ total_room_price }} € ttc.</span>
-            <span v-if="!language" class="text-2xl">i.e {{ total_room_price }} € ati.</span>
-            <button v-if="!language" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modify</button>
-            <button v-if="language" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
+            <span class="text-[#E6B34B] text-2xl">{{ $t("message.yourStay") }} :</span>
+            <span >{{ $t("message.from") }} {{ userChoice.startingDate }} {{ $t("message.to") }} {{ userChoice.endingDate }}</span>
+            <span>{{ $t("message.ie") }} {{ userChoice.nbrOfDays }} {{ $t("message.days") }}</span>
+            <span >{{ $t("message.for") }} {{ userChoice.occupants }} {{ $t("message.pers") }}</span>
+            <span  class="text-2xl">{{ $t("message.ie") }} {{ total_room_price }} € {{ $t("message.ati") }}</span>
+            <button  class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">{{ $t("message.modify") }}</button>
         </div>
     <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/3 lg:mx-auto">
-            <span v-if="language" class="text-[#E6B34B] text-2xl">Votre chambre :</span>
-            <span v-if="!language" class="text-[#E6B34B] text-2xl">Your room :</span>
+            <span class="text-[#E6B34B] text-2xl">{{ $t("message.yourRoom") }} :</span>
             <span>{{ roomName}}</span>
-            <span v-if="language">Prix : {{ roomPrice}} €/nuits/pers</span>
-            <span v-if="!language">Price : {{ roomPrice}} €/nights/pers</span>
-            <button v-if="language" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modifier</button>
-            <button v-if="!language" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">Modify</button>
+            <span >{{ $t("message.price") }} : {{ roomPrice}} {{ $t("message.pricePerNightPerPers") }}</span>
+            <button  class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mx-2 my-2">{{ $t("message.modify") }}</button>
         </div>
 
     <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mb-6 mx-6 lg:w-1/2 lg:mx-auto">
-    <span v-if="language" class="text-[#E6B34B] text-2xl">Vos options : </span>
-    <span v-if="!language" class="text-[#E6B34B] text-2xl">Your journey options : </span>
-        <h1 v-if="language" class="mb-4">Choisissez les options de votre séjour</h1>
-        <h1 v-if="!language" class="mb-4">Choose your journey options</h1>
+    <span  class="text-[#E6B34B] text-2xl">{{ $t("message.yourOptions") }} : </span>
+        <h1  class="mb-4">{{ $t("message.chooseYourOptions") }}</h1>
 
         <form @submit.prevent="submitForm">
             <div class="flex flex-col justify-between" v-for="option in options" v-bind:key=option.id>
@@ -60,30 +48,21 @@
 
                 <span>{{ option.description }}</span>
                 <div class="flex flex-row">
-                    <span v-if="language" class="flex flex-row font-bold">Prix {{ option.price }} €
-                        <p v-if="option.type === 'daily'">/pers/jour</p>
-                        <p v-if="option.type === 'weekly'">/semaine</p>
-                        <p v-if="option.type === 'stay'">/sejour</p>
-                    </span>
-                    <span v-if="!language" class="flex flex-row font-bold">Price {{ option.price }} €
-                        <p v-if="option.type === 'daily'">/pers/day</p>
-                        <p v-if="option.type === 'weekly'">/week</p>
-                        <p v-if="option.type === 'stay'">/stay</p>
+                    <span class="flex flex-row font-bold">{{ $t("message.price") }} {{ option.price }} €
+                        <p v-if="option.type === 'daily'">{{ $t("message.perPersPerDay") }}</p>
+                        <p v-if="option.type === 'weekly'">{{ $t("message.perWeek") }}</p>
+                        <p v-if="option.type === 'stay'">{{ $t("message.perSaty") }}</p>
                     </span>
                 </div>
 
             </div>
             <div class="flex flex-col justify-center items-center mt-6 text-2xl">
-                <span v-if="language">Total de vos options : </span>
-                <span v-if="!language">Amount for your options</span>
-                <span v-if="language">{{total_options_price}} € ttc. pour votre séjour</span>
-                <span v-if="!language">{{total_options_price}} € ati. for your stay</span>
+                <span >{{ $t("message.amountForOptions") }}</span>
+                <span >{{total_options_price}} € {{ $t("message.atiForStay") }}</span>
             </div>
             <div class="flex flex-col m-4">
-                <button v-if="language" type="submit" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mb-4">Enregistrer mes options</button>
-                <button v-if="!language" type="submit" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mb-4">Save my options</button>
-                <button v-if="language" type="submit" class="bg-red-500 p-2 rounded-md text-[#272023]" @click="removeData">Annuler</button>
-                <button v-if="!language" type="submit" class="bg-red-500 p-2 rounded-md text-[#272023]" @click="removeData">Cancel</button>
+                <button  type="submit" class="bg-[#E6B34B] p-2 rounded-md text-[#272023] mb-4">{{ $t("message.saveMyOptions") }}</button>
+                <button  type="submit" class="bg-red-500 p-2 rounded-md text-[#272023]" @click="removeData">{{ $t("message.cancel") }}</button>
 
             </div>
 
@@ -117,8 +96,7 @@ export default {
             userOptions:[],
             selectedOption: [],
             total_room_price: Number,
-            total_options_price: Number,
-            language: true
+            total_options_price: Number
         }
     },
     async created(){
@@ -184,15 +162,6 @@ export default {
             localStorage.unset("cartRoom");
             localStorage.unset("cartOptions");
             this.$router.push({ name: 'Home'});
-        }
-    },
-    computed:{
-         language(){
-            if(localStorage.get("language") == "fr"){
-                return true;
-             }else{
-                 return false;
-            }
         }
     }
 }
