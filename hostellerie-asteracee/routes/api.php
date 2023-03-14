@@ -86,7 +86,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 
         // BOOKINGS
         Route::post('/bookings', [BookingController::class, 'store']);
-        Route::patch('/bookings/{id}', [BookingController::class, 'update']);
+        Route::post('/bookings/{id}', [BookingController::class, 'update']);
         Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
         Route::get('/bookings/confirm/{id}', [BookingController::class, 'confirmBooking']);
 

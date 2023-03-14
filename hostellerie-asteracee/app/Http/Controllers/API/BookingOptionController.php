@@ -63,8 +63,13 @@ class BookingOptionController extends Controller
             'option_id' => 'exists:App\Models\Option,id|int'
         ]);
 
-        $booking_option = BookingOption::findOrFail($id);
-        $booking_option->update($request->all());
+        $booking_option = BookingOption::where('booking_id',$id)->first();
+        if($booking_option->id != null){
+            $booking_option->update($request->all());
+        }else{
+            $booking_option->fill($request->post())->save();
+        }
+
 
         return response()->json($booking_option);
     }

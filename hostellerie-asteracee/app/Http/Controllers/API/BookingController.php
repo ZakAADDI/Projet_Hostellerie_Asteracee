@@ -123,7 +123,8 @@ class BookingController extends Controller
                     'starting_date' => $request->starting_date,
                     'room_id' => $request->room_id,
                     'user_id' => $request->user_id,
-                    'total_price' => $total_amount
+                    'total_price' => $total_amount,
+                    'occupants' => $occupants
                 ))->save();
                 return response()->json(BookingResource::make($booking));
             } catch (Throwable $e) {
@@ -169,16 +170,16 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $bookingId)
     {
         $this->validate($request, [
             'ending_date' => 'max:25',
             'starting_date' => 'max:256',
             'room_id' => 'exists:App\Models\Room,id|int',
             'user_id' => 'exists:App\Models\User,id|int',
+            'occupants' => 'int|max:3'
         ]);
-
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::findOrFail($bookingId);
         $booking->update($request->all());
 
         return response()->json(BookingResource::make($booking));

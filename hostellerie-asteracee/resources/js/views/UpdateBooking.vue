@@ -8,7 +8,6 @@
             <label class="text-xl mt-3 text-white" for="starting_date" v-if="language">Date de début</label>
             <label class="text-xl mt-3 text-white" for="starting_date" v-if="!language">Starting Date</label>
             <input class="w-72 h-8 mx-auto text-black" name="lastname" type="date" v-model="starting_date" :v-html=this.starting_date>
-
             </div>
 
             <div class="flex flex-col justify-center items-center mb-6">
@@ -16,6 +15,9 @@
             <label class="text-xl mt-3 text-white" for="ending_date" v-if="!language">Ending Date</label>
             <input class="w-72 h-8 mx-auto text-black" name="lastname" type="date" v-model="ending_date" :v-html=this.ending_date>
             </div>
+
+            <div class="flex flex-col justify-center items-center mb-6 text-white">Occupants :             <input type="number" name="occupants" min="1" max="3" class="text-[#272023] rounded-m ml-2 bg-[#E6B34B] text-center p-1" v-model="numberOccupants">
+</div>
 
             <div class="flex flex-col justify-center items-center mb-6">
                 <h1 class="text-xl text-center my-3 text-white">Room type</h1>
@@ -59,7 +61,7 @@
             </div>
 
             <button type="submit" class="bg-[#E6B34B] h-12 w-56 mx-auto mt-10 mb-2 rounded-sm text-2xl font-bold" @click="updateBooking">Update</button>
-            <button class="bg-red-500 h-12 w-56 mx-auto mb-10 rounded-sm text-2xl font-bold">Cancel my booking</button>
+            <button class="bg-red-500 h-12 w-56 mx-auto mb-10 rounded-sm text-2xl font-bold">Cancel</button>
 
         </form>
 
@@ -95,19 +97,21 @@ export default {
         this.ending_date = this.booking.ending_date
         this.roomImg = this.booking.room.room_type.media_url;
         this.roomDesc = this.booking.room.room_type.description;
+        this.numberOccupants = this.booking.occupants;
         this.userOptions = this.booking.options.map(userOption => userOption.id);
         this.options = (await axiosProvider.get('/options'))?.data;
 
     },
     methods: {
-        updateBooking() {
+        async updateBooking() {
             this.data = {
                 'options' : this.userOptions,
                 'starting_date' : this.starting_date,
-                'ending_date': this.ending_date
+                'ending_date': this.ending_date,
+                'booking_id' : this.bookingId,
+                'occupants' : this.numberOccupants
             };
-            console.log(this.data);
-            // this.newBooking = axiosProvider.patch('/bookings/'+this.bookingId);
+            this.newBooking = await axiosProvider.postWithOutAuth('/bookings/'+this.bookingId, this.data);
 
         },
         changeRoomType(){
