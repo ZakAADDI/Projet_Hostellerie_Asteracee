@@ -44,9 +44,8 @@ export default {
         Footer
     },
     created() {
-        if(this.currentLanguage = localStorage.get("language") == ''){
-            this.currentLanguage = localStorage.set("language", "fr");
-        }
+        localStorage.set("language", "fr");
+        localStorage.set("oldLanguage", "fr")
 
     },
     async created(){

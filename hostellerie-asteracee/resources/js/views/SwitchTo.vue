@@ -3,7 +3,7 @@
         <div class="content">
             <h1 >{{ $t("message.doYouWantToContinueInEnglish") }}</h1>
             <div class="buttons">
-                <a class="choice" v-on:click="changeToEnglish">{{ $t("message.yes") }}</a>
+                <a class="choice" v-on:click="changeTo">{{ $t("message.yes") }}</a>
                 <button class="choice" v-on:click="noChange">{{ $t("message.no") }}</button>
             </div>
 
@@ -25,16 +25,18 @@ export default {
         noChange(){
             this.$router.push({name:'Home'})
         },
-        changeToFrench : function(){
-            storage.set("language", "fr");
-            this.language = 'fr';
-            store.commit('addLanguage', 'fr')
-            this.$router.push({name:"Home"})
-        },
-        changeToEnglish : function(){
-            storage.set("language", "en");
-            this.language = 'en';
-            store.commit('addLanguage', 'en')
+        changeTo : function(){
+            if (storage.get("language") === "fr"){
+                storage.set("language", "en");
+                storage.set("oldLanguage", "fr");
+                store.commit('addLanguage', 'en')
+            } else {
+                storage.set("language", "fr");
+                store.commit('addLanguage', 'fr')
+                storage.set("oldLanguage", "en");
+                store.commit('addLanguage', 'fr')
+            }
+
             this.$router.push({name:"Home"})
         }
     }
