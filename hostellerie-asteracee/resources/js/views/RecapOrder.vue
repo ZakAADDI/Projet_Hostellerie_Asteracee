@@ -1,4 +1,17 @@
 <template>
+
+    <div v-if="!localStorageExists" class="flex flex-col justify-center align-center grow mt-28 lg:mt-24">
+        <span class="text-center mb-6">Votre réservation est terminée</span>
+        <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-auto w-1/5">
+            <router-link :to="{name:'Home'}">
+                Accueil
+            </router-link>
+        </button>
+    </div>
+    <div v-if="localStorageExists" class="recapOrder flex flex-col grow mt-28 lg:mt-0">
+        <span v-if="language" class="text-center lg:mt-28">Etape 5 : Récapitulatif de réservation</span>
+        <span v-if="!language" class="text-center lg:mt-28">Set 5 : Booking summary</span>
+
     <div class="recapOrder flex flex-col grow mt-28 lg:mt-0">
         <span class="text-center lg:mt-28">{{ $t("message.step5") }}</span>
         <div class="flex mb-6 w-screen justify-center items-center">
@@ -46,9 +59,7 @@
                             <span v-if="option.type === 'daily'">{{ $t("message.perPersPerDay") }}</span>
                             <span v-if="option.type === 'weekly' ">{{ $t("message.perWeek") }}</span>
                             <span v-if="option.type === 'stay' ">{{ $t("message.perStay") }}</span>
-
                     </span>
-
                 </div>
                 <span class="text-2xl">{{ $t("message.ie") }} {{ total_options_price }} € {{ $t("message.ati") }}</span>
             </div>
@@ -181,6 +192,23 @@ export default {
             localStorage.unset("cartRoom");
             localStorage.unset("cartOptions");
             this.$router.push({ name: 'Home'});
+        }
+
+    },
+    computed:{
+         language(){
+            if(localStorage.get("language") == "fr"){
+                return true;
+             }else{
+                 return false;
+            }
+        },
+        localStorageExists(){
+            if(localStorage.get("userChoice")){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 }

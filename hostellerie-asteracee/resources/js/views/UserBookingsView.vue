@@ -23,7 +23,6 @@
 
 <script>
 import BookingCard from '../components/BookingCard.vue'
-import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
 
 export default {
@@ -49,7 +48,8 @@ export default {
         this.bookings.forEach(booking => {
             if(booking.status === 'ended'){
                 this.endedBookings.push(booking);
-            }else{
+            }
+            if(booking.status === 'ongoing'){
                 this.runningBookings.push(booking);
             }
         });
@@ -64,7 +64,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>
