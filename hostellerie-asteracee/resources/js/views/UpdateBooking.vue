@@ -2,7 +2,7 @@
 
     <div class="updateBooking bg-[#272023] w-11/12 mx-auto border-4 border-[#E6B34B] z-10 my-6 grow">
 
-        <form @submit.prevent="updateBooking" class="flex flex-col">
+        <form class="flex flex-col">
             <h1 class="text-xl mt-3 ml-3 text-white">Booking n° {{ this.booking.booking_id }}</h1>
             <div class="flex flex-col justify-center items-center">
             <label class="text-xl mt-3 text-white" for="starting_date" v-if="language">Date de début</label>
@@ -19,15 +19,15 @@
             <div class="flex flex-col justify-center items-center mb-6 text-white">Occupants :             <input type="number" name="occupants" min="1" max="3" class="text-[#272023] rounded-m ml-2 bg-[#E6B34B] text-center p-1" v-model="numberOccupants">
 </div>
 
-            <div class="flex flex-col justify-center items-center mb-6">
+            <!-- <div class="flex flex-col justify-center items-center mb-6">
                 <h1 class="text-xl text-center my-3 text-white">Room type</h1>
                 <img class="mx-auto w-[150px]" :src=roomImg alt="">
                 <p class="text-white mx-auto text-center my-8 w-1/2">{{ roomDesc }}</p>
 
                 <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold" @click="changeRoomType">Changer mon type de chambre</button>
-            </div>
+            </div> -->
 
-            <div v-if="formRoomChanging">
+            <!-- <div v-if="formRoomChanging">
                 <h1 class="text-xl text-center mb-8 text-white">Formulaire de changement de type de chambre</h1>
                 <div class="flex flex-row justify-center items-center">
                     <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold">Chambre de luxe</button>
@@ -35,7 +35,7 @@
                     <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold">Chambre Classique</button>
                 </div>
 
-            </div>
+            </div> -->
 
 
             <div class="flex flex-col justify-center items-center" v-for="option in this.options" v-bind:key=option.id>
@@ -61,7 +61,7 @@
             </div>
 
             <button type="submit" class="bg-[#E6B34B] h-12 w-56 mx-auto mt-10 mb-2 rounded-sm text-2xl font-bold" @click="updateBooking">Update</button>
-            <button class="bg-red-500 h-12 w-56 mx-auto mb-10 rounded-sm text-2xl font-bold">Cancel</button>
+            <button class="bg-red-500 h-12 w-56 mx-auto mb-10 rounded-sm text-2xl font-bold" @click="cancelUpdate">Cancel</button>
 
         </form>
 
@@ -69,7 +69,6 @@
 </template>
 
 <script>
-import { tsImportEqualsDeclaration } from '@babel/types';
 import axiosProvider from '../services/axiosConfigProvider';
 import localStorage from "../services/localStorageProvider"
 
@@ -87,7 +86,8 @@ export default {
             userOptions:[],
             roomImg: String,
             roomDesc: String,
-            formRoomChanging: false
+            formRoomChanging: false,
+            numberOccupants: Number
         }
     },
     async created(){
@@ -105,17 +105,29 @@ export default {
     methods: {
         async updateBooking() {
             this.data = {
-                'options' : this.userOptions,
                 'starting_date' : this.starting_date,
                 'ending_date': this.ending_date,
                 'booking_id' : this.bookingId,
                 'occupants' : this.numberOccupants
             };
             this.newBooking = await axiosProvider.postWithOutAuth('/bookings/'+this.bookingId, this.data);
+            this.data2 ={
+                'options': this.userOptions,
+                'booking_id': this.bookingId
+            }
+
+            // if(this.newBooking.status == 200){
+                this.optionToSave = await axiosProvider.postWithOutAuth('/bookingOptions/'+this.bookingId, this.data2);
+
+                // }
+
 
         },
         changeRoomType(){
             this.formRoomChanging = true
+        },
+        cancelUpdate(){
+            console.log('cancel');
         }
     },
     computed:{

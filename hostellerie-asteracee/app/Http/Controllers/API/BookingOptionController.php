@@ -27,7 +27,7 @@ class BookingOptionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'booking_id' => 'required|exists:App\Models\Booking,id|int',
             'option_id' => 'required|exists:App\Models\Option,id|int'
         ]);
@@ -52,25 +52,39 @@ class BookingOptionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BookingOption  $booking_option
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request)
     {
-        $this->validate($request,[
-            'booking_id' => 'exists:App\Models\Booking,id|int',
-            'option_id' => 'exists:App\Models\Option,id|int'
-        ]);
+        $booking_id = $request->booking_id;
 
-        $booking_option = BookingOption::where('booking_id',$id)->first();
-        if($booking_option->id != null){
-            $booking_option->update($request->all());
-        }else{
-            $booking_option->fill($request->post())->save();
+        $booking_option = BookingOption::where('booking_id', $booking_id)->pluck('option_id')->toArray();
+
+        $newOptions = $request->options;
+
+        if (count($newOptions) > 0) {
+            foreach ($newOptions as $newOption) {
+                if (!in_array($newOption, $booking_option)) {
+                    $bookingOption = new BookingOption();
+                    $bookingOption->fill(array(
+                        'booking_id' => $booking_id,
+                        'option_id' => $newOption
+                    ))->save();
+                }
+            }
         }
-
-
+        if ($newOptions == []) {
+            BookingOption::where('booking_id', $booking_id)->delete();
+            return response()->json([], 200);
+        }
+        if(count($newOptions) != count($booking_option)){
+            foreach($booking_option as $oldOption){
+                if(!in_array($oldOption, $newOptions)){
+                    BookingOption::where('booking_id',$booking_id)
+                    ->where('option_id',$oldOption)->delete();
+                }
+            }
+        }
         return response()->json($booking_option);
     }
 
