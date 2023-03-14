@@ -64,7 +64,7 @@ export default {
             this.$router.push({name:'UpdateBooking', query:{bookingId: this.bookingId}})
         },
         deleteBooking(){
-            return this.bookingId;
+            this.$router.push({name:'ConfirmDeleteBooking', query:{bookingId: this.bookingId}})
         }
     }
 

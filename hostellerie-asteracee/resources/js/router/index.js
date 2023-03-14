@@ -25,6 +25,7 @@ import AddReview from '../views/AddReview.vue'
 import ConfirmBooking from '../views/ConfirmBooking.vue'
 import ConfirmAddedReview from '../views/ConfirmAddedReview.vue'
 import UpdateBooking from '../views/UpdateBooking.vue'
+import ConfirmDeleteBooking from '../views/ConfirmDeleteBooking.vue'
 
 
 const routes = [
@@ -117,6 +118,11 @@ const routes = [
     path: '/updateBooking',
     name: 'UpdateBooking',
     component: UpdateBooking
+  },
+  {
+    path: '/confirmDeleteBooking',
+    name: 'ConfirmDeleteBooking',
+    component: ConfirmDeleteBooking
   },
   {
     path: '/userProfile',

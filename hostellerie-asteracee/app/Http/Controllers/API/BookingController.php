@@ -193,8 +193,10 @@ class BookingController extends Controller
      */
     public function destroy(int $id)
     {
-        Booking::findOrFail($id)->delete();
-        return response()->json('Entry ' . $id . ' deleted!');
+        $bookingToDelete = Booking::where('id',$id)->first();
+        $bookingToDelete->status = 'canceled';
+        $bookingToDelete->save();
+        return response()->json('Entry ' . $id . ' canceled!',200);
     }
 
     public function confirmBooking(int $id)

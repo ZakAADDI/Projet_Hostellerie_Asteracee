@@ -1,6 +1,6 @@
 <template>
 
-    <div class="updateBooking bg-[#272023] w-11/12 mx-auto border-4 border-[#E6B34B] z-10 my-6 grow">
+    <div class="updateBooking bg-[#272023] w-11/12 mx-auto border-4 border-[#E6B34B] z-10 my-6 grow mt-24">
 
         <form class="flex flex-col">
             <h1 class="text-xl mt-3 ml-3 text-white">Booking n° {{ this.booking.booking_id }}</h1>
@@ -19,23 +19,12 @@
             <div class="flex flex-col justify-center items-center mb-6 text-white">Occupants :             <input type="number" name="occupants" min="1" max="3" class="text-[#272023] rounded-m ml-2 bg-[#E6B34B] text-center p-1" v-model="numberOccupants">
 </div>
 
-            <!-- <div class="flex flex-col justify-center items-center mb-6">
-                <h1 class="text-xl text-center my-3 text-white">Room type</h1>
+            <div class="flex flex-col justify-center items-center mb-6">
+                <h1 class="text-xl text-center my-3 text-white">{{ roomType }}</h1>
                 <img class="mx-auto w-[150px]" :src=roomImg alt="">
                 <p class="text-white mx-auto text-center my-8 w-1/2">{{ roomDesc }}</p>
+            </div>
 
-                <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold" @click="changeRoomType">Changer mon type de chambre</button>
-            </div> -->
-
-            <!-- <div v-if="formRoomChanging">
-                <h1 class="text-xl text-center mb-8 text-white">Formulaire de changement de type de chambre</h1>
-                <div class="flex flex-row justify-center items-center">
-                    <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold">Chambre de luxe</button>
-                    <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold">Suite</button>
-                    <button class="bg-[#E6B34B] h-18 w-56 mx-auto my-4 rounded-sm text-xl font-bold">Chambre Classique</button>
-                </div>
-
-            </div> -->
 
 
             <div class="flex flex-col justify-center items-center" v-for="option in this.options" v-bind:key=option.id>
@@ -87,7 +76,8 @@ export default {
             roomImg: String,
             roomDesc: String,
             formRoomChanging: false,
-            numberOccupants: Number
+            numberOccupants: Number,
+            roomType: String
         }
     },
     async created(){
@@ -97,6 +87,7 @@ export default {
         this.ending_date = this.booking.ending_date
         this.roomImg = this.booking.room.room_type.media_url;
         this.roomDesc = this.booking.room.room_type.description;
+        this.roomType = this.booking.room.room_type.name;
         this.numberOccupants = this.booking.occupants;
         this.userOptions = this.booking.options.map(userOption => userOption.id);
         this.options = (await axiosProvider.get('/options'))?.data;
@@ -115,19 +106,13 @@ export default {
                 'options': this.userOptions,
                 'booking_id': this.bookingId
             }
-
-            // if(this.newBooking.status == 200){
-                this.optionToSave = await axiosProvider.postWithOutAuth('/bookingOptions/'+this.bookingId, this.data2);
-
-                // }
-
-
+            this.optionToSave = await axiosProvider.postWithOutAuth('/bookingOptions/'+this.bookingId, this.data2);
         },
         changeRoomType(){
             this.formRoomChanging = true
         },
         cancelUpdate(){
-            console.log('cancel');
+            this.$router.push({ name: 'UserProfile'});
         }
     },
     computed:{

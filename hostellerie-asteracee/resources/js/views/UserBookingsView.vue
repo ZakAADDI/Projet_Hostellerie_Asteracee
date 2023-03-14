@@ -48,7 +48,8 @@ export default {
         this.bookings.forEach(booking => {
             if(booking.status === 'ended'){
                 this.endedBookings.push(booking);
-            }else{
+            }
+            if(booking.status === 'ongoing'){
                 this.runningBookings.push(booking);
             }
         });

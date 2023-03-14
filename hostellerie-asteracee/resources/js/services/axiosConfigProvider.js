@@ -37,6 +37,10 @@ const axiosProvider = {
 
     patch: async (endpoint, body)=>{
         return axios.patch(axiosProvider.baseUrl + endpoint, body)
+    },
+
+    del: async (endpoint)=>{
+        return axios.delete(axiosProvider.baseUrl + endpoint,)
     }
 }
 

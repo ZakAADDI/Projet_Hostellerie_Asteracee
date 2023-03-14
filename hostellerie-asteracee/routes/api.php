@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         // BOOKINGS
         Route::post('/bookings', [BookingController::class, 'store']);
         Route::post('/bookings/{id}', [BookingController::class, 'update']);
-        Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
+        Route::post('/deleteBookings/{id}', [BookingController::class, 'destroy']);
         Route::get('/bookings/confirm/{id}', [BookingController::class, 'confirmBooking']);
 
         // BOOKINGS_OPTIONS
