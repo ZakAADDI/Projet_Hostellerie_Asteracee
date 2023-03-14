@@ -3,7 +3,7 @@
 
 
     <div class="flex flex-col items-center justify-center">
-        <h1>Vos réservations
+        <h1>{{ $t("message.yourBooking") }}
         </h1>
         <div v-for="booking in bookings" :key=booking.id >
             <BookingCard

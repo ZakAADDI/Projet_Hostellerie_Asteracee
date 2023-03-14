@@ -9,13 +9,13 @@
             <img class="border-4 border-[#E6B34B] shadow-md shadow-gray-200 mx-auto w-1/2" :src=roomImage :alt=roomAlt>
         </div>
         <div class="flex flex-col justify-center items-center">
-            <p class="mt-2 text-center">Prix : {{ roomPrice }} € /nuit/pers.</p>
+            <p class="mt-2 text-center">{{ $t("message.price") }} : {{ roomPrice }} {{ $t("message.pricePerNightPerPers") }}</p>
             <div class="flex justify-between">
                <span class="bg-[#E6B34B]" v-for="prestation in roomPrestations" :key=prestation.id >
                 <img :src=prestation.media_url :alt=prestation.media_alt class="fill-white">
             </span>
             </div>
-            <button type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023]" @click="addToCart">Réserver Maintenant</button>
+            <button type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023]" @click="addToCart">{{ $t("message.bookNow") }}</button>
         </div>
 
     </div>

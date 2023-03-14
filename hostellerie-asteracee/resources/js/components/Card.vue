@@ -14,7 +14,7 @@
                 <div class="text-white ">{{ description }}</div>
 
                 <div v-if="showPrice" class="bg-[#E6B34B] text-[#272023] flex justify-end pr-4 w-2/4">- {{ price }} € </div>
-                <button v-if="showButton" type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023] w-1/2 mx-auto mb-2" @click="addToCart">Réserver</button>
+                <button v-if="showButton" type="submit" class="bg-[#E6B34B] p-2 mt-2 rounded-md text-[#272023] w-1/2 mx-auto mb-2" @click="addToCart">{{ $t("message.book") }}</button>
             </div>
         </div>
     </div>
