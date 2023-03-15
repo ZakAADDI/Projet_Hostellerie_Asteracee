@@ -5,24 +5,32 @@
          <h2 class="text-center">{{ $t("message.registerForm") }}</h2>
            <fieldset>{{ $t("message.civility") }}</fieldset>
            <div>
-                <input type="radio" value="male" name="male" v-model="gender">
+                <input class="mr-2" type="radio" value="male" name="male" v-model="gender">
                     <label for="gendre">{{ $t("message.male") }}</label>
-                <input type="radio" value="female" name="female" v-model="gender">
+                <input class="mr-2 ml-4" type="radio" value="female" name="female" v-model="gender">
                     <label for="gendre">{{ $t("message.female") }}</label>
                 <div class="error" v-if="firstnameEmpty">
                     {{ $t("message.plsChooseGender") }}
                 </div>
            </div>
-            <label for="firstname">{{ $t("message.fname") }}</label>
-                <input type="text" name="fristname" v-model="firstname">
-                <div class="error" v-if="firstnameEmpty">
+
+           <div class="flex justify-center">
+                <div class="flex flex-col w-1/3 mx-8">
+                <label for="firstname">{{ $t("message.fname") }}</label>
+                    <input type="text" name="fristname" v-model="firstname">
+                    <div class="error" v-if="firstnameEmpty">
                     {{ $t("message.plsEnterFname") }}
                     </div>
-            <label for="lastname">{{ $t("message.lname") }}</label>
-                <input type="text" name="lastname" v-model="lastname">
-                <div class="error" v-if="lastnameEmpty">
+                </div>
+                <div class="flex flex-col w-1/3 mx-8">
+                <label for="lastname">{{ $t("message.lname") }}</label>
+                    <input type="text" name="lastname" v-model="lastname">
+                    <div class="error" v-if="lastnameEmpty">
                     {{ $t("message.plsEnterLname") }}
                     </div>
+                </div>
+            </div>
+
             <label for="email">Email</label>
                 <input type="email" name="email" v-model="email">
                 <div class="error" v-if="emailEmpty">
@@ -50,16 +58,19 @@
         </form>
 
     </div>
+    <CreateUserSVG />
 </template>
 
 <script>
 import axiosProvider from "../services/axiosConfigProvider"
 import localStorage from '../services/localStorageProvider'
 import store from '../store/index.js'
+import CreateUserSVG from '../subComponents/CreateUserSVG.vue'
 
 export default {
     name: 'CreateUser',
     components: {
+        CreateUserSVG
     },
     data(){
         return {
