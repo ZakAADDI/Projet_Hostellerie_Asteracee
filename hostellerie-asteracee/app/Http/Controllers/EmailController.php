@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 
 class EmailController extends Controller
 {
@@ -41,12 +42,17 @@ class EmailController extends Controller
             $roomType = RoomType::findOrFail($booking->getRoom()->firstOrFail()->room_type_id);
             $user = User::findOrFail($booking->user_id);
             $reveiverEmailAddress = $user->email;
+            $date1 = new DateTime($booking->starting_date);
+            $date2 = new DateTime($booking->ending_date);
+            $nbNights = $date2->diff($date1)->format("%a");
+
+            $occupants = $booking->occupants;
 
             $qr = New SimpleQRcodeController;
             $qr->generate($booking->id);
 
             $weatherAPI = Http::get('https://api.open-meteo.com/v1/dwd-icon?latitude=45.91&longitude=6.13&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&start_date='. $booking->starting_date .'&end_date=' . $booking->ending_date)->json();
-            Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType, $weatherAPI));
+            Mail::to($reveiverEmailAddress)->send(new BookingRecap($user,$booking,$options, $roomType, $weatherAPI, $occupants, $nbNights));
 
         }
 
