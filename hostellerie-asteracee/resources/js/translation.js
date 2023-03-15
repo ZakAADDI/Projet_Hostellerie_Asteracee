@@ -8,7 +8,7 @@ export const translations = {
             ourRooms: 'Our rooms',
             ourServices: 'Our services',
             contactUs: 'Contact us',
-            whoAreWe: 'Who are we',
+            whoAreWe: 'Who are we?',
             bookNow: 'Book now',
             arrivingDate: 'Arriving date',
             plsSelectArrivingDate: 'Please select an arriving date',
@@ -114,6 +114,11 @@ export const translations = {
             updateProfil: 'Update your profil',
             tellUsYourExp: 'Tell us your experience',
             addReview: 'Add review',
+            weAre: 'WE ARE',
+            opening: 'L\'HOSTELLERIE OPEN ITS DOORS',
+            texteOpening: 'Just completed, l\'Hostellerie de l\'Astéracée opened its doors on December 13, 2022. The first guests are captivated by the discovery of a high-end hotel, with a contemporary style.',
+            findUs: 'FIND US ON THE MAP'
+
         }
     },
     fr: {
@@ -125,7 +130,7 @@ export const translations = {
             ourRooms: 'Nos chambres',
             ourServices: 'Nos services',
             contactUs: 'Contactez-nous',
-            whoAreWe: 'Qui sommes nous',
+            whoAreWe: 'Qui sommes-nous ?',
             bookNow: 'Réservez maintenant',
             arrivingDate: 'Date d\'arrivée',
             plsSelectArrivingDate: 'Veuillez sélectionner une date d\'arrivée',
@@ -231,6 +236,11 @@ export const translations = {
             updateProfil: 'Mettre à jour votre profil',
             tellUsYourExp: 'Dites nous comment c\'est passé votre séjour',
             addReview: 'Ajouter un commentaire',
+            weAre:'NOUS SOMMES',
+            opening: 'L’HOSTELLERIE OUVRE SES PORTES',
+            texteOpening: 'À peine achevé, l\'Hostellerie de l\'Astéracée a ouvert ses portes le 13 Décembre 2022. Les premiers invités sont subjugués par la découverte d\’un hôtel haut de gamme, avec un style contemporain.',
+            findUs: 'RETROUVEZ-NOUS SUR LA CARTE',
+
         }
     }
 };

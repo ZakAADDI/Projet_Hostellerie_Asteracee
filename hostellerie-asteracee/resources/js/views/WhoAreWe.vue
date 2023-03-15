@@ -1,20 +1,20 @@
 <template>
     <div class="flex flex-col items-center justify-center grow text-center w-full mx-auto mt-[100px] mb-[100px]">
         <div class="mt-[40px]">
-            <h1 class="text-[30px] font-bold">À propos de nous</h1>
+            <h1 class="text-[30px] font-bold">{{$t("message.whoAreWe")}}</h1>
         </div>
 
         <div class="mt-[40px]">
-            <h1 class="text-[20px] font-bold">L’HOSTELLERIE OUVRE SES PORTES</h1> 
+            <h1 class="text-[20px] font-bold">{{$t("message.opening")}}</h1> 
         </div>
         
         <hr class="h-[3px] w-[200px] bg-[#E6B34B]">
         <hr class="h-[3px] w-[150px] bg-[#E6B34B]">
 
-        <p class="mt-[30px] text-[20px] w-[300px] sm:w-[500px] md:w-[750px] lg:w-[1000px]">À peine achevé, l'Hostellerie de l'Astéracée a ouvert ses portes le 13 Décembre 2022. <br> Les premiers invités sont subjugués par la découverte d’un hôtel haut de gamme, avec un style contemporain.</p>
+        <p class="mt-[30px] text-[20px] w-[300px] sm:w-[500px] md:w-[750px] lg:w-[1000px]">{{$t('message.texteOpening')}}</p>
 
         <div class="mt-[40px]">
-            <h1 class="text-[20px] font-bold">QUI SOMMES-NOUS ?</h1> 
+            <h1 class="text-[20px] font-bold">{{$t("message.weAre")}}</h1> 
         </div>
 
         <hr class="h-[3px] w-[200px] bg-[#E6B34B]">
@@ -49,7 +49,7 @@
         </div>
 
         <div class="mt-[30px]">
-            <h1 class="text-[20px] font-bold mt-[40px]">NOUS RETROUVER SUR LA CARTE</h1> 
+            <h1 class="text-[20px] font-bold mt-[40px]">{{$t('message.findUs')}}</h1> 
         </div>
         
         <hr class="h-[3px] w-[200px] bg-[#E6B34B]">
