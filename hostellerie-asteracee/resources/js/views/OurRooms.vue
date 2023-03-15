@@ -1,19 +1,22 @@
 <template>
-    <div class="flex flex-col items-center justify-center grow">
-        <h1>{{ $t("message.ourRooms") }}
-        </h1>
+    <div class="mt-[100px]">
+        <Rooms/>
         <!-- Dynamiser avec Section Axios -->
     </div>
 </template>
 
 <script>
+import Rooms from '../components/Rooms.vue';
+
 export default {
     name: 'OurRooms',
     components:{
+        Rooms
     }
 }
 </script>
 
 <style scoped>
+
 
 </style>

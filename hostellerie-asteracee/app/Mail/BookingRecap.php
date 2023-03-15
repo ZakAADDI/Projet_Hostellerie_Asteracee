@@ -59,28 +59,27 @@ class BookingRecap extends Mailable
     }
 
     /**
-     * Build the message.
-     *
-     * @return $this
+     * Build the message.                'duration' => $duration
+
      */
     public function build()
     {
         $weatherIconLink = '';
         switch ($this->weatherCode){
             case 0:
-                $weatherIconLink = Storage::temporaryUrl('weather/sunshine.png', now()->addMinutes(1));
+                $weatherIconLink = Storage::temporaryUrl('weather/sunshine.png', now()->addHours(72));
                 break;
             case 95||96||99:
-                $weatherIconLink = Storage::temporaryUrl('weather/thunderstorm.png', now()->addMinutes(1));
+                $weatherIconLink = Storage::temporaryUrl('weather/thunderstorm.png', now()->addHours(72));
                 break;
             case 61||63||65||66||67||80||81||82||51||53||55||56||57:
-                $weatherIconLink = Storage::temporaryUrl('weather/rainy-day.png', now()->addMinutes(1));
+                $weatherIconLink = Storage::temporaryUrl('weather/rainy-day.png', now()->addHours(72));
                 break;
             case 71||73||75||77||85||86:
-                $weatherIconLink = Storage::temporaryUrl('weather/snows.png', now()->addMinutes(1));
+                $weatherIconLink = Storage::temporaryUrl('weather/snows.png', now()->addHours(72));
                 break;
             case 1||2||3||45||48:
-                $weatherIconLink = Storage::temporaryUrl('weather/sun-cloud.png', now()->addMinutes(1));
+                $weatherIconLink = Storage::temporaryUrl('weather/sun-cloud.png', now()->addHours(72));
                 break;
         }
 
