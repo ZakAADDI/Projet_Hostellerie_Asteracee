@@ -1,6 +1,6 @@
 <template>
 
-    <div v-if="!localStorageExists" class="flex flex-col justify-center align-center grow mt-28 lg:mt-24">
+    <div v-if="!localStorageExists" class="z-10 flex flex-col justify-center align-center grow mt-28 lg:mt-24">
         <span class="text-center mb-6">Votre réservation est terminée</span>
         <button class="bg-[#E6B34B] p-4 rounded-md text-[#272023] mx-auto w-1/5">
             <router-link :to="{name:'Home'}">

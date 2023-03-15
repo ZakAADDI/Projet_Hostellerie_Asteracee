@@ -1,5 +1,5 @@
 <template>
-    <div class="newUser flex grow items-center">
+    <div class="newUser flex grow items-center z-10">
 
         <form @submit.prevent="newUser" class="flex flex-col border-4 border-[#E6B34B] w-2/5 mx-auto p-8 bg-[#272023] text-white">
          <h2 class="text-center">{{ $t("message.registerForm") }}</h2>

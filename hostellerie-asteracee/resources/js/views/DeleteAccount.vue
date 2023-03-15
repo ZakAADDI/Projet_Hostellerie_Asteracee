@@ -1,5 +1,5 @@
 <template>
-     <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
+     <div class="z-10 border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
     <div class="flex flex-col items-center justify-center">
         <h1>{{ $t("message.areYouSureDeleteAcc") }} ?
         </h1>

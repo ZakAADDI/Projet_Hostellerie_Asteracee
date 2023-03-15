@@ -1,5 +1,5 @@
 <template>
-    <div class="filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
+    <div class="z-10 filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
         <span class="lg:mt-28">{{ $t("message.step2") }}</span>
         <div class="flex mb-6 w-screen justify-center items-center">
             <div class="cercleOk"></div>
@@ -59,6 +59,7 @@ import FilteredRoomCard from '../components/FilteredRoomCard.vue'
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
 import Card from '../components/Card.vue'
+import { arrayExpression } from '@babel/types'
 export default {
     name: 'FilteredRooms',
     data(){
@@ -77,7 +78,24 @@ export default {
             this.userChoice.endingDate
         ]
 
-        this.rooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
+        this.allRooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
+        this.standardRooms = [];
+        this.luxeRooms = [];
+        this.suiteRooms = [];
+        this.allRooms.forEach(room => {
+            if(room.room_type.name == 'Standard'){
+                   this.standardRooms.push(room)
+            }
+            if(room.room_type.name == 'Luxe'){
+                   this.luxeRooms.push(room)
+            }
+            if(room.room_type.name == 'Suite'){
+                   this.suiteRooms.push(room)
+            }
+        });
+        this.rooms.push(this.standardRooms[0]);
+        this.rooms.push(this.luxeRooms[0]);
+        this.rooms.push(this.suiteRooms[0]);
     },
     methods:{
         removeData(event){

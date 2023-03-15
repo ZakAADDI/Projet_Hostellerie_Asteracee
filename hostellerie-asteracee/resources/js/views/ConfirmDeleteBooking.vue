@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center justify-center grow">
+    <div class="z-10 flex flex-col items-center justify-center grow">
         <h1>Confirm delete booking?</h1>
         <button @click="deleteBooking">Yes</button>
         <button @click="cancel">No</button>
@@ -21,7 +21,7 @@ export default {
             this.deleteBooking = await axiosProvider.postWithOutAuth('/deleteBookings/'+this.bookingId);
             if(this.deleteBooking.status == 200){
 
-            this.$router.push({name:'UserProfile'})
+            this.$router.push({name:'UserBookingsView'})
             }
 
         },

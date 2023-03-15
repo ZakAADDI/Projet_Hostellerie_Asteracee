@@ -86,7 +86,7 @@ export const translations = {
             bookingsWillBeDeleted: 'Your bookings will be deleted',
             deleteMyAcc: 'Delete my account',
             step2: 'Step 2 : Select your room',
-            yourBooking: 'Delete my account',
+            yourBooking: 'Your Bookings',
             step5: 'Step 5 : Booking summary',
             bookingSummary: 'Booking summary',
             totalAmountStay: 'Total of my stay',
@@ -101,7 +101,7 @@ export const translations = {
             updatePasswd: 'Update password',
             userNotFound: 'User not found',
             newPsswd: 'New password',
-            currentPaswwd: 'Current password',
+            currentPasswrd: 'Current password',
             plsEnterNewPsswd: 'Please enter new password',
             birthdate: 'Birthdate (mm-dd-yyyy)',
             profil: 'Profil',
@@ -114,6 +114,8 @@ export const translations = {
             updateProfil: 'Update your profil',
             tellUsYourExp: 'Tell us your experience',
             addReview: 'Add review',
+            welcomeCustomer: 'Welcome to your customer area',
+            noBookingfound : 'You have no booking'
         }
     },
     fr: {
@@ -231,6 +233,8 @@ export const translations = {
             updateProfil: 'Mettre à jour votre profil',
             tellUsYourExp: 'Dites nous comment c\'est passé votre séjour',
             addReview: 'Ajouter un commentaire',
+            welcomeCustomer : 'Bienvenue sur votre espace client',
+            noBookingfound : 'Vous n\'avez pas de réservations'
         }
     }
 };

@@ -1,5 +1,5 @@
 <template>
-    <div class="switchTo flex flex-col items-center justify-center grow">
+    <div class="z-10 switchTo flex flex-col items-center justify-center grow">
         <div class="content">
             <h1 >{{ $t("message.doYouWantToContinueInEnglish") }}</h1>
             <div class="buttons">

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center justify-center grow">
+    <div class="flex flex-col items-center justify-center grow z-10">
         <h1>{{ $t("message.whoAreWe") }}
         </h1>
     </div>
