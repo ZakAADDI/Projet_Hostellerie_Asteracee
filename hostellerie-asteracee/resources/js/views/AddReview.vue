@@ -106,13 +106,7 @@ export default {
         {
             "userId": this.userInfo.data.id
         }
-        this.bookings = (await axiosProvider.postWithOutAuth('/findUserBookings',this.body))?.data;
-        this.endedBookings = [];
-        this.bookings.forEach(booking => {
-            if(booking.status === 'ended'){
-                this.endedBookings.push(booking);
-            }
-        });
+        this.endedBookings = (await axiosProvider.postWithOutAuth('/findCommentableBooking',this.body))?.data;
     }
 }
 </script>

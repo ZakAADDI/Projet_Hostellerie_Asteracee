@@ -167,6 +167,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::get('/bookings/{id}', [BookingController::class, 'show']);
     Route::post('/findUserBookings', [BookingController::class,'findUserBookings']);
+    Route::post('/findCommentableBooking', [BookingController::class,'findCommentableBooking']);
 
 // Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/services/{id}', [ServiceController::class, 'show']);

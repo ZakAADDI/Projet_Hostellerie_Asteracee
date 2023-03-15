@@ -77,7 +77,7 @@ export default {
             this.userChoice.startingDate,
             this.userChoice.endingDate
         ]
-
+        console.log(this.parameters);
         this.allRooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
         this.standardRooms = [];
         this.luxeRooms = [];

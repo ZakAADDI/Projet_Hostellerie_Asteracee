@@ -62,7 +62,7 @@ class RoomRepository
         $roomArray = Booking::where('room_id', '=', $room_id)->whereRaw(
             "(starting_date <= ? AND ending_date > ?)",
             [$to, $from]
-        )->pluck('room_id')->toArray();
+        )->where('status','ongoing')->pluck('room_id')->toArray();
 
         return count($roomArray) == 0;
     }
