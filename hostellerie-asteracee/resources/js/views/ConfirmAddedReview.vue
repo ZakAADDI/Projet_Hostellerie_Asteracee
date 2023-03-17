@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center justify-center grow">
+    <div class="z-10 flex flex-col items-center justify-center grow">
         <span>Votre commentaire a bien été pris en compte</span>
         <span>Merci</span>
         <router-link :to="{ name: 'UserProfile' }" class=" text-[#E6B34B]">

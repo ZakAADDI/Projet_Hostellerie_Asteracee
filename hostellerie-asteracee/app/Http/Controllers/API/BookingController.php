@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BookingResource;
 use App\Http\Repositories\RoomRepository;
 use App\Models\Booking;
+use App\Models\Review;
 use App\Models\Room;
 use DateTime;
 use Illuminate\Http\Request;
@@ -148,6 +149,23 @@ class BookingController extends Controller
         ]);
         $id = $request->userId;
         $bookings = Booking::where('user_id', $id)->get();
+        return response()->json(BookingResource::Collection($bookings));
+    }
+
+     /**
+     * Display commentable booking by user id.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function findCommentableBooking(Request $request)
+    {
+        $this->validate($request, [
+            'userId' => 'int|max:6'
+        ]);
+        $id = $request->userId;
+        $commentedReviewsIds = Review::pluck('booking_id')->toArray();
+        $bookings = Booking::where('user_id',$id)->whereNotIn('id',$commentedReviewsIds)->where('status','ended')->get();
         return response()->json(BookingResource::Collection($bookings));
     }
 

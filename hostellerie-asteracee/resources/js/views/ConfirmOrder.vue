@@ -1,5 +1,5 @@
 <template>
-    <div class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
+    <div class="z-10 confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
 
     <div class="confirmOrder flex flex-col items-center grow mt-32 lg:mt-28">
         <span class="text-[#E6B34B] text-2xl">{{ $t("message.thx4Booking") }}</span>

@@ -1,5 +1,5 @@
 <template>
-    <div class="confirmUserIdentity flex flex-col grow mt-28 lg:mt-0">
+    <div class="z-10 confirmUserIdentity flex flex-col grow mt-28 lg:mt-0">
             <span class="text-center lg:mt-28">{{ $t("message.step4") }}</span>
 
         <div class="flex mb-6 w-screen justify-center items-center">

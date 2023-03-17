@@ -10,12 +10,19 @@
 
                 </div>
 
-                <!-- <img class="absolute ml-16 bottom-0 top-60" style="width:80px" src="../assets/images/LogoSVG.svg" alt="logo de l'hostellerie"> -->
             </div>
             <div class="flip-card-back">
                <div class="bg-[#E6B34B] text-[#272023] flex justify-start pl-4 w-3/4">{{ startingDate }} - {{ endingDate }}</div>
                <div>{{ roomDescription.description }}</div>
-                <div class="text-white ">total price {{ totalPrice }}€</div>
+               <span class="bg-[#E6B34B] text-[#272023]" v-if="language">Vos Options</span>
+               <span class="bg-[#E6B34B] text-[#272023]" v-if="!language">Your Options</span>
+                <ul>
+                    <li v-if="language" v-for="bookingOption in bookingOptions" :key=bookingOption.id> - {{ bookingOption.name.fr }}</li>
+
+                    <li v-if="!language" v-for="bookingOption in bookingOptions" :key=bookingOption.id> - {{ bookingOption.name.en }}</li>
+                </ul>
+                <div v-if="language" class="text-white ">Prix Total : {{ totalPrice }}€ ttc.</div>
+                <div v-if="!language" class="text-white ">Total Price : {{ totalPrice }}€ ati.</div>
 
                 <span v-if="status" class="modifyDelete">
                             <button @click="updateBooking">
@@ -37,6 +44,8 @@
 </template>
 
 <script>
+import localStorage from '../services/localStorageProvider'
+
 export default {
     name: 'BookingCard',
     props: {
@@ -46,7 +55,8 @@ export default {
         roomStatus: String,
         roomImg: Object,
         roomDescription: Object,
-        bookingId: Number
+        bookingId: Number,
+        bookingOptions: Object
     },created(){
         this.bookingStatus=this.$route.query.userBookings;
     },
@@ -57,6 +67,13 @@ export default {
         }else{
             return false;
         }
+        },
+        language(){
+            if(localStorage.get("language") == "fr"){
+                return true;
+             }else{
+                 return false;
+            }
         }
     },
     methods:{

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Repositories;
+
+use App\Models\Booking;
 use App\Models\Prestation;
 use App\Models\Room;
 use App\Models\RoomsPrestation;
@@ -20,7 +22,7 @@ class RoomRepository
         return DB::table('bookings')->whereRaw(
             "(starting_date <= ? AND ending_date > ?)",
             [$to, $from]
-        )->pluck('room_id')->toArray();
+        )->where('status','ongoing')->pluck('room_id')->toArray();
     }
 
     /**
@@ -57,10 +59,10 @@ class RoomRepository
      */
     public static function checkAvailableRoom($from, $to, $room_id)
     {
-        $roomArray = DB::table('bookings')->where('room_id', '=', $room_id)->whereRaw(
+        $roomArray = Booking::where('room_id', '=', $room_id)->whereRaw(
             "(starting_date <= ? AND ending_date > ?)",
             [$to, $from]
-        )->pluck('room_id')->toArray();
+        )->where('status','ongoing')->pluck('room_id')->toArray();
 
         return count($roomArray) == 0;
     }

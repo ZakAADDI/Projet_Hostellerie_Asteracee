@@ -86,7 +86,7 @@ export const translations = {
             bookingsWillBeDeleted: 'Your bookings will be deleted',
             deleteMyAcc: 'Delete my account',
             step2: 'Step 2 : Select your room',
-            yourBooking: 'Delete my account',
+            yourBooking: 'Your Bookings',
             step5: 'Step 5 : Booking summary',
             bookingSummary: 'Booking summary',
             totalAmountStay: 'Total of my stay',
@@ -101,7 +101,7 @@ export const translations = {
             updatePasswd: 'Update password',
             userNotFound: 'User not found',
             newPsswd: 'New password',
-            currentPaswwd: 'Current password',
+            currentPasswrd: 'Current password',
             plsEnterNewPsswd: 'Please enter new password',
             birthdate: 'Birthdate (mm-dd-yyyy)',
             profil: 'Profil',
@@ -114,11 +114,12 @@ export const translations = {
             updateProfil: 'Update your profil',
             tellUsYourExp: 'Tell us your experience',
             addReview: 'Add review',
+            welcomeCustomer: 'Welcome to your customer area',
+            noBookingfound : 'You have no booking'
             weAre: 'WE ARE',
             opening: 'L\'HOSTELLERIE OPEN ITS DOORS',
             texteOpening: 'Just completed, l\'Hostellerie de l\'Astéracée opened its doors on December 13, 2022. The first guests are captivated by the discovery of a high-end hotel, with a contemporary style.',
             findUs: 'FIND US ON THE MAP'
-
         }
     },
     fr: {
@@ -236,11 +237,12 @@ export const translations = {
             updateProfil: 'Mettre à jour votre profil',
             tellUsYourExp: 'Dites nous comment c\'est passé votre séjour',
             addReview: 'Ajouter un commentaire',
+            welcomeCustomer : 'Bienvenue sur votre espace client',
+            noBookingfound : 'Vous n\'avez pas de réservations'
             weAre:'NOUS SOMMES',
             opening: 'L’HOSTELLERIE OUVRE SES PORTES',
             texteOpening: 'À peine achevé, l\'Hostellerie de l\'Astéracée a ouvert ses portes le 13 Décembre 2022. Les premiers invités sont subjugués par la découverte d\’un hôtel haut de gamme, avec un style contemporain.',
             findUs: 'RETROUVEZ-NOUS SUR LA CARTE',
-
         }
     }
 };

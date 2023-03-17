@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center justify-center grow">
+    <div class="z-10 flex flex-col items-center justify-center grow">
         <h1>{{ $t("message.confirmBooking") }} ?</h1>
         <button @click="validate">{{ $t("message.yes") }}</button>
         <button @click="returnHome">{{ $t("message.no") }}</button>

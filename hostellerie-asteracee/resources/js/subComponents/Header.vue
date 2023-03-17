@@ -9,7 +9,7 @@
             v-on:click="changeTo">
             <img class="text-white mx-auto w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
             </a>
-            <input class="checkbox" type="checkbox" name="" id="" />
+            <input class="checkbox" type="checkbox" name="" id="checkbox"/>
             <div class="hamburger-lines">
               <span class="line line1"></span>
               <span class="line line2"></span>
@@ -22,15 +22,15 @@
         </div>
 
           <div class="menu-items">
-            <li><router-link :to="{name:'Home'}">{{ $t("message.home") }}</router-link></li>
-            <li><router-link v-if="!user" :to="{name:'Connexion'}">{{ $t("message.login") }}</router-link></li>
-            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}"> {{ $t("message.logout") }}</router-link></li>
-            <li><router-link v-if="user" :to="{name:'UserProfile'}">{{ $t("message.myAccount") }}</router-link></li>
+            <li><button @click="homeRoute">{{ $t("message.home") }}</button></li>
+            <li v-if="!user"><button @click="loginRoute">{{ $t("message.login") }}</button></li>
+            <li v-if="user"><button @click="logoutRoute"> {{ $t("message.logout") }}</button></li>
+            <li v-if="user"><button @click="userProfileRoute">{{ $t("message.myAccount") }}</button></li>
 
-            <li><router-link :to="{name:'OurRooms'}">{{ $t("message.ourRooms") }}</router-link></li>
-            <li><router-link :to="{name:'OurServices'}">{{ $t("message.ourServices") }}</router-link></li>
-            <li><router-link :to="{name:'Contact'}">{{ $t("message.contactUs") }}</router-link></li>
-            <li><router-link :to="{name:'WhoAreWe'}">{{ $t("message.whoAreWe") }}</router-link></li>
+            <li><button @click="ourRoomsRoute">{{ $t("message.ourRooms") }}</button></li>
+            <li><button @click="ourServicesRoute">{{ $t("message.ourServices") }}</button></li>
+            <li><button @click="contactRoute">{{ $t("message.contactUs") }}</button></li>
+            <li><button @click="whoAreWeRoute">{{ $t("message.whoAreWe") }}</button></li>
           </div>
         </div>
       </div>
@@ -84,8 +84,46 @@ export default {
     methods:{
         changeTo : function(){
             store.commit('removeLanguage');
+            document.getElementById("checkbox").checked = false
             this.$router.push({name:"SwitchTo"})
+        },
+        loginRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"Connexion"})
+        },
+        logoutRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"ConfirmLogout"})
+        },
+        homeRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"Home"})
+        },
+        userProfileRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"UserProfile"})
+        },
+        ourRoomsRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"OurRooms"})
+
+        },
+        ourServicesRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"OurServices"})
+
+        },
+        contactRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"Contact"})
+
+        },
+        whoAreWeRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"WhoAreWe"})
+
         }
+
     },
      async created(){
         this.medias = (await axiosProvider.get('/medias'))?.data;
@@ -132,6 +170,9 @@ export default {
 
 .navbar .nav-container li {
   list-style: none;
+}
+button{
+    color: white
 }
 
 .navbar .nav-container a {

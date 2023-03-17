@@ -11,7 +11,7 @@
         <div class="flex flex-col justify-center items-center">
             <p class="mt-2 text-center">{{ $t("message.price") }} : {{ roomPrice }} {{ $t("message.pricePerNightPerPers") }}</p>
             <div class="flex justify-between">
-               <span class="bg-[#E6B34B]" v-for="prestation in roomPrestations" :key=prestation.id >
+               <span class="bg-[#E6B34B] m-1" v-for="prestation in roomPrestations" :key=prestation.id >
                 <img :src=prestation.media_url :alt=prestation.media_alt class="fill-white">
             </span>
             </div>

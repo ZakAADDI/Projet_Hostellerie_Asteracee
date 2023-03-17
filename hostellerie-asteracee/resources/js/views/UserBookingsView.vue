@@ -1,11 +1,12 @@
 <template>
-         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
+         <div class="z-10 mb-2 border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
 
 
     <div class="flex flex-col items-center justify-center">
         <h1>{{ $t("message.yourBooking") }}
         </h1>
-        <div v-for="booking in bookings" :key=booking.id >
+        <div v-if="this.bookings.length == 0">{{ $t("message.noBookingfound") }}</div>
+        <div v-if="this.bookings.length > 0" v-for="booking in bookings" :key=booking.id >
             <BookingCard
                     :startingDate="booking.starting_date"
                     :endingDate="booking.ending_date"
@@ -14,7 +15,8 @@
                     :roomDescription="booking.room.room_type"
                     :roomImg="booking.room.room_type"
                     :roomPrestations="booking.room.prestations"
-                    :bookingId="booking.booking_id"/>
+                    :bookingId="booking.booking_id"
+                    :bookingOptions="booking.options"/>
         </div>
         </div>
 

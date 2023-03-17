@@ -1,8 +1,8 @@
 <template>
-    <div class="connexion flex flex-col justify-center grow items-center mt-24 mb-8">
+    <div class="z-10 connexion flex flex-col justify-center grow items-center mt-24 mb-8">
         <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3">
         <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
-        <span class="font-bold text-2xl">Bienvenue sur votre espace client</span>
+        <span class="font-bold text-2xl">{{ $t("message.welcomeCustomer") }}</span>
         <hr class="my-2 h-px border-1 border-[#E6B34B] w-1/4">
         <hr class="my-0 h-px border-2 border-[#E6B34B] w-1/3 mb-8">
         <div class="flex flex-col lg:flex-row lg:w-2/3 justify-center items-center border-t-4 border-t-[#E6B34B] bg-[#272023] text-white">
@@ -30,6 +30,7 @@
                 </router-link>
             </div>
         </div>
+        <ConnectSVG />
     </div>
 </template>
 
@@ -37,9 +38,11 @@
 import axios from 'axios'
 import localStorage from '../services/localStorageProvider'
 import store from '../store/index.js'
+import ConnectSVG from '../subComponents/ConnectSVG.vue'
 export default {
     name: 'Connexion',
     components:{
+        ConnectSVG
     },
     data()  {
         return {

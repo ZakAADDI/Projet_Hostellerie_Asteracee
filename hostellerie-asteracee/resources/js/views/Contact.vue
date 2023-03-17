@@ -1,6 +1,5 @@
 <template>
-    <div>
-
+    <div class="z-10 w-7/12 mx-auto">
     <div class="flex flex-col mt-12">
         <hr class="w-80 h-1.5 bg-[#E6B34B] mx-auto sm:w-11/12">
         <hr class="w-72 h-1 bg-[#E6B34B] mx-auto mt-0.5 sm:w-10/12">
@@ -27,15 +26,18 @@
 
         </form>
     </div>
+    <ContactSVG />
 </div>
 </template>
 
 <script>
 import emailjs from '@emailjs/browser';
+import ContactSVG from '../subComponents/ContactSVG.vue'
 
 export default {
     name: 'Contact',
     components: {
+        ContactSVG
     },
     data() {
         return {

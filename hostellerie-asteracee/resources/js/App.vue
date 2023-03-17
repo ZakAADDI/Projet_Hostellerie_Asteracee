@@ -62,7 +62,7 @@ export default {
         this.instagramLogo = this.iconSocial[17].url;
 
         // Footer Site Mapping
-        this.rooms = (await axiosProvider.get('/rooms'))?.data;
+        // this.rooms = (await axiosProvider.get('/rooms'))?.data;
         this.sectionRoom = this.rooms[0].section;
         this.services = (await axiosProvider.get('/services'))?.data;
         this.sectionService= this.services[0].section;

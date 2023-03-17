@@ -1,5 +1,5 @@
 <template>
-         <div class="border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
+         <div class="z-10 border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
 
         <h1>{{ $t("message.selectDate") }}</h1>
         <select name="date" id="date" v-model="bookingId" class="text-black">
@@ -84,7 +84,7 @@ export default {
                 this.bodyReviewEmtpy = true;
             }
             if(this.starRate == 0){
-                this.selectStarEmpty = true; 
+                this.selectStarEmpty = true;
             }
             if(!this.titleEmtpy && !this.bodyReviewEmpty && !this.selectStarEmpty){
                 this.datas =  {
@@ -96,8 +96,8 @@ export default {
             }
             this.response = (await axiosProvider.postWithOutAuth('/reviews', this.datas));
             this.$router.push({name: 'UserProfile'});
-           
-            
+
+
         }
     },
     async created(){
@@ -106,13 +106,7 @@ export default {
         {
             "userId": this.userInfo.data.id
         }
-        this.bookings = (await axiosProvider.postWithOutAuth('/findUserBookings',this.body))?.data;
-        this.endedBookings = [];
-        this.bookings.forEach(booking => {
-            if(booking.status === 'ended'){
-                this.endedBookings.push(booking);
-            }
-        });
+        this.endedBookings = (await axiosProvider.postWithOutAuth('/findCommentableBooking',this.body))?.data;
     }
 }
 </script>

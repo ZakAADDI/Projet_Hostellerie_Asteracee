@@ -4,8 +4,10 @@
         <!-- LOCATION -->
         <div class="flex-col justify-center items-center p-5 order-1">
             <div class="flex justify-center items-center p-5">
-                <img class="w-6 mr-3" src="../assets/images/icones/location.svg" alt="icone de localisation">
-                <p>{{ address }}</p>
+                <a class="flex" href="https://www.google.com/maps/place/Imp%C3%A9rial+Palace/@45.9037282,6.1446627,17z/data=!3m1!4b1!4m6!3m5!1s0x478b8fc2026b8489:0x764caf7cb2ddcdc9!8m2!3d45.9037282!4d6.1446627!16s%2Fg%2F1225qpmp?hl=fr" target="_blank">
+                    <img class="w-6 mr-3" src="../assets/images/icones/location.svg" alt="icone de localisation">
+                    <p>{{ address }}</p>
+                </a>
             </div>
             <div class="hidden sm:flex md:flex lg:flex xl:flex flex-col justify-center items-center">
                 <h5 >{{ $t("message.siteMap") }}</h5>
@@ -34,13 +36,19 @@
             </div>
             <div class="flex">
                 <span>
-                    <img :src=facebookLogo alt="facebook" class="mr-4">
+                    <a href="https://fr-fr.facebook.com/" target="_blank">
+                        <img :src=facebookLogo alt="facebook" class="mr-4">
+                    </a>
                 </span>
                 <span>
-                    <img :src=instagramLogo alt="instagram" class="mr-4">
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img :src=instagramLogo alt="instagram" class="mr-4">
+                    </a>
                 </span>
                 <span>
-                    <img :src=twitterLogo alt="twitter">
+                    <a href="https://twitter.com/?lang=fr" target="_blank">
+                        <img :src=twitterLogo alt="twitter">
+                    </a>
                 </span>
             </div>
         </div>

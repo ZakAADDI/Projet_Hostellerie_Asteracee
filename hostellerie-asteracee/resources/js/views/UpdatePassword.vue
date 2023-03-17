@@ -1,5 +1,5 @@
 <template>
-    <div class="password flex flex-col items-center justify-center grow bg-[#272023] w-11/12 mx-auto border-4 border-[#E6B34B] my-12">
+    <div class="z-10 password flex flex-col items-center justify-center grow bg-[#272023] w-11/12 mx-auto border-4 border-[#E6B34B] my-12">
         <form @submit.prevent="checkUser" class="flex flex-col justify-center items-center">
             <h1 class="text-white">{{ $t("message.updatePasswd") }}</h1>
             <div class="flex flex-col justify-center items-center">
