@@ -19,15 +19,13 @@ class RoomController extends Controller
     public function index(Request $request)
     {
         $startingDate = $request->input('starting');
+
         $endingDate = $request->input('ending');
 
         if ($startingDate && $endingDate){
-            $rooms = RoomRepository::getAvailableRooms($startingDate,$endingDate);
-        } else {
-            $rooms = Room::all();
-        }
 
-//        return response()->json($rooms);
+            $rooms = RoomRepository::getAvailableRooms($startingDate,$endingDate);
+        }
         return response()->json(RoomResource::Collection($rooms));
     }
 

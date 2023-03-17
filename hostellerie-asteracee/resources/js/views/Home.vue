@@ -27,6 +27,7 @@ import DealsBanner from '../subComponents/DealsBanner.vue'
 import BookingBanner from '../components/BookingBanner.vue'
 import Prestations from '../subComponents/Prestations.vue'
 import BannerTitle from '../subComponents/BannerTitle.vue'
+import storage from "../services/localStorageProvider";
 export default {
     name: 'Home',
     components: {
@@ -40,7 +41,13 @@ export default {
     BookingBanner,
     Prestations,
     BannerTitle
-}
+},
+    beforeCreate() {
+        if (storage.get("oldLanguage") !== storage.get("language")){
+            storage.set("oldLanguage",storage.get("language"))
+            window.location.reload();
+        }
+    }
 }
  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
  if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {

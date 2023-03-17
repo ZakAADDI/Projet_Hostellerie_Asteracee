@@ -1,9 +1,7 @@
 import {createStore} from "vuex";
 const store = createStore({
     state:{
-        user: [
-
-        ],
+        user: {},
         language:[
 
         ]
@@ -18,10 +16,10 @@ const store = createStore({
     },
     mutations:{
         addUser(state, newUser){
-                state.user.push({
+                state.user={
                     email: newUser.email,
                     token: newUser.token
-                })
+                }
             },
         addLanguage(state, newLanguage){
                 state.language.push({

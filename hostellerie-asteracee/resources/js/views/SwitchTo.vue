@@ -1,13 +1,10 @@
 <template>
-    <div class="switchTo flex flex-col items-center justify-center grow">
+    <div class="z-10 switchTo flex flex-col items-center justify-center grow">
         <div class="content">
-            <h1 v-if="!language">Voulez vous continuer en Français ?</h1>
-            <h1 v-if="language">Would you like to continue in English ?</h1>
+            <h1 >{{ $t("message.doYouWantToContinueInEnglish") }}</h1>
             <div class="buttons">
-                <a class="choice" v-if="!language" v-on:click="changeToFrench">Oui</a>
-                <a class="choice" v-if="language" v-on:click="changeToEnglish">Yes</a>
-                <button class="choice" v-if="language" v-on:click="noChange">Non</button>
-                <button class="choice" v-if="!language" v-on:click="noChange">No</button>
+                <a class="choice" v-on:click="changeTo">{{ $t("message.yes") }}</a>
+                <button class="choice" v-on:click="noChange">{{ $t("message.no") }}</button>
             </div>
 
 
@@ -17,7 +14,6 @@
 </template>
 
 <script>
-// import Header from '../subComponents/Header.vue';
 import storage from '../services/localStorageProvider';
 import store from '../store/index'
 export default {
@@ -25,30 +21,22 @@ export default {
     components: {
         // Header
     },
-    computed:{
-        language(){
-            const language = storage.get("language");
-            if(language == "fr"){
-                return true;
-            }else{
-                return false;
-            }
-        }
-    },
     methods:{
         noChange(){
             this.$router.push({name:'Home'})
         },
-        changeToFrench : function(){
-            storage.set("language", "fr");
-            this.language = 'fr';
-            store.commit('addLanguage', 'fr')
-            this.$router.push({name:"Home"})
-        },
-        changeToEnglish : function(){
-            storage.set("language", "en");
-            this.language = 'en';
-            store.commit('addLanguage', 'en')
+        changeTo : function(){
+            if (storage.get("language") === "fr"){
+                storage.set("language", "en");
+                storage.set("oldLanguage", "fr");
+                store.commit('addLanguage', 'en')
+            } else {
+                storage.set("language", "fr");
+                store.commit('addLanguage', 'fr')
+                storage.set("oldLanguage", "en");
+                store.commit('addLanguage', 'fr')
+            }
+
             this.$router.push({name:"Home"})
         }
     }

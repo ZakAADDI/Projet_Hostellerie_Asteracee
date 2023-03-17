@@ -44,8 +44,7 @@
 
 <!-- HIDDEN PREHEADER TEXT -->
 <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Open Sans, Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolor aliquid omnis consequatur est deserunt, odio neque blanditiis aspernatur, mollitia ipsa distinctio, culpa fuga obcaecati!
-</div>
+Confirmation de réservation</div>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
@@ -79,7 +78,7 @@
                         </td>
                         <td align="right" width="300">
                         <![endif]-->
-                        
+
                         <!--[if (gte mso 9)|(IE)]>
                         </td>
                         </tr>
@@ -97,7 +96,7 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
-                                    <img src="/hostellerie-asteracee/public/storage/images/classique_room.png" width="125" height="120" style="display: block; border: 0px;" /><br>
+                                    <img src="{{$logo}}" width="300" height="120" style="display: block; border: 0px;" /><br>
                                     <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
                                         Votre réservation à été enregistrée !
                                     </h2>
@@ -106,7 +105,7 @@
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                     <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                    {{$userName}}                                    
+                                    {{$userName}}
                                     </p>
                                 </td>
                             </tr>
@@ -119,11 +118,37 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td width="100%" align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-bottom: 3px solid #eeeeee; padding-top: 40px;" colspan="2">
+                                            Chambre
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
                                                 {{$roomName}}
                                             </td>
                                             <td width="25%" align="right" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
                                             <p>{{$roomPrice}}€</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                                Nombre de personnes
+                                            </td>
+                                            <td width="25%" align="right" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                            <p>x {{$occupants}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                                Nombre de nuits
+                                            </td>
+                                            <td width="25%" align="right" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                            <p>x {{$nbNights}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="100%" align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-bottom: 3px solid #eeeeee;" colspan="2">
+                                            Option(s)
                                             </td>
                                         </tr>
                                         <tr>
@@ -222,7 +247,7 @@
                 </tr>
                 <tr>
 {{--                    ---------------------------------- ICI BANDEAU---------------------------------------------------}}
-                    <td align="center" style=" padding: 35px; background-color: #E6B34B;" bgcolor="#1b9ba3">
+                    <td align="center" style=" padding: 35px; background-color: #E6B34B;">
                         <!--[if (gte mso 9)|(IE)]>
                         <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                         <tr>
@@ -232,7 +257,7 @@
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                                     <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
-                                        Visiter notre site internet en scannant le QR code.
+                <!-- TITRE QR CODE -->  Veuillez faire scanner le Code à la réception de l'hôtel lors de votre arrivée.
                                     </h2>
                                 </td>
                             </tr>
@@ -240,10 +265,26 @@
                                 <td align="center" style="padding: 25px 0 15px 0;">
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                            <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                <img src="./public/codes-qr/QR-site.svg" alt="e">
+                                            <td align="center" style="border-radius: 5px;">
+                            <!-- QR CODE -->    <img src="{{$qrcode}}" width="300" height="120" style="display: block; border: 0px;" />
                                             </td>
                                         </tr>
+
+                                        @if($showWeather)
+                                        <tr>
+                                            <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
+                                                <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
+                            <!-- TITRE MÉTÉO -->    Votre météo durant votre séjour
+                                                </h2>
+                                            </td>
+                                            <td align="center" style="border-radius: 5px;" bgcolor="white">
+                            <!-- MÉTÉO -->      <img src="{{$weatherIconLink}}" width="300" height="120" style="display: block; border: 0px;" />
+                                                <p>Température minimale {{ $tempMin }} °C</p>
+                                                <p>Température maximale {{ $tempMax }} °C</p>
+                                            </td>
+                                        </tr>
+                                        @endif
+
                                     </table>
                                 </td>
                             </tr>
@@ -276,7 +317,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                 <tr>
                     <td bgcolor="#ffffff" align="center" style="padding: 30px 30px 30px 30px; color: #666666; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
-                        <p style="margin: 0;">This email was built and tested with Litmus. <a href="https://litmus.com?utm_campaign=litmus_templates&utm_source=litmus_community&utm_medium=templates" style="color: #5db3ec;">What's Litmus?</a></p>
+
                     </td>
                 </tr>
             </table>

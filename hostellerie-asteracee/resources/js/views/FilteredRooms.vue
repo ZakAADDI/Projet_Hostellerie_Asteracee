@@ -1,7 +1,6 @@
 <template>
-    <div class="filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
-        <span v-if="language" class="lg:mt-28">Etape 2 : Sélection de votre chambre </span>
-        <span v-if="!language" class="lg:mt-28">Step 2 : Select your room </span>
+    <div class="z-10 filteredRooms flex flex-col items-center grow mt-28 lg:mt-0">
+        <span class="lg:mt-28">{{ $t("message.step2") }}</span>
         <div class="flex mb-6 w-screen justify-center items-center">
             <div class="cercleOk"></div>
                 <div class="smCercleOk"></div>
@@ -22,14 +21,11 @@
             <div class="cercle"></div>
         </div>
         <div class="bg-[#272023] text-white border-t-4 border-t-[#E6B34B] flex flex-col items-center p-6 justify-center">
-        <span v-if="language" class="text-[#E6B34B] text-2xl">Votre réservation : </span>
-        <span v-if="!language" class="text-[#E6B34B] text-2xl">Your booking : </span>
-            <span v-if="language"> Du {{ this.userChoice.startingDate}} au {{ this.userChoice.endingDate}} pour {{ this.userChoice.occupants }} pers.</span>
-            <span v-if="!language"> From {{ this.userChoice.startingDate}} to {{ this.userChoice.endingDate}} for {{ this.userChoice.occupants }} pers.</span>
+        <span class="text-[#E6B34B] text-2xl">{{ $t("message.yourBooking") }} : </span>
+            <span> {{ $t("message.from") }} {{ this.userChoice.startingDate}} {{ $t("message.to") }} {{ this.userChoice.endingDate}} {{ $t("message.for") }} {{ this.userChoice.occupants }} {{ $t("message.pers") }}</span>
 
         </div>
-        <button v-if="language" class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">Annuler ma recherche</button>
-        <button v-if="!language" class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">Cancel</button>
+        <button class="mt-4 bg-red-500 p-2 rounded-md text-[#272023] mb-6" @click="removeData">{{ $t("message.cancel") }}</button>
         <div class="flex flex-col justify-center items-center lg:flex-row lg:flex-wrap" v-for="room in rooms" :key=room.id>
             <Card
             :title="room.room_type.name"
@@ -63,6 +59,7 @@ import FilteredRoomCard from '../components/FilteredRoomCard.vue'
 import localStorage from '../services/localStorageProvider'
 import axiosProvider from '../services/axiosConfigProvider'
 import Card from '../components/Card.vue'
+import { arrayExpression } from '@babel/types'
 export default {
     name: 'FilteredRooms',
     data(){
@@ -80,8 +77,25 @@ export default {
             this.userChoice.startingDate,
             this.userChoice.endingDate
         ]
-
-        this.rooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
+        console.log(this.parameters);
+        this.allRooms = (await axiosProvider.getWithParameters('/rooms',this.parameters))?.data;
+        this.standardRooms = [];
+        this.luxeRooms = [];
+        this.suiteRooms = [];
+        this.allRooms.forEach(room => {
+            if(room.room_type.name == 'Standard'){
+                   this.standardRooms.push(room)
+            }
+            if(room.room_type.name == 'Luxe'){
+                   this.luxeRooms.push(room)
+            }
+            if(room.room_type.name == 'Suite'){
+                   this.suiteRooms.push(room)
+            }
+        });
+        this.rooms.push(this.standardRooms[0]);
+        this.rooms.push(this.luxeRooms[0]);
+        this.rooms.push(this.suiteRooms[0]);
     },
     methods:{
         removeData(event){
@@ -89,15 +103,6 @@ export default {
             localStorage.unset("userChoice");
             localStorage.unset("cartRoom");
             this.$router.push({ name: 'Home'});
-        }
-    },
-    computed:{
-         language(){
-            if(localStorage.get("language") == "fr"){
-                return true;
-             }else{
-                 return false;
-            }
         }
     }
 }

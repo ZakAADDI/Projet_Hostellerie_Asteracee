@@ -15,7 +15,9 @@ class Booking extends Model
         'starting_date',
         'ending_date',
         'status',
-        'total_price'
+        'total_price',
+        'occupants',
+        'is_confirmed'
     ];
 
     public function getRoom(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -32,4 +34,10 @@ class Booking extends Model
     {
         return $this->hasMany(BookingOption::class,'booking_id');
     }
+
+    public function getReview(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Review::class);
+    }
+
 }

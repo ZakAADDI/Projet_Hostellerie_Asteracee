@@ -18,6 +18,7 @@ use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +46,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         // REVIEWS
         Route::post('/reviews', [ReviewController::class, 'store']);
-        Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
         Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
         // HEROES
@@ -81,17 +81,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::delete('/users/{id}', [UserController::class, 'destroy']);
         Route::post('/checkUser/{id}', [UserController::class, 'checkUser']);
         Route::post('/updatePassword/{id}', [UserController::class, 'updatePassword']);
+        Route::get('/user/info', [Authcontroller::class, 'getUserInfo']);
 
 
         // BOOKINGS
         Route::post('/bookings', [BookingController::class, 'store']);
-        Route::patch('/bookings/{id}', [BookingController::class, 'update']);
-        Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
-
+        Route::post('/bookings/{id}', [BookingController::class, 'update']);
+        Route::post('/deleteBookings/{id}', [BookingController::class, 'destroy']);
+        Route::get('/bookings/confirm/{id}', [BookingController::class, 'confirmBooking']);
 
         // BOOKINGS_OPTIONS
         Route::post('/bookingOptions', [BookingOptionController::class, 'store']);
-        Route::patch('/bookingOptions/{id}', [BookingOptionController::class, 'update']);
+        Route::post('/bookingOptions/{id}', [BookingOptionController::class, 'update']);
         Route::delete('/bookingOptions/{id}', [BookingOptionController::class, 'destroy']);
 
 
@@ -112,6 +113,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMSPRESTATION
         Route::post('/roomPrestations',[RoomsPrestationController::class,'store']);
         Route::patch('/roomPrestations/{id}',[RoomsPrestationController::class,'update']);
+
+        // EMAIL
+        Route::post('/sendBookingRecap',[EmailController::class,'sendBookingRecap']);
 
 });
 
@@ -162,6 +166,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 // BOOKING
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::get('/bookings/{id}', [BookingController::class, 'show']);
+    Route::post('/findUserBookings', [BookingController::class,'findUserBookings']);
+    Route::post('/findCommentableBooking', [BookingController::class,'findCommentableBooking']);
 
 // Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/services/{id}', [ServiceController::class, 'show']);

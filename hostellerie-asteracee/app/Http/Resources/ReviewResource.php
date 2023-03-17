@@ -14,7 +14,8 @@ class ReviewResource extends JsonResource
      */
     public function toArray($request)
     {
-        $user = $this->getUser;
+        $user = $this->getBooking->getUser;
+
         return [
             'id' => $this->id,
             'title' => $this->title,

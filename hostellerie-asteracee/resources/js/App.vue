@@ -1,11 +1,8 @@
 <template>
-
     <div class="flex flex-col h-screen">
         <Header />
 
-
         <router-view/>
-
 
         <Footer
         :twitterLogo="this.twitterLogo"
@@ -25,6 +22,8 @@ import axiosProvider from "../js/services/axiosConfigProvider"
 import localStorage from '../js/services/localStorageProvider'
 import Header from './subComponents/Header.vue';
 import Footer from './subComponents/Footer.vue';
+import store from '../js/store/index'
+
 export default {
     name: "App.vue",
      data(){
@@ -45,9 +44,8 @@ export default {
         Footer
     },
     created() {
-        if(this.currentLanguage = localStorage.get("language") == ''){
-            this.currentLanguage = localStorage.set("language", "fr");
-        }
+        localStorage.set("language", "fr");
+        localStorage.set("oldLanguage", "fr")
 
     },
     async created(){
@@ -64,7 +62,7 @@ export default {
         this.instagramLogo = this.iconSocial[17].url;
 
         // Footer Site Mapping
-        this.rooms = (await axiosProvider.get('/rooms'))?.data;
+        // this.rooms = (await axiosProvider.get('/rooms'))?.data;
         this.sectionRoom = this.rooms[0].section;
         this.services = (await axiosProvider.get('/services'))?.data;
         this.sectionService= this.services[0].section;
@@ -74,7 +72,12 @@ export default {
         if(this.currentUser != undefined || this.currentUser != null){
                         setInterval(function(){localStorage.unset("user")}, 7200000);
                     }
-
+    },
+    async mounted(){
+        this.userInfo =  await axiosProvider.get('/user/info');
+        if(this.userInfo.data == ""){
+            store.removeUser();
+        }
     }
 }
 </script>

@@ -106,11 +106,18 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        $token = $request->token;
-        $response = SanctumPersonalAccessToken::findToken($token)->delete();
-        Auth::logout();
+        $user = Auth::user();
+        $user->tokens()->delete();
+        Auth::guard('web')->logout();
+        return response()->json(['ok ']);
+    }
+
+    public function getUserInfo()
+    {
+        $response = Auth::user();
         return $response;
+
     }
 }

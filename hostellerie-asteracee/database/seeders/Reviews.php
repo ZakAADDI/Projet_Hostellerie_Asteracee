@@ -20,7 +20,7 @@ class Reviews extends Seeder
                 Restaurants de qualité.',
                 'title' => 'Week-end en famille',
                 'score' => 5,
-                'user_id' => 1,
+                'booking_id' => 1,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -29,7 +29,7 @@ class Reviews extends Seeder
                 Bonne table , cuisine créative et service impeccable. Un menu a42€ avec un grand choix permis la carte. Comportant entrée + plat+dessert ( sous forme de buffet ( grand choix de pâtisserie et salade de fruits)). Je conseille',
                 'title' => 'Très bonne brasserie',
                 'score' => 5,
-                'user_id' => 1,
+                'booking_id' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -40,7 +40,7 @@ class Reviews extends Seeder
                 A part cela,nous avons été ravis de notre séjour!',
                 'title' => 'Qq critiques',
                 'score' => 4,
-                'user_id' => 1,
+                'booking_id' => 3,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -49,7 +49,7 @@ class Reviews extends Seeder
                 Étant donné le standing de l’établissement il est inadmissible que certains employés se comportent de cette manière',
                 'title' => 'Employés de la sécurité impolis',
                 'score' => 3,
-                'user_id' => 1,
+                'booking_id' => 4,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -59,10 +59,10 @@ class Reviews extends Seeder
                 Les chambres sont plutôt petites et mériteraient d’avoir une porte de séparation pour les WC et salle de bain qui donnent sur un petit couloir non fermé Directement ouvert sur les Chambres Donc peu d’intimité en couple.',
                 'title' => 'Déçus par les chambres',
                 'score' => 3,
-                'user_id' => 1,
+                'booking_id' => 5,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
-            ],
+            ]
 
         ];
         Review::insert($datas);

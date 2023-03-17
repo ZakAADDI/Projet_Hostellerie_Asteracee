@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','content','score','user_id'];
+    protected $fillable = ['title','content','score','booking_id'];
 
-    public function getUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function getBooking(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(Booking::class,'booking_id','id');
     }
 }

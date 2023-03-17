@@ -19,6 +19,14 @@ import ConfirmLogout from '../views/ConfirmLogout.vue'
 import WhoAreWe from '../views/WhoAreWe.vue'
 import OurRooms from '../views/OurRooms.vue'
 import OurServices from '../views/OurServices.vue'
+import DeleteAccount from '../views/DeleteAccount.vue'
+import UserBookingsView from '../views/UserBookingsView.vue'
+import AddReview from '../views/AddReview.vue'
+import ConfirmBooking from '../views/ConfirmBooking.vue'
+import ConfirmAddedReview from '../views/ConfirmAddedReview.vue'
+import UpdateBooking from '../views/UpdateBooking.vue'
+import ConfirmDeleteBooking from '../views/ConfirmDeleteBooking.vue'
+
 
 const routes = [
   {
@@ -57,6 +65,11 @@ const routes = [
     component: ConfirmCreatedAccount
   },
   {
+    path: '/deleteAccount',
+    name: 'DeleteAccount',
+    component: DeleteAccount
+  },
+  {
     path: '/somethingWentWrong',
     name: 'SomethingWentWrong',
     component: SomethingWentWrong
@@ -87,14 +100,44 @@ const routes = [
     component: ConfirmOrder
   },
   {
+    path: '/confirmAddedReview',
+    name: 'ConfirmAddedReview ',
+    component: ConfirmAddedReview
+  },
+  {
+    path: '/confirmBooking',
+    name: 'ConfirmBooking',
+    component: ConfirmBooking
+  },
+  {
     path: '/updateUser',
     name: 'UpdateUser',
     component: UpdateUser
   },
   {
+    path: '/updateBooking',
+    name: 'UpdateBooking',
+    component: UpdateBooking
+  },
+  {
+    path: '/confirmDeleteBooking',
+    name: 'ConfirmDeleteBooking',
+    component: ConfirmDeleteBooking
+  },
+  {
     path: '/userProfile',
     name: 'UserProfile',
     component: UserProfile
+  },
+  {
+    path: '/addReview',
+    name: 'AddReview',
+    component: AddReview
+  },
+  {
+    path: '/userBookingsView',
+    name: 'UserBookingsView',
+    component: UserBookingsView
   },
   {
     path: '/updatePassword',

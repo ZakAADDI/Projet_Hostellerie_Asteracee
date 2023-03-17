@@ -8,16 +8,6 @@ const axiosProvider = {
         return axios.get(axiosProvider.baseUrl + endpoint, axiosProvider.getConfig());
     },
 
-    postWithAuth: async (endpoint, body) => {
-        const token = storage.get("user")[1]
-        const option = {
-            headers: {
-                Authorization: 'Bearer ' + token
-            }
-    }
-    const response = axios.post(axiosProvider.baseUrl + endpoint, body,option);
-    return response;
-    },
     postWithOutAuth: async (endpoint, body) => {
         return axios.post(axiosProvider.baseUrl + endpoint, body)
 
@@ -43,6 +33,14 @@ const axiosProvider = {
         return {
             headers: {"Accept-Language": storage.get("language")}
         }
+    },
+
+    patch: async (endpoint, body)=>{
+        return axios.patch(axiosProvider.baseUrl + endpoint, body)
+    },
+
+    del: async (endpoint)=>{
+        return axios.delete(axiosProvider.baseUrl + endpoint,)
     }
 }
 

@@ -22,7 +22,7 @@ class User extends \TCG\Voyager\Models\User
         'lastname',
         'avatar',
         'gender',
-        'birthdate',
+        'birth_date',
         'loyalty',
         'address',
         'name',
@@ -49,11 +49,6 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getReviews(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Review::class,'user_id');
-    }
 
     public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

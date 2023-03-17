@@ -9,7 +9,7 @@
             v-on:click="changeTo">
             <img class="text-white mx-auto w-10" src="../assets/EngFrFlag.png" alt="English Flag" >
             </a>
-            <input class="checkbox" type="checkbox" name="" id="" />
+            <input class="checkbox" type="checkbox" name="" id="checkbox"/>
             <div class="hamburger-lines">
               <span class="line line1"></span>
               <span class="line line2"></span>
@@ -22,14 +22,15 @@
         </div>
 
           <div class="menu-items">
-            <li><router-link :to="{name:'Home'}">Accueil</router-link></li>
-            <li><router-link v-if="!user" :to="{name:'Connexion'}">Se connecter</router-link></li>
-            <li><router-link v-if="user" :to="{name:'ConfirmLogout'}">Se déconnecter</router-link></li>
-            <li><router-link :to="{name:'OurRooms'}">Nos Chambres</router-link></li>
-            <li><router-link :to="{name:'OurServices'}">Nos Services</router-link></li>
-            <li><a href="#">Les prestations</a></li>
-            <li><router-link :to="{name:'Contact'}">Nous contacter</router-link></li>
-            <li><router-link :to="{name:'WhoAreWe'}">Qui sommes nous ?</router-link></li>
+            <li><button @click="homeRoute">{{ $t("message.home") }}</button></li>
+            <li v-if="!user"><button @click="loginRoute">{{ $t("message.login") }}</button></li>
+            <li v-if="user"><button @click="logoutRoute"> {{ $t("message.logout") }}</button></li>
+            <li v-if="user"><button @click="userProfileRoute">{{ $t("message.myAccount") }}</button></li>
+
+            <li><button @click="ourRoomsRoute">{{ $t("message.ourRooms") }}</button></li>
+            <li><button @click="ourServicesRoute">{{ $t("message.ourServices") }}</button></li>
+            <li><button @click="contactRoute">{{ $t("message.contactUs") }}</button></li>
+            <li><button @click="whoAreWeRoute">{{ $t("message.whoAreWe") }}</button></li>
           </div>
         </div>
       </div>
@@ -45,13 +46,16 @@
         <div class="flex-row w-48">
 
             <router-link :to="{ name: 'Contact' }" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Nous Contacter
+                {{ $t("message.contactUs") }}
             </router-link>
             <router-link :to="{ name: 'Connexion' }" v-if="!user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Connexion
+                {{ $t("message.login") }}
+            </router-link>
+            <router-link :to="{ name: 'UserProfile' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
+                {{ $t("message.myAccount") }}
             </router-link>
             <router-link :to="{ name: 'ConfirmLogout' }" v-if="user" class="mr-8 text-white hover:text-[#E6B34B] duration-700 w-48 flex flex-col justify-center items-center">
-                Deconnexion
+                {{ $t("message.logout") }}
             </router-link>
 
         </div>
@@ -73,28 +77,65 @@ export default {
     name: 'Header',
     data(){
         return{
-            logoHeader: ''
+            logoHeader: '',
+            userInfos: []
         }
-    },
-    components: {
-
     },
     methods:{
         changeTo : function(){
             store.commit('removeLanguage');
+            document.getElementById("checkbox").checked = false
             this.$router.push({name:"SwitchTo"})
+        },
+        loginRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"Connexion"})
+        },
+        logoutRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"ConfirmLogout"})
+        },
+        homeRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"Home"})
+        },
+        userProfileRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"UserProfile"})
+        },
+        ourRoomsRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"OurRooms"})
+
+        },
+        ourServicesRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"OurServices"})
+
+        },
+        contactRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"Contact"})
+
+        },
+        whoAreWeRoute(){
+            document.getElementById("checkbox").checked = false
+            this.$router.push({name:"WhoAreWe"})
+
         }
+
     },
      async created(){
         this.medias = (await axiosProvider.get('/medias'))?.data;
         this.logoHeader = this.medias[6].url;
         this.language = localStorage.get('language');
         store.commit('addLanguage', this.language)
+        this.userData = store.oneUser;
     },
-
     computed:{
         user(){
-            if(store.state.user.length >0){
+            this.userData = store.state.user;
+            if(this.userData.email){
                 return true;
             }else{
                 return false;
@@ -129,6 +170,9 @@ export default {
 
 .navbar .nav-container li {
   list-style: none;
+}
+button{
+    color: white
 }
 
 .navbar .nav-container a {

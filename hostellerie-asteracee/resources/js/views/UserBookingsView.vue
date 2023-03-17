@@ -1,0 +1,68 @@
+<template>
+         <div class="z-10 mb-2 border-4 border-[#E6B34B] bg-[#272023] text-white flex flex-col justify-center items-center mt-6 mx-6 lg:w-1/2 lg:mx-auto grow">
+
+
+    <div class="flex flex-col items-center justify-center">
+        <h1>{{ $t("message.yourBooking") }}
+        </h1>
+        <div v-if="this.bookings.length == 0">{{ $t("message.noBookingfound") }}</div>
+        <div v-if="this.bookings.length > 0" v-for="booking in bookings" :key=booking.id >
+            <BookingCard
+                    :startingDate="booking.starting_date"
+                    :endingDate="booking.ending_date"
+                    :totalPrice="booking.total_price"
+                    :roomStatus="booking.status"
+                    :roomDescription="booking.room.room_type"
+                    :roomImg="booking.room.room_type"
+                    :roomPrestations="booking.room.prestations"
+                    :bookingId="booking.booking_id"
+                    :bookingOptions="booking.options"/>
+        </div>
+        </div>
+
+    </div>
+</template>
+
+<script>
+import BookingCard from '../components/BookingCard.vue'
+import axiosProvider from '../services/axiosConfigProvider'
+
+export default {
+    name: 'UserBookingsView',
+    data: function(){
+        return{
+            bookings : this.$route.params.userBookings,
+        }
+    },
+    components:{
+      BookingCard
+    },
+    async created(){
+        this.currentUser = (await axiosProvider.get('/user/info')).data;
+        this.userId = this.currentUser.id;
+        this.body =
+        {
+            "userId": this.userId
+        }
+        this.bookings = (await axiosProvider.postWithOutAuth('/findUserBookings',this.body))?.data;
+        this.runningBookings = [];
+        this.endedBookings = [];
+        this.bookings.forEach(booking => {
+            if(booking.status === 'ended'){
+                this.endedBookings.push(booking);
+            }
+            if(booking.status === 'ongoing'){
+                this.runningBookings.push(booking);
+            }
+        });
+
+        this.bookingStatus=this.$route.query.userBookings;
+        if(this.bookingStatus === 'running'){
+            this.bookings = this.runningBookings
+        }else{
+            this.bookings = this.endedBookings
+        }
+
+    }
+}
+</script>
