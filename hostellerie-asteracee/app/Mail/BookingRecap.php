@@ -28,14 +28,15 @@ class BookingRecap extends Mailable
     public float $tempMax;
     public int $weatherCode;
     public bool $showWeather;
-
+    public int $occupants;
+    public int $nbNights;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, Booking $booking, $options, RoomType $roomType, array $weatherAPI)
+    public function __construct(User $user, Booking $booking, $options, RoomType $roomType, array $weatherAPI, int $occupants, int $nbNights)
     {
         $this->booking = $booking;
         $this->user = $user;
@@ -43,6 +44,9 @@ class BookingRecap extends Mailable
         $this->room_type = $roomType;
         $this->logo = Storage::temporaryUrl('LogoHeader.png', now()->addHours(72));
         $this->qrcode = Storage::temporaryUrl('qr-code/'.$booking->id.'.png', now()->addHours(72));
+
+        $this->occupants = $occupants;
+        $this->nbNights = $nbNights;
 
         $diffDate = Carbon::now()->diffInDays(Carbon::createFromFormat('Y-m-d',$booking->starting_date)->toDateTimeString());
         $this->showWeather = $diffDate<6;
@@ -59,7 +63,7 @@ class BookingRecap extends Mailable
     }
 
     /**
-     * Build the message.                'duration' => $duration
+     * Build the message.
 
      */
     public function build()
@@ -93,7 +97,9 @@ class BookingRecap extends Mailable
                 'roomName' => $this->room_type->name,
                 'roomPrice' => $this->room_type->price,
                 'options' => $this->options,
-                'weatherIconLink'=> $weatherIconLink
+                'weatherIconLink' => $weatherIconLink,
+                'occupants' => $this->booking->occupants,
+                'nbNights' => $this->nbNights,
             ]);
     }
 }
