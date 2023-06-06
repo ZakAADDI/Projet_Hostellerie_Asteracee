@@ -1,25 +1,27 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\API\NfcController;
 use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\API\BookingController;
-use App\Http\Controllers\API\BookingOptionController;
-use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\DealController;
 use App\Http\Controllers\API\HeroController;
 use App\Http\Controllers\API\InfoController;
+use App\Http\Controllers\API\RoomController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\MediaController;
 use App\Http\Controllers\API\OptionController;
-use App\Http\Controllers\API\PrestationController;
 use App\Http\Controllers\API\ReviewController;
-use App\Http\Controllers\API\RoomController;
-use App\Http\Controllers\API\RoomsPrestationController;
-use App\Http\Controllers\API\RoomTypeController;
+use App\Http\Controllers\API\BookingController;
+use App\Http\Controllers\API\ContactController;
+use App\Http\Controllers\API\HistoryController;
+use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
-use App\Http\Controllers\API\UserController;
-use App\Http\Controllers\API\ProfileController;
-use App\Http\Controllers\EmailController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\RoomTypeController;
+use App\Http\Controllers\API\PrestationController;
+use App\Http\Controllers\API\BookingOptionController;
+use App\Http\Controllers\API\RoomsPrestationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -196,4 +198,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/roomPrestations', [RoomsPrestationController::class,'index']);
     Route::get('/roomPrestations/{id}', [RoomsPrestationController::class,'show']);
 
+// NFC
+    Route::get('/nfc', [NfcController::class,'index']);
+    Route::get('/nfc/{id}', [NfcController::class,'show']);
+    Route::patch('/nfc/{id}', [NfcController::class,'updateEndedAt']);
+
+// HISTORY
+    Route::get('/history', [HistoryController::class,'index']);
+    Route::get('/history/{id}', [HistoryController::class,'show']);
+    
 });
