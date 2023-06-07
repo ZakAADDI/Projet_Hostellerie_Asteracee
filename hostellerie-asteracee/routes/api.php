@@ -22,6 +22,7 @@ use App\Http\Controllers\API\RoomTypeController;
 use App\Http\Controllers\API\PrestationController;
 use App\Http\Controllers\API\BookingOptionController;
 use App\Http\Controllers\API\RoomsPrestationController;
+use App\Http\Controllers\API\SecurityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -202,9 +203,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/nfc', [NfcController::class,'index']);
     Route::get('/nfc/{id}', [NfcController::class,'show']);
     Route::patch('/nfc/{id}', [NfcController::class,'updateEndedAt']);
+    Route::post('/nfc', [NfcController::class,'store']);
 
 // HISTORY
     Route::get('/history', [HistoryController::class,'index']);
     Route::get('/history/{id}', [HistoryController::class,'show']);
-    
+
+// SECURITY
+    Route::post('/openDoor', [SecurityController::class,'openDoor']);
+
 });

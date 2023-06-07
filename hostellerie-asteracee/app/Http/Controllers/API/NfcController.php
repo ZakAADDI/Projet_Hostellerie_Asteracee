@@ -26,11 +26,18 @@ class NfcController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $nfc = new Nfc;
+
+        $nfc->hash = md5($request->booking_id);
+        $nfc->booking_id = $request->booking_id;
+
+        $nfc->save();
+
+        return response()->json(NfcResource::make($nfc),201);
     }
 
     /**
