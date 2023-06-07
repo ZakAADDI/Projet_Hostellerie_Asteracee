@@ -7,6 +7,7 @@ use App\Models\Nfc;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\History;
 
 class SecurityController extends Controller
 {
@@ -18,14 +19,21 @@ class SecurityController extends Controller
      */
     public function openDoor(Request $request)
     {
+        $now = Carbon::now();
         $nfc = Nfc::where('hash', '=', $request->hash)->firstOrFail();
+
         $booking = Booking::findOrFail($nfc->booking_id);
-        $now = Carbon::today();
+        $today = Carbon::today();
         $endingDate = Carbon::create($booking->ending_date);
 
         if(($booking->room_id == $request->room_id)
-         && ($endingDate->greaterThanOrEqualTo($now))
-         ){ return true;}
+         && ($endingDate->greaterThanOrEqualTo($today))
+         ){ 
+            $history = new History();
+            $history->used_at = $now;
+            $history->nfc_id = $nfc->id;
+            $history->save();
+            return true;}
          return false;
     }
 }

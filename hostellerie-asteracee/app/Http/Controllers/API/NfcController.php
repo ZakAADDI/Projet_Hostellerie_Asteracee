@@ -30,14 +30,18 @@ class NfcController extends Controller
      */
     public function store(Request $request)
     {
-        $nfc = new Nfc;
+        $nfcCards = Nfc::Where('booking_id', '=', $request->booking_id)->get();
+        //dd(count($nfcCards));
+        if (count($nfcCards) < 2) {
+            $nfc = new Nfc;
+            $now = Carbon::now();
+            $nfc->hash = md5($request->booking_id . $now);
+            $nfc->booking_id = $request->booking_id;
 
-        $nfc->hash = md5($request->booking_id);
-        $nfc->booking_id = $request->booking_id;
-
-        $nfc->save();
-
-        return response()->json(NfcResource::make($nfc),201);
+            $nfc->save();
+            return response()->json(NfcResource::make($nfc), 201);
+        }
+        return response()->json("too many cards already created!", 401);
     }
 
     /**
@@ -62,11 +66,10 @@ class NfcController extends Controller
     public function updateEndedAt(Request $request, $id)
     {
         $nfc = Nfc::findOrFail($id);
-        if($nfc->ended_at == null){
+        if ($nfc->ended_at == null) {
             $nfc->ended_at = Carbon::now();
             $nfc->save();
         }
         return response()->json(NfcResource::make($nfc));
     }
-
 }
