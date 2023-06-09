@@ -41,7 +41,7 @@ use App\Http\Controllers\API\SecurityController;
 Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+//Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMS
         Route::post('/rooms', [RoomController::class, 'store']);
         Route::patch('/rooms/{id}', [RoomController::class, 'update']);
@@ -92,6 +92,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/bookings/{id}', [BookingController::class, 'update']);
         Route::post('/deleteBookings/{id}', [BookingController::class, 'destroy']);
         Route::get('/bookings/confirm/{id}', [BookingController::class, 'confirmBooking']);
+        Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
 
         // BOOKINGS_OPTIONS
         Route::post('/bookingOptions', [BookingOptionController::class, 'store']);
@@ -120,7 +121,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         // EMAIL
         Route::post('/sendBookingRecap',[EmailController::class,'sendBookingRecap']);
 
-});
+//});
 
 
 

@@ -40,4 +40,9 @@ class Booking extends Model
         return $this->hasOne(Review::class);
     }
 
+    public function getNfcs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Nfc::class,'booking_id');
+    }
+
 }

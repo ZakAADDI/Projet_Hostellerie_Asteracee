@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Booking;
+use App\Models\Nfc;
 use App\Models\Option;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,6 +23,7 @@ class BookingResource extends JsonResource
          foreach ($optionIds as $id){
              $options[] = Option::findOrFail($id);
          }
+
         return [
             'room' => RoomResource::make($this->getRoom),
             'user' => UserResource::make($this->getUser),
@@ -31,7 +33,8 @@ class BookingResource extends JsonResource
             'status' => $this->status,
             'booking_id' => $this->id,
             'total_price' => $this->total_price,
-            'occupants' => $this->occupants
+            'occupants' => $this->occupants,
+            'nfc' => $this->getNfcs
         ];
     }
 }
