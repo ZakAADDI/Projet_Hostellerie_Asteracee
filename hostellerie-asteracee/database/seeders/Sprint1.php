@@ -29,7 +29,9 @@ class Sprint1 extends Seeder
             Options::class,
             BookingOptionSeeder::class,
             RoomsPrestations::class,
-            Reviews::class
+            Reviews::class,
+            NfcSeeder::class,
+            HistorySeeder::class
         ]);
 
     }

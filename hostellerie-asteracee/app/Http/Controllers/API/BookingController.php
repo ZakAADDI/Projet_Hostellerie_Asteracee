@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\BookingRepository;
 use App\Http\Resources\BookingResource;
 use App\Http\Repositories\RoomRepository;
 use App\Models\Booking;
 use App\Models\Review;
 use App\Models\Room;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Throwable;
@@ -220,8 +222,22 @@ class BookingController extends Controller
     public function confirmBooking(int $id)
     {
         $booking = Booking::findOrFail($id);
-        $booking->is_confirmed = true;
-        $booking->save();
-        return response()->json('ok');
+        $today = Carbon::today();
+        $end = new Carbon($booking->ending_date);
+        $start = new Carbon($booking->starting_date);
+
+        if($today->greaterThanOrEqualTo($start) && $today->lessThanOrEqualTo($end)){
+            $booking->is_confirmed = true;
+            $booking->save();
+            return response()->json('OK');
+        }
+
+        return response()->json('NOK');
+    }
+
+    public function confirmedOngoingBooking(): \Illuminate\Http\JsonResponse
+    {
+        $bookings = BookingRepository::getConfirmedOngoingBookings();
+        return response()->json(BookingResource::Collection($bookings));
     }
 }
