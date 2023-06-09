@@ -34,7 +34,7 @@ class BookingResource extends JsonResource
             'booking_id' => $this->id,
             'total_price' => $this->total_price,
             'occupants' => $this->occupants,
-            'nfc' => $this->getNfcs
+            'nfc_count' => count($this->getNfcs)
         ];
     }
 }
