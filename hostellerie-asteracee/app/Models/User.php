@@ -27,7 +27,8 @@ class User extends \TCG\Voyager\Models\User
         'address',
         'name',
         'email',
-        'password'
+        'password',
+        'role_id'
     ];
 
     /**
@@ -53,5 +54,9 @@ class User extends \TCG\Voyager\Models\User
     public function getBookings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Booking::class);
+    }
+    public function isAdmin(): bool
+    {
+        return $this->role_id == 3 || $this->role_id == 1;
     }
 }

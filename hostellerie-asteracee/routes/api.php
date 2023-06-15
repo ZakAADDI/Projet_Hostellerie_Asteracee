@@ -15,7 +15,6 @@ use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\BookingController;
 use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\HistoryController;
-use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\RoomTypeController;
@@ -41,7 +40,7 @@ use App\Http\Controllers\API\SecurityController;
 Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
-//Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMS
         Route::post('/rooms', [RoomController::class, 'store']);
         Route::patch('/rooms/{id}', [RoomController::class, 'update']);
@@ -92,7 +91,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         Route::post('/bookings/{id}', [BookingController::class, 'update']);
         Route::post('/deleteBookings/{id}', [BookingController::class, 'destroy']);
         Route::get('/bookings/confirm/{id}', [BookingController::class, 'confirmBooking']);
-        Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
+
 
         // BOOKINGS_OPTIONS
         Route::post('/bookingOptions', [BookingOptionController::class, 'store']);
@@ -105,24 +104,39 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         Route::patch('/sections/{id}', [SectionController::class, 'update']);
 
         // ROOMTYPES
-        Route::post('/roomTypes',[RoomTypeController::class,'store']);
-        Route::patch('/roomTypes/{id}',[RoomTypeController::class,'update']);
-        Route::delete('/roomTypes/{id}',[RoomTypeController::class,'destroy']);
+        Route::post('/roomTypes', [RoomTypeController::class, 'store']);
+        Route::patch('/roomTypes/{id}', [RoomTypeController::class, 'update']);
+        Route::delete('/roomTypes/{id}', [RoomTypeController::class, 'destroy']);
 
         // OPTIONS
-        Route::post('/options',[OptionController::class,'store']);
-        Route::patch('/options/{id}',[OptionController::class,'update']);
-        Route::delete('/options/{id}',[OptionController::class,'destroy']);
+        Route::post('/options', [OptionController::class, 'store']);
+        Route::patch('/options/{id}', [OptionController::class, 'update']);
+        Route::delete('/options/{id}', [OptionController::class, 'destroy']);
 
         // ROOMSPRESTATION
-        Route::post('/roomPrestations',[RoomsPrestationController::class,'store']);
-        Route::patch('/roomPrestations/{id}',[RoomsPrestationController::class,'update']);
+        Route::post('/roomPrestations', [RoomsPrestationController::class, 'store']);
+        Route::patch('/roomPrestations/{id}', [RoomsPrestationController::class, 'update']);
 
         // EMAIL
-        Route::post('/sendBookingRecap',[EmailController::class,'sendBookingRecap']);
+        Route::post('/sendBookingRecap', [EmailController::class, 'sendBookingRecap']);
 
-//});
+        Route::group(['middleware' => 'isAllowed'], function () {
+            Route::get('/getAllRooms', [RoomController::class, 'findAll']);
+            Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
+            // NFC
+            Route::get('/nfc', [NfcController::class, 'index']);
+            Route::get('/nfc/{id}', [NfcController::class, 'show']);
+            Route::patch('/nfc/{id}', [NfcController::class, 'updateEndedAt']);
+            Route::post('/nfc', [NfcController::class, 'store']);
+            // HISTORY
+            Route::get('/history', [HistoryController::class, 'index']);
+            Route::get('/history/{id}', [HistoryController::class, 'show']);
 
+            Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
+
+        });
+
+    });
 
 
 // -----------------------  Public Endpoints  ---------------------------- //
@@ -136,6 +150,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 // ROOMS
     Route::get('/rooms', [RoomController::class, 'index']);
+
     Route::get('/rooms/{room}', [RoomController::class, 'show']);
 
 // REVIEWS
@@ -170,8 +185,8 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 // BOOKING
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::get('/bookings/{id}', [BookingController::class, 'show']);
-    Route::post('/findUserBookings', [BookingController::class,'findUserBookings']);
-    Route::post('/findCommentableBooking', [BookingController::class,'findCommentableBooking']);
+    Route::post('/findUserBookings', [BookingController::class, 'findUserBookings']);
+    Route::post('/findCommentableBooking', [BookingController::class, 'findCommentableBooking']);
 
 // Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/services/{id}', [ServiceController::class, 'show']);
@@ -197,20 +212,10 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::get('/bookingOptions/{id}', [BookingOptionController::class, 'show']);
 
 // ROOMSPRESTATIONS
-    Route::get('/roomPrestations', [RoomsPrestationController::class,'index']);
-    Route::get('/roomPrestations/{id}', [RoomsPrestationController::class,'show']);
+    Route::get('/roomPrestations', [RoomsPrestationController::class, 'index']);
+    Route::get('/roomPrestations/{id}', [RoomsPrestationController::class, 'show']);
 
-// NFC
-    Route::get('/nfc', [NfcController::class,'index']);
-    Route::get('/nfc/{id}', [NfcController::class,'show']);
-    Route::patch('/nfc/{id}', [NfcController::class,'updateEndedAt']);
-    Route::post('/nfc', [NfcController::class,'store']);
-
-// HISTORY
-    Route::get('/history', [HistoryController::class,'index']);
-    Route::get('/history/{id}', [HistoryController::class,'show']);
-
-// SECURITY
-    Route::post('/openDoor', [SecurityController::class,'openDoor']);
+    // SECURITY
+    Route::post('/openDoor', [SecurityController::class, 'openDoor']);
 
 });
