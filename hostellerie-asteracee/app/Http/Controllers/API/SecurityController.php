@@ -23,8 +23,6 @@ class SecurityController extends Controller
         $now = Carbon::now();
         $nfc = Nfc::where('hash', '=', $request->hash)->first();
 
-//        dd($nfc);
-
         if (!$nfc){
             return response()->json([
                 'open' => false,

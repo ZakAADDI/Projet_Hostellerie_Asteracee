@@ -116,8 +116,7 @@ class AuthController extends Controller
 
     public function getUserInfo()
     {
-        $response = Auth::user();
-        return $response;
+        return Auth::user();
 
     }
 }
