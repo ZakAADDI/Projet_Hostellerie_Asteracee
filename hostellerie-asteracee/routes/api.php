@@ -133,17 +133,13 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
             Route::get('/history/{id}', [HistoryController::class, 'show']);
 
             Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
-
         });
-
     });
 
-
-// -----------------------  Public Endpoints  ---------------------------- //
-
-// SANCTUM
+    // -----------------------  Public Endpoints  ---------------------------- //
+    // SANCTUM
     Route::post('/register', [AuthController::class, 'createUser']);
-    Route::post('/login', [AuthController::class, 'loginUser']);
+    Route::post('/login', [AuthController::class, 'loginUser'])->name('login');
     Route::post('/findUser', [UserController::class, 'findUser']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/checkToken', [UserController::class, 'checkToken']);
