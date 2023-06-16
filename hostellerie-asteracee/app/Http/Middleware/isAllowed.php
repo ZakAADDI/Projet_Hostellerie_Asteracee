@@ -16,11 +16,8 @@ class isAllowed
      */
     public function handle(Request $request, Closure $next)
     {
-//        dd('caca');
         if (Auth::user() && Auth::user()->isAdmin()) {
-            // If user is logged && if user's role logged ==1
             return $next($request);
-            // continue
         }
         return response()->json('Not allowed',401);
     }
