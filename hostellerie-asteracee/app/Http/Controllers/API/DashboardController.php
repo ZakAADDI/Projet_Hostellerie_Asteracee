@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\BookingRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -26,33 +27,53 @@ class DashboardController extends Controller
      */
     public function getBookingsDatas(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'starting_date' => 'required|max:25',
             'ending_date' => 'required|max:25',
         ]);
-        $coucou = $request->starting_date;
-        return response()->json($coucou);
-        // temps moyen résa - checkin
-        // $periodBetweenBookingAndCheckin = BookingRepository::getPeriodBookingAndCheckin($request->starting_date, $request->ending_date,);
+        $datas = [];
+        $from = $request->starting_date;
+        $to = $request->ending_date;
+        $now = Carbon::today();
 
-        // temps moyen checkin -enter room
+        //! temps moyen résa - checkin
+        $timeBetweenBookingAndCheckinInDays = BookingRepository::getPeriodBookingAndCheckinInDays($from, $to);
+        $datas['timeBetweenBookingAndCheckinInDays'] = $timeBetweenBookingAndCheckinInDays;
 
-        // % occupation période
+        //! temps moyen checkin -enter room
+        $timeBetweenCheckinAndOpenDoor = BookingRepository::getTimeBetweenCheckinAndOpenDoor($from, $to);
+        $datas['timeBetweenCheckinAndOpenDorr'] = $timeBetweenCheckinAndOpenDoor;
 
-        // nbr par type de chambre
+        //OK % occupation période
+        $occupationOnPeriod = BookingRepository::getOccupationOnPeriod($from, $to);
+        $datas['occupationOnPeriod'] = $occupationOnPeriod;
 
-        // nbr par type d'options
+        //! nbr par type de chambre
+        $roomsByType = BookingRepository::getRoomsByType($from, $to);
+        $datas['roomsByType'] = $roomsByType;
 
-        // Panier moyen évolution (tendance vers haut ou bas)
+        //! nbr par type d'options
+        $optionsByType = BookingRepository::getOptionsByType($from, $to);
+        $datas['optionsByType'] = $optionsByType;
 
-        // Panier moyen actuel
+        //! Panier moyen évolution (tendance vers haut ou bas)
+        $trendAverageBasketAmount = BookingRepository::getTrendAverageBasketAmount($from,$to);
+        $datas['trendAverageBasketAmount'] = $trendAverageBasketAmount;
 
-        // chiffre d'affaires
+        //OK Panier moyen actuel
+        $currentAverageBasketAmount = BookingRepository::getCurrentAverageBasketAmount($now);
+        $datas['currentAverageBasketAmount'] = $currentAverageBasketAmount;
 
-        // nbr de résea
+        //OK chiffre d'affaires
+        $revenuesInPeriod = BookingRepository::getRevenuesInPeriod($from,$to);
+        $datas['revenuesInPeriod'] = $revenuesInPeriod;
 
-        // return $periodBetweenBookingAndCheckin;
+        //! nbr de résea
+        $nbrOfBookingsInPeriod = BookingRepository::getNbrOfBookinsInPeriod($from,$to);
+        $datas['nbrOfBookingsInPeriod'] = $nbrOfBookingsInPeriod;
+
+        return response()->json($datas);
+
     }
 
     /**
