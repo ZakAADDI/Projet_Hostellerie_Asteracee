@@ -15,4 +15,9 @@ class BookingRepository
             [$yday]
         )->where('is_confirmed',true)->get();
     }
+
+    public static function getPeriodBookingAndCheckin($startingDate, $endingDate)
+    {
+        return 'coucou';
+    }
 }
