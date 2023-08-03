@@ -22,6 +22,7 @@ use App\Http\Controllers\API\PrestationController;
 use App\Http\Controllers\API\BookingOptionController;
 use App\Http\Controllers\API\RoomsPrestationController;
 use App\Http\Controllers\API\SecurityController;
+use App\Http\Controllers\API\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -211,7 +212,11 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::get('/roomPrestations', [RoomsPrestationController::class, 'index']);
     Route::get('/roomPrestations/{id}', [RoomsPrestationController::class, 'show']);
 
-    // SECURITY
+// SECURITY
     Route::post('/openDoor', [SecurityController::class, 'openDoor']);
 
+// DASHBOARD
+    Route::get('/dashboard/dashboardDatas', [DashboardController::class, 'getDashboardDatas']);
+    Route::get('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
+    Route::get('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
 });
