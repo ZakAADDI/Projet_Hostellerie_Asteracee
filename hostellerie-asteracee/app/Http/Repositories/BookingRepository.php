@@ -27,7 +27,11 @@ class BookingRepository
 
     public static function getNbrOfBookinsInPeriod($from, $to)
     {
-        return 'getNbrOfBookinsInPeriod';
+        $nbrOfBookings = Booking::whereBetween('starting_date', [$from, $to])
+        ->orWhereBetween('ending_date', [$from, $to])
+        ->get();
+
+        return count($nbrOfBookings);
     }
 
     public static function getRevenuesInPeriod($from,$to)
@@ -51,11 +55,15 @@ class BookingRepository
         )->where('is_confirmed',true)->pluck('total_price')->toArray();
         $totalAmountOfBookings = 0;
         $nbrOfBookings = count($prices);
-        foreach ($prices as $price) {
+        if($nbrOfBookings != 0){
+            foreach ($prices as $price) {
             $totalAmountOfBookings += $price;
         }
-        $averageBasket=$totalAmountOfBookings/$nbrOfBookings;
+        $averageBasket= $totalAmountOfBookings / $nbrOfBookings ;
         return round($averageBasket,2);
+        }else{
+            return 0;
+        }
     }
 
     public static function getTrendAverageBasketAmount($from,$to)
