@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Http\Repositories;
+
+use App\Http\Resources\BookingResource;
 use App\Models\Room;
 use App\Models\Booking;
+use App\Models\Option;
 use Carbon\Carbon;
 
 class BookingRepository
 {
-    public static function getConfirmedOngoingBookings(): \Illuminate\Support\Collection{
+    public static function getConfirmedOngoingBookings(): \Illuminate\Support\Collection
+    {
         $yday = Carbon::yesterday();
         return Booking::whereRaw(
             "(ending_date > ?)",
             [$yday]
-        )->where('is_confirmed',true)->get();
+        )->where('is_confirmed', true)->get();
     }
 
     public static function getPeriodBookingAndCheckinInDays($from, $to)
@@ -28,19 +32,19 @@ class BookingRepository
     public static function getNbrOfBookinsInPeriod($from, $to)
     {
         $nbrOfBookings = Booking::whereBetween('starting_date', [$from, $to])
-        ->orWhereBetween('ending_date', [$from, $to])
-        ->get();
+            ->orWhereBetween('ending_date', [$from, $to])
+            ->get();
 
         return count($nbrOfBookings);
     }
 
-    public static function getRevenuesInPeriod($from,$to)
+    public static function getRevenuesInPeriod($from, $to)
     {
         $totalRevenues = 0;
         $prices = Booking::whereRaw(
             "(starting_date >= ? AND ending_date <= ?)",
-            [$from,$to]
-        )->where('is_confirmed',true)->pluck('total_price')->toArray();
+            [$from, $to]
+        )->where('is_confirmed', true)->pluck('total_price')->toArray();
         foreach ($prices as $price) {
             $totalRevenues += $price;
         }
@@ -52,42 +56,85 @@ class BookingRepository
         $prices = Booking::whereRaw(
             "(ending_date = ?)",
             [$now]
-        )->where('is_confirmed',true)->pluck('total_price')->toArray();
+        )->where('is_confirmed', true)->pluck('total_price')->toArray();
         $totalAmountOfBookings = 0;
         $nbrOfBookings = count($prices);
-        if($nbrOfBookings != 0){
+        if ($nbrOfBookings != 0) {
             foreach ($prices as $price) {
-            $totalAmountOfBookings += $price;
-        }
-        $averageBasket= $totalAmountOfBookings / $nbrOfBookings ;
-        return round($averageBasket,2);
-        }else{
+                $totalAmountOfBookings += $price;
+            }
+            $averageBasket = $totalAmountOfBookings / $nbrOfBookings;
+            return round($averageBasket, 2);
+        } else {
             return 0;
         }
     }
 
-    public static function getTrendAverageBasketAmount($from,$to)
+    public static function getTrendAverageBasketAmount($from, $to)
     {
         return 'getTrendAverageBasketAmount';
     }
 
+    public static function getBookingsOnPeriod($from, $to)
+    {
+        return BookingResource::Collection(Booking::whereBetween('starting_date', [$from, $to])
+            ->orWhereBetween('ending_date', [$from, $to])
+            ->get());
+    }
+
     public static function getOptionsByType($from, $to)
     {
-        return 'getOptionsByType';
+        $arrayOptionsByType = [];
+        $arrayBookingsOnPeriod = Booking::whereBetween('starting_date', [$from, $to])
+            ->orWhereBetween('ending_date', [$from, $to])
+            ->get();
+        foreach ($arrayBookingsOnPeriod as $booking) {
+            $bookingOptions = $booking->getBookingOptions;
+            if (count($bookingOptions) != 0) {
+                foreach ($bookingOptions as $option) {
+                    $arrayOptionsByType[] = $option->option_id;
+                }
+            }
+        }
+        $occurrences = [];
+        foreach ($arrayOptionsByType as $value) {
+            if (!isset($occurrences[$value])) {
+                $occurrences[$value] = 1;
+            } else {
+                $occurrences[$value]++;
+            }
+        }
+        $optionsDatas = Option::all();
+        $options = [];
+        foreach ($optionsDatas as $option) {
+            $optionId = $option->id;
+            $optionName = $option->name;
+            $options[$optionId] = $optionName;
+        }
+
+        foreach ($occurrences as $key => $count) {
+            if (isset($options[$key])) {
+                $result[$options[$key]] = $count;
+            }
+        }
+
+        return $result;
     }
 
     public static function getRoomsByType($from, $to)
     {
-        return 'getRoomsByType';
+        $arrayBookingsOnPeriod = self::getBookingsOnPeriod($from, $to);
+        $arrayRoomsByType = [];
+        return $arrayRoomsByType;
     }
 
     public static function getOccupationOnPeriod($from, $to)
     {
-        $availableRooms = count(RoomRepository::getAvailableRooms($from,$to));
+        $availableRooms = count(RoomRepository::getAvailableRooms($from, $to));
         $allRooms = count(Room::all());
         $roomsBooked = $allRooms - $availableRooms;
-        $occupation = ($roomsBooked/$allRooms)*100;
+        $occupation = ($roomsBooked / $allRooms) * 100;
 
-        return round($occupation,2);
+        return round($occupation, 2);
     }
 }

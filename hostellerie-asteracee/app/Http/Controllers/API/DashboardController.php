@@ -52,7 +52,7 @@ class DashboardController extends Controller
         $roomsByType = BookingRepository::getRoomsByType($from, $to);
         $datas['roomsByType'] = $roomsByType;
 
-        //! nbr par type d'options
+        //OK nbr par type d'options
         $optionsByType = BookingRepository::getOptionsByType($from, $to);
         $datas['optionsByType'] = $optionsByType;
 
@@ -68,7 +68,7 @@ class DashboardController extends Controller
         $revenuesInPeriod = BookingRepository::getRevenuesInPeriod($from,$to);
         $datas['revenuesInPeriod'] = $revenuesInPeriod;
 
-        //! nbr de résea
+        //OK nbr de résea
         $nbrOfBookingsInPeriod = BookingRepository::getNbrOfBookinsInPeriod($from,$to);
         $datas['nbrOfBookingsInPeriod'] = $nbrOfBookingsInPeriod;
 
