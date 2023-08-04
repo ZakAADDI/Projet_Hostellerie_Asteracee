@@ -30,6 +30,15 @@ class BookingRepository
         return 'getTimeBetweenCheckinAndOpenDoor';
     }
 
+    public static function getNbrOfBookinsInPeriod($from, $to)
+    {
+        $nbrOfBookings = Booking::whereBetween('starting_date', [$from, $to])
+            ->orWhereBetween('ending_date', [$from, $to])
+            ->get();
+
+        return count($nbrOfBookings);
+    }
+
     public static function getRevenuesInPeriod($from, $to)
     {
         $totalRevenues = 0;
