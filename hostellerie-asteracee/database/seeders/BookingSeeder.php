@@ -19,8 +19,8 @@ class BookingSeeder extends Seeder
             [
                 'room_id' => 11,
                 'user_id' => 2,
-                'starting_date' => Carbon::createFromDate('2023','03','08')->format('Y-m-d'),
-                'ending_date' => Carbon::createFromDate('2023','06','09')->format('Y-m-d'),
+                'starting_date' => Carbon::createFromDate('2023','08','01')->format('Y-m-d'),
+                'ending_date' => Carbon::createFromDate('2023','08','09')->format('Y-m-d'),
                 'status' => "ongoing",
                 'total_price' => 70,
                 'occupants' => 2,
