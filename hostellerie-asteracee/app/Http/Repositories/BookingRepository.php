@@ -6,6 +6,7 @@ use App\Http\Resources\BookingResource;
 use App\Models\Room;
 use App\Models\Booking;
 use App\Models\Option;
+use App\Models\RoomType;
 use Carbon\Carbon;
 
 class BookingRepository
@@ -123,18 +124,34 @@ class BookingRepository
 
     public static function getRoomsByType($from, $to)
     {
-        $arrayBookingsOnPeriod = self::getBookingsOnPeriod($from, $to);
         $arrayRoomsByType = [];
-        return $arrayRoomsByType;
-    }
-
-    public static function getOccupationOnPeriod($from, $to)
-    {
-        $availableRooms = count(RoomRepository::getAvailableRooms($from, $to));
-        $allRooms = count(Room::all());
-        $roomsBooked = $allRooms - $availableRooms;
-        $occupation = ($roomsBooked / $allRooms) * 100;
-
-        return round($occupation, 2);
+        $arrayBookingsOnPeriod = Booking::whereBetween('starting_date', [$from, $to])
+        ->orWhereBetween('ending_date', [$from, $to])
+        ->get();
+        foreach($arrayBookingsOnPeriod as $booking){
+            $bookingRoomType = $booking->getRoom->getRoomType;
+                    $arrayRoomsByType[] = $bookingRoomType->id;
+        }
+        $occurrences = [];
+        foreach ($arrayRoomsByType as $value) {
+            if (!isset($occurrences[$value])) {
+                $occurrences[$value] = 1;
+            } else {
+                $occurrences[$value]++;
+            }
+        }
+        $roomsTypesDatas = RoomType::all();
+        $roomTypes = [];
+        foreach ($roomsTypesDatas as $roomType) {
+            $roomTypeId = $roomType->id;
+            $roomTypeName = $roomType->name;
+            $roomTypes[$roomTypeId] = $roomTypeName;
+        }
+        foreach ($occurrences as $key => $count) {
+            if (isset($roomTypes[$key])) {
+                $result[$roomTypes[$key]] = $count;
+            }
+        }
+        return $result;
     }
 }

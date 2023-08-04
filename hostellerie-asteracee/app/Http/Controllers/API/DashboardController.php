@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\BookingRepository;
+use App\Http\Repositories\RoomRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Room;
 
 class DashboardController extends Controller
 {
@@ -45,8 +47,11 @@ class DashboardController extends Controller
         $datas['timeBetweenCheckinAndOpenDorr'] = $timeBetweenCheckinAndOpenDoor;
 
         //OK % occupation période
-        $occupationOnPeriod = BookingRepository::getOccupationOnPeriod($from, $to);
-        $datas['occupationOnPeriod'] = $occupationOnPeriod;
+        $allRoomsAvailableOnPeriod = count(RoomRepository::getAvailableRooms($from, $to));
+        $allRooms = count(Room::all());
+        $roomsBooked = $allRooms - $allRoomsAvailableOnPeriod;
+        $occupationRate = ($roomsBooked / $allRooms) * 100;
+        $datas['occupationOnPeriod'] = round($occupationRate,2);
 
         //! nbr par type de chambre
         $roomsByType = BookingRepository::getRoomsByType($from, $to);
@@ -73,7 +78,6 @@ class DashboardController extends Controller
         $datas['nbrOfBookingsInPeriod'] = $nbrOfBookingsInPeriod;
 
         return response()->json($datas);
-
     }
 
     /**
