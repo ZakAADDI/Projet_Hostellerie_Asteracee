@@ -30,15 +30,6 @@ class BookingRepository
         return 'getTimeBetweenCheckinAndOpenDoor';
     }
 
-    public static function getNbrOfBookinsInPeriod($from, $to)
-    {
-        $nbrOfBookings = Booking::whereBetween('starting_date', [$from, $to])
-            ->orWhereBetween('ending_date', [$from, $to])
-            ->get();
-
-        return count($nbrOfBookings);
-    }
-
     public static function getRevenuesInPeriod($from, $to)
     {
         $totalRevenues = 0;
@@ -73,7 +64,36 @@ class BookingRepository
 
     public static function getTrendAverageBasketAmount($from, $to)
     {
-        return 'getTrendAverageBasketAmount';
+        $totalRevenue = Booking::whereRaw(
+            "(starting_date >= ? AND ending_date <= ?)",
+            [$from, $to]
+        )->where('status','ended')->sum('total_price');
+
+        $totalBookings = Booking::whereRaw(
+            "(starting_date >= ? AND ending_date <= ?)",
+            [$from, $to]
+        )->count();
+
+        $allBookings = Booking::whereRaw(
+            "(starting_date >= ? AND ending_date <= ?)",
+            [$from, $to]
+        )->where('status','ended')->pluck('total_price')->toArray();
+
+        $firstValue = reset($allBookings);
+        $lastValue = end($allBookings);
+        $growthRate = (($firstValue - $lastValue) / $lastValue) * 100;
+
+        $averageBasketAmount = $totalBookings > 0 ? $totalRevenue / $totalBookings : 0;
+
+        $datas = [];
+        $datas['averageBasketOnPeriod'] = $averageBasketAmount;
+        $datas['valueGrowthRate'] = $growthRate;
+        if($growthRate > 0){
+            $datas['trendBasketOnPeriod'] = '+';
+        }else{
+            $datas['trendBasketOnPeriod'] ='-';
+        }
+        return $datas;
     }
 
     public static function getBookingsOnPeriod($from, $to)
@@ -126,11 +146,11 @@ class BookingRepository
     {
         $arrayRoomsByType = [];
         $arrayBookingsOnPeriod = Booking::whereBetween('starting_date', [$from, $to])
-        ->orWhereBetween('ending_date', [$from, $to])
-        ->get();
-        foreach($arrayBookingsOnPeriod as $booking){
+            ->orWhereBetween('ending_date', [$from, $to])
+            ->get();
+        foreach ($arrayBookingsOnPeriod as $booking) {
             $bookingRoomType = $booking->getRoom->getRoomType;
-                    $arrayRoomsByType[] = $bookingRoomType->id;
+            $arrayRoomsByType[] = $bookingRoomType->id;
         }
         $occurrences = [];
         foreach ($arrayRoomsByType as $value) {

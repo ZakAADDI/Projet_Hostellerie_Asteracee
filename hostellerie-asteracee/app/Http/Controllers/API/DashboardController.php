@@ -53,7 +53,7 @@ class DashboardController extends Controller
         $occupationRate = ($roomsBooked / $allRooms) * 100;
         $datas['occupationOnPeriod'] = round($occupationRate,2);
 
-        //! nbr par type de chambre
+        //OK nbr par type de chambre
         $roomsByType = BookingRepository::getRoomsByType($from, $to);
         $datas['roomsByType'] = $roomsByType;
 
@@ -61,7 +61,7 @@ class DashboardController extends Controller
         $optionsByType = BookingRepository::getOptionsByType($from, $to);
         $datas['optionsByType'] = $optionsByType;
 
-        //! Panier moyen évolution (tendance vers haut ou bas)
+        //OK Panier moyen évolution (tendance vers haut ou bas)
         $trendAverageBasketAmount = BookingRepository::getTrendAverageBasketAmount($from,$to);
         $datas['trendAverageBasketAmount'] = $trendAverageBasketAmount;
 
