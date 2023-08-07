@@ -70,7 +70,12 @@ class BookingRepository
 
         $firstValue = reset($allBookings);
         $lastValue = end($allBookings);
-        $growthRate = (($firstValue - $lastValue) / $lastValue) * 100;
+        if($firstValue == false || $lastValue == false){
+            $growthRate = 0;
+        }else{
+           $growthRate = (($firstValue - $lastValue) / $lastValue) * 100;
+        }
+
 
         $averageBasketAmount = $totalBookings > 0 ? $totalRevenue / $totalBookings : 0;
 
