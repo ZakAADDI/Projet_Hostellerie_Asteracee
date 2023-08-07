@@ -80,7 +80,7 @@ class BookingRepository
         $averageBasketAmount = $totalBookings > 0 ? $totalRevenue / $totalBookings : 0;
 
         $datas = [];
-        $datas['averageBasketOnPeriod'] = $averageBasketAmount;
+        $datas['averageBasketOnPeriod'] = round($averageBasketAmount,2);
         $datas['valueGrowthRate'] = $growthRate;
         if($growthRate > 0){
             $datas['trendBasketOnPeriod'] = '+';

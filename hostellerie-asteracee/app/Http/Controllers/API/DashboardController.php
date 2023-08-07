@@ -61,7 +61,7 @@ class DashboardController extends Controller
             $booking = $bookings->where('room_id', $room->id)->first();
             $customer = ($booking == null ? '-' : ($booking->getUser->lastname . ' ' . $booking->getUser->firstname));
             $booking_ending_date = ($booking == null ? '-' : $booking->ending_date);
-        
+
             $roomData = [
                 'room_number' => $room->room_number,
                 'room_type' => $room->getRoomType->name,
@@ -143,7 +143,7 @@ class DashboardController extends Controller
         foreach ($prices as $price) {
             $totalRevenues += $price;
         }
-        $datas['revenuesInPeriod'] = round($totalRevenues);
+        $datas['revenuesInPeriod'] = round($totalRevenues,2);
 
         //OK nbr de résea
         $nbrOfBookingsInPeriod = BookingRepository::getNbrOfBookinsInPeriod($from,$to);
