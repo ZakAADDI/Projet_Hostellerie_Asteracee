@@ -29,10 +29,10 @@ class DashboardController extends Controller
      */
     public function getBookingsDatas(Request $request)
     {
-        $this->validate($request, [
-            'starting_date' => 'required|max:25',
-            'ending_date' => 'required|max:25',
-        ]);
+        // $this->validate($request, [
+        //     'starting_date' => 'required|max:256',
+        //     'ending_date' => 'required|max:256',
+        // ]);
         $datas = [];
         $from = $request->starting_date;
         $to = $request->ending_date;
@@ -54,11 +54,11 @@ class DashboardController extends Controller
         $datas['occupationOnPeriod'] = round($occupationRate,2);
 
         //OK nbr par type de chambre
-        $roomsByType = BookingRepository::getRoomsByType($from, $to);
+        $roomsByType = BookingRepository::getStatsByType($from, $to,'rooms');
         $datas['roomsByType'] = $roomsByType;
 
         //OK nbr par type d'options
-        $optionsByType = BookingRepository::getOptionsByType($from, $to);
+        $optionsByType = BookingRepository::getStatsByType($from, $to,'options');
         $datas['optionsByType'] = $optionsByType;
 
         //OK Panier moyen évolution (tendance vers haut ou bas)

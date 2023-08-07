@@ -112,73 +112,48 @@ class BookingRepository
             ->get());
     }
 
-    public static function getOptionsByType($from, $to)
+    public static function getStatsByType($from, $to, $type)
     {
-        $arrayOptionsByType = [];
+        $arrayStatsByType = [];
         $arrayBookingsOnPeriod = Booking::whereBetween('starting_date', [$from, $to])
             ->orWhereBetween('ending_date', [$from, $to])
             ->get();
-        foreach ($arrayBookingsOnPeriod as $booking) {
-            $bookingOptions = $booking->getBookingOptions;
-            if (count($bookingOptions) != 0) {
-                foreach ($bookingOptions as $option) {
-                    $arrayOptionsByType[] = $option->option_id;
+
+        if($type == 'rooms'){
+            foreach ($arrayBookingsOnPeriod as $booking) {
+                $bookingRoomType = $booking->getRoom->getRoomType;
+                $arrayStatsByType[] = $bookingRoomType->id;
+            }
+            $datas = RoomType::all();
+        }
+        if($type == 'options'){
+            foreach ($arrayBookingsOnPeriod as $booking) {
+                $bookingOptions = $booking->getBookingOptions;
+                if (count($bookingOptions) != 0) {
+                    foreach ($bookingOptions as $option) {
+                        $arrayStatsByType[] = $option->option_id;
+                    }
                 }
             }
+            $datas = Option::all();
         }
         $occurrences = [];
-        foreach ($arrayOptionsByType as $value) {
+        foreach ($arrayStatsByType as $value) {
             if (!isset($occurrences[$value])) {
                 $occurrences[$value] = 1;
             } else {
                 $occurrences[$value]++;
             }
         }
-        $optionsDatas = Option::all();
-        $options = [];
-        foreach ($optionsDatas as $option) {
-            $optionId = $option->id;
-            $optionName = $option->name;
-            $options[$optionId] = $optionName;
-        }
-
-        foreach ($occurrences as $key => $count) {
-            if (isset($options[$key])) {
-                $result[$options[$key]] = $count;
-            }
-        }
-
-        return $result;
-    }
-
-    public static function getRoomsByType($from, $to)
-    {
-        $arrayRoomsByType = [];
-        $arrayBookingsOnPeriod = Booking::whereBetween('starting_date', [$from, $to])
-            ->orWhereBetween('ending_date', [$from, $to])
-            ->get();
-        foreach ($arrayBookingsOnPeriod as $booking) {
-            $bookingRoomType = $booking->getRoom->getRoomType;
-            $arrayRoomsByType[] = $bookingRoomType->id;
-        }
-        $occurrences = [];
-        foreach ($arrayRoomsByType as $value) {
-            if (!isset($occurrences[$value])) {
-                $occurrences[$value] = 1;
-            } else {
-                $occurrences[$value]++;
-            }
-        }
-        $roomsTypesDatas = RoomType::all();
-        $roomTypes = [];
-        foreach ($roomsTypesDatas as $roomType) {
-            $roomTypeId = $roomType->id;
-            $roomTypeName = $roomType->name;
-            $roomTypes[$roomTypeId] = $roomTypeName;
+        $stats = [];
+        foreach ($datas as $data) {
+            $typeId = $data->id;
+            $typeName = $data->name;
+            $stats[$typeId] = $typeName;
         }
         foreach ($occurrences as $key => $count) {
-            if (isset($roomTypes[$key])) {
-                $result[$roomTypes[$key]] = $count;
+            if (isset($stats[$key])) {
+                $result[$stats[$key]] = $count;
             }
         }
         return $result;
