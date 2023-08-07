@@ -149,4 +149,10 @@ class BookingRepository
 
         return Booking::where('is_confirmed',true)->whereYear('checkin_date',$y)->whereMonth('checkin_date',$m)->get();
     }
+
+    public static function getCurrentBookings()
+    {
+        $today = Carbon::today();
+        return Booking::whereRaw("(starting_date <= ? AND ending_date >= ?)", [$today, $today])->get();
+    }
 }
