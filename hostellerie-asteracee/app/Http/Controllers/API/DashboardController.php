@@ -61,7 +61,7 @@ class DashboardController extends Controller
             $booking = $bookings->where('room_id', $room->id)->first();
             $customer = ($booking == null ? '-' : ($booking->getUser->lastname . ' ' . $booking->getUser->firstname));
             $booking_ending_date = ($booking == null ? '-' : $booking->ending_date);
-        
+
             $roomData = [
                 'room_number' => $room->room_number,
                 'room_type' => $room->getRoomType->name,
@@ -214,12 +214,12 @@ class DashboardController extends Controller
             }
         }
 
-        $diffInDaysCheckinDate1 = count($timesInDaysDateChecking1Array)>0 ? strval(array_sum($timesInDaysDateChecking1Array)/count($timesInDaysDateChecking1Array)) : '-';
-        $diffInDaysCheckinDate2 = count($timesInDaysDateChecking2Array)>0 ? strval(array_sum($timesInDaysDateChecking2Array)/count($timesInDaysDateChecking2Array)) : '-';
-        $diffInMinsReceptionDate1 = count($timesInMinsDate1ReceptionArray)>0 ? strval(array_sum($timesInMinsDate1ReceptionArray)/count($timesInMinsDate1ReceptionArray)) : '-';
-        $diffInMinsReceptionDate2 = count($timesInMinsDate2ReceptionArray)>0 ? strval(array_sum($timesInMinsDate2ReceptionArray)/count($timesInMinsDate2ReceptionArray)) : '-';
-        $occupiedRateDate1 = ($globalOccupiedDaysCount1/$globalDaysCount1)*100;
-        $occupiedRateDate2 = ($globalOccupiedDaysCount2/$globalDaysCount2)*100;
+        $diffInDaysCheckinDate1 = count($timesInDaysDateChecking1Array)>0 ? strval(round(array_sum($timesInDaysDateChecking1Array)/count($timesInDaysDateChecking1Array))) : '-';
+        $diffInDaysCheckinDate2 = count($timesInDaysDateChecking2Array)>0 ? strval(round(array_sum($timesInDaysDateChecking2Array)/count($timesInDaysDateChecking2Array))) : '-';
+        $diffInMinsReceptionDate1 = count($timesInMinsDate1ReceptionArray)>0 ? strval(round(array_sum($timesInMinsDate1ReceptionArray)/count($timesInMinsDate1ReceptionArray))) : '-';
+        $diffInMinsReceptionDate2 = count($timesInMinsDate2ReceptionArray)>0 ? strval(round(array_sum($timesInMinsDate2ReceptionArray)/count($timesInMinsDate2ReceptionArray))) : '-';
+        $occupiedRateDate1 = $globalOccupiedDaysCount1 > 0 ? strval(round(($globalOccupiedDaysCount1/$globalDaysCount1)*100,2)) : "0";
+        $occupiedRateDate2 = $globalOccupiedDaysCount2 > 0 ? strval(round(($globalOccupiedDaysCount2/$globalDaysCount2)*100,2)) : "0";
         $salesAmountDate1 = count($salesAmountDate1Array)>0 ? strval(array_sum($salesAmountDate1Array)) : '-';
         $salesAmountDate2 = count($salesAmountDate2Array)>0 ? strval(array_sum($salesAmountDate2Array)) : '-';
         $bookingAmountDate1 = count($bookingsDate1);
@@ -227,27 +227,27 @@ class DashboardController extends Controller
         $averageCarteDate1 = $bookingAmountDate1 > 0 ? (array_sum($salesAmountDate1Array))/$bookingAmountDate1 : "-";
         $averageCarteDate2 = $bookingAmountDate2 > 0 ? (array_sum($salesAmountDate2Array))/$bookingAmountDate2 : "-";
         $fillRateArray1 = [
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,1,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,3,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,7,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,10,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,14,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,20,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,23,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,25,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,28,1)))/$nbOfRooms)*100,
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,1,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,3,1)))/$nbOfRooms)*100),
+            round( (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,7,1)))/$nbOfRooms)*100),
+            round( (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,10,1)))/$nbOfRooms)*100),
+            round(  (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,14,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,20,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,23,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,25,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y1,$m1,28,1)))/$nbOfRooms)*100),
         ];
 
         $fillRateArray2 = [
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,1,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,3,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,7,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,10,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,14,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,20,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,23,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,25,1)))/$nbOfRooms)*100,
-            (count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,28,1)))/$nbOfRooms)*100,
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,1,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,3,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,7,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,10,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,14,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,20,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,23,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,25,1)))/$nbOfRooms)*100),
+            round((count(BookingRepository::getConfirmedOngoingBookingsPerDay(Carbon::create($y2,$m2,28,1)))/$nbOfRooms)*100),
         ];
 
         return response()->json([
