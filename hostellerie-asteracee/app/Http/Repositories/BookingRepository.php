@@ -133,4 +133,22 @@ class BookingRepository
         }
         return $result;
     }
+
+    public static function getConfirmedOngoingBookingsPerDay($d): \Illuminate\Support\Collection{
+        $day = Carbon::parse($d);
+        return Booking::whereRaw(
+            "(ending_date >= ?)",
+            [$day]
+        )
+            ->whereRaw(
+                "(starting_date <= ?)",
+                [$day]
+            )
+            ->where('is_confirmed',true)->get();
+    }
+
+    public static function getMonthlyConfirmedBooking($m,$y){
+
+        return Booking::where('is_confirmed',true)->whereYear('checkin_date',$y)->whereMonth('checkin_date',$m)->get();
+    }
 }

@@ -41,7 +41,7 @@ use App\Http\Controllers\API\DashboardController;
 Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
-    Route::group(['middleware' => ['auth:sanctum']], function () {
+//    Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMS
         Route::post('/rooms', [RoomController::class, 'store']);
         Route::patch('/rooms/{id}', [RoomController::class, 'update']);
@@ -220,3 +220,4 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::post('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
     Route::post('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
 });
+
