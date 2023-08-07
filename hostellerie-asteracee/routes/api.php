@@ -219,5 +219,5 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::post('/dashboard/dashboardDatas', [DashboardController::class, 'getDashboardDatas']);
     Route::post('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
     Route::post('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
-});
+// });
 

@@ -2,8 +2,6 @@
 
 namespace App\Http\Repositories;
 
-use App\Http\Resources\BookingResource;
-use App\Models\Room;
 use App\Models\Booking;
 use App\Models\Option;
 use App\Models\RoomType;
