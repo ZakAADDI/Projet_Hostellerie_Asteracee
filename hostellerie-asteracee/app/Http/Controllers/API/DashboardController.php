@@ -29,10 +29,10 @@ class DashboardController extends Controller
      */
     public function getBookingsDatas(Request $request)
     {
-        // $this->validate($request, [
-        //     'starting_date' => 'required|max:256',
-        //     'ending_date' => 'required|max:256',
-        // ]);
+        $this->validate($request, [
+            'starting_date' => 'required|max:25',
+            'ending_date' => 'required|max:25',
+        ]);
         $datas = [];
         $from = $request->starting_date;
         $to = $request->ending_date;

@@ -216,7 +216,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
     Route::post('/openDoor', [SecurityController::class, 'openDoor']);
 
 // DASHBOARD
-    Route::get('/dashboard/dashboardDatas', [DashboardController::class, 'getDashboardDatas']);
-    Route::get('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
-    Route::get('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
+    Route::post('/dashboard/dashboardDatas', [DashboardController::class, 'getDashboardDatas']);
+    Route::post('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
+    Route::post('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
 });
