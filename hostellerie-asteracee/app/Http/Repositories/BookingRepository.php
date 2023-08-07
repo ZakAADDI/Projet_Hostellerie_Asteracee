@@ -15,4 +15,10 @@ class BookingRepository
             [$yday]
         )->where('is_confirmed',true)->get();
     }
+
+    public static function getCurrentBookings()
+    {
+        $today = Carbon::today();
+        return Booking::whereRaw("(starting_date <= ? AND ending_date >= ?)", [$today, $today])->get();
+    }
 }
