@@ -32,43 +32,25 @@ class BookingRepository
 
     public static function getNbrOfBookinsInPeriod($from, $to)
     {
-        $nbrOfBookings = Booking::whereBetween('starting_date', [$from, $to])
+        return Booking::whereBetween('starting_date', [$from, $to])
             ->orWhereBetween('ending_date', [$from, $to])
             ->get();
-
-        return count($nbrOfBookings);
     }
 
     public static function getRevenuesInPeriod($from, $to)
     {
-        $totalRevenues = 0;
-        $prices = Booking::whereRaw(
+        return Booking::whereRaw(
             "(starting_date >= ? AND ending_date <= ?)",
             [$from, $to]
         )->where('is_confirmed', true)->pluck('total_price')->toArray();
-        foreach ($prices as $price) {
-            $totalRevenues += $price;
-        }
-        return round($totalRevenues);
     }
 
-    public static function getCurrentAverageBasketAmount($now)
+    public static function getCurrentAverageBasketAmount($now): array
     {
-        $prices = Booking::whereRaw(
+        return Booking::whereRaw(
             "(ending_date = ?)",
             [$now]
         )->where('is_confirmed', true)->pluck('total_price')->toArray();
-        $totalAmountOfBookings = 0;
-        $nbrOfBookings = count($prices);
-        if ($nbrOfBookings != 0) {
-            foreach ($prices as $price) {
-                $totalAmountOfBookings += $price;
-            }
-            $averageBasket = $totalAmountOfBookings / $nbrOfBookings;
-            return round($averageBasket, 2);
-        } else {
-            return 0;
-        }
     }
 
     public static function getTrendAverageBasketAmount($from, $to)
@@ -103,13 +85,6 @@ class BookingRepository
             $datas['trendBasketOnPeriod'] ='-';
         }
         return $datas;
-    }
-
-    public static function getBookingsOnPeriod($from, $to)
-    {
-        return BookingResource::Collection(Booking::whereBetween('starting_date', [$from, $to])
-            ->orWhereBetween('ending_date', [$from, $to])
-            ->get());
     }
 
     public static function getStatsByType($from, $to, $type)

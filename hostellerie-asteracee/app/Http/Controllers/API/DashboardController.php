@@ -66,16 +66,30 @@ class DashboardController extends Controller
         $datas['trendAverageBasketAmount'] = $trendAverageBasketAmount;
 
         //OK Panier moyen actuel
-        $currentAverageBasketAmount = BookingRepository::getCurrentAverageBasketAmount($now);
-        $datas['currentAverageBasketAmount'] = $currentAverageBasketAmount;
+        $prices  = BookingRepository::getCurrentAverageBasketAmount($now);
+        $totalAmountOfBookings = 0;
+        $nbrOfBookings = count($prices);
+        if ($nbrOfBookings != 0) {
+            foreach ($prices as $price) {
+                $totalAmountOfBookings += $price;
+            }
+            $averageBasket = $totalAmountOfBookings / $nbrOfBookings;
+            $datas['currentAverageBasketAmount'] = round($averageBasket, 2);
+        } else {
+            $datas['currentAverageBasketAmount'] = 0;
+        }
 
         //OK chiffre d'affaires
-        $revenuesInPeriod = BookingRepository::getRevenuesInPeriod($from,$to);
-        $datas['revenuesInPeriod'] = $revenuesInPeriod;
+        $prices = BookingRepository::getRevenuesInPeriod($from,$to);
+        $totalRevenues = 0;
+        foreach ($prices as $price) {
+            $totalRevenues += $price;
+        }
+        $datas['revenuesInPeriod'] = round($totalRevenues);
 
         //OK nbr de résea
         $nbrOfBookingsInPeriod = BookingRepository::getNbrOfBookinsInPeriod($from,$to);
-        $datas['nbrOfBookingsInPeriod'] = $nbrOfBookingsInPeriod;
+        $datas['nbrOfBookingsInPeriod'] = count($nbrOfBookingsInPeriod);
 
         return response()->json($datas);
     }
