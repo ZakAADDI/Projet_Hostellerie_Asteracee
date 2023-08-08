@@ -109,7 +109,7 @@ class Users extends Seeder
             ],
             [
                 'firstname' => 'Vanessa',
-                'lastname' => 'PARAVENT',
+                'lastname' => 'PARVENT',
                 'name' => 'user',
                 'address' => '96 rue de la Chanson, 75000 Paris',
                 'email' => 'v.parvent@gmail.com',
