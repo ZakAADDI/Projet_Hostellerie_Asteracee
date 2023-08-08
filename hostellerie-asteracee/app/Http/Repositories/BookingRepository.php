@@ -25,6 +25,7 @@ class BookingRepository
 
     public static function getTimeBetweenCheckinAndOpenDoor($from, $to)
     {
+
         return 'getTimeBetweenCheckinAndOpenDoor';
     }
 
@@ -60,9 +61,7 @@ class BookingRepository
 
         $totalBookings = Booking::whereRaw(
             "(starting_date >= ? AND ending_date <= ?)",
-            [$from, $to]
-        )->count();
-
+            [$from, $to])->count();
         $allBookings = Booking::whereRaw(
             "(starting_date >= ? AND ending_date <= ?)",
             [$from, $to]
@@ -75,7 +74,6 @@ class BookingRepository
         }else{
            $growthRate = (($firstValue - $lastValue) / $lastValue) * 100;
         }
-
 
         $averageBasketAmount = $totalBookings > 0 ? $totalRevenue / $totalBookings : 0;
 
@@ -148,6 +146,14 @@ class BookingRepository
                 [$day]
             )
             ->where('is_confirmed',true)->get();
+    }
+
+    public static function getConfirmedBookingOnPeriod($from, $to)
+    {
+        return Booking::whereRaw(
+            "(starting_date >= ? AND ending_date <= ?)",
+            [$from, $to]
+        )->where('is_confirmed',true)->get();
     }
 
     public static function getMonthlyConfirmedBooking($m,$y){
