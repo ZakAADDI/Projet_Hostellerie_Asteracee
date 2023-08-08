@@ -61,11 +61,35 @@ class BookingRepository
 
         $totalBookings = Booking::whereRaw(
             "(starting_date >= ? AND ending_date <= ?)",
-            [$from, $to])->count();
+            [$from, $to])->where('status','ended')->count();
+
         $allBookings = Booking::whereRaw(
             "(starting_date >= ? AND ending_date <= ?)",
             [$from, $to]
         )->where('status','ended')->pluck('total_price')->toArray();
+
+
+        // $nbrOfDaysInPeriod = Carbon::parse($from)->DiffInDays(Carbon::parse($to));
+            if($from != $to){
+                $nbrOfDaysInPeriod = Carbon::parse($from)->DiffInDays(Carbon::parse($to));
+            }else{
+                $nbrOfDaysInPeriod = 0;
+            }
+        $carbonDate = Carbon::parse($from);
+            // dd($nbrOfDaysInPeriod);
+        $totalRevenueOnDay = [];
+        while($nbrOfDaysInPeriod >= 0):
+            $bookings = self::getBookingsPerDaysOnPeriod($carbonDate);
+            $revenue = 0;
+            foreach ($bookings as $booking) {
+                $revenue += $booking->total_price;
+            }
+            $averageBasket = count($bookings) > 0 ? $revenue / count($bookings) : 0;
+            $totalRevenueOnDay[$carbonDate->format('Y-m-d')] = $averageBasket;
+            $carbonDate = $carbonDate->addDay();
+            $nbrOfDaysInPeriod--;
+        endwhile;
+
 
         $firstValue = reset($allBookings);
         $lastValue = end($allBookings);
@@ -85,6 +109,7 @@ class BookingRepository
         }else{
             $datas['trendBasketOnPeriod'] ='-';
         }
+        $datas['valueToDisplay'] = $totalRevenueOnDay;
         return $datas;
     }
 
@@ -122,11 +147,13 @@ class BookingRepository
             }
         }
         $stats = [];
+
         foreach ($datas as $data) {
             $typeId = $data->id;
             $typeName = $data->name;
             $stats[$typeId] = $typeName;
         }
+        $result = [];
         foreach ($occurrences as $key => $count) {
             if (isset($stats[$key])) {
                 $result[$stats[$key]] = $count;
@@ -154,6 +181,15 @@ class BookingRepository
             "(starting_date >= ? AND ending_date <= ?)",
             [$from, $to]
         )->where('is_confirmed',true)->get();
+    }
+
+    public static function getBookingsPerDaysOnPeriod($day):\Illuminate\Support\Collection
+    {
+        return Booking::whereRaw(
+            "(ending_date = ?)",
+            [Carbon::parse($day)]
+        )
+            ->where('is_confirmed',true)->get();
     }
 
     public static function getMonthlyConfirmedBooking($m,$y){

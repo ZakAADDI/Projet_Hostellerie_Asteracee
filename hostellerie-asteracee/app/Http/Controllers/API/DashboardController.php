@@ -96,16 +96,17 @@ class DashboardController extends Controller
         $to = $request->ending_date;
         $now = Carbon::today();
 
-        //! temps moyen résa - checkin
+        // //! temps moyen résa - checkin
         $timeBetweenBookingAndCheckinInDays = BookingRepository::getPeriodBookingAndCheckinInDays($from, $to);
         $datas['timeBetweenBookingAndCheckinInDays'] = $timeBetweenBookingAndCheckinInDays;
 
-        //! temps moyen checkin -enter room
+        // //! temps moyen checkin -enter room
         $timeBetweenCheckinAndOpenDoor = BookingRepository::getTimeBetweenCheckinAndOpenDoor($from, $to);
         $datas['timeBetweenCheckinAndOpenDorr'] = $timeBetweenCheckinAndOpenDoor;
 
         //OK % occupation période
         $bookingsOnPeriod = BookingRepository::getConfirmedBookingOnPeriod($from,$to);
+
         $daysCounter = 0;
         foreach ($bookingsOnPeriod as $booking) {
             $nbrOfDaysInBookings = Carbon::parse($booking->starting_date)->DiffInDays(Carbon::parse($booking->ending_date));
@@ -114,9 +115,9 @@ class DashboardController extends Controller
         $nbrOfRooms = count(Room::all());
         $nbrOfDaysInPeriod = Carbon::parse($from)->DiffInDays(Carbon::parse($to));
         $globalNbrOfDaysInPeriodAndRooms = $nbrOfRooms*$nbrOfDaysInPeriod;
-        $occupiedRateOnPeriod = ($daysCounter/$globalNbrOfDaysInPeriodAndRooms)*100;
+        $occupiedRateOnPeriod = count($bookingsOnPeriod) > 0 ? ($daysCounter/$globalNbrOfDaysInPeriodAndRooms)*100 : 0;
         $datas['occupationOnPeriod'] = round($occupiedRateOnPeriod,2);
-        
+
         //OK nbr par type de chambre
         $roomsByType = BookingRepository::getStatsByType($from, $to,'rooms');
         $datas['roomsByType'] = $roomsByType;
