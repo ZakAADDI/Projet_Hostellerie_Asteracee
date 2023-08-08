@@ -96,7 +96,7 @@ class DashboardController extends Controller
         $to = $request->ending_date;
         $now = Carbon::today();
 
-        // //! temps moyen résa - checkin
+        //OK temps moyen résa - checkin
         $timeBetweenBookingAndCheckinInDays = BookingRepository::getPeriodBookingAndCheckinInDays($from, $to);
         $datas['timeBetweenBookingAndCheckinInDays'] = $timeBetweenBookingAndCheckinInDays;
 

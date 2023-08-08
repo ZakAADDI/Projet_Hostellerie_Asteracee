@@ -9,12 +9,17 @@ use Carbon\Carbon;
 
 class HistoryRepository
 {
-    public static function getFistBookingOpenDoorHistory($bookingId) {
-        $nfcIds = Nfc::where('booking_id',$bookingId)->pluck('id');
+    public static function getFistBookingOpenDoorHistory($bookingId)
+    {
+        $nfcIds = Nfc::where('booking_id', $bookingId)->pluck('id');
 
-        $firstHistory = History::whereIn('nfc_id',$nfcIds)->orderBy('used_at','ASC')->firstOrFail();
+        if (count($nfcIds) > 0) {
+            $firstHistory = History::whereIn('nfc_id', $nfcIds)->orderBy('used_at', 'ASC')->firstOrFail();
 
-        return $firstHistory;
+            return $firstHistory;
+        } else {
 
+            return [];
+        }
     }
 }
