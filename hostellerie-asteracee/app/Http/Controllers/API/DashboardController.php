@@ -96,20 +96,27 @@ class DashboardController extends Controller
         $to = $request->ending_date;
         $now = Carbon::today();
 
-        //! temps moyen résa - checkin
+        //OK temps moyen résa - checkin
         $timeBetweenBookingAndCheckinInDays = BookingRepository::getPeriodBookingAndCheckinInDays($from, $to);
         $datas['timeBetweenBookingAndCheckinInDays'] = $timeBetweenBookingAndCheckinInDays;
 
-        //! temps moyen checkin -enter room
+        //OK temps moyen checkin -enter room
         $timeBetweenCheckinAndOpenDoor = BookingRepository::getTimeBetweenCheckinAndOpenDoor($from, $to);
         $datas['timeBetweenCheckinAndOpenDorr'] = $timeBetweenCheckinAndOpenDoor;
 
         //OK % occupation période
-        $allRoomsAvailableOnPeriod = count(RoomRepository::getAvailableRooms($from, $to));
-        $allRooms = count(Room::all());
-        $roomsBooked = $allRooms - $allRoomsAvailableOnPeriod;
-        $occupationRate = ($roomsBooked / $allRooms) * 100;
-        $datas['occupationOnPeriod'] = round($occupationRate,2);
+        $bookingsOnPeriod = BookingRepository::getConfirmedBookingOnPeriod($from,$to);
+
+        $daysCounter = 0;
+        foreach ($bookingsOnPeriod as $booking) {
+            $nbrOfDaysInBookings = Carbon::parse($booking->starting_date)->DiffInDays(Carbon::parse($booking->ending_date));
+            $daysCounter += $nbrOfDaysInBookings;
+        }
+        $nbrOfRooms = count(Room::all());
+        $nbrOfDaysInPeriod = Carbon::parse($from)->DiffInDays(Carbon::parse($to));
+        $globalNbrOfDaysInPeriodAndRooms = $nbrOfRooms*$nbrOfDaysInPeriod;
+        $occupiedRateOnPeriod = count($bookingsOnPeriod) > 0 ? ($daysCounter/$globalNbrOfDaysInPeriodAndRooms)*100 : 0;
+        $datas['occupationOnPeriod'] = round($occupiedRateOnPeriod,2);
 
         //OK nbr par type de chambre
         $roomsByType = BookingRepository::getStatsByType($from, $to,'rooms');
@@ -124,7 +131,8 @@ class DashboardController extends Controller
         $datas['trendAverageBasketAmount'] = $trendAverageBasketAmount;
 
         //OK Panier moyen actuel
-        $prices  = BookingRepository::getCurrentAverageBasketAmount($now);
+        $prices  = BookingRepository::getCurrentAverageBasketAmount($from,$to);
+
         $totalAmountOfBookings = 0;
         $nbrOfBookings = count($prices);
         if ($nbrOfBookings != 0) {
@@ -143,7 +151,7 @@ class DashboardController extends Controller
         foreach ($prices as $price) {
             $totalRevenues += $price;
         }
-        $datas['revenuesInPeriod'] = round($totalRevenues);
+        $datas['revenuesInPeriod'] = round($totalRevenues,2);
 
         //OK nbr de résea
         $nbrOfBookingsInPeriod = BookingRepository::getNbrOfBookinsInPeriod($from,$to);
