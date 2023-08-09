@@ -100,7 +100,7 @@ class DashboardController extends Controller
         $timeBetweenBookingAndCheckinInDays = BookingRepository::getPeriodBookingAndCheckinInDays($from, $to);
         $datas['timeBetweenBookingAndCheckinInDays'] = $timeBetweenBookingAndCheckinInDays;
 
-        // //! temps moyen checkin -enter room
+        //OK temps moyen checkin -enter room
         $timeBetweenCheckinAndOpenDoor = BookingRepository::getTimeBetweenCheckinAndOpenDoor($from, $to);
         $datas['timeBetweenCheckinAndOpenDorr'] = $timeBetweenCheckinAndOpenDoor;
 
@@ -131,7 +131,8 @@ class DashboardController extends Controller
         $datas['trendAverageBasketAmount'] = $trendAverageBasketAmount;
 
         //OK Panier moyen actuel
-        $prices  = BookingRepository::getCurrentAverageBasketAmount($now);
+        $prices  = BookingRepository::getCurrentAverageBasketAmount($from,$to);
+
         $totalAmountOfBookings = 0;
         $nbrOfBookings = count($prices);
         if ($nbrOfBookings != 0) {

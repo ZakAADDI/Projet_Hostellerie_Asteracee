@@ -64,12 +64,9 @@ class BookingRepository
         )->where('is_confirmed', true)->pluck('total_price')->toArray();
     }
 
-    public static function getCurrentAverageBasketAmount($now): array
+    public static function getCurrentAverageBasketAmount($from,$to): array
     {
-        return Booking::whereRaw(
-            "(ending_date = ?)",
-            [$now]
-        )->where('is_confirmed', true)->pluck('total_price')->toArray();
+        return Booking::whereBetween('ending_date', [$from, $to])->where('is_confirmed', true)->pluck('total_price')->toArray();
     }
 
     public static function getTrendAverageBasketAmount($from, $to)
@@ -95,7 +92,7 @@ class BookingRepository
             $nbrOfDaysInPeriod = 0;
         }
         $carbonDate = Carbon::parse($from);
-        // dd($nbrOfDaysInPeriod);
+
         $totalRevenueOnDay = [];
         while ($nbrOfDaysInPeriod >= 0) :
             $bookings = self::getBookingsPerDaysOnPeriod($carbonDate);
@@ -119,7 +116,7 @@ class BookingRepository
         }
 
         $averageBasketAmount = $totalBookings > 0 ? $totalRevenue / $totalBookings : 0;
-
+        // dd($totalRevenueOnDay);
         $datas = [];
         $datas['averageBasketOnPeriod'] = round($averageBasketAmount, 2);
         $datas['valueGrowthRate'] = $growthRate;
