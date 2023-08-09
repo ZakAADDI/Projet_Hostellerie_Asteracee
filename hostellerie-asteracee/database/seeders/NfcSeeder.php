@@ -61,48 +61,48 @@ class NfcSeeder extends Seeder
             [
                 'hash' => 'e9a25df0aec0c8fc9dd044ae20f769edcaabe7d1d24feb28c8f84277512a6986',
                 'booking_id' => 5,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2022', '07', '14')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '09', '16', '12', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //7
             [
                 'hash' => '66f0ae8539426fd3e8afceb17ba5863eeaa45fc676c3b98234363f54c85ab822',
                 'booking_id' => 6,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2023', '07', '16')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '11', '19', '19', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //8
             [
                 'hash' => '0f0557b657bb755314b81ecd7258fc974fdefc7b755f9a17cde4f15f54520850',
                 'booking_id' => 7,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2023', '07', '18')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '13', '14', '28', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //9
             [
                 'hash' => 'ed7b6ce84d9f2b5cf0c4012eb39990566810708ea37d8402d809f7f40b15443f',
                 'booking_id' => 8,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2023', '07', '20')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '15', '14', '27', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //10
             [
                 'hash' => 'db0816fc4bb80f0bf818c85fd3c551616460dfab2814c6fb65fb5e8460ed55d9',
                 'booking_id' => 9,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2023', '07', '22')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '17', '20', '12', '10', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //11
             [
                 'hash' => '0ee77139c7aa78448e1af714462a804a52720608edf3193f90d5632ff0bfcf8c',
                 'booking_id' => 10,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2023', '07', '24')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '19', '23', '14', '55', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //12

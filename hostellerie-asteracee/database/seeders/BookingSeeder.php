@@ -84,7 +84,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '09', '16', '09', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '03', '09', '16', '09', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //6
@@ -98,7 +98,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '11', '19', '11', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '07', '01', '19', '11', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //7
@@ -112,7 +112,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '13', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '06', '10', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //8
@@ -154,7 +154,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '19', '23', '10', '55', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '03', '01', '23', '10', '55', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //11
