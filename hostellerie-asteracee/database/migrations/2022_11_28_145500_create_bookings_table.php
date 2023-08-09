@@ -23,6 +23,7 @@ class CreateBookingsTable extends Migration
             $table->float('total_price')->nullable();
             $table->integer('occupants');
             $table->boolean('is_confirmed')->default(false);
+            $table->dateTime('checkin_date')->nullable();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');
