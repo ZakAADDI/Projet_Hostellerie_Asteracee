@@ -16,7 +16,7 @@ class isAllowed
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && (Auth::user()->role_id == 1 || Auth::user()->role_id == 3)) {
+        if (Auth::user() && Auth::user()->isAdmin()) {
             return $next($request);
         }
         return response()->json('Not allowed',401);

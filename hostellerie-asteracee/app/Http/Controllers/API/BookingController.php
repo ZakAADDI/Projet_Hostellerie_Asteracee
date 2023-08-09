@@ -228,7 +228,6 @@ class BookingController extends Controller
 
         if($today->greaterThanOrEqualTo($start) && $today->lessThanOrEqualTo($end)){
             $booking->is_confirmed = true;
-            $booking->checkin_date = Carbon::now();
             $booking->save();
             return response()->json('OK');
         }
