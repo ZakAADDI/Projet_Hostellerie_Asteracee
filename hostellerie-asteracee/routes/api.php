@@ -41,7 +41,7 @@ use App\Http\Controllers\API\DashboardController;
 Route::group(['middleware' => ['AcceptLanguage']], function () {
 
 
-//    Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::group(['middleware' => ['auth:sanctum']], function () {
         // ROOMS
         Route::post('/rooms', [RoomController::class, 'store']);
         Route::patch('/rooms/{id}', [RoomController::class, 'update']);
@@ -122,6 +122,13 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
         Route::post('/sendBookingRecap', [EmailController::class, 'sendBookingRecap']);
 
         Route::group(['middleware' => 'isAllowed'], function () {
+            // DASHBOARD
+            Route::post('/dashboard/dashboardDatas', [DashboardController::class, 'getDashboardDatas']);
+            Route::post('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
+            Route::post('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
+        });
+
+        Route::group(['middleware' => 'isAdmin'], function () {
             Route::get('/getAllRooms', [RoomController::class, 'findAll']);
             Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
             // NFC
@@ -215,9 +222,6 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
 // SECURITY
     Route::post('/openDoor', [SecurityController::class, 'openDoor']);
 
-// DASHBOARD
-    Route::post('/dashboard/dashboardDatas', [DashboardController::class, 'getDashboardDatas']);
-    Route::post('/dashboard/bookingsDatas', [DashboardController::class, 'getBookingsDatas']);
-    Route::post('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
-// });
+
+ });
 
