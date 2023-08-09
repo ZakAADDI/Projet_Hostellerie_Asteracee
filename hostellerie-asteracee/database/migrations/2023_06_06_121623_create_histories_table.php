@@ -16,7 +16,7 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('nfc_id');
-            $table->date('used_at');
+            $table->dateTime('used_at');
             $table->timestamps();
 
             $table->foreign('nfc_id')->references('id')->on('nfcs');
