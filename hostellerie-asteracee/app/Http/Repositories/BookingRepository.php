@@ -157,8 +157,7 @@ class BookingRepository
 
     public static function getCurrentBookings()
     {
-        // $today = Carbon::today();
-        $today = Carbon::createFromDate("2023-10-02");
+        $today = Carbon::today();
         return Booking::whereRaw("(starting_date <= ? AND ending_date >= ?)", [$today, $today])->get();
     }
 }

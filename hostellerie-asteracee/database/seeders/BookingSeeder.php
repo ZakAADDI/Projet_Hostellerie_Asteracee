@@ -100,7 +100,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '07', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '20')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -111,7 +111,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '07', '17')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '22')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -122,7 +122,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '07', '19')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '24')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -155,7 +155,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '07', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -166,7 +166,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '07', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -177,7 +177,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '10')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -299,7 +299,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '08', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -321,7 +321,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '08', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '12')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -365,7 +365,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '08', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '20')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -420,7 +420,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '08', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -431,7 +431,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '08', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -442,7 +442,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '10')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -546,18 +546,6 @@ class BookingSeeder extends Seeder
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
-            // Octobre
-            [
-                'room_id' => 11,
-                'user_id' => 3,
-                'starting_date' => Carbon::createFromDate('2023', '10', '01')->format('Y-m-d'),
-                'ending_date' => Carbon::createFromDate('2023', '10', '05')->format('Y-m-d'),
-                'status' => "ongoing",
-                'total_price' => 70,
-                'occupants' => 2,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
-            ],
             // Novembre
             [
                 'room_id' => 11,
@@ -576,7 +564,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '11', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -598,7 +586,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '11', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '12')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -642,7 +630,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '11', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '20')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -697,7 +685,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '11', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '05')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -708,7 +696,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '11', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -719,7 +707,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '11', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '10')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -841,7 +829,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '12', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -863,7 +851,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '12', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '12')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -907,7 +895,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '12', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '20')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -962,7 +950,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '12', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '05')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -973,7 +961,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '12', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '08')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 120,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -984,7 +972,7 @@ class BookingSeeder extends Seeder
                 'starting_date' => Carbon::createFromDate('2023', '12', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '10')->format('Y-m-d'),
                 'status' => "ongoing",
-                'total_price' => 70,
+                'total_price' => 220,
                 'occupants' => 2,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

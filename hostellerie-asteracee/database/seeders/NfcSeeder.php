@@ -100,7 +100,6 @@ class NfcSeeder extends Seeder
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
-            // Août
             [
                 'hash' => '6e98ac963c5742d5a8126e3703591e06abdba335d4299a1a5572e0fbb72e0e2b',
                 'booking_id' => 13,
@@ -185,15 +184,7 @@ class NfcSeeder extends Seeder
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
-            // Octobre
-            [
-                'hash' => '485593becdd1e6dccdba4bed740bd8f425a34666541d04e19c9567bb62c12124',
-                'booking_id' => 49,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
-            ],
-            // Novembre
+            // Août
             [
                 'hash' => 'd76f16aff3b9d44c99ee65057af150e82775b796376cb586aba221149f2b085a',
                 'booking_id' => 25,
@@ -278,7 +269,6 @@ class NfcSeeder extends Seeder
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
-            // Décembre
             [
                 'hash' => 'fd024cedf1608be34b765e3cd33b554fec0cf4727f18362964abab67b5b5067c',
                 'booking_id' => 37,
