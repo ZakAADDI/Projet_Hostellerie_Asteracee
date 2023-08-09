@@ -188,7 +188,7 @@ class DashboardController extends Controller
         foreach ($bookingsDate1 as $b){
             $salesAmountDate1Array[] = $b->total_price;
 
-            $bookingTimeInDays = Carbon::parse($b->strating_date)->floatDiffInDays(Carbon::parse($b->endinging_date));
+            $bookingTimeInDays = Carbon::parse($b->starting_date)->floatDiffInDays(Carbon::parse($b->ending_date));
             $globalOccupiedDaysCount1 += $bookingTimeInDays;
 
             $diffInDaysCheckin = Carbon::parse($b->created_at)->floatDiffInDays(Carbon::parse($b->checkin_date));
@@ -213,6 +213,7 @@ class DashboardController extends Controller
                 $timesInMinsDate2ReceptionArray[] = Carbon::parse($b->checkin_date)->floatDiffInMinutes(Carbon::parse($firstOpenDoorHistory->used_at));
             }
         }
+
 
         $diffInDaysCheckinDate1 = count($timesInDaysDateChecking1Array)>0 ? strval(round(array_sum($timesInDaysDateChecking1Array)/count($timesInDaysDateChecking1Array))) : '-';
         $diffInDaysCheckinDate2 = count($timesInDaysDateChecking2Array)>0 ? strval(round(array_sum($timesInDaysDateChecking2Array)/count($timesInDaysDateChecking2Array))) : '-';
