@@ -19,7 +19,7 @@ class BookingSeeder extends Seeder
             // Juillet
             //1
             [
-                'room_id' => 11,
+                'room_id' => 1,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '07', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
@@ -103,7 +103,7 @@ class BookingSeeder extends Seeder
             ],
             //7
             [
-                'room_id' => 11,
+                'room_id' => 7,
                 'user_id' => 9,
                 'starting_date' => Carbon::createFromDate('2023', '07', '13')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '18')->format('Y-m-d'),
@@ -117,7 +117,7 @@ class BookingSeeder extends Seeder
             ],
             //8
             [
-                'room_id' => 33,
+                'room_id' => 8,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '07', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '20')->format('Y-m-d'),
@@ -131,7 +131,7 @@ class BookingSeeder extends Seeder
             ],
             //9
             [
-                'room_id' => 29,
+                'room_id' => 9,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '07', '17')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '22')->format('Y-m-d'),
@@ -145,7 +145,7 @@ class BookingSeeder extends Seeder
             ],
             //10
             [
-                'room_id' => 28,
+                'room_id' => 10,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '07', '19')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '24')->format('Y-m-d'),
@@ -159,7 +159,7 @@ class BookingSeeder extends Seeder
             ],
             //11
             [
-                'room_id' => 5,
+                'room_id' => 11,
                 'user_id' => 5,
                 'starting_date' => Carbon::createFromDate('2023', '07', '21')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '07', '27')->format('Y-m-d'),
@@ -173,7 +173,7 @@ class BookingSeeder extends Seeder
             ],
             //12
             [
-                'room_id' => 6,
+                'room_id' => 12,
                 'user_id' => 6,
                 'starting_date' => Carbon::createFromDate('2023', '07', '25')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '31')->format('Y-m-d'),
@@ -187,7 +187,7 @@ class BookingSeeder extends Seeder
             ],
             //13
             [
-                'room_id' => 33,
+                'room_id' => 13,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '07', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
@@ -201,7 +201,7 @@ class BookingSeeder extends Seeder
             ],
             //14
             [
-                'room_id' => 29,
+                'room_id' => 14,
                 'user_id' => 9,
                 'starting_date' => Carbon::createFromDate('2023', '07', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '08')->format('Y-m-d'),
@@ -215,7 +215,7 @@ class BookingSeeder extends Seeder
             ],
             //15
             [
-                'room_id' => 25,
+                'room_id' => 15,
                 'user_id' => 8,
                 'starting_date' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '10')->format('Y-m-d'),
@@ -229,7 +229,7 @@ class BookingSeeder extends Seeder
             ],
             //16
             [
-                'room_id' => 23,
+                'room_id' => 16,
                 'user_id' => 7,
                 'starting_date' => Carbon::createFromDate('2023', '07', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '12')->format('Y-m-d'),
@@ -243,7 +243,7 @@ class BookingSeeder extends Seeder
             ],
             //17
             [
-                'room_id' => 16,
+                'room_id' => 17,
                 'user_id' => 6,
                 'starting_date' => Carbon::createFromDate('2023', '07', '09')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '07', '14')->format('Y-m-d'),
@@ -257,7 +257,7 @@ class BookingSeeder extends Seeder
             ],
             //18
             [
-                'room_id' => 14,
+                'room_id' => 18,
                 'user_id' => 5,
                 'starting_date' => Carbon::createFromDate('2023', '07', '11')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '16')->format('Y-m-d'),
@@ -271,7 +271,7 @@ class BookingSeeder extends Seeder
             ],
             //19
             [
-                'room_id' => 13,
+                'room_id' => 19,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '07', '13')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '18')->format('Y-m-d'),
@@ -285,7 +285,7 @@ class BookingSeeder extends Seeder
             ],
             //20
             [
-                'room_id' => 12,
+                'room_id' => 20,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '07', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '20')->format('Y-m-d'),
@@ -299,7 +299,7 @@ class BookingSeeder extends Seeder
             ],
             //21
             [
-                'room_id' => 10,
+                'room_id' => 21,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '07', '17')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '22')->format('Y-m-d'),
@@ -313,7 +313,7 @@ class BookingSeeder extends Seeder
             ],
             //22
             [
-                'room_id' => 8,
+                'room_id' => 22,
                 'user_id' => 9,
                 'starting_date' => Carbon::createFromDate('2023', '07', '19')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '24')->format('Y-m-d'),
@@ -327,7 +327,7 @@ class BookingSeeder extends Seeder
             ],
             //23
             [
-                'room_id' => 7,
+                'room_id' => 23,
                 'user_id' => 8,
                 'starting_date' => Carbon::createFromDate('2023', '07', '21')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '07', '27')->format('Y-m-d'),
@@ -341,7 +341,7 @@ class BookingSeeder extends Seeder
             ],
             //24
             [
-                'room_id' => 3,
+                'room_id' => 24,
                 'user_id' => 7,
                 'starting_date' => Carbon::createFromDate('2023', '07', '25')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '07', '31')->format('Y-m-d'),
@@ -356,7 +356,7 @@ class BookingSeeder extends Seeder
             // Août
             //25
             [
-                'room_id' => 11,
+                'room_id' => 25,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '08', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
@@ -370,7 +370,7 @@ class BookingSeeder extends Seeder
             ],
             //26
             [
-                'room_id' => 28,
+                'room_id' => 26,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '08', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '08')->format('Y-m-d'),
@@ -384,7 +384,7 @@ class BookingSeeder extends Seeder
             ],
             //27
             [
-                'room_id' => 3,
+                'room_id' => 27,
                 'user_id' => 5,
                 'starting_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '10')->format('Y-m-d'),
@@ -398,7 +398,7 @@ class BookingSeeder extends Seeder
             ],
             //28
             [
-                'room_id' => 29,
+                'room_id' => 28,
                 'user_id' => 6,
                 'starting_date' => Carbon::createFromDate('2023', '08', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '12')->format('Y-m-d'),
@@ -412,7 +412,7 @@ class BookingSeeder extends Seeder
             ],
             //29
             [
-                'room_id' => 5,
+                'room_id' => 29,
                 'user_id' => 7,
                 'starting_date' => Carbon::createFromDate('2023', '08', '09')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '08', '14')->format('Y-m-d'),
@@ -426,7 +426,7 @@ class BookingSeeder extends Seeder
             ],
             //30
             [
-                'room_id' => 6,
+                'room_id' => 30,
                 'user_id' => 8,
                 'starting_date' => Carbon::createFromDate('2023', '08', '11')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '16')->format('Y-m-d'),
@@ -440,7 +440,7 @@ class BookingSeeder extends Seeder
             ],
             //31
             [
-                'room_id' => 11,
+                'room_id' => 31,
                 'user_id' => 9,
                 'starting_date' => Carbon::createFromDate('2023', '08', '13')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '18')->format('Y-m-d'),
@@ -454,7 +454,7 @@ class BookingSeeder extends Seeder
             ],
             //32
             [
-                'room_id' => 33,
+                'room_id' => 32,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '08', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '20')->format('Y-m-d'),
@@ -468,7 +468,7 @@ class BookingSeeder extends Seeder
             ],
             //33
             [
-                'room_id' => 3,
+                'room_id' => 33,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '08', '17')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '22')->format('Y-m-d'),
@@ -482,7 +482,7 @@ class BookingSeeder extends Seeder
             ],
             //34
             [
-                'room_id' => 4,
+                'room_id' => 1,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '08', '19')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '24')->format('Y-m-d'),
@@ -496,7 +496,7 @@ class BookingSeeder extends Seeder
             ],
             //35
             [
-                'room_id' => 5,
+                'room_id' => 2,
                 'user_id' => 5,
                 'starting_date' => Carbon::createFromDate('2023', '08', '21')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '08', '27')->format('Y-m-d'),
@@ -510,7 +510,7 @@ class BookingSeeder extends Seeder
             ],
             //36
             [
-                'room_id' => 6,
+                'room_id' => 3,
                 'user_id' => 6,
                 'starting_date' => Carbon::createFromDate('2023', '08', '25')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '31')->format('Y-m-d'),
@@ -524,7 +524,7 @@ class BookingSeeder extends Seeder
             ],
             //37
             [
-                'room_id' => 33,
+                'room_id' => 4,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '08', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
@@ -538,7 +538,7 @@ class BookingSeeder extends Seeder
             ],
             //38
             [
-                'room_id' => 29,
+                'room_id' => 5,
                 'user_id' => 9,
                 'starting_date' => Carbon::createFromDate('2023', '08', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '08')->format('Y-m-d'),
@@ -552,7 +552,7 @@ class BookingSeeder extends Seeder
             ],
             //39
             [
-                'room_id' => 25,
+                'room_id' => 6,
                 'user_id' => 8,
                 'starting_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '10')->format('Y-m-d'),
@@ -566,7 +566,7 @@ class BookingSeeder extends Seeder
             ],
             //40
             [
-                'room_id' => 23,
+                'room_id' => 7,
                 'user_id' => 7,
                 'starting_date' => Carbon::createFromDate('2023', '08', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '12')->format('Y-m-d'),
@@ -580,7 +580,7 @@ class BookingSeeder extends Seeder
             ],
             //41
             [
-                'room_id' => 16,
+                'room_id' => 8,
                 'user_id' => 6,
                 'starting_date' => Carbon::createFromDate('2023', '08', '09')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '08', '14')->format('Y-m-d'),
@@ -594,7 +594,7 @@ class BookingSeeder extends Seeder
             ],
             //42
             [
-                'room_id' => 14,
+                'room_id' => 9,
                 'user_id' => 5,
                 'starting_date' => Carbon::createFromDate('2023', '08', '11')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '16')->format('Y-m-d'),
@@ -608,7 +608,7 @@ class BookingSeeder extends Seeder
             ],
             //43
             [
-                'room_id' => 13,
+                'room_id' => 10,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '08', '13')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '18')->format('Y-m-d'),
@@ -622,7 +622,7 @@ class BookingSeeder extends Seeder
             ],
             //44
             [
-                'room_id' => 12,
+                'room_id' => 11,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '08', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '20')->format('Y-m-d'),
@@ -636,7 +636,7 @@ class BookingSeeder extends Seeder
             ],
             //45
             [
-                'room_id' => 10,
+                'room_id' => 12,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '08', '17')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '22')->format('Y-m-d'),
@@ -650,7 +650,7 @@ class BookingSeeder extends Seeder
             ],
             //46
             [
-                'room_id' => 8,
+                'room_id' => 13,
                 'user_id' => 9,
                 'starting_date' => Carbon::createFromDate('2023', '08', '19')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '24')->format('Y-m-d'),
@@ -664,7 +664,7 @@ class BookingSeeder extends Seeder
             ],
             //47
             [
-                'room_id' => 7,
+                'room_id' => 14,
                 'user_id' => 8,
                 'starting_date' => Carbon::createFromDate('2023', '08', '21')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '08', '27')->format('Y-m-d'),
@@ -678,7 +678,7 @@ class BookingSeeder extends Seeder
             ],
             //48
             [
-                'room_id' => 3,
+                'room_id' => 15,
                 'user_id' => 7,
                 'starting_date' => Carbon::createFromDate('2023', '08', '25')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '31')->format('Y-m-d'),
@@ -693,7 +693,7 @@ class BookingSeeder extends Seeder
             // Novembre
             //49
             [
-                'room_id' => 11,
+                'room_id' => 16,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '11', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '05')->format('Y-m-d'),
@@ -707,7 +707,7 @@ class BookingSeeder extends Seeder
             ],
             //50
             [
-                'room_id' => 28,
+                'room_id' => 17,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '11', '03')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '08')->format('Y-m-d'),
@@ -721,7 +721,7 @@ class BookingSeeder extends Seeder
             ],
             //51
             [
-                'room_id' => 3,
+                'room_id' => 18,
                 'user_id' => 5,
                 'starting_date' => Carbon::createFromDate('2023', '11', '05')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '10')->format('Y-m-d'),
@@ -735,7 +735,7 @@ class BookingSeeder extends Seeder
             ],
             //52
             [
-                'room_id' => 29,
+                'room_id' => 19,
                 'user_id' => 6,
                 'starting_date' => Carbon::createFromDate('2023', '11', '07')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '12')->format('Y-m-d'),
@@ -749,7 +749,7 @@ class BookingSeeder extends Seeder
             ],
             //53
             [
-                'room_id' => 5,
+                'room_id' => 20,
                 'user_id' => 7,
                 'starting_date' => Carbon::createFromDate('2023', '11', '09')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2022', '11', '14')->format('Y-m-d'),
@@ -763,7 +763,7 @@ class BookingSeeder extends Seeder
             ],
             //54
             [
-                'room_id' => 6,
+                'room_id' => 21,
                 'user_id' => 8,
                 'starting_date' => Carbon::createFromDate('2023', '11', '11')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '16')->format('Y-m-d'),
@@ -861,7 +861,7 @@ class BookingSeeder extends Seeder
             ],
             //61
             [
-                'room_id' => 33,
+                'room_id' => 10,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '11', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '05')->format('Y-m-d'),
@@ -945,7 +945,7 @@ class BookingSeeder extends Seeder
             ],
             //67
             [
-                'room_id' => 13,
+                'room_id' => 1,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '11', '13')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '11', '18')->format('Y-m-d'),
@@ -1030,7 +1030,7 @@ class BookingSeeder extends Seeder
             // Décembre
             //73
             [
-                'room_id' => 11,
+                'room_id' => 30,
                 'user_id' => 3,
                 'starting_date' => Carbon::createFromDate('2023', '12', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '05')->format('Y-m-d'),
@@ -1128,7 +1128,7 @@ class BookingSeeder extends Seeder
             ],
             //80
             [
-                'room_id' => 33,
+                'room_id' => 12,
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '12', '15')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '20')->format('Y-m-d'),
@@ -1282,7 +1282,7 @@ class BookingSeeder extends Seeder
             ],
             //91
             [
-                'room_id' => 13,
+                'room_id' => 6,
                 'user_id' => 4,
                 'starting_date' => Carbon::createFromDate('2023', '12', '13')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '12', '18')->format('Y-m-d'),
