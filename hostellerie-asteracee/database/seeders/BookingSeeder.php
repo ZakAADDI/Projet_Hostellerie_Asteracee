@@ -126,7 +126,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '15', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '02', '22', '19', '44', '58', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //9
@@ -168,7 +168,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '21', '15', '22', '30', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '04', '01', '15', '22', '30', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //12
@@ -182,7 +182,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '25', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '07', '02', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //13
@@ -196,7 +196,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '01', '13', '22', '22', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '01', '19', '23', '09', '01', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //14
@@ -210,7 +210,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '03', '21', '47', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '04', '27', '18', '17', '55', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //15
@@ -224,7 +224,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '05', '17', '22', '22', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '06', '31', '07', '55', '38', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //16
@@ -238,7 +238,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '07', '10', '14', '15', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '05', '23', '22', '44', '15', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //17
@@ -252,7 +252,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '09', '23', '10', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '03', '19', '13', '15', '48', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //18
@@ -266,7 +266,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '11', '13', '12', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '05', '17', '19', '14', '51', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //19
@@ -280,7 +280,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '13', '14', '55', '55', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '03', '17', '22', '01', '45', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //20
@@ -294,7 +294,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '15', '19', '10', '03', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '02', '26', '13', '14', '33', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //21
@@ -308,7 +308,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '17', '11', '11', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '07', '15', '10', '13', '01', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //22
@@ -322,7 +322,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '19', '12', '13', '14', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '04', '29', '01', '18', '54', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //23
@@ -336,7 +336,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '21', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '06', '01', '11', '43', '58', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //24
@@ -350,7 +350,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '07', '25', '14', '23', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '04', '30', '20', '13', '18', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             // Août
@@ -365,7 +365,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '08', '01', '14', '55', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '04', '01', '22', '15', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //26
@@ -379,7 +379,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '08', '03', '22', '22', '22', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '08', '03', '22', '19', '02', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //27
@@ -393,7 +393,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '08', '05', '10', '10', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '08', '05', '10', '15', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //28
@@ -407,7 +407,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '08', '07', '12', '12', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '06', '17', '22', '01', '51', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //29
@@ -421,7 +421,7 @@ class BookingSeeder extends Seeder
                 'occupants' => 2,
                 'is_confirmed' => true,
                 'checkin_date' => Carbon::create('2023', '08', '09', '12', '55', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::create('2023', '04', '19', '19', '45', '01', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             //30
