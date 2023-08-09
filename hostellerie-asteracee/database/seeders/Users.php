@@ -57,10 +57,10 @@ class Users extends Seeder
             ],
             [
                 'firstname' => 'Anthony',
-                'lastname' => 'DA COSTA',
+                'lastname' => 'DA CRUZ',
                 'name' => 'user',
                 'address' => '3 rue de la Miss, 75000 Paris',
-                'email' => 'a.dacosta@gmail.com',
+                'email' => 'a.dacruz@gmail.com',
                 'gender' => 'male',
                 'password' => Hash::make('user'),
                 'role_id' => 2,
