@@ -13,6 +13,8 @@ class HistorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $datas = [
+
+        ];
     }
 }

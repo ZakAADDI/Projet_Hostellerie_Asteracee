@@ -11,12 +11,17 @@ class HistoryRepository
 {
     public static function getFistBookingOpenDoorHistory($bookingId)
     {
+
         $nfcIds = Nfc::where('booking_id', $bookingId)->pluck('id');
 
         if (count($nfcIds) > 0) {
-            $firstHistory = History::whereIn('nfc_id', $nfcIds)->orderBy('used_at', 'ASC')->firstOrFail();
+            $firstHistory = History::whereIn('nfc_id', $nfcIds)->orderBy('used_at', 'ASC')->first();
+            if($firstHistory != null){
+                return $firstHistory;
+            }else{
+                return null;
+            }
 
-            return $firstHistory;
         } else {
 
             return [];

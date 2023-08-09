@@ -41,14 +41,16 @@ class BookingRepository
         if (count($bookingsOnPeriod) > 0) {
             foreach ($bookingsOnPeriod as $booking) {
                 $firstUse = HistoryRepository::getFistBookingOpenDoorHistory($booking->id);
+                // dd($firstUse);
                 if ($firstUse != null) {
                     $minCounter[] = Carbon::parse($booking->checkin_date)->floatDiffInMinutes(Carbon::parse($firstUse->used_at));
                 }
             }
-            return array_sum($minCounter) / count($minCounter);
-        } else {
-            return '-';
+            if(count($minCounter) > 0) {
+                 return array_sum($minCounter) / count($minCounter);
+            }
         }
+        return '-';
     }
 
     public static function getNbrOfBookinsInPeriod($from, $to)
