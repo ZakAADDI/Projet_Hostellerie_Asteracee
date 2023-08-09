@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Nfc;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class NfcSeeder extends Seeder
 {
@@ -19,14 +20,21 @@ class NfcSeeder extends Seeder
             [
                 'hash' => '12b637dd6a40e81118a123a7dde7d54c584569c273c31ed71ef33fcaa373112a',
                 'booking_id' => 1,
-                'ended_at' => null,
-                'created_at' => date("Y-m-d H:i:s"),
+                'ended_at' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '01', '14', '23', '59', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'updated_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'hash' => '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db',
+                'booking_id' => 1,
+                'ended_at' => Carbon::createFromDate('2023', '07', '05')->format('Y-m-d'),
+                'created_at' => Carbon::create('2023', '07', '01', '14', '25', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
                 'hash' => '4321a844ee760ee6ca5575a7c16c34d2a40ec1b3d76003681b8a3848dc1f4cc5',
                 'booking_id' => 2,
-                'ended_at' => null,
+                'ended_at' => Carbon::createFromDate('2023', '07', '08')->format('Y-m-d'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
