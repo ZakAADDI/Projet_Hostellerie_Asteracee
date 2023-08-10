@@ -138,7 +138,7 @@ class HistorySeeder extends Seeder
             ],
             [
                 'nfc_id' => 21,
-                'used_at' =>  Carbon::create('2023', '07', '15', '11', '32', '03', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'used_at' =>  Carbon::create('2023', '07', '15', '19', '32', '03', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
