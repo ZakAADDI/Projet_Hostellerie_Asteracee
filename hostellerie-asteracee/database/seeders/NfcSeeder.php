@@ -61,7 +61,7 @@ class NfcSeeder extends Seeder
             [
                 'hash' => 'e9a25df0aec0c8fc9dd044ae20f769edcaabe7d1d24feb28c8f84277512a6986',
                 'booking_id' => 5,
-                'ended_at' => Carbon::createFromDate('2022', '07', '14')->format('Y-m-d'),
+                'ended_at' => Carbon::createFromDate('2023', '07', '14')->format('Y-m-d'),
                 'created_at' => Carbon::create('2023', '07', '09', '16', '12', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -109,7 +109,7 @@ class NfcSeeder extends Seeder
             [
                 'hash' => 'c7cd05f968202e41ab42df96ff4313f0198a58220a347601f11e7573bc3a075d',
                 'booking_id' => 11,
-                'ended_at' => Carbon::createFromDate('2022', '07', '27')->format('Y-m-d'),
+                'ended_at' => Carbon::createFromDate('2023', '07', '27')->format('Y-m-d'),
                 'created_at' => Carbon::create('2023', '07', '21', '15', '24', '30', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -157,7 +157,7 @@ class NfcSeeder extends Seeder
             [
                 'hash' => 'e544b9b9d0075e26a6c52e86401ed4cfc04f99087989cfe3eda26ea4e3e48401',
                 'booking_id' => 17,
-                'ended_at' => Carbon::createFromDate('2022', '07', '14')->format('Y-m-d'),
+                'ended_at' => Carbon::createFromDate('2023', '07', '14')->format('Y-m-d'),
                 'created_at' => Carbon::create('2023', '07', '09', '23', '19', '11', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -205,7 +205,7 @@ class NfcSeeder extends Seeder
             [
                 'hash' => 'fe2b901d05fd22e85e101c8042f6c06ad4ec664b41bf4ce17edcd0ce3708df23',
                 'booking_id' => 23,
-                'ended_at' => Carbon::createFromDate('2022', '07', '27')->format('Y-m-d'),
+                'ended_at' => Carbon::createFromDate('2023', '07', '27')->format('Y-m-d'),
                 'created_at' => Carbon::create('2023', '07', '21', '14', '26', '17', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -254,7 +254,7 @@ class NfcSeeder extends Seeder
             [
                 'hash' => '3986fb15a76beec06d5ad496da1e94ad846deefd711379b2042043f430f8fff5',
                 'booking_id' => 29,
-                'ended_at' => Carbon::createFromDate('2022', '08', '14')->format('Y-m-d'),
+                'ended_at' => Carbon::createFromDate('2023', '08', '14')->format('Y-m-d'),
                 'created_at' => Carbon::create('2023', '08', '09', '12', '58', '19', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
