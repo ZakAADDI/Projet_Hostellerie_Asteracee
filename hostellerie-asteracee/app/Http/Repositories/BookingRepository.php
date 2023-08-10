@@ -112,7 +112,7 @@ class BookingRepository
         $firstValue = reset($allBookings);
 
         $lastValue = end($allBookings);
-        dd($allBookings);
+        // dd($allBookings);
         if ($firstValue == false || $lastValue == false) {
             // dd('here');
             $growthRate = 0;
