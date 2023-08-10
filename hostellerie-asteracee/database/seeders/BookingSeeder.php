@@ -528,7 +528,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 10,
                 'starting_date' => Carbon::createFromDate('2023', '08', '01')->format('Y-m-d'),
                 'ending_date' => Carbon::createFromDate('2023', '08', '05')->format('Y-m-d'),
-                'status' => 'ongoing',
+                'status' => 'ended',
                 'total_price' => 220,
                 'occupants' => 2,
                 'is_confirmed' => false,
