@@ -184,8 +184,7 @@ class DashboardController extends Controller
         $bookingsDate2 = BookingRepository::getMonthlyConfirmedBooking($m2,$y2);
 
         $nbOfRooms = count(Room::all());
-
-        $globalDaysCount1 = $nbOfRooms*$lastDay1;
+        $globalDaysCount1 = $nbOfRooms*$lastDay1; // 33*31 = 1023
         $globalDaysCount2 = $nbOfRooms*$lastDay2;
         $globalOccupiedDaysCount1 = 0;
         $globalOccupiedDaysCount2= 0;
@@ -196,7 +195,13 @@ class DashboardController extends Controller
         foreach ($bookingsDate1 as $b){
             $salesAmountDate1Array[] = $b->total_price;
 
-            $bookingTimeInDays = Carbon::parse($b->starting_date)->floatDiffInDays(Carbon::parse($b->ending_date));
+            $start = Carbon::parse($b->starting_date)->lessThan(Carbon::parse($date1)->firstOfMonth()) ? Carbon::parse($date1) : Carbon::parse($b->starting_date);
+            $end = Carbon::parse($b->ending_date)->isAfter(Carbon::parse($date1)->lastOfMonth()) ? Carbon::parse($date1)->lastOfMonth() : Carbon::parse($b->ending_date);
+
+            $bookingTimeInDays = $start->DiffInDays($end);
+//            echo ("(" .$b->starting_date . " && " . $b->ending_date . ")");
+//            echo ("(---" . $bookingTimeInDays . "---)");
+//            dd($bookingTimeInDays);
             $globalOccupiedDaysCount1 += $bookingTimeInDays;
 
             $diffInDaysCheckin = Carbon::parse($b->created_at)->floatDiffInDays(Carbon::parse($b->checkin_date));
@@ -210,7 +215,11 @@ class DashboardController extends Controller
         foreach ($bookingsDate2 as $b){
             $salesAmountDate2Array[] = $b->total_price;
 
-            $bookingTimeInDays = Carbon::parse($b->starting_date)->floatDiffInDays(Carbon::parse($b->ending_date));
+            $start = Carbon::parse($b->starting_date)->lessThan(Carbon::parse($date2)->firstOfMonth()) ? Carbon::parse($date2) : Carbon::parse($b->starting_date);
+            $end = Carbon::parse($b->ending_date)->isAfter(Carbon::parse($date2)->lastOfMonth()) ? Carbon::parse($date2)->lastOfMonth() : Carbon::parse($b->ending_date);
+
+            $bookingTimeInDays = $start->DiffInDays($end);
+
             $globalOccupiedDaysCount2 += $bookingTimeInDays;
 
             $diffInDaysCheckin = Carbon::parse($b->created_at)->floatDiffInDays(Carbon::parse($b->checkin_date));
@@ -221,6 +230,8 @@ class DashboardController extends Controller
                 $timesInMinsDate2ReceptionArray[] = Carbon::parse($b->checkin_date)->floatDiffInMinutes(Carbon::parse($firstOpenDoorHistory->used_at));
             }
         }
+
+//        dd($globalDaysCount1);
 
 
         $diffInDaysCheckinDate1 = count($timesInDaysDateChecking1Array)>0 ? strval(round(array_sum($timesInDaysDateChecking1Array)/count($timesInDaysDateChecking1Array))) : '-';
