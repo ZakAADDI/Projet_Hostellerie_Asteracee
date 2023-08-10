@@ -91,11 +91,15 @@ class AuthController extends Controller
             }
 
             $user = User::where('email', $request->email)->first();
+            $role = Auth::user()->role_id;
+
+            $isAllowed = $role == 1 || $role == 3;
 
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'token' => $user->createToken("API TOKEN")->plainTextToken,
+                'allowed' => $isAllowed
             ], 200);
 
         } catch (\Throwable $th) {
