@@ -24,7 +24,7 @@ class HistorySeeder extends Seeder
             ],
             [
                 'nfc_id' => 2,
-                'used_at' =>  Carbon::create('2023', '07', '01', '14', '29', '12', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'used_at' =>  Carbon::create('2023', '07', '01', '14', '33', '02', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -54,7 +54,7 @@ class HistorySeeder extends Seeder
             ],
             [
                 'nfc_id' => 7,
-                'used_at' =>  Carbon::create('2023', '07', '13', '14', '29', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'used_at' =>  Carbon::create('2023', '07', '13', '19', '29', '08', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -84,7 +84,7 @@ class HistorySeeder extends Seeder
             ],
             [
                 'nfc_id' => 13,
-                'used_at' =>  Carbon::create('2023', '07', '01', '13', '25', '22', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'used_at' =>  Carbon::create('2023', '07', '25', '14', '25', '22', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
@@ -132,13 +132,13 @@ class HistorySeeder extends Seeder
             ],
             [
                 'nfc_id' => 20,
-                'used_at' =>  Carbon::create('2023', '07', '13', '15', '41', '18', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'used_at' =>  Carbon::create('2023', '07', '13', '15', '11', '18', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
                 'nfc_id' => 21,
-                'used_at' =>  Carbon::create('2023', '07', '15', '19', '32', '03', 'Europe/Paris')->format('Y-m-d H:i:s'),
+                'used_at' =>  Carbon::create('2023', '07', '15', '11', '32', '03', 'Europe/Paris')->format('Y-m-d H:i:s'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
