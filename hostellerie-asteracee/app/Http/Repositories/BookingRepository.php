@@ -41,14 +41,16 @@ class BookingRepository
         if (count($bookingsOnPeriod) > 0) {
             foreach ($bookingsOnPeriod as $booking) {
                 $firstUse = HistoryRepository::getFistBookingOpenDoorHistory($booking->id);
+                // dd($firstUse);
                 if ($firstUse != null) {
                     $minCounter[] = Carbon::parse($booking->checkin_date)->floatDiffInMinutes(Carbon::parse($firstUse->used_at));
                 }
             }
-            return array_sum($minCounter) / count($minCounter);
-        } else {
-            return '-';
+            if(count($minCounter) > 0) {
+                 return array_sum($minCounter) / count($minCounter);
+            }
         }
+        return '-';
     }
 
     public static function getNbrOfBookinsInPeriod($from, $to)
@@ -108,15 +110,18 @@ class BookingRepository
 
 
         $firstValue = reset($allBookings);
+
         $lastValue = end($allBookings);
+        // dd($allBookings);
         if ($firstValue == false || $lastValue == false) {
+            // dd('here');
             $growthRate = 0;
         } else {
-            $growthRate = (($firstValue - $lastValue) / $lastValue) * 100;
+            $growthRate = (($lastValue - $firstValue) / $firstValue) * 100;
         }
 
         $averageBasketAmount = $totalBookings > 0 ? $totalRevenue / $totalBookings : 0;
-        // dd($totalRevenueOnDay);
+
         $datas = [];
         $datas['averageBasketOnPeriod'] = round($averageBasketAmount, 2);
         $datas['valueGrowthRate'] = $growthRate;
