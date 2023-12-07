@@ -128,7 +128,7 @@ Route::group(['middleware' => ['AcceptLanguage']], function () {
             Route::post('/dashboard/efficiencyDatas', [DashboardController::class, 'getEfficiencyDatas']);
         });
 
-        Route::group(['middleware' => 'isAdmin'], function () {
+        Route::group(['middleware' => 'isAllowed'], function () {
             Route::get('/getAllRooms', [RoomController::class, 'findAll']);
             Route::get('/bookings/confirmedOngoingBooking', [BookingController::class, 'confirmedOngoingBooking']);
             // NFC
